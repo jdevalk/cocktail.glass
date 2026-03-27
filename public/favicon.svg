@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="liquid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fcb69f"/>
+      <stop offset="100%" stop-color="#e05e3a"/>
+    </linearGradient>
+  </defs>
+  <!-- Glass bowl -->
+  <path d="M28 20 L64 72 L64 72 L100 20 Z" fill="none" stroke="#2d2a26" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Liquid -->
+  <path d="M38 34 L64 72 L90 34 Z" fill="url(#liquid)" opacity="0.85"/>
+  <!-- Stem -->
+  <line x1="64" y1="72" x2="64" y2="102" stroke="#2d2a26" stroke-width="5" stroke-linecap="round"/>
+  <!-- Base -->
+  <line x1="44" y1="102" x2="84" y2="102" stroke="#2d2a26" stroke-width="5" stroke-linecap="round"/>
+</svg>

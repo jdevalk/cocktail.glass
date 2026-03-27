@@ -1,0 +1,24 @@
+{
+  "name": "cocktail-glass",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "preview:pages": "npm run build && wrangler pages dev dist",
+    "deploy:pages": "npm run build && wrangler pages deploy dist",
+    "generate:origins": "node scripts/generate-origin-stories.mjs"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^5.1.0",
+    "astro": "^6.1.1",
+    "gray-matter": "^4.0.3",
+    "preact": "^10.29.0",
+    "satori": "^0.26.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "wrangler": "^4.77.0"
+  }
+}

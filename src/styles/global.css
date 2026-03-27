@@ -1,0 +1,48 @@
+:root {
+  --color-bg: #fef9f0;
+  --color-text: #2d2a26;
+  --color-text-muted: #7a7267;
+  --color-accent: #e05e3a;
+  --color-accent-hover: #c94d2b;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-bg-hover: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --glass-blur: 12px;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --max-width: 1200px;
+  --gradient-summer: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #fbc2eb 50%, #a6c1ee 75%, #c2e9fb 100%);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(252, 182, 159, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 10%, rgba(166, 193, 238, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(251, 194, 235, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(194, 233, 251, 0.3) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}

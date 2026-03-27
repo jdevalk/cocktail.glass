@@ -1,0 +1,58 @@
+---
+import type { Cocktail } from '../types';
+
+interface Props {
+  cocktail: Cocktail;
+}
+
+const { cocktail } = Astro.props;
+---
+<a href={`/${cocktail.slug}/`} class="card">
+  <span class="category">{cocktail.category}</span>
+  <h2 class="name">{cocktail.name}</h2>
+  <p class="meta">{cocktail.glass} &middot; {cocktail.ingredients.length} ingredients</p>
+</a>
+
+<style>
+  .card {
+    display: block;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .card:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .category {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin: 0.2rem 0 0.35rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .meta {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+</style>

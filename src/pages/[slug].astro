@@ -1,0 +1,279 @@
+---
+import Base from '../layouts/Base.astro';
+import type { Cocktail, CocktailOriginStories } from '../types';
+import { getGlassServingText } from '../utils/glass';
+import cocktails from '../../cocktails.json';
+import originStories from '../../origin-stories.json';
+
+export function getStaticPaths() {
+  return (cocktails as Cocktail[]).map(cocktail => ({
+    params: { slug: cocktail.slug },
+    props: { cocktail },
+  }));
+}
+
+interface Props {
+  cocktail: Cocktail;
+}
+
+const { cocktail } = Astro.props;
+
+import { existsSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+const imageFilePath = join(process.cwd(), 'public/images', `${cocktail.slug}.webp`);
+const hasImage = existsSync(imageFilePath) && statSync(imageFilePath).size > 0;
+const imageSrc = hasImage ? `/images/${cocktail.slug}.webp` : null;
+const originStory = (originStories as CocktailOriginStories)[cocktail.slug];
+
+function formatAmount(amount: string, unit: string): string {
+  if (!amount && !unit) return '';
+  if (!amount) return unit;
+  if (unit === 'ml') return `${amount} ml`;
+  if (unit === 'dash' || unit === 'dashes') return `${amount} ${parseInt(amount) === 1 ? 'dash' : 'dashes'}`;
+  return `${amount} ${unit}`;
+}
+---
+<Base title={cocktail.name} description={`How to make a ${cocktail.name}: ${cocktail.preparation}`} ogImage={`/og/${cocktail.slug}.jpg`}>
+  <div class="container">
+    <a href="/" class="back">&larr; All cocktails</a>
+
+    <article class="cocktail-card">
+      <header>
+        <div class="header-copy">
+          <span class="category">{cocktail.category}</span>
+          <h1>{cocktail.name}</h1>
+          <p class="glass-type">Served in {getGlassServingText(cocktail.glass)}</p>
+        </div>
+        {imageSrc && (
+          <img src={imageSrc} alt={cocktail.name} class="cocktail-image" width="1024" height="1024" loading="eager" />
+        )}
+      </header>
+
+      <div class="content">
+        <section class="ingredients">
+          <h2>Ingredients</h2>
+          <ul>
+            {cocktail.ingredients.map(ing => (
+              <li>
+                <span class="amount">{formatAmount(ing.amount, ing.unit)}</span>
+                <span class="ingredient-name">{ing.name}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="preparation">
+          <h2>Preparation</h2>
+          <p>{cocktail.preparation}</p>
+        </section>
+
+        {cocktail.garnish && (
+          <section class="garnish">
+            <h2>Garnish</h2>
+            <p>{cocktail.garnish}</p>
+          </section>
+        )}
+
+        {originStory?.story && (
+          <section class="origin-story">
+            <h2>Origin story</h2>
+            <p>{originStory.story}</p>
+            {originStory.sourceUrl && (
+              <p class="origin-source">
+                Source:{' '}
+                <a href={originStory.sourceUrl} target="_blank" rel="noreferrer">
+                  {originStory.sourceName || 'Reference'}
+                </a>
+              </p>
+            )}
+          </section>
+        )}
+      </div>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .back {
+    display: inline-block;
+    margin: 2rem 0 1.5rem;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .back:hover {
+    color: var(--color-accent);
+  }
+
+  .cocktail-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: var(--glass-shadow);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .cocktail-image {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .category {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    font-weight: 600;
+    background: rgba(224, 94, 58, 0.1);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .glass-type {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+  }
+
+  .header-copy {
+    max-width: 420px;
+  }
+
+  .content h2 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .ingredients {
+    margin-bottom: 2rem;
+  }
+
+  .ingredients ul {
+    list-style: none;
+  }
+
+  .ingredients li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .ingredients li:last-child {
+    border-bottom: none;
+  }
+
+  .amount {
+    min-width: 80px;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .ingredient-name {
+    font-size: 1.15rem;
+  }
+
+  .preparation {
+    margin-bottom: 2rem;
+  }
+
+  .preparation p {
+    line-height: 1.8;
+  }
+
+  .origin-story {
+    margin-bottom: 2rem;
+  }
+
+  .origin-story p {
+    line-height: 1.8;
+  }
+
+  .origin-source {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .origin-source a {
+    color: var(--color-accent);
+  }
+
+  .garnish {
+    margin-bottom: 2rem;
+  }
+
+  .garnish p {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .cocktail-card {
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+
+    .cocktail-image {
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (min-width: 760px) {
+    header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+    }
+
+    .cocktail-image {
+      flex: 0 0 320px;
+      margin-bottom: 0;
+    }
+  }
+</style>
