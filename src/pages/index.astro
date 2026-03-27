@@ -6,10 +6,14 @@ import cocktails from '../../cocktails.json';
 
 const allCocktails = cocktails as Cocktail[];
 ---
-<Base title="Cocktail Glass" description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods.">
+<Base
+  title="Cocktail Glass"
+  description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
+  ogImage="/og/home.jpg"
+>
   <div class="container">
     <section class="hero">
-      <p class="hero-icon">&#127864;</p>
+      <img src="/emoji/cocktail-glass.svg" alt="" class="hero-icon" width="64" height="64" aria-hidden="true" />
       <h1>cocktail<span>.glass</span></h1>
       <p class="subtitle">Browse 500 cocktail recipes by<br />category, glass, and ingredient</p>
     </section>
@@ -471,11 +475,10 @@ const allCocktails = cocktails as Cocktail[];
   }
 
   .hero-icon {
-    font-size: 3.75rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    display: block;
     margin-bottom: 0.5rem;
-    line-height: 1;
-    width: 1em;
-    transform: translateX(-0.08em);
   }
 
   .hero h1 {
@@ -512,9 +515,9 @@ const allCocktails = cocktails as Cocktail[];
     }
 
     .hero-icon {
-      font-size: 2.7rem;
+      width: 2.7rem;
+      height: 2.7rem;
       margin-bottom: 0.35rem;
-      transform: translateX(-0.14em);
     }
 
     .hero h1 {
