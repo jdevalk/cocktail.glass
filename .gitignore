@@ -4,5 +4,6 @@ dist/
 .playwright-cli/
 .wrangler/
 output/
+public/images/responsive/
 .env
 .DS_Store

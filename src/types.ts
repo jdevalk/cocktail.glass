@@ -14,6 +14,14 @@ export interface Cocktail {
   preparation: string;
 }
 
+export interface CocktailSummary {
+  name: string;
+  slug: string;
+  category: string;
+  glass: string;
+  ingredients: string[];
+}
+
 export interface CocktailOriginStory {
   story: string;
   sourceName?: string;

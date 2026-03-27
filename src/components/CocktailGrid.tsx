@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'preact/hooks';
-import type { Cocktail } from '../types';
+import type { CocktailSummary } from '../types';
 
 type FilterState = 'include' | 'exclude';
 type FilterMap = Map<string, FilterState>;
@@ -13,7 +13,7 @@ type FilterContext = {
 };
 
 interface Props {
-  cocktails: Cocktail[];
+  cocktails: CocktailSummary[];
 }
 
 declare global {
@@ -45,10 +45,10 @@ function matchesValueFilters(value: string, filters: FilterMap): boolean {
   return true;
 }
 
-function matchesIngredientFilters(cocktail: Cocktail, filters: FilterMap): boolean {
+function matchesIngredientFilters(cocktail: CocktailSummary, filters: FilterMap): boolean {
   const included = getIncludedValues(filters);
   const excluded = getExcludedValues(filters);
-  const cocktailIngredients = new Set(cocktail.ingredients.map((ingredient) => ingredient.name));
+  const cocktailIngredients = new Set(cocktail.ingredients);
 
   for (const ingredient of included) {
     if (!cocktailIngredients.has(ingredient)) return false;
@@ -61,7 +61,7 @@ function matchesIngredientFilters(cocktail: Cocktail, filters: FilterMap): boole
   return true;
 }
 
-function matchesCocktail(cocktail: Cocktail, filters: FilterContext): boolean {
+function matchesCocktail(cocktail: CocktailSummary, filters: FilterContext): boolean {
   if (filters.categoryFilters && !matchesValueFilters(cocktail.category, filters.categoryFilters)) return false;
   if (filters.glassFilters && !matchesValueFilters(cocktail.glass, filters.glassFilters)) return false;
   if (filters.ingredientFilters && !matchesIngredientFilters(cocktail, filters.ingredientFilters)) return false;
@@ -104,14 +104,18 @@ function FilterPill({ label, state, count, onToggle }: {
   );
 }
 
-function CocktailCard({ cocktail }: { cocktail: Cocktail }) {
+function CocktailCard({ cocktail }: { cocktail: CocktailSummary }) {
+  const image320 = `/images/responsive/320/${cocktail.slug}.webp`;
+
   return (
     <a href={`/${cocktail.slug}/`} class="card">
       <div class="card-image-frame">
         <img
-          src={`/images/${cocktail.slug}.webp`}
+          src={image320}
           alt={cocktail.name}
           class="card-image"
+          width="320"
+          height="320"
           loading="lazy"
           decoding="async"
           onError={(e) => {
@@ -144,7 +148,7 @@ export default function CocktailGrid({ cocktails }: Props) {
 
   const ingredientOptions = useMemo(() => {
     const counts = countValues(
-      cocktails.flatMap((cocktail) => [...new Set(cocktail.ingredients.map((ingredient) => ingredient.name))]),
+      cocktails.flatMap((cocktail) => [...new Set(cocktail.ingredients)]),
     );
 
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
@@ -168,7 +172,7 @@ export default function CocktailGrid({ cocktails }: Props) {
 
   const ingredientCounts = useMemo(() => {
     return countValues(
-      filtered.flatMap((cocktail) => [...new Set(cocktail.ingredients.map((ingredient) => ingredient.name))]),
+      filtered.flatMap((cocktail) => [...new Set(cocktail.ingredients)]),
     );
   }, [filtered]);
 
@@ -207,7 +211,7 @@ export default function CocktailGrid({ cocktails }: Props) {
   }, [availableIngredientOptions, ingredientFilters, ingredientSearch, showAllIngredients]);
 
   const grouped = useMemo(() => {
-    const map = new Map<string, Cocktail[]>();
+    const map = new Map<string, CocktailSummary[]>();
     for (const c of filtered) {
       const arr = map.get(c.category) || [];
       arr.push(c);

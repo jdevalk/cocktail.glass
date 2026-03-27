@@ -3,7 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node scripts/generate-responsive-images.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-responsive-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "preview:pages": "npm run build && wrangler pages dev dist",

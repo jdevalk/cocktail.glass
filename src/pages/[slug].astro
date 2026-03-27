@@ -22,7 +22,8 @@ import { existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 const imageFilePath = join(process.cwd(), 'public/images', `${cocktail.slug}.webp`);
 const hasImage = existsSync(imageFilePath) && statSync(imageFilePath).size > 0;
-const imageSrc = hasImage ? `/images/${cocktail.slug}.webp` : null;
+const image320Src = hasImage ? `/images/responsive/320/${cocktail.slug}.webp` : null;
+const image640Src = hasImage ? `/images/responsive/640/${cocktail.slug}.webp` : null;
 const originStory = (originStories as CocktailOriginStories)[cocktail.slug];
 
 function formatAmount(amount: string, unit: string): string {
@@ -44,8 +45,18 @@ function formatAmount(amount: string, unit: string): string {
           <h1>{cocktail.name}</h1>
           <p class="glass-type">Served in {getGlassServingText(cocktail.glass)}</p>
         </div>
-        {imageSrc && (
-          <img src={imageSrc} alt={cocktail.name} class="cocktail-image" width="1024" height="1024" loading="eager" />
+        {image320Src && image640Src && (
+          <img
+            src={image320Src}
+            srcset={`${image320Src} 320w, ${image640Src} 640w`}
+            sizes="(max-width: 600px) calc(100vw - 5rem), 320px"
+            alt={cocktail.name}
+            class="cocktail-image"
+            width="320"
+            height="320"
+            loading="eager"
+            fetchpriority="high"
+          />
         )}
       </header>
 

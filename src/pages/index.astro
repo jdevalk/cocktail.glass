@@ -1,10 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import CocktailGrid from '../components/CocktailGrid';
-import type { Cocktail } from '../types';
+import type { Cocktail, CocktailSummary } from '../types';
 import cocktails from '../../cocktails.json';
 
-const allCocktails = cocktails as Cocktail[];
+const allCocktails = (cocktails as Cocktail[]).map((cocktail) => ({
+  name: cocktail.name,
+  slug: cocktail.slug,
+  category: cocktail.category,
+  glass: cocktail.glass,
+  ingredients: cocktail.ingredients.map((ingredient) => ingredient.name),
+})) satisfies CocktailSummary[];
 ---
 <Base
   title="Cocktail Glass"
@@ -244,6 +250,11 @@ const allCocktails = cocktails as Cocktail[];
     padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     margin-top: 1.25rem;
+  }
+
+  .category-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1200px;
   }
 
   .result-count {
