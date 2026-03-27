@@ -14,11 +14,9 @@
     "generate:origins": "node scripts/generate-origin-stories.mjs"
   },
   "dependencies": {
-    "@astrojs/preact": "^5.1.0",
     "@astrojs/sitemap": "^3.7.2",
     "astro": "^6.1.1",
     "gray-matter": "^4.0.3",
-    "preact": "^10.29.0",
     "satori": "^0.26.0",
     "sharp": "^0.34.5"
   },

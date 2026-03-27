@@ -67,7 +67,7 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
   <main>
     <slot />
   </main>
-  <script>
+  <script is:inline>
     const hero = document.querySelector('.hero');
     const header = document.getElementById('site-header');
     if (hero && header) {

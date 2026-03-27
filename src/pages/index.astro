@@ -1,19 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
-import CocktailGrid from '../components/CocktailGrid';
-import type { Cocktail, CocktailSummary } from '../types';
+import type { Cocktail } from '../types';
 import { buildHomepageSchema } from '../utils/schema';
 import cocktails from '../../cocktails.json';
 
 const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
-const allCocktails = (cocktails as Cocktail[]).map((cocktail) => ({
-  name: cocktail.name,
-  slug: cocktail.slug,
-  category: cocktail.category,
-  glass: cocktail.glass,
-  ingredients: cocktail.ingredients.map((ingredient) => ingredient.name),
-})) satisfies CocktailSummary[];
 const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
+
+const allCocktails = (cocktails as Cocktail[]).map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  category: c.category,
+  glass: c.glass,
+  ingredients: c.ingredients.map((i) => i.name),
+}));
+
+// Build grouped categories in order
+const categoryOrder: string[] = [];
+const grouped = new Map<string, typeof allCocktails>();
+for (const c of allCocktails) {
+  if (!grouped.has(c.category)) {
+    categoryOrder.push(c.category);
+    grouped.set(c.category, []);
+  }
+  grouped.get(c.category)!.push(c);
+}
+
+// Count values for filter pills
+function countBy(values: string[]) {
+  const m = new Map<string, number>();
+  for (const v of values) m.set(v, (m.get(v) || 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1]);
+}
+
+const categoryCounts = countBy(allCocktails.map((c) => c.category));
+const glassCounts = countBy(allCocktails.map((c) => c.glass));
+const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingredients)]));
 ---
 <Base
   title="Cocktail Glass"
@@ -28,9 +50,337 @@ const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
       <p class="subtitle">Browse 500 cocktail recipes by<br />category, glass, and ingredient</p>
     </section>
 
-    <CocktailGrid client:load cocktails={allCocktails} />
+    <div id="cocktail-grid">
+      <div class="filters">
+        <div class="filter-tabs">
+          <div class="filter-tabs-left">
+            <button class="filter-tab filter-tab--active" data-tab="category">
+              Category
+            </button>
+            <button class="filter-tab" data-tab="glass">
+              Glass type
+            </button>
+            <button class="filter-tab" data-tab="ingredients">
+              Ingredients
+            </button>
+          </div>
+        </div>
+        <div class="filter-hint" aria-hidden="true">
+          <span class="filter-hint-pill">
+            <span class="filter-hint-sign">+</span>
+            Include
+          </span>
+          <span class="filter-hint-separator">&bull;</span>
+          <span>Tap again to exclude</span>
+        </div>
+
+        <div class="filter-panel">
+          <div class="pill-group" data-panel="category">
+            {categoryCounts.map(([cat, count]) => (
+              <button class="pill" data-filter="category" data-value={cat}>
+                {cat} <span class="pill-count">{count}</span>
+              </button>
+            ))}
+          </div>
+          <div class="pill-group" data-panel="glass" hidden>
+            {glassCounts.map(([glass, count]) => (
+              <button class="pill" data-filter="glass" data-value={glass}>
+                {glass} <span class="pill-count">{count}</span>
+              </button>
+            ))}
+          </div>
+          <div data-panel="ingredients" hidden>
+            <input
+              type="text"
+              class="ingredient-search"
+              placeholder="Search ingredients..."
+              id="ingredient-search"
+            />
+            <div class="pill-group" id="ingredient-pills">
+              {ingredientCounts.map(([ing, count], i) => (
+                <button
+                  class="pill"
+                  data-filter="ingredient"
+                  data-value={ing}
+                  hidden={i >= 20}
+                >
+                  {ing} <span class="pill-count">{count}</span>
+                </button>
+              ))}
+            </div>
+            <button class="show-more" id="show-more-ingredients">
+              Show all {ingredientCounts.length} ingredients
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-status" id="filter-status" hidden>
+          <span class="result-count" id="result-count"></span>
+          <button class="clear-btn" id="clear-filters">Clear filters</button>
+        </div>
+      </div>
+
+      <div class="empty" id="empty-state" hidden>
+        <p>No cocktails match those filters.</p>
+        <button class="clear-btn" id="clear-filters-empty">Clear filters</button>
+      </div>
+
+      {categoryOrder.map((category) => (
+        <section class="category-section" data-category-section={category}>
+          <div class="section-header">
+            <h2 class="section-title">{category}</h2>
+            <span class="count" data-section-count>{grouped.get(category)!.length} recipe{grouped.get(category)!.length !== 1 ? 's' : ''}</span>
+          </div>
+          <div class="grid">
+            {grouped.get(category)!.map((cocktail) => (
+              <a
+                href={`/${cocktail.slug}/`}
+                class="card"
+                data-category={cocktail.category}
+                data-glass={cocktail.glass}
+                data-ingredients={[...new Set(cocktail.ingredients)].join('|')}
+              >
+                <div class="card-image-frame">
+                  <img
+                    src={`/images/responsive/320/${cocktail.slug}.webp`}
+                    alt={cocktail.name}
+                    class="card-image"
+                    width="320"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="card-category">{cocktail.category}</span>
+                <h3 class="card-name">{cocktail.name}</h3>
+                <p class="card-meta">{cocktail.glass} &middot; {cocktail.ingredients.length} ingredients</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
   </div>
 </Base>
+
+<script is:inline>
+(function() {
+  const filters = { category: new Map(), glass: new Map(), ingredient: new Map() };
+  let activeTab = 'category';
+  let showAll = false;
+
+  const $ = (s, p) => (p || document).querySelector(s);
+  const $$ = (s, p) => (p || document).querySelectorAll(s);
+
+  const cards = $$('.card');
+  const sections = $$('.category-section');
+  const tabs = $$('.filter-tab');
+  const panels = $$('[data-panel]');
+  const pills = $$('.pill');
+  const statusEl = $('#filter-status');
+  const countEl = $('#result-count');
+  const emptyEl = $('#empty-state');
+  const searchEl = $('#ingredient-search');
+  const showMoreEl = $('#show-more-ingredients');
+  const ingredientPills = $$('[data-filter="ingredient"]');
+
+  function track(name, props) {
+    if (typeof window.plausible === 'function') window.plausible(name, { props: props });
+  }
+
+  // Handle broken images
+  for (const card of cards) {
+    const img = $('img', card);
+    if (img) img.onerror = function() { this.parentElement.classList.add('card-image-frame--empty'); };
+  }
+
+  // Tab switching
+  for (const tab of tabs) {
+    tab.addEventListener('click', function() {
+      activeTab = this.dataset.tab;
+      for (const t of tabs) t.classList.toggle('filter-tab--active', t === this);
+      for (const p of panels) p.hidden = p.dataset.panel !== activeTab;
+      track('Filter Tab Selected', { tab: activeTab });
+    });
+  }
+
+  // Pill click - tri-state cycling
+  for (const pill of pills) {
+    pill.addEventListener('click', function() {
+      const kind = this.dataset.filter;
+      const value = this.dataset.value;
+      const f = filters[kind];
+      const prev = f.get(value) || null;
+      let next;
+      if (prev === null) next = 'include';
+      else if (prev === 'include') next = 'exclude';
+      else next = null;
+
+      if (next === null) f.delete(value);
+      else f.set(value, next);
+
+      updatePill(this, next);
+      applyFilters();
+      track('Filter Updated', {
+        filter_type: kind, filter_value: value,
+        action: next || 'cleared', previous_action: prev || 'none',
+      });
+    });
+  }
+
+  function updatePill(el, state) {
+    el.classList.remove('pill--include', 'pill--exclude');
+    // Remove existing sign span
+    const sign = el.querySelector('.pill-sign');
+    if (sign) sign.remove();
+
+    if (state === 'include') {
+      el.classList.add('pill--include');
+      el.insertAdjacentHTML('afterbegin', '<span class="pill-sign">+</span>');
+    } else if (state === 'exclude') {
+      el.classList.add('pill--exclude');
+      el.insertAdjacentHTML('afterbegin', '<span class="pill-sign">&minus;</span>');
+    }
+  }
+
+  function applyFilters() {
+    const catIncl = getIncluded(filters.category);
+    const catExcl = getExcluded(filters.category);
+    const glIncl = getIncluded(filters.glass);
+    const glExcl = getExcluded(filters.glass);
+    const ingIncl = getIncluded(filters.ingredient);
+    const ingExcl = getExcluded(filters.ingredient);
+    const hasFilters = filters.category.size + filters.glass.size + filters.ingredient.size > 0;
+
+    let visible = 0;
+    const sectionCounts = new Map();
+
+    for (const card of cards) {
+      const cat = card.dataset.category;
+      const glass = card.dataset.glass;
+      const ings = card.dataset.ingredients ? card.dataset.ingredients.split('|') : [];
+
+      let show = true;
+      if (catIncl.length && !catIncl.includes(cat)) show = false;
+      if (catExcl.includes(cat)) show = false;
+      if (glIncl.length && !glIncl.includes(glass)) show = false;
+      if (glExcl.includes(glass)) show = false;
+      if (ingIncl.length) {
+        for (const i of ingIncl) { if (!ings.includes(i)) { show = false; break; } }
+      }
+      if (show && ingExcl.length) {
+        for (const i of ingExcl) { if (ings.includes(i)) { show = false; break; } }
+      }
+
+      card.hidden = !show;
+      if (show) {
+        visible++;
+        sectionCounts.set(cat, (sectionCounts.get(cat) || 0) + 1);
+      }
+    }
+
+    // Show/hide sections and update counts
+    for (const section of sections) {
+      const cat = section.dataset.categorySection;
+      const count = sectionCounts.get(cat) || 0;
+      section.hidden = count === 0;
+      const countSpan = $('[data-section-count]', section);
+      if (countSpan) countSpan.textContent = count + ' recipe' + (count !== 1 ? 's' : '');
+    }
+
+    // Update pill counts
+    updatePillCounts(sectionCounts);
+
+    // Status bar
+    statusEl.hidden = !hasFilters;
+    if (hasFilters) {
+      countEl.textContent = visible + ' cocktail' + (visible !== 1 ? 's' : '') + ' found';
+    }
+    emptyEl.hidden = visible > 0 || !hasFilters;
+
+    // Update tab badges
+    for (const tab of tabs) {
+      const kind = tab.dataset.tab === 'ingredients' ? 'ingredient' : tab.dataset.tab;
+      const badge = tab.querySelector('.filter-badge');
+      const count = filters[kind].size;
+      if (count > 0 && !badge) {
+        tab.insertAdjacentHTML('beforeend', '<span class="filter-badge">' + count + '</span>');
+      } else if (count > 0 && badge) {
+        badge.textContent = count;
+      } else if (badge) {
+        badge.remove();
+      }
+    }
+  }
+
+  function updatePillCounts(sectionCounts) {
+    // Recount based on visible cards for glass and ingredient pills
+    const visibleCards = [...cards].filter(c => !c.hidden);
+    const glassCounts = new Map();
+    const ingCounts = new Map();
+    for (const c of visibleCards) {
+      glassCounts.set(c.dataset.glass, (glassCounts.get(c.dataset.glass) || 0) + 1);
+      if (c.dataset.ingredients) {
+        for (const i of c.dataset.ingredients.split('|')) {
+          ingCounts.set(i, (ingCounts.get(i) || 0) + 1);
+        }
+      }
+    }
+
+    for (const pill of pills) {
+      const kind = pill.dataset.filter;
+      const value = pill.dataset.value;
+      const countSpan = pill.querySelector('.pill-count');
+      if (!countSpan) continue;
+      let count;
+      if (kind === 'category') count = sectionCounts.get(value) || 0;
+      else if (kind === 'glass') count = glassCounts.get(value) || 0;
+      else count = ingCounts.get(value) || 0;
+      countSpan.textContent = count;
+    }
+  }
+
+  function getIncluded(m) { return [...m].filter(([,s]) => s === 'include').map(([v]) => v); }
+  function getExcluded(m) { return [...m].filter(([,s]) => s === 'exclude').map(([v]) => v); }
+
+  function clearAll() {
+    track('Filters Cleared', {});
+    for (const kind of ['category', 'glass', 'ingredient']) filters[kind].clear();
+    for (const pill of pills) updatePill(pill, null);
+    applyFilters();
+    searchEl.value = '';
+    filterIngredientPills('');
+  }
+
+  $('#clear-filters').addEventListener('click', clearAll);
+  $('#clear-filters-empty').addEventListener('click', clearAll);
+
+  // Ingredient search
+  searchEl.addEventListener('input', function() {
+    filterIngredientPills(this.value.toLowerCase());
+  });
+
+  function filterIngredientPills(q) {
+    for (const pill of ingredientPills) {
+      const name = pill.dataset.value.toLowerCase();
+      const isActive = filters.ingredient.has(pill.dataset.value);
+      if (q) {
+        pill.hidden = !isActive && !name.includes(q);
+      } else {
+        const idx = [...ingredientPills].indexOf(pill);
+        pill.hidden = !isActive && !showAll && idx >= 20;
+      }
+    }
+    showMoreEl.hidden = !!q;
+  }
+
+  showMoreEl.addEventListener('click', function() {
+    showAll = !showAll;
+    this.textContent = showAll ? 'Show fewer' : 'Show all ' + ingredientPills.length + ' ingredients';
+    filterIngredientPills(searchEl.value.toLowerCase());
+  });
+})();
+</script>
 
 <style is:global>
   /* Filter panel */
@@ -167,6 +517,10 @@ const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
     color: var(--color-text-muted);
   }
 
+  [hidden] {
+    display: none !important;
+  }
+
   .pill-group {
     display: flex;
     flex-wrap: wrap;
@@ -224,10 +578,6 @@ const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
     font-size: 0.75rem;
     opacity: 0.6;
     margin-left: 0.15rem;
-  }
-
-  .pill--active .pill-count {
-    opacity: 0.85;
   }
 
   .show-more {
@@ -295,7 +645,7 @@ const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
     margin-top: 1rem;
   }
 
-  /* Card grid (shared with Preact) */
+  /* Card grid */
   .category-section {
     margin-bottom: 3.5rem;
   }
@@ -345,6 +695,10 @@ const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     border-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .card[hidden] {
+    display: none;
   }
 
   .card-image-frame {
