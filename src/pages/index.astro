@@ -2,8 +2,10 @@
 import Base from '../layouts/Base.astro';
 import CocktailGrid from '../components/CocktailGrid';
 import type { Cocktail, CocktailSummary } from '../types';
+import { buildHomepageSchema } from '../utils/schema';
 import cocktails from '../../cocktails.json';
 
+const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
 const allCocktails = (cocktails as Cocktail[]).map((cocktail) => ({
   name: cocktail.name,
   slug: cocktail.slug,
@@ -11,11 +13,13 @@ const allCocktails = (cocktails as Cocktail[]).map((cocktail) => ({
   glass: cocktail.glass,
   ingredients: cocktail.ingredients.map((ingredient) => ingredient.name),
 })) satisfies CocktailSummary[];
+const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
 ---
 <Base
   title="Cocktail Glass"
   description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
   ogImage="/og/home.jpg"
+  schema={homepageSchema}
 >
   <div class="container">
     <section class="hero">

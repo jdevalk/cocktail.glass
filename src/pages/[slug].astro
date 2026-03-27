@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import type { Cocktail, CocktailOriginStories } from '../types';
 import { getGlassServingText } from '../utils/glass';
+import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
 
@@ -24,17 +25,18 @@ const imageFilePath = join(process.cwd(), 'public/images', `${cocktail.slug}.web
 const hasImage = existsSync(imageFilePath) && statSync(imageFilePath).size > 0;
 const image320Src = hasImage ? `/images/responsive/320/${cocktail.slug}.webp` : null;
 const image640Src = hasImage ? `/images/responsive/640/${cocktail.slug}.webp` : null;
+const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
+const schemaImageUrl = hasImage ? new URL(`/images/${cocktail.slug}.webp`, siteUrl).toString() : undefined;
 const originStory = (originStories as CocktailOriginStories)[cocktail.slug];
-
-function formatAmount(amount: string, unit: string): string {
-  if (!amount && !unit) return '';
-  if (!amount) return unit;
-  if (unit === 'ml') return `${amount} ml`;
-  if (unit === 'dash' || unit === 'dashes') return `${amount} ${parseInt(amount) === 1 ? 'dash' : 'dashes'}`;
-  return `${amount} ${unit}`;
-}
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUrl);
 ---
-<Base title={cocktail.name} description={`How to make a ${cocktail.name}: ${cocktail.preparation}`} ogImage={`/og/${cocktail.slug}.jpg`}>
+<Base
+  title={cocktail.name}
+  description={`How to make a ${cocktail.name}: ${cocktail.preparation}`}
+  ogImage={`/og/${cocktail.slug}.jpg`}
+  schema={recipeSchema}
+>
   <div class="container">
     <a href="/" class="back">&larr; All cocktails</a>
 
@@ -66,7 +68,7 @@ function formatAmount(amount: string, unit: string): string {
           <ul>
             {cocktail.ingredients.map(ing => (
               <li>
-                <span class="amount">{formatAmount(ing.amount, ing.unit)}</span>
+                <span class="amount">{formatIngredientAmount(ing)}</span>
                 <span class="ingredient-name">{ing.name}</span>
               </li>
             ))}

@@ -5,14 +5,21 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  schema?: Record<string, unknown>;
 }
 
-const { title, description = 'Discover 500 cocktail recipes with ingredients, preparation methods, and more.', ogImage } = Astro.props;
+const {
+  title,
+  description = 'Discover 500 cocktail recipes with ingredients, preparation methods, and more.',
+  ogImage,
+  schema,
+} = Astro.props;
 const fullTitle = title === 'Cocktail Glass' ? title : `${title} | Cocktail Glass`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 const plausibleDomain = Astro.site ? new URL(Astro.site).hostname : undefined;
 const shouldLoadPlausible = import.meta.env.PROD && plausibleDomain;
+const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : undefined;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +41,7 @@ const shouldLoadPlausible = import.meta.env.PROD && plausibleDomain;
   <meta name="twitter:description" content={description} />
   {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" as="style" />
