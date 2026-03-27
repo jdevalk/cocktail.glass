@@ -5,5 +5,6 @@ dist/
 .wrangler/
 output/
 public/images/responsive/
+public/og/
 .env
 .DS_Store

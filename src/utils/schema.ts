@@ -2,12 +2,78 @@ import type { Cocktail, Ingredient } from '../types';
 
 type JsonLdNode = Record<string, unknown>;
 
+const SITE_NAME = 'Cocktail Glass';
+const SITE_LANGUAGE = 'en-US';
+
 function toAbsoluteUrl(path: string, siteUrl: string): string {
   return new URL(path, siteUrl).toString();
 }
 
 function buildDescription(cocktail: Cocktail): string {
   return `How to make a ${cocktail.name}: ${cocktail.preparation}`;
+}
+
+function buildOrganizationId(siteUrl: string): string {
+  return `${toAbsoluteUrl('/', siteUrl)}#/schema.org/Organization/1`;
+}
+
+function buildWebsiteId(siteUrl: string): string {
+  return `${toAbsoluteUrl('/', siteUrl)}#/schema.org/WebSite/1`;
+}
+
+function buildLogoNode(siteUrl: string): JsonLdNode {
+  const logoUrl = toAbsoluteUrl('/emoji/cocktail-glass.svg', siteUrl);
+
+  return {
+    '@type': 'ImageObject',
+    '@id': logoUrl,
+    url: logoUrl,
+    contentUrl: logoUrl,
+    caption: SITE_NAME,
+    inLanguage: SITE_LANGUAGE,
+  };
+}
+
+function buildOrganizationNode(siteUrl: string): JsonLdNode {
+  const homepageUrl = toAbsoluteUrl('/', siteUrl);
+  const logoUrl = toAbsoluteUrl('/emoji/cocktail-glass.svg', siteUrl);
+
+  return {
+    '@type': 'Organization',
+    '@id': buildOrganizationId(siteUrl),
+    name: SITE_NAME,
+    url: homepageUrl,
+    logo: {
+      '@id': logoUrl,
+    },
+    image: {
+      '@id': logoUrl,
+    },
+  };
+}
+
+function buildWebsiteNode(siteUrl: string): JsonLdNode {
+  return {
+    '@type': 'WebSite',
+    '@id': buildWebsiteId(siteUrl),
+    url: toAbsoluteUrl('/', siteUrl),
+    name: SITE_NAME,
+    publisher: {
+      '@id': buildOrganizationId(siteUrl),
+    },
+    inLanguage: SITE_LANGUAGE,
+  };
+}
+
+function buildImageNode(imageUrl: string, imageId: string, caption: string): JsonLdNode {
+  return {
+    '@type': 'ImageObject',
+    '@id': imageId,
+    url: imageUrl,
+    contentUrl: imageUrl,
+    caption,
+    inLanguage: SITE_LANGUAGE,
+  };
 }
 
 export function formatIngredientAmount(ingredient: Ingredient): string {
@@ -38,63 +104,52 @@ export function formatIngredientText(ingredient: Ingredient): string {
 
 export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]): JsonLdNode {
   const homepageUrl = toAbsoluteUrl('/', siteUrl);
-  const websiteId = `${homepageUrl}#website`;
-  const collectionId = `${homepageUrl}#collection`;
-  const itemListId = `${homepageUrl}#item-list`;
+  const homepageImageId = `${homepageUrl}#primaryimage`;
+  const itemListId = `${homepageUrl}#itemlist`;
   const description = 'Browse 500 cocktail recipes with ingredients, glassware, and preparation methods.';
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': websiteId,
-        url: homepageUrl,
-        name: 'Cocktail Glass',
-        description,
-        inLanguage: 'en',
-      },
+      buildLogoNode(siteUrl),
+      buildOrganizationNode(siteUrl),
+      buildWebsiteNode(siteUrl),
+      buildImageNode(toAbsoluteUrl('/og/home.jpg', siteUrl), homepageImageId, SITE_NAME),
       {
         '@type': 'CollectionPage',
-        '@id': collectionId,
+        '@id': homepageUrl,
         url: homepageUrl,
-        name: 'Cocktail Glass',
+        name: SITE_NAME,
         description,
         isPartOf: {
-          '@id': websiteId,
+          '@id': buildWebsiteId(siteUrl),
         },
         about: {
-          '@type': 'Thing',
-          name: 'Cocktail recipes',
+          '@id': buildOrganizationId(siteUrl),
         },
+        inLanguage: SITE_LANGUAGE,
         primaryImageOfPage: {
-          '@type': 'ImageObject',
-          url: toAbsoluteUrl('/og/home.jpg', siteUrl),
-        },
-        mainEntity: {
-          '@id': itemListId,
+          '@id': homepageImageId,
         },
       },
       {
         '@type': 'ItemList',
         '@id': itemListId,
+        mainEntityOfPage: {
+          '@id': homepageUrl,
+        },
         name: 'Cocktail recipes',
         numberOfItems: cocktails.length,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
-        itemListElement: cocktails.map((cocktail, index) => {
-          const recipeUrl = toAbsoluteUrl(`/${cocktail.slug}/`, siteUrl);
-
-          return {
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-              '@type': 'Recipe',
-              '@id': `${recipeUrl}#recipe`,
-              name: cocktail.name,
-              url: recipeUrl,
-            },
-          };
-        }),
+        itemListElement: cocktails.map((cocktail, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Recipe',
+            name: cocktail.name,
+            url: toAbsoluteUrl(`/${cocktail.slug}/`, siteUrl),
+          },
+        })),
       },
     ],
   };
@@ -106,95 +161,111 @@ export function buildRecipeSchema(
   cocktail: Cocktail,
   imageUrl?: string,
 ): JsonLdNode {
-  const websiteId = `${toAbsoluteUrl('/', siteUrl)}#website`;
-  const webpageId = `${pageUrl}#webpage`;
-  const breadcrumbId = `${pageUrl}#breadcrumb`;
-  const recipeId = `${pageUrl}#recipe`;
   const description = buildDescription(cocktail);
-  const recipeNode: JsonLdNode = {
-    '@type': 'Recipe',
-    '@id': recipeId,
-    name: cocktail.name,
-    description,
-    url: pageUrl,
-    recipeCategory: cocktail.category,
-    recipeIngredient: cocktail.ingredients.map(formatIngredientText),
-    recipeInstructions: [
-      {
-        '@type': 'HowToStep',
-        name: 'Prepare the cocktail',
-        text: cocktail.preparation,
-      },
-      ...(cocktail.garnish
-        ? [
-            {
-              '@type': 'HowToStep',
-              name: 'Add the garnish',
-              text: `Garnish with ${cocktail.garnish}.`,
-            },
-          ]
-        : []),
-    ],
-    keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
-    mainEntityOfPage: {
-      '@id': webpageId,
-    },
-    author: {
-      '@type': 'Organization',
-      name: 'Cocktail Glass',
-    },
-  };
+  const pageId = pageUrl;
+  const recipeId = `${pageUrl}#recipe`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
+  const imageId = `${pageUrl}#primaryimage`;
+
+  const graph: JsonLdNode[] = [
+    buildLogoNode(siteUrl),
+    buildOrganizationNode(siteUrl),
+    buildWebsiteNode(siteUrl),
+  ];
 
   if (imageUrl) {
-    recipeNode.image = [imageUrl];
+    graph.push(buildImageNode(imageUrl, imageId, cocktail.name));
   }
+
+  graph.push(
+    {
+      '@type': 'BreadcrumbList',
+      '@id': breadcrumbId,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: toAbsoluteUrl('/', siteUrl),
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: cocktail.name,
+        },
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageId,
+      url: pageUrl,
+      name: cocktail.name,
+      description,
+      isPartOf: {
+        '@id': buildWebsiteId(siteUrl),
+      },
+      breadcrumb: {
+        '@id': breadcrumbId,
+      },
+      inLanguage: SITE_LANGUAGE,
+      potentialAction: [
+        {
+          '@type': 'ReadAction',
+          target: [pageUrl],
+        },
+      ],
+      ...(imageUrl
+        ? {
+            primaryImageOfPage: {
+              '@id': imageId,
+            },
+          }
+        : {}),
+    },
+    {
+      '@type': 'Recipe',
+      '@id': recipeId,
+      mainEntityOfPage: {
+        '@id': pageId,
+      },
+      name: cocktail.name,
+      description,
+      inLanguage: SITE_LANGUAGE,
+      recipeCategory: 'Drink',
+      recipeYield: '1 cocktail',
+      recipeIngredient: cocktail.ingredients.map(formatIngredientText),
+      recipeInstructions: [
+        {
+          '@type': 'HowToStep',
+          name: 'Prepare the cocktail',
+          text: cocktail.preparation,
+        },
+        ...(cocktail.garnish
+          ? [
+              {
+                '@type': 'HowToStep',
+                name: 'Add the garnish',
+                text: `Garnish with ${cocktail.garnish}.`,
+              },
+            ]
+          : []),
+      ],
+      keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
+      author: {
+        '@id': buildOrganizationId(siteUrl),
+      },
+      ...(imageUrl
+        ? {
+            image: {
+              '@id': imageId,
+            },
+          }
+        : {}),
+    },
+  );
 
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': webpageId,
-        url: pageUrl,
-        name: cocktail.name,
-        description,
-        isPartOf: {
-          '@id': websiteId,
-        },
-        breadcrumb: {
-          '@id': breadcrumbId,
-        },
-        mainEntity: {
-          '@id': recipeId,
-        },
-        ...(imageUrl
-          ? {
-              primaryImageOfPage: {
-                '@type': 'ImageObject',
-                url: imageUrl,
-              },
-            }
-          : {}),
-      },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': breadcrumbId,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Cocktail Glass',
-            item: toAbsoluteUrl('/', siteUrl),
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: cocktail.name,
-            item: pageUrl,
-          },
-        ],
-      },
-      recipeNode,
-    ],
+    '@graph': graph,
   };
 }

@@ -7,6 +7,7 @@
     "dev": "astro dev",
     "prebuild": "node scripts/generate-responsive-images.mjs",
     "build": "astro build",
+    "build:og": "node scripts/generate-og-images.mjs",
     "preview": "astro preview",
     "preview:pages": "npm run build && wrangler pages dev dist",
     "deploy:pages": "npm run build && wrangler pages deploy dist",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "@astrojs/preact": "^5.1.0",
+    "@astrojs/sitemap": "^3.7.2",
     "astro": "^6.1.1",
     "gray-matter": "^4.0.3",
     "preact": "^10.29.0",

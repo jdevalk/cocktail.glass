@@ -75,13 +75,13 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
           </ul>
         </section>
 
-        <section class="preparation">
+        <section class="preparation" id="recipe-step-1">
           <h2>Preparation</h2>
           <p>{cocktail.preparation}</p>
         </section>
 
         {cocktail.garnish && (
-          <section class="garnish">
+          <section class="garnish" id="recipe-step-2">
             <h2>Garnish</h2>
             <p>{cocktail.garnish}</p>
           </section>

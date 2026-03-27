@@ -130,7 +130,7 @@ ${garnish ? `- Garnished with: ${garnish}` : '- No garnish, clean presentation'}
 }
 
 // ============================================================
-// OG Image Generation (mirrors src/utils/og-image.ts)
+// OG Image Generation (kept in sync with scripts/generate-og-images.mjs)
 // ============================================================
 
 const OG_WIDTH = 1200;
