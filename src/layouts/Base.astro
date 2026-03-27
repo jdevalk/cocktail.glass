@@ -11,6 +11,8 @@ const { title, description = 'Discover 500 cocktail recipes with ingredients, pr
 const fullTitle = title === 'Cocktail Glass' ? title : `${title} | Cocktail Glass`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+const plausibleDomain = Astro.site ? new URL(Astro.site).hostname : undefined;
+const shouldLoadPlausible = import.meta.env.PROD && plausibleDomain;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +37,16 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  {shouldLoadPlausible && (
+    <>
+      <script is:inline>
+        window.plausible = window.plausible || function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+      </script>
+      <script defer data-domain={plausibleDomain} data-api="/api/event" src="/api/s"></script>
+    </>
+  )}
 </head>
 <body>
   <header class="site-header" id="site-header">

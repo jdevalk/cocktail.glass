@@ -3,6 +3,9 @@ import type { Cocktail } from '../types';
 
 type FilterState = 'include' | 'exclude';
 type FilterMap = Map<string, FilterState>;
+type FilterKind = 'category' | 'glass' | 'ingredient';
+type FilterTab = 'category' | 'glass' | 'ingredients';
+type PlausibleProps = Record<string, string | number | boolean>;
 type FilterContext = {
   categoryFilters?: FilterMap;
   glassFilters?: FilterMap;
@@ -11,6 +14,17 @@ type FilterContext = {
 
 interface Props {
   cocktails: Cocktail[];
+}
+
+declare global {
+  interface Window {
+    plausible?: (eventName: string, options?: { props?: PlausibleProps }) => void;
+  }
+}
+
+function trackPlausibleEvent(eventName: string, props: PlausibleProps = {}) {
+  if (typeof window === 'undefined' || typeof window.plausible !== 'function') return;
+  window.plausible(eventName, { props });
 }
 
 function getIncludedValues(filters: FilterMap): string[] {
@@ -118,7 +132,7 @@ export default function CocktailGrid({ cocktails }: Props) {
   const [ingredientFilters, setIngredientFilters] = useState<FilterMap>(new Map());
   const [ingredientSearch, setIngredientSearch] = useState('');
   const [showAllIngredients, setShowAllIngredients] = useState(false);
-  const [activeTab, setActiveTab] = useState<'category' | 'glass' | 'ingredients'>('category');
+  const [activeTab, setActiveTab] = useState<FilterTab>('category');
 
   const categoryOptions = useMemo(() => {
     return [...countValues(cocktails.map((cocktail) => cocktail.category)).entries()].sort((a, b) => b[1] - a[1]);
@@ -202,16 +216,67 @@ export default function CocktailGrid({ cocktails }: Props) {
     return map;
   }, [filtered]);
 
-  function toggleFilter(setter: (fn: (prev: FilterMap) => FilterMap) => void, key: string, newState: FilterState | null) {
-    setter(prev => {
-      const next = new Map(prev);
-      if (newState === null) next.delete(key);
-      else next.set(key, newState);
-      return next;
+  function createNextFilterMap(filters: FilterMap, key: string, newState: FilterState | null) {
+    const next = new Map(filters);
+    if (newState === null) next.delete(key);
+    else next.set(key, newState);
+    return next;
+  }
+
+  function getFilteredCount(nextFilters: FilterContext) {
+    return cocktails.filter((cocktail) => matchesCocktail(cocktail, nextFilters)).length;
+  }
+
+  function handleFilterToggle(
+    filterKind: FilterKind,
+    filters: FilterMap,
+    setter: (nextFilters: FilterMap) => void,
+    key: string,
+    newState: FilterState | null,
+  ) {
+    const currentState = filters.get(key) ?? null;
+    const nextFilters = createNextFilterMap(filters, key, newState);
+    const nextCategoryFilters = filterKind === 'category' ? nextFilters : categoryFilters;
+    const nextGlassFilters = filterKind === 'glass' ? nextFilters : glassFilters;
+    const nextIngredientFilters = filterKind === 'ingredient' ? nextFilters : ingredientFilters;
+
+    setter(nextFilters);
+    trackPlausibleEvent('Filter Updated', {
+      filter_type: filterKind,
+      filter_value: key,
+      action: newState ?? 'cleared',
+      previous_action: currentState ?? 'none',
+      active_tab: activeTab,
+      category_filters: nextCategoryFilters.size,
+      glass_filters: nextGlassFilters.size,
+      ingredient_filters: nextIngredientFilters.size,
+      result_count: getFilteredCount({
+        categoryFilters: nextCategoryFilters,
+        glassFilters: nextGlassFilters,
+        ingredientFilters: nextIngredientFilters,
+      }),
+    });
+  }
+
+  function handleTabChange(tab: FilterTab) {
+    setActiveTab(tab);
+    trackPlausibleEvent('Filter Tab Selected', {
+      tab,
+      category_filters: categoryFilters.size,
+      glass_filters: glassFilters.size,
+      ingredient_filters: ingredientFilters.size,
+      result_count: filtered.length,
     });
   }
 
   function clearAll() {
+    trackPlausibleEvent('Filters Cleared', {
+      active_tab: activeTab,
+      category_filters: categoryFilters.size,
+      glass_filters: glassFilters.size,
+      ingredient_filters: ingredientFilters.size,
+      result_count: cocktails.length,
+    });
     setCategoryFilters(new Map());
     setGlassFilters(new Map());
     setIngredientFilters(new Map());
@@ -231,7 +296,7 @@ export default function CocktailGrid({ cocktails }: Props) {
           <div class="filter-tabs-left">
             <button
               class={`filter-tab ${activeTab === 'category' ? 'filter-tab--active' : ''}`}
-              onClick={() => setActiveTab('category')}
+              onClick={() => handleTabChange('category')}
             >
               Category
               {filterCount(categoryFilters) > 0 && (
@@ -240,7 +305,7 @@ export default function CocktailGrid({ cocktails }: Props) {
             </button>
             <button
               class={`filter-tab ${activeTab === 'glass' ? 'filter-tab--active' : ''}`}
-              onClick={() => setActiveTab('glass')}
+              onClick={() => handleTabChange('glass')}
             >
               Glass type
               {filterCount(glassFilters) > 0 && (
@@ -249,7 +314,7 @@ export default function CocktailGrid({ cocktails }: Props) {
             </button>
             <button
               class={`filter-tab ${activeTab === 'ingredients' ? 'filter-tab--active' : ''}`}
-              onClick={() => setActiveTab('ingredients')}
+              onClick={() => handleTabChange('ingredients')}
             >
               Ingredients
               {filterCount(ingredientFilters) > 0 && (
@@ -276,7 +341,7 @@ export default function CocktailGrid({ cocktails }: Props) {
                   label={cat}
                   count={categoryCounts.get(cat) ?? 0}
                   state={categoryFilters.get(cat) ?? null}
-                  onToggle={(s) => toggleFilter(setCategoryFilters, cat, s)}
+                  onToggle={(s) => handleFilterToggle('category', categoryFilters, setCategoryFilters, cat, s)}
                 />
               ))}
             </div>
@@ -290,7 +355,7 @@ export default function CocktailGrid({ cocktails }: Props) {
                   label={glass}
                   count={glassCounts.get(glass) ?? 0}
                   state={glassFilters.get(glass) ?? null}
-                  onToggle={(s) => toggleFilter(setGlassFilters, glass, s)}
+                  onToggle={(s) => handleFilterToggle('glass', glassFilters, setGlassFilters, glass, s)}
                 />
               ))}
             </div>
@@ -314,7 +379,7 @@ export default function CocktailGrid({ cocktails }: Props) {
                     label={ing}
                     count={ingredientCounts.get(ing) ?? 0}
                     state={ingredientFilters.get(ing) ?? null}
-                    onToggle={(s) => toggleFilter(setIngredientFilters, ing, s)}
+                    onToggle={(s) => handleFilterToggle('ingredient', ingredientFilters, setIngredientFilters, ing, s)}
                   />
                 ))}
               </div>
