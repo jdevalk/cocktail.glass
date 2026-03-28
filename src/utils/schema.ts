@@ -124,20 +124,17 @@ export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]): Jso
         isPartOf: {
           '@id': buildWebsiteId(siteUrl),
         },
-        about: {
-          '@id': buildOrganizationId(siteUrl),
-        },
         inLanguage: SITE_LANGUAGE,
         primaryImageOfPage: {
           '@id': homepageImageId,
+        },
+        mainEntity: {
+          '@id': itemListId,
         },
       },
       {
         '@type': 'ItemList',
         '@id': itemListId,
-        mainEntityOfPage: {
-          '@id': homepageUrl,
-        },
         name: 'Cocktail recipes',
         numberOfItems: cocktails.length,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
