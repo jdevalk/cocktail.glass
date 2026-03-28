@@ -11,7 +11,7 @@ export interface Cocktail {
   glass: string;
   ingredients: Ingredient[];
   garnish: string;
-  preparation: string;
+  preparation: string[];
 }
 
 export interface CocktailSummary {

@@ -10,7 +10,7 @@ function toAbsoluteUrl(path: string, siteUrl: string): string {
 }
 
 function buildDescription(cocktail: Cocktail): string {
-  return `How to make a ${cocktail.name}: ${cocktail.preparation}`;
+  return `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
 }
 
 function buildOrganizationId(siteUrl: string): string {
@@ -234,22 +234,10 @@ export function buildRecipeSchema(
       recipeCategory: 'Drink',
       recipeYield: '1 cocktail',
       recipeIngredient: cocktail.ingredients.map(formatIngredientText),
-      recipeInstructions: [
-        {
-          '@type': 'HowToStep',
-          name: 'Prepare the cocktail',
-          text: cocktail.preparation,
-        },
-        ...(cocktail.garnish
-          ? [
-              {
-                '@type': 'HowToStep',
-                name: 'Add the garnish',
-                text: `Garnish with ${cocktail.garnish}.`,
-              },
-            ]
-          : []),
-      ],
+      recipeInstructions: cocktail.preparation.map((step) => ({
+        '@type': 'HowToStep' as const,
+        text: step,
+      })),
       keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
       author: {
         '@id': buildOrganizationId(siteUrl),

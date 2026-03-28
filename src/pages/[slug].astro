@@ -52,18 +52,29 @@ const brandHints: Record<string, string> = {
   'Islay Scotch': 'e.g. Laphroaig, Ardbeg, Lagavulin',
   'Irish whiskey': 'e.g. Jameson, Redbreast',
   'Japanese whisky': 'e.g. Nikka, Suntory Toki',
+  'Demerara syrup': 'syrup made with raw cane sugar',
+  'Falernum': 'Caribbean syrup with lime, almond, and spices',
 };
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUrl);
 const categoryHref = buildPrettyFilterHref('category', cocktail.category);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
+const primaryIngredient = cocktail.ingredients[0]?.name;
+const primaryIngredientHref = primaryIngredient
+  ? buildPrettyFilterHref('ingredient', primaryIngredient)
+  : null;
 ---
 <Base
   title={cocktail.name}
-  description={`How to make a ${cocktail.name}: ${cocktail.preparation}`}
+  description={`How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`}
   ogImage={`/og/${cocktail.slug}.jpg`}
   schema={recipeSchema}
 >
+  <span slot="headerMeta" class="header-summary">{cocktail.name}</span>
+  <div slot="headerActions" class="header-actions-group">
+    <a href="#recipe-step-1" class="header-action">Preparation</a>
+    <a href={originStory?.story ? '#origin-story' : '#recipe-step-1'} class="header-action">Origin Story</a>
+  </div>
   <div class="container">
     <a href="/" class="back">&larr; All cocktails</a>
 
@@ -78,8 +89,10 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
             Served in <a href={glassHref} class="glass-link">{getGlassServingText(cocktail.glass)}</a>
           </p>
           <div class="browse-links" aria-label="Browse related cocktails">
-            <a href={categoryHref} class="meta-link">More {cocktail.category}</a>
             <a href={glassHref} class="meta-link">More in {cocktail.glass}</a>
+            {primaryIngredient && primaryIngredientHref && (
+              <a href={primaryIngredientHref} class="meta-link">More cocktails with {primaryIngredient}</a>
+            )}
           </div>
         </div>
         {image320Src && image640Src && (
@@ -103,9 +116,11 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
           <ul>
             {cocktail.ingredients.map(ing => (
               <li>
-                <span class="amount">{formatIngredientAmount(ing)}</span>
+                <span class={`amount${ing.unit === 'garnish' ? ' amount--garnish' : ''}`}>
+                  {ing.unit === 'garnish' ? 'Garnish' : formatIngredientAmount(ing)}
+                </span>
                 <span class="ingredient-name">
-                  <a href={buildPrettyFilterHref('ingredient', ing.name)} class="ingredient-link">{ing.name}</a>
+                  <span>{ing.name}</span>
                   {brandHints[ing.name] && <span class="brand-hint">{brandHints[ing.name]}</span>}
                 </span>
               </li>
@@ -115,18 +130,15 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 
         <section class="preparation" id="recipe-step-1">
           <h2>Preparation</h2>
-          <p>{cocktail.preparation}</p>
+          <ol>
+            {cocktail.preparation.map(step => (
+              <li>{step}</li>
+            ))}
+          </ol>
         </section>
 
-        {cocktail.garnish && (
-          <section class="garnish" id="recipe-step-2">
-            <h2>Garnish</h2>
-            <p>{cocktail.garnish}</p>
-          </section>
-        )}
-
         {originStory?.story && (
-          <section class="origin-story">
+          <section class="origin-story" id="origin-story">
             <h2>Origin Story</h2>
             <p>{originStory.story}</p>
             {originStory.sourceUrl && (
@@ -297,7 +309,7 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
   }
 
   .amount {
-    min-width: 80px;
+    min-width: 110px;
     color: var(--color-accent);
     font-weight: 600;
     font-size: 1.1rem;
@@ -305,17 +317,6 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 
   .ingredient-name {
     font-size: 1.15rem;
-  }
-
-  .ingredient-link {
-    color: var(--color-text);
-    text-decoration: underline;
-    text-decoration-color: rgba(224, 94, 58, 0.24);
-    text-underline-offset: 0.16em;
-  }
-
-  .ingredient-link:hover {
-    color: var(--color-accent);
   }
 
   .brand-hint {
@@ -329,8 +330,33 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
     margin-bottom: 2rem;
   }
 
-  .preparation p {
-    line-height: 1.8;
+  .preparation ol {
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .preparation li {
+    counter-increment: step;
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  .preparation li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: rgba(224, 94, 58, 0.1);
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.1rem;
   }
 
   .origin-story {
@@ -351,13 +377,8 @@ const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
     color: var(--color-accent);
   }
 
-  .garnish {
-    margin-bottom: 2rem;
-  }
-
-  .garnish p {
+  .amount--garnish {
     color: var(--color-text-muted);
-    font-style: italic;
   }
 
   @media (max-width: 600px) {

@@ -75,7 +75,7 @@ function describeGlassStyle(glass) {
         'Martini': 'a sharp V-shaped martini glass with a long stem and fine rim',
         'Nick & Nora': 'a petite Nick & Nora glass with a curved bowl and delicate stem',
         'Punch bowl': 'an elegant polished punch bowl with upscale presentation',
-        'Old Fashioned glass': 'a refined crystal old fashioned glass with a weighty base and clean lines',
+        'Tumbler': 'a refined crystal tumbler with a weighty base and clean lines',
         'Shot glass': 'a premium shot glass with a clean, upscale look',
         'Snifter': 'a classic crystal snifter with a rounded bowl and elegant short stem',
         'Tiki mug': 'a premium ceramic tiki mug with stylish detailing, not cartoonish',

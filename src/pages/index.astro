@@ -44,6 +44,10 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   ogImage="/og/home.jpg"
   schema={homepageSchema}
 >
+  <span slot="headerMeta" class="header-summary">500 cocktails to browse</span>
+  <div slot="headerActions" class="header-actions-group">
+    <a href="#cocktail-grid" class="header-action">Browse filters</a>
+  </div>
   <div class="container">
     <section class="hero">
       <img src="/emoji/cocktail-glass.svg" alt="" class="hero-icon" width="64" height="64" aria-hidden="true" />
@@ -1044,8 +1048,10 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   }
 
   .show-more {
-    display: inline-block;
+    display: block;
     margin-top: 0.6rem;
+    margin-left: auto;
+    text-align: right;
     font-family: var(--font-sans);
     font-size: 0.9rem;
     color: var(--color-accent);

@@ -20,6 +20,8 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 const plausibleDomain = Astro.site ? new URL(Astro.site).hostname : undefined;
 const shouldLoadPlausible = import.meta.env.PROD && plausibleDomain;
 const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : undefined;
+const hasHeaderMeta = Astro.slots.has('headerMeta');
+const hasHeaderActions = Astro.slots.has('headerActions');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +65,16 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
         <img src="/emoji/cocktail-glass.svg" alt="" class="logo-icon" width="24" height="24" aria-hidden="true" />
         <span>cocktail<span class="logo-dot">.glass</span></span>
       </a>
+      {hasHeaderMeta && (
+        <div class="site-header-meta">
+          <slot name="headerMeta" />
+        </div>
+      )}
+      {hasHeaderActions && (
+        <div class="site-header-actions">
+          <slot name="headerActions" />
+        </div>
+      )}
     </div>
   </header>
   <main id="main-content">
@@ -131,6 +143,8 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     min-height: 4rem;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
@@ -192,6 +206,74 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
     color: var(--color-accent);
   }
 
+  .site-header-meta,
+  .site-header-actions {
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-header-meta {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-header-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  :global(.header-summary) {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :global(.header-actions-group) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  :global(.header-actions-group > *) {
+    flex: 0 0 auto;
+  }
+
+  :global(.header-action) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.3rem;
+    padding: 0.4rem 0.82rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-text);
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  :global(.header-action:hover) {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--color-accent);
+    border-color: rgba(224, 94, 58, 0.16);
+  }
+
   .site-footer {
     padding: 3rem 0;
     margin-top: 4rem;
@@ -242,6 +324,7 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
       min-height: 3.5rem;
       padding-top: 0.65rem;
       padding-bottom: 0.65rem;
+      gap: 0.65rem;
     }
 
     .logo {
@@ -252,6 +335,20 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
     .logo-icon {
       width: 1.25rem;
       height: 1.25rem;
+    }
+
+    .site-header-meta {
+      display: none;
+    }
+
+    :global(.header-actions-group) {
+      gap: 0.45rem;
+    }
+
+    :global(.header-action) {
+      min-height: 2.1rem;
+      padding: 0.35rem 0.72rem;
+      font-size: 0.88rem;
     }
 
     .site-footer {

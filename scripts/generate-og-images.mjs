@@ -44,7 +44,7 @@ function getGlassProseName(glass) {
     'Margarita glass': 'margarita glass',
     Martini: 'martini glass',
     'Nick & Nora': 'Nick & Nora glass',
-    'Old Fashioned glass': 'old-fashioned glass',
+    'Tumbler': 'tumbler',
     'Punch bowl': 'punch bowl',
     'Shot glass': 'shot glass',
     Snifter: 'snifter',
