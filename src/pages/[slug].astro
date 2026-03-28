@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import type { Cocktail, CocktailOriginStories } from '../types';
+import { buildPrettyFilterHref } from '../utils/filter-url';
 import { getGlassServingText } from '../utils/glass';
 import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
 import cocktails from '../../cocktails.json';
@@ -28,8 +29,34 @@ const image640Src = hasImage ? `/images/responsive/640/${cocktail.slug}.webp` : 
 const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
 const schemaImageUrl = hasImage ? new URL(`/images/${cocktail.slug}.webp`, siteUrl).toString() : undefined;
 const originStory = (originStories as CocktailOriginStories)[cocktail.slug];
+
+const brandHints: Record<string, string> = {
+  'Coffee liqueur': 'e.g. Kahlúa, Mr. Black',
+  'Elderflower liqueur': 'e.g. St-Germain',
+  'Maraschino liqueur': 'e.g. Luxardo',
+  'Chocolate liqueur': 'e.g. Crème de Cacao, Mozart',
+  'Banana liqueur': 'e.g. Giffard Banane du Brésil',
+  'Sour apple liqueur': 'e.g. Sour Puss, DeKuyper',
+  'Gentiane liqueur': 'e.g. Suze, Salers',
+  'Peach liqueur': 'e.g. Crème de Pêche, Giffard',
+  'Pear liqueur': 'e.g. Belle de Brillet, St. George',
+  'Passion fruit liqueur': 'e.g. Passoã',
+  'Blackberry liqueur': 'e.g. Crème de Mûre, Chambord',
+  'Dry vermouth': 'e.g. Noilly Prat, Dolin Dry',
+  'Sweet vermouth': 'e.g. Carpano Antica, Cocchi di Torino',
+  'Blanc vermouth': 'e.g. Dolin Blanc, Lillet Blanc',
+  'Bourbon': 'e.g. Maker\'s Mark, Buffalo Trace, Woodford Reserve',
+  'Rye whiskey': 'e.g. Rittenhouse, Bulleit Rye, Old Overholt',
+  'Scotch': 'e.g. Johnnie Walker, Monkey Shoulder',
+  'Blended Scotch': 'e.g. Johnnie Walker, Famous Grouse',
+  'Islay Scotch': 'e.g. Laphroaig, Ardbeg, Lagavulin',
+  'Irish whiskey': 'e.g. Jameson, Redbreast',
+  'Japanese whisky': 'e.g. Nikka, Suntory Toki',
+};
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUrl);
+const categoryHref = buildPrettyFilterHref('category', cocktail.category);
+const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 ---
 <Base
   title={cocktail.name}
@@ -43,9 +70,17 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
     <article class="cocktail-card">
       <header>
         <div class="header-copy">
-          <span class="category">{cocktail.category}</span>
+          <a href={categoryHref} class="category category-link">
+            {cocktail.category}
+          </a>
           <h1>{cocktail.name}</h1>
-          <p class="glass-type">Served in {getGlassServingText(cocktail.glass)}</p>
+          <p class="glass-type">
+            Served in <a href={glassHref} class="glass-link">{getGlassServingText(cocktail.glass)}</a>
+          </p>
+          <div class="browse-links" aria-label="Browse related cocktails">
+            <a href={categoryHref} class="meta-link">More {cocktail.category}</a>
+            <a href={glassHref} class="meta-link">More in {cocktail.glass}</a>
+          </div>
         </div>
         {image320Src && image640Src && (
           <img
@@ -69,7 +104,10 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
             {cocktail.ingredients.map(ing => (
               <li>
                 <span class="amount">{formatIngredientAmount(ing)}</span>
-                <span class="ingredient-name">{ing.name}</span>
+                <span class="ingredient-name">
+                  <a href={buildPrettyFilterHref('ingredient', ing.name)} class="ingredient-link">{ing.name}</a>
+                  {brandHints[ing.name] && <span class="brand-hint">{brandHints[ing.name]}</span>}
+                </span>
               </li>
             ))}
           </ul>
@@ -89,7 +127,7 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
 
         {originStory?.story && (
           <section class="origin-story">
-            <h2>Origin story</h2>
+            <h2>Origin Story</h2>
             <p>{originStory.story}</p>
             {originStory.sourceUrl && (
               <p class="origin-source">
@@ -169,6 +207,11 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
     margin-bottom: 0.75rem;
   }
 
+  .category-link:hover {
+    color: var(--color-accent-hover);
+    background: rgba(224, 94, 58, 0.16);
+  }
+
   h1 {
     font-family: var(--font-display);
     font-size: 3rem;
@@ -183,8 +226,46 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
     font-size: 1.2rem;
   }
 
+  .glass-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(224, 94, 58, 0.28);
+    text-underline-offset: 0.18em;
+  }
+
+  .glass-link:hover {
+    color: var(--color-accent);
+  }
+
   .header-copy {
     max-width: 420px;
+  }
+
+  .browse-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .meta-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.4rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .meta-link:hover {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--color-accent);
+    border-color: rgba(224, 94, 58, 0.16);
   }
 
   .content h2 {
@@ -224,6 +305,24 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
 
   .ingredient-name {
     font-size: 1.15rem;
+  }
+
+  .ingredient-link {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(224, 94, 58, 0.24);
+    text-underline-offset: 0.16em;
+  }
+
+  .ingredient-link:hover {
+    color: var(--color-accent);
+  }
+
+  .brand-hint {
+    display: inline;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-left: 0.4rem;
   }
 
   .preparation {
@@ -273,6 +372,10 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
 
     h1 {
       font-size: 2.5rem;
+    }
+
+    .browse-links {
+      gap: 0.5rem;
     }
   }
 

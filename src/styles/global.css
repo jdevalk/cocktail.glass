@@ -80,6 +80,7 @@ html {
   font-family: var(--font-sans);
   color: var(--color-text);
   line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -91,6 +92,7 @@ body {
     radial-gradient(ellipse at 50% 80%, rgba(251, 194, 235, 0.3) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 60%, rgba(194, 233, 251, 0.3) 0%, transparent 50%);
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 a {
@@ -100,4 +102,36 @@ a {
 
 a:hover {
   color: var(--color-accent-hover);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
 }

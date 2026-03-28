@@ -56,15 +56,16 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
   )}
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="logo">
         <img src="/emoji/cocktail-glass.svg" alt="" class="logo-icon" width="24" height="24" aria-hidden="true" />
-        cocktail<span class="logo-dot">.glass</span>
+        <span>cocktail<span class="logo-dot">.glass</span></span>
       </a>
     </div>
   </header>
-  <main>
+  <main id="main-content">
     <slot />
   </main>
   <script is:inline>
@@ -93,6 +94,24 @@ const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : un
 </html>
 
 <style>
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 200;
+    background: rgba(254, 249, 240, 0.98);
+    color: var(--color-text);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus-visible {
+    top: 1rem;
+  }
+
   .site-header {
     position: sticky;
     top: 0.75rem;
