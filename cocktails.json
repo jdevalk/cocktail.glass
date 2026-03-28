@@ -761,11 +761,6 @@
         "name": "Sugar",
         "amount": "2",
         "unit": "barspoon"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -773,8 +768,7 @@
       "Cut lime into wedges and muddle with sugar in a rocks glass.",
       "Fill with crushed ice.",
       "Add cachaça.",
-      "Stir briefly.",
-      "Garnish with none."
+      "Stir briefly."
     ]
   },
   {
@@ -1429,19 +1423,13 @@
         "name": "Soda water",
         "amount": "90",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake gin, lemon juice and syrup with ice.",
       "Strain into a Collins glass.",
-      "Top with soda water.",
-      "Garnish with none."
+      "Top with soda water."
     ]
   },
   {
@@ -1489,11 +1477,6 @@
         "name": "Soda water",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -1502,8 +1485,7 @@
       "Add ice.",
       "Shake again.",
       "Strain into a Collins glass.",
-      "Top with soda.",
-      "Garnish with none."
+      "Top with soda."
     ]
   },
   {
@@ -1599,18 +1581,12 @@
         "name": "Lemon juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -1769,19 +1745,13 @@
         "name": "Lightly whipped cream",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Dissolve sugar in hot coffee.",
       "Add whiskey and stir.",
-      "Float lightly whipped cream on top by pouring over the back of a spoon.",
-      "Garnish with none."
+      "Float lightly whipped cream on top by pouring over the back of a spoon."
     ]
   },
   {
@@ -2003,18 +1973,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -2229,18 +2193,12 @@
         "name": "Heavy cream",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Build vodka and coffee liqueur over ice in a rocks glass.",
-      "Float cream on top.",
-      "Garnish with none."
+      "Float cream on top."
     ]
   },
   {
@@ -2258,18 +2216,12 @@
         "name": "Coffee liqueur",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Build in a rocks glass over ice.",
-      "Stir gently.",
-      "Garnish with none."
+      "Stir gently."
     ]
   },
   {
@@ -2396,18 +2348,12 @@
         "name": "White peach purée",
         "amount": "60",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Add peach purée to a flute and slowly.",
-      "Top with prosecco, stirring gently.",
-      "Garnish with none."
+      "Top with prosecco, stirring gently."
     ]
   },
   {
@@ -2425,17 +2371,11 @@
         "name": "Crème de cassis",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Pour crème de cassis into a flute and top slowly with champagne.",
-      "Garnish with none."
+      "Pour crème de cassis into a flute and top slowly with champagne."
     ]
   },
   {
@@ -4134,18 +4074,12 @@
         "name": "Apricot brandy",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -4168,18 +4102,12 @@
         "name": "Pineapple juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -4527,17 +4455,11 @@
         "name": "Grand Marnier",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Layer ingredients in order in a shot glass, pouring each over the back of a barspoon.",
-      "Garnish with none."
+      "Layer ingredients in order in a shot glass, pouring each over the back of a barspoon."
     ]
   },
   {
@@ -4560,18 +4482,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a shot glass.",
-      "Garnish with none."
+      "Strain into a shot glass."
     ]
   },
   {
@@ -4624,18 +4540,12 @@
         "name": "Red Bull",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Pour Red Bull into a glass.",
-      "Drop in a shot glass of Jägermeister.",
-      "Garnish with none."
+      "Drop in a shot glass of Jägermeister."
     ]
   },
   {
@@ -4730,18 +4640,12 @@
         "name": "Honey syrup",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a rocks glass over a large ice cube.",
-      "Garnish with none."
+      "Strain into a rocks glass over a large ice cube."
     ]
   },
   {
@@ -4764,18 +4668,12 @@
         "name": "Honey syrup",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -4808,11 +4706,6 @@
         "name": "Red wine",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -4820,8 +4713,7 @@
       "Dry shake bourbon, lemon, syrup and egg white.",
       "Shake with ice.",
       "Strain into a rocks glass over ice.",
-      "Float red wine on top.",
-      "Garnish with none."
+      "Float red wine on top."
     ]
   },
   {
@@ -4951,18 +4843,12 @@
         "name": "Angostura bitters",
         "amount": "2",
         "unit": "dash"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -5841,18 +5727,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -5880,18 +5760,12 @@
         "name": "Lemon juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -6204,18 +6078,12 @@
         "name": "Rye whiskey",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -6445,19 +6313,13 @@
         "name": "Egg white",
         "amount": "1",
         "unit": "piece"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Dry shake all ingredients.",
       "Shake with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -6641,18 +6503,12 @@
         "name": "Sweet vermouth",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -6936,19 +6792,13 @@
         "name": "Egg white",
         "amount": "1",
         "unit": "piece"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Dry shake all ingredients.",
       "Shake with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -7054,19 +6904,13 @@
         "name": "Egg white",
         "amount": "1",
         "unit": "piece"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Dry shake all ingredients.",
       "Shake with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -7123,19 +6967,13 @@
         "name": "Champagne",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Pour absinthe into a flute.",
       "Slowly.",
-      "Top with chilled champagne until the drink turns opalescent.",
-      "Garnish with none."
+      "Top with chilled champagne until the drink turns opalescent."
     ]
   },
   {
@@ -7163,19 +7001,13 @@
         "name": "Champagne",
         "amount": "60",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake rum, lime and honey with ice.",
       "Strain into a flute.",
-      "Top with champagne.",
-      "Garnish with none."
+      "Top with champagne."
     ]
   },
   {
@@ -7432,11 +7264,6 @@
         "name": "Cane syrup",
         "amount": "10",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -7444,8 +7271,7 @@
       "Place lime disc in a rocks glass.",
       "Add cane syrup and muddle gently.",
       "Add rhum and stir.",
-      "Add no ice traditionally.",
-      "Garnish with none."
+      "Add no ice traditionally."
     ]
   },
   {
@@ -7663,18 +7489,12 @@
         "name": "Sugar syrup",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a rocks glass over ice.",
-      "Garnish with none."
+      "Strain into a rocks glass over ice."
     ]
   },
   {
@@ -7707,18 +7527,12 @@
         "name": "Sugar syrup",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -7782,18 +7596,12 @@
         "name": "White peach purée",
         "amount": "45",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Add peach purée to a flute and slowly.",
-      "Top with prosecco, stirring gently.",
-      "Garnish with none."
+      "Top with prosecco, stirring gently."
     ]
   },
   {
@@ -8219,18 +8027,12 @@
         "name": "Whipped cream",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Add amaretto to hot coffee.",
-      "Top with whipped cream.",
-      "Garnish with none."
+      "Top with whipped cream."
     ]
   },
   {
@@ -9003,19 +8805,13 @@
         "name": "Espresso",
         "amount": "45",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Pour Licor 43 over ice in a rocks glass.",
       "Add freshly pulled espresso.",
-      "Stir briefly.",
-      "Garnish with none."
+      "Stir briefly."
     ]
   },
   {
@@ -9985,19 +9781,13 @@
         "name": "Sugar",
         "amount": "2",
         "unit": "barspoon"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Cut lime into wedges and muddle with sugar.",
       "Add vodka and fill with crushed ice.",
-      "Stir briefly.",
-      "Garnish with none."
+      "Stir briefly."
     ]
   },
   {
@@ -10423,18 +10213,12 @@
         "name": "Pineapple juice",
         "amount": "45",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -11761,18 +11545,12 @@
         "name": "Maple syrup",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -11800,18 +11578,12 @@
         "name": "Angostura bitters",
         "amount": "2",
         "unit": "dash"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -11834,18 +11606,12 @@
         "name": "Yellow Chartreuse",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -12302,18 +12068,12 @@
         "name": "Raspberry syrup",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -13477,18 +13237,12 @@
         "name": "Pear liqueur",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -13506,17 +13260,11 @@
         "name": "Coffee liqueur",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build in a rocks glass over ice and stir.",
-      "Garnish with none."
+      "Build in a rocks glass over ice and stir."
     ]
   },
   {
@@ -13793,17 +13541,11 @@
         "name": "Chartreuse",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Layer in a shot glass, Chartreuse on top.",
-      "Garnish with none."
+      "Layer in a shot glass, Chartreuse on top."
     ]
   },
   {
@@ -13826,18 +13568,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -13855,17 +13591,11 @@
         "name": "Cola",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build in a highball glass over ice and stir.",
-      "Garnish with none."
+      "Build in a highball glass over ice and stir."
     ]
   },
   {
@@ -13883,17 +13613,11 @@
         "name": "Amaretto",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build in a rocks glass over ice and stir.",
-      "Garnish with none."
+      "Build in a rocks glass over ice and stir."
     ]
   },
   {
@@ -13911,17 +13635,11 @@
         "name": "Amaretto",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build in a rocks glass over ice and stir.",
-      "Garnish with none."
+      "Build in a rocks glass over ice and stir."
     ]
   },
   {
@@ -14190,11 +13908,6 @@
         "name": "Soda water",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -14202,8 +13915,7 @@
       "Build in a highball glass with ice.",
       "Add whisky.",
       "Top with soda water.",
-      "Stir gently.",
-      "Garnish with none."
+      "Stir gently."
     ]
   },
   {
@@ -14221,11 +13933,6 @@
         "name": "Still water",
         "amount": "90",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -14233,8 +13940,7 @@
       "Add whisky to a rocks glass with ice.",
       "Add water.",
       "Stir 13 times.",
-      "Serve.",
-      "Garnish with none."
+      "Serve."
     ]
   },
   {
@@ -14876,18 +14582,12 @@
         "name": "Orange juice",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a shot glass.",
-      "Garnish with none."
+      "Strain into a shot glass."
     ]
   },
   {
@@ -14905,17 +14605,11 @@
         "name": "Baileys Irish Cream",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Layer Baileys on top of butterscotch schnapps in a shot glass.",
-      "Garnish with none."
+      "Layer Baileys on top of butterscotch schnapps in a shot glass."
     ]
   },
   {
@@ -14933,17 +14627,11 @@
         "name": "Lime juice",
         "amount": "15",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Pour both into a shot glass and shoot immediately.",
-      "Garnish with none."
+      "Pour both into a shot glass and shoot immediately."
     ]
   },
   {
@@ -14966,18 +14654,12 @@
         "name": "Soda water",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Layer coffee liqueur, vodka and soda in a rocks glass with ice.",
-      "Drink through a straw from the bottom.",
-      "Garnish with none."
+      "Drink through a straw from the bottom."
     ]
   },
   {
@@ -15000,11 +14682,6 @@
         "name": "Beer",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -15012,8 +14689,7 @@
       "Fill a shot glass with amaretto.",
       "Float 151 on top.",
       "Light the rum, drop the shot into a glass of beer.",
-      "Drink immediately.",
-      "Garnish with none."
+      "Drink immediately."
     ]
   },
   {
@@ -15036,11 +14712,6 @@
         "name": "Irish whiskey",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
@@ -15048,8 +14719,7 @@
       "Pour stout into a glass.",
       "Combine Baileys and whiskey in a shot glass.",
       "Drop the shot into the stout.",
-      "Drink immediately.",
-      "Garnish with none."
+      "Drink immediately."
     ]
   },
   {
@@ -15067,17 +14737,11 @@
         "name": "Pickle brine",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Shoot the whiskey, chase with the pickle brine.",
-      "Garnish with none."
+      "Shoot the whiskey, chase with the pickle brine."
     ]
   },
   {
@@ -15602,18 +15266,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -15921,18 +15579,12 @@
         "name": "Amaretto",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Build in a snifter over ice.",
-      "Stir gently.",
-      "Garnish with none."
+      "Stir gently."
     ]
   },
   {
@@ -16222,18 +15874,12 @@
         "name": "Angostura bitters",
         "amount": "3",
         "unit": "dash"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Stir gin with bitters and a little ice.",
-      "Strain into a coupe glass.",
-      "Garnish with none."
+      "Strain into a coupe glass."
     ]
   },
   {
@@ -16296,17 +15942,11 @@
         "name": "Cola",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build over ice in a highball glass and stir.",
-      "Garnish with none."
+      "Build over ice in a highball glass and stir."
     ]
   },
   {
@@ -16324,17 +15964,11 @@
         "name": "Cola",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
-      "Build over ice in a highball glass and stir.",
-      "Garnish with none."
+      "Build over ice in a highball glass and stir."
     ]
   },
   {
@@ -16956,18 +16590,12 @@
         "name": "Branch water",
         "amount": "30",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Build in a rocks glass with ice.",
-      "Stir gently.",
-      "Garnish with none."
+      "Stir gently."
     ]
   },
   {
@@ -17187,19 +16815,13 @@
         "name": "Champagne",
         "amount": "90",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake rum, lime and honey with ice.",
       "Strain into a flute.",
-      "Top with champagne.",
-      "Garnish with none."
+      "Top with champagne."
     ]
   },
   {
@@ -17517,18 +17139,12 @@
         "name": "Heavy cream",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -18303,18 +17919,12 @@
         "name": "Grenadine",
         "amount": "10",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -18420,18 +18030,12 @@
         "name": "Angostura bitters",
         "amount": "2",
         "unit": "dash"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
@@ -18839,18 +18443,12 @@
         "name": "Lime juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a rocks glass over ice.",
-      "Garnish with none."
+      "Strain into a rocks glass over ice."
     ]
   },
   {
@@ -18917,18 +18515,12 @@
         "name": "Lemon juice",
         "amount": "22.5",
         "unit": "ml"
-      },
-      {
-        "name": "None",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "None",
     "preparation": [
       "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass.",
-      "Garnish with none."
+      "Strain into a chilled coupe glass."
     ]
   },
   {
