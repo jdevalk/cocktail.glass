@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cocktail.glass/sitemap-index.xml
+Sitemap: https://cocktail.glass/sitemap.xml

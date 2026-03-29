@@ -5,6 +5,7 @@ import { buildPrettyFilterHref } from '../utils/filter-url';
 import { getGlassServingText } from '../utils/glass';
 import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
 import { estimateCalories } from '../utils/calories';
+import { findSimilar } from '../utils/similar';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
 
@@ -63,6 +64,7 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
 const categoryHref = buildPrettyFilterHref('category', cocktail.category);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 const calories = estimateCalories(cocktail.ingredients);
+const similarCocktails = findSimilar(cocktail, cocktails as Cocktail[]);
 const primaryIngredient = cocktail.ingredients[0]?.name;
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
@@ -178,6 +180,27 @@ const primaryIngredientHref = primaryIngredient
                 </a>
               </p>
             )}
+          </section>
+        )}
+        {similarCocktails.length > 0 && (
+          <section class="similar">
+            <h2>Similar cocktails</h2>
+            <div class="similar-grid">
+              {similarCocktails.map(sim => (
+                <a href={`/${sim.slug}/`} class="similar-card">
+                  <img
+                    src={`/images/responsive/320/${sim.slug}.webp`}
+                    alt={sim.name}
+                    class="similar-image"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="similar-name">{sim.name}</span>
+                </a>
+              ))}
+            </div>
           </section>
         )}
       </div>
@@ -409,6 +432,53 @@ const primaryIngredientHref = primaryIngredient
   }
 
   .origin-source a {
+    color: var(--color-accent);
+  }
+
+  .similar {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .similar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .similar-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 1rem;
+    border-radius: 16px;
+    transition: background 0.15s;
+  }
+
+  .similar-card:hover {
+    background: rgba(224, 94, 58, 0.06);
+  }
+
+  .similar-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 0.6rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .similar-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .similar-card:hover .similar-name {
     color: var(--color-accent);
   }
 

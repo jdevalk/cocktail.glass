@@ -9386,40 +9386,6 @@
     ]
   },
   {
-    "name": "Americano Highball",
-    "slug": "americano-highball",
-    "category": "Highball",
-    "glass": "Highball",
-    "ingredients": [
-      {
-        "name": "Campari",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Sweet vermouth",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Soda water",
-        "amount": "120",
-        "unit": "ml"
-      },
-      {
-        "name": "Orange slice",
-        "amount": "",
-        "unit": "garnish"
-      }
-    ],
-    "garnish": "Orange slice",
-    "preparation": [
-      "Build over ice in a highball glass.",
-      "Stir gently.",
-      "Garnish with orange slice."
-    ]
-  },
-  {
     "name": "Bamboo Cocktail",
     "slug": "bamboo-cocktail",
     "category": "Low alcohol",
@@ -9495,40 +9461,6 @@
       "Stir all ingredients with ice.",
       "Strain into a Nick & Nora glass.",
       "Garnish with lemon peel."
-    ]
-  },
-  {
-    "name": "Americano Cocktail",
-    "slug": "americano-cocktail",
-    "category": "Low alcohol",
-    "glass": "Highball",
-    "ingredients": [
-      {
-        "name": "Campari",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Sweet vermouth",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Soda water",
-        "amount": "90",
-        "unit": "ml"
-      },
-      {
-        "name": "Orange slice",
-        "amount": "",
-        "unit": "garnish"
-      }
-    ],
-    "garnish": "Orange slice",
-    "preparation": [
-      "Build over ice in a highball glass.",
-      "Stir gently.",
-      "Garnish with orange slice."
     ]
   },
   {
@@ -18776,6 +18708,90 @@
       "Shake with ice.",
       "Strain into a chilled coupe glass.",
       "Garnish with orange peel."
+    ]
+  },
+  {
+    "name": "The Journalist",
+    "slug": "the-journalist",
+    "category": "Classic",
+    "glass": "Coupe",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "amount": "45",
+        "unit": "ml"
+      },
+      {
+        "name": "Dry vermouth",
+        "amount": "15",
+        "unit": "ml"
+      },
+      {
+        "name": "Sweet vermouth",
+        "amount": "15",
+        "unit": "ml"
+      },
+      {
+        "name": "Triple sec",
+        "amount": "7.5",
+        "unit": "ml"
+      },
+      {
+        "name": "Lemon juice",
+        "amount": "7.5",
+        "unit": "ml"
+      },
+      {
+        "name": "Angostura bitters",
+        "amount": "2",
+        "unit": "dash"
+      },
+      {
+        "name": "Lemon twist",
+        "amount": "",
+        "unit": "garnish"
+      }
+    ],
+    "garnish": "Lemon twist",
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Strain into a chilled coupe glass.",
+      "Garnish with lemon twist."
+    ]
+  },
+  {
+    "name": "Gin Rickey",
+    "slug": "gin-rickey",
+    "category": "Classic",
+    "glass": "Highball",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "amount": "60",
+        "unit": "ml"
+      },
+      {
+        "name": "Lime juice",
+        "amount": "22.5",
+        "unit": "ml"
+      },
+      {
+        "name": "Soda water",
+        "amount": "90",
+        "unit": "ml"
+      },
+      {
+        "name": "Lime wedge",
+        "amount": "",
+        "unit": "garnish"
+      }
+    ],
+    "garnish": "Lime wedge",
+    "preparation": [
+      "Build gin and lime juice over ice in a highball glass.",
+      "Top with soda water.",
+      "Stir gently.",
+      "Garnish with lime wedge."
     ]
   }
 ]

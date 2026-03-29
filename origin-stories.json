@@ -516,7 +516,7 @@
     "story": "The Pink Lady cocktail dates back to the early 20th century, with its first recipes appearing in the 1920s. This classic drink is known for its distinctive pink hue and has been a favorite in cocktail culture for decades."
   },
   "gin-rickey": {
-    "story": "The Gin Rickey was created in the late 19th century and is named after Colonel Joe Rickey, a Washington D.C. bartender. This refreshing highball became widely popular during the Prohibition era."
+    "story": "The Rickey was invented in the 1880s at Shoomaker's bar in Washington, D.C., originally made with bourbon for lobbyist Colonel Joe Rickey. The gin version quickly overtook the original and became one of the most popular summer drinks of the early 20th century. F. Scott Fitzgerald even mentioned it in The Great Gatsby."
   },
   "bronx": {
     "story": "The Bronx cocktail is believed to have been created in the early 1900s, with some attributing its invention to a bartender at the Waldorf-Astoria Hotel in New York City. It represents a blend of gin and vermouth, showcasing the cocktail trends of its time."
@@ -728,17 +728,11 @@
   "mint-condition": {
     "story": "Mint Condition emerged in the modern cocktail scene as a refreshing twist on classic drinks, showcasing the versatility of bourbon and amaro. Its development reflects the growing trend of using herbal liqueurs to enhance cocktails in the 21st century."
   },
-  "americano-highball": {
-    "story": "The Americano Highball is a variation of the classic Americano cocktail, which gained popularity in Italy during the early 20th century. The drink's refreshing qualities made it a favorite among those seeking a lighter option during the aperitivo hour."
-  },
   "bamboo-cocktail": {
     "story": "The Bamboo Cocktail is thought to have originated in the late 19th century, likely in Japan or the United States, as bartenders began experimenting with sherry and vermouth. Its unique blend of flavors reflects the cross-cultural influences of that era."
   },
   "coronation": {
     "story": "The Coronation cocktail is a modern creation that pays homage to the celebratory nature of royal events, particularly in the UK. It combines elements of classic cocktails while offering a fresh perspective on low-alcohol drinks."
-  },
-  "americano-cocktail": {
-    "story": "The Americano Cocktail is a classic Italian drink that dates back to the late 1800s, originally served to American tourists in Italy. Its combination of Campari and sweet vermouth became a staple of the aperitivo culture."
   },
   "shirley-temple": {
     "story": "The Shirley Temple cocktail is named after the famous child actress who became a sensation in the 1930s. It was created as a non-alcoholic drink for her and has since become a popular choice for children and adults alike."
@@ -1498,5 +1492,8 @@
   },
   "breakfast-martini": {
     "story": "The Breakfast Martini was created by Salvatore Calabrese at the Library Bar in the Lanesborough Hotel, London, in the late 1990s. Inspired by his morning toast with marmalade, Calabrese combined the preserve with gin, Cointreau, and lemon juice to create a cocktail that captures the bright, bittersweet flavors of a British breakfast in a glass."
+  },
+  "the-journalist": {
+    "story": "The Journalist first appeared in Harry Craddock's 1930 Savoy Cocktail Book. A complex, layered drink that combines gin with both vermouths, a touch of orange liqueur, and citrus. It fell into obscurity for decades before being rediscovered during the craft cocktail revival of the 2000s."
   }
 }

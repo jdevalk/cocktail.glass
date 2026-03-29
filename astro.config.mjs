@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
+import { imageSitemap } from './integrations/image-sitemap.mjs';
 
 export default defineConfig({
   site: 'https://cocktail.glass',
   output: 'static',
-  integrations: [sitemap(), pagefind()],
+  integrations: [imageSitemap(), pagefind()],
   build: {
     inlineStylesheets: 'always',
   },
