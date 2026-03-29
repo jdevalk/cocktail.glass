@@ -47,7 +47,6 @@ const hasHeaderActions = Astro.slots.has('headerActions');
   {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   {preloadImage && <link rel="preload" href={preloadImage} as="image" type="image/webp" fetchpriority="high" />}
-  <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   {shouldLoadPlausible && (
     <>
@@ -61,6 +60,51 @@ const hasHeaderActions = Astro.slots.has('headerActions');
   )}
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="/emoji/cocktail-glass.svg" alt="" class="logo-icon" width="24" height="24" aria-hidden="true" />
+        <span>cocktail<span class="logo-dot">.glass</span></span>
+      </a>
+      {hasHeaderMeta && (
+        <div class="site-header-meta">
+          <slot name="headerMeta" />
+        </div>
+      )}
+      {hasHeaderActions && (
+        <div class="site-header-actions">
+          <slot name="headerActions" />
+        </div>
+      )}
+    </div>
+  </header>
+  <main id="main-content">
+    <slot />
+  </main>
+  <script is:inline>
+    const hero = document.querySelector('.hero');
+    const header = document.getElementById('site-header');
+    if (hero && header) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          header.classList.toggle('site-header--visible', !entry.isIntersecting);
+        },
+        { threshold: 0 }
+      );
+      observer.observe(hero);
+    } else if (header) {
+      header.classList.add('site-header--visible');
+    }
+  </script>
+  <footer class="site-footer">
+    <div class="container">
+      <img src="/emoji/cocktail-glass.svg" alt="" class="footer-icon" width="40" height="40" aria-hidden="true" />
+      <a href="/" class="footer-brand">cocktail<span>.glass</span></a>
+      <p class="footer-tagline">Browse 500 cocktail recipes by category, glass, and ingredient</p>
+    </div>
+  </footer>
+  {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
   <div id="search-overlay" class="search-overlay">
     <div class="search-backdrop"></div>
     <div class="search-dialog">
@@ -156,51 +200,6 @@ const hasHeaderActions = Astro.slots.has('headerActions');
       overlay.querySelector('.search-backdrop').addEventListener('click', closeSearch);
     })();
   </script>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  <header class="site-header" id="site-header">
-    <div class="container">
-      <a href="/" class="logo">
-        <img src="/emoji/cocktail-glass.svg" alt="" class="logo-icon" width="24" height="24" aria-hidden="true" />
-        <span>cocktail<span class="logo-dot">.glass</span></span>
-      </a>
-      {hasHeaderMeta && (
-        <div class="site-header-meta">
-          <slot name="headerMeta" />
-        </div>
-      )}
-      {hasHeaderActions && (
-        <div class="site-header-actions">
-          <slot name="headerActions" />
-        </div>
-      )}
-    </div>
-  </header>
-  <main id="main-content">
-    <slot />
-  </main>
-  <script is:inline>
-    const hero = document.querySelector('.hero');
-    const header = document.getElementById('site-header');
-    if (hero && header) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          header.classList.toggle('site-header--visible', !entry.isIntersecting);
-        },
-        { threshold: 0 }
-      );
-      observer.observe(hero);
-    } else if (header) {
-      header.classList.add('site-header--visible');
-    }
-  </script>
-  <footer class="site-footer">
-    <div class="container">
-      <img src="/emoji/cocktail-glass.svg" alt="" class="footer-icon" width="40" height="40" aria-hidden="true" />
-      <a href="/" class="footer-brand">cocktail<span>.glass</span></a>
-      <p class="footer-tagline">Browse 500 cocktail recipes by category, glass, and ingredient</p>
-    </div>
-  </footer>
-  {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
 </body>
 </html>
 
