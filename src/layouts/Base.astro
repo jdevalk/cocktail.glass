@@ -507,6 +507,14 @@ const hasHeaderActions = Astro.slots.has('headerActions');
     color: var(--color-text);
     outline: none;
     border-radius: 20px 20px 0 0;
+    -webkit-appearance: none;
+    box-shadow: none;
+  }
+
+  .pf-input:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom-color: var(--color-accent);
   }
 
   .pf-input::placeholder {
