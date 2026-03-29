@@ -423,11 +423,26 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     return segments.length ? `#${segments.join('/')}` : '';
   }
 
+  function saveFilterCookie() {
+    var hash = buildPrettyHash();
+    if (hash) {
+      document.cookie = 'filters=' + encodeURIComponent(hash) + ';path=/;SameSite=Lax';
+    } else {
+      document.cookie = 'filters=;path=/;max-age=0;SameSite=Lax';
+    }
+  }
+
+  function getFilterCookie() {
+    var match = document.cookie.match(/(?:^|; )filters=([^;]*)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
   function syncUrl() {
     if (isHydrating) return;
 
     const nextUrl = `${window.location.pathname}${buildPrettyHash()}`;
     window.history.replaceState({}, '', nextUrl);
+    saveFilterCookie();
   }
 
   function updatePill(el, state) {
@@ -684,6 +699,14 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
 
   function hydrateFromUrl() {
     for (const pill of pills) updatePill(pill, null);
+
+    // Restore from cookie if no hash or query params
+    if (!window.location.hash && !url.search) {
+      var saved = getFilterCookie();
+      if (saved && saved.startsWith('#')) {
+        window.location.hash = saved;
+      }
+    }
 
     const hashState = parseHashState();
 
