@@ -72,10 +72,13 @@ const primaryIngredient = getDistinctiveIngredient(cocktail, cocktails as Cockta
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
   : null;
+const pageDescription = originStory?.story
+  ? originStory.story.slice(0, 150) + (originStory.story.length > 150 ? '…' : '')
+  : `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
 ---
 <Base
   title={cocktail.name}
-  description={`How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`}
+  description={pageDescription}
   ogImage={`/og/${cocktail.slug}.jpg`}
   schema={recipeSchema}
 >
@@ -86,9 +89,8 @@ const primaryIngredientHref = primaryIngredient
     <a href="#similar" class="header-action">Similar</a>
   </div>
   <div class="container">
-    <article class="cocktail-card" data-pagefind-body>
-      <span data-pagefind-meta={`title=${cocktail.name}`} data-pagefind-sort="title_length[data-value]" data-value={String(cocktail.name.length).padStart(3, '0')}></span>
-      <span data-pagefind-meta="excerpt[data-value]" data-value={originStory?.story ? originStory.story.slice(0, 150) + (originStory.story.length > 150 ? '…' : '') : cocktail.category + ' · ' + cocktail.glass}></span>
+    <article class="cocktail-card" data-pagefind-body data-pagefind-meta={`description:${pageDescription}`}>
+      <span data-pagefind-sort="title_length[data-value]" data-value={String(cocktail.name.length).padStart(3, '0')}></span>
       <header>
         <div class="header-copy">
           <a href={categoryHref} class="category category-link">
@@ -212,7 +214,7 @@ const primaryIngredientHref = primaryIngredient
   </div>
 </Base>
 
-<style>
+<style is:global>
   .container {
     max-width: 860px;
     margin: 0 auto;
@@ -230,7 +232,7 @@ const primaryIngredientHref = primaryIngredient
     box-shadow: var(--glass-shadow);
   }
 
-  header {
+  .cocktail-card header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -268,7 +270,7 @@ const primaryIngredientHref = primaryIngredient
     background: rgba(224, 94, 58, 0.16);
   }
 
-  h1 {
+  .cocktail-card h1 {
     font-family: var(--font-display);
     font-size: 3rem;
     font-weight: 600;
@@ -515,7 +517,7 @@ const primaryIngredientHref = primaryIngredient
       margin-top: 0.5rem;
     }
 
-    h1 {
+    .cocktail-card h1 {
       font-size: 2.5rem;
     }
 
@@ -534,7 +536,7 @@ const primaryIngredientHref = primaryIngredient
   }
 
   @media (min-width: 760px) {
-    header {
+    .cocktail-card header {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;

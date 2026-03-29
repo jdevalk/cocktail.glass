@@ -34,6 +34,11 @@ function countBy(values: string[]) {
   return [...m.entries()].sort((a, b) => b[1] - a[1]);
 }
 
+// First 4 cocktails in display order should be eager-loaded (above the fold)
+const eagerSlugs = new Set(
+  categoryOrder.flatMap((cat) => grouped.get(cat)!.map((c) => c.slug)).slice(0, 4)
+);
+
 const categoryCounts = countBy(allCocktails.map((c) => c.category));
 const glassCounts = countBy(allCocktails.map((c) => c.glass));
 const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingredients)]));
@@ -43,6 +48,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
   ogImage="/og/home.jpg"
   schema={homepageSchema}
+  preloadImage={`/images/responsive/320/${categoryOrder.flatMap(cat => grouped.get(cat)!)[0].slug}.webp`}
 >
   <span slot="headerMeta" class="header-summary">500 cocktails to browse</span>
   <div slot="headerActions" class="header-actions-group">
@@ -214,25 +220,23 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
             {grouped.get(category)!.map((cocktail) => (
               <a
                 href={`/${cocktail.slug}/`}
-                class="card"
-                data-category={cocktail.category}
                 data-glass={cocktail.glass}
                 data-ingredients={[...new Set(cocktail.ingredients)].join('|')}
               >
-                <div class="card-image-frame">
+                <div>
                   <img
                     src={`/images/responsive/320/${cocktail.slug}.webp`}
                     alt={cocktail.name}
-                    class="card-image"
                     width="320"
                     height="320"
-                    loading="lazy"
-                    decoding="async"
+                    loading={eagerSlugs.has(cocktail.slug) ? 'eager' : 'lazy'}
+                    decoding={eagerSlugs.has(cocktail.slug) ? 'sync' : 'async'}
+                    fetchpriority={eagerSlugs.has(cocktail.slug) ? 'high' : undefined}
                   />
                 </div>
-                <span class="card-category">{cocktail.category}</span>
-                <h3 class="card-name">{cocktail.name}</h3>
-                <p class="card-meta">{cocktail.glass} &middot; {cocktail.ingredients.length} ingredients</p>
+                <span>{cocktail.category}</span>
+                <h3>{cocktail.name}</h3>
+                <p>{cocktail.glass} &middot; {cocktail.ingredients.length} ingredients</p>
               </a>
             ))}
           </div>
@@ -251,10 +255,10 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   const $ = (s, p) => (p || document).querySelector(s);
   const $$ = (s, p) => (p || document).querySelectorAll(s);
 
-  const cards = [...$$('.card')];
+  const cards = [...$$('.grid > a')];
   const cardData = cards.map((card) => ({
     el: card,
-    category: card.dataset.category,
+    category: card.closest('.category-section')?.dataset.categorySection || '',
     glass: card.dataset.glass,
     ingredients: card.dataset.ingredients ? card.dataset.ingredients.split('|') : [],
     name: $('h3', card)?.textContent?.toLowerCase() || '',
@@ -718,7 +722,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   // Handle broken images
   for (const card of cards) {
     const img = $('img', card);
-    if (img) img.onerror = function() { this.parentElement.classList.add('card-image-frame--empty'); };
+    if (img) img.onerror = function() { this.parentElement.classList.add('empty'); };
   }
 
   for (const pill of pills) {
@@ -1208,7 +1212,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     }
   }
 
-  .card {
+  .grid > a {
     display: block;
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
@@ -1223,18 +1227,18 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     touch-action: manipulation;
   }
 
-  .card:hover {
+  .grid > a:hover {
     background: var(--glass-bg-hover);
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     border-color: rgba(255, 255, 255, 0.8);
   }
 
-  .card[hidden] {
+  .grid > a[hidden] {
     display: none;
   }
 
-  .card-image-frame {
+  .grid > a > div {
     width: calc(100% + 3rem);
     margin: -1.25rem -1.5rem 1rem;
     aspect-ratio: 4 / 3;
@@ -1245,18 +1249,18 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     overflow: hidden;
   }
 
-  .card-image-frame--empty {
+  .grid > a > div.empty {
     display: none;
   }
 
-  .card-image {
+  .grid > a img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .card-category {
+  .grid > a > span {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1264,7 +1268,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     font-weight: 600;
   }
 
-  .card-name {
+  .grid > a > h3 {
     font-family: var(--font-display);
     font-size: 1.5rem;
     color: var(--color-text);
@@ -1273,7 +1277,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     line-height: 1.3;
   }
 
-  .card-meta {
+  .grid > a > p {
     font-size: 1rem;
     color: var(--color-text-muted);
   }
@@ -1338,16 +1342,16 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
       font-size: 1.65rem;
     }
 
-    .card {
+    .grid > a {
       padding: 1rem 1.15rem 1.15rem;
     }
 
-    .card-image-frame {
+    .grid > a > div {
       width: calc(100% + 2.3rem);
       margin: -1rem -1.15rem 0.9rem;
     }
 
-    .card-name {
+    .grid > a > h3 {
       font-size: 1.3rem;
     }
   }
@@ -1424,21 +1428,21 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
       gap: 0.65rem;
     }
 
-    .card-name {
+    .grid > a > h3 {
       font-size: 1rem;
     }
 
-    .card-meta {
+    .grid > a > p {
       font-size: 0.75rem;
     }
 
-    .card-category {
+    .grid > a > span {
       font-size: 0.65rem;
     }
   }
 </style>
 
-<style>
+<style is:global>
   .container {
     max-width: var(--max-width);
     margin: 0 auto;
