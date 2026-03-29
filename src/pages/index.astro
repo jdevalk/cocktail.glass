@@ -832,7 +832,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 1.75rem 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     box-shadow: var(--glass-shadow);
   }
 
@@ -1099,12 +1099,34 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     display: none;
   }
 
+  .grid--filtered .category-section {
+    display: contents;
+  }
+
   .grid--filtered .grid {
+    display: contents;
+  }
+
+  .grid--filtered {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .grid--filtered > .filters,
+  .grid--filtered > .empty,
+  .grid--filtered > .filter-status {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 900px) {
+    .grid--filtered {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 560px) {
-    .grid--filtered .grid {
+    .grid--filtered {
       grid-template-columns: repeat(2, 1fr);
     }
   }
