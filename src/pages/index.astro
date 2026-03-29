@@ -1100,7 +1100,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   }
 
   .grid--filtered .grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 
   @media (max-width: 560px) {
@@ -1172,8 +1172,18 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid--filtered .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .card {
