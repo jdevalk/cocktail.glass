@@ -6,6 +6,7 @@ import { getGlassServingText } from '../utils/glass';
 import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
 import { estimateCalories } from '../utils/calories';
 import { findSimilar } from '../utils/similar';
+import { linkifyCocktails } from '../utils/linkify';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
 
@@ -65,6 +66,7 @@ const categoryHref = buildPrettyFilterHref('category', cocktail.category);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 const calories = estimateCalories(cocktail.ingredients);
 const similarCocktails = findSimilar(cocktail, cocktails as Cocktail[]);
+const linkedStory = originStory?.story ? linkifyCocktails(originStory.story, cocktails as Cocktail[], cocktail.slug) : '';
 const primaryIngredient = cocktail.ingredients[0]?.name;
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
@@ -171,7 +173,7 @@ const primaryIngredientHref = primaryIngredient
         {originStory?.story && (
           <section class="origin-story" id="origin-story">
             <h2>Origin Story</h2>
-            <p>{originStory.story}</p>
+            <p set:html={linkedStory} />
             {originStory.sourceUrl && (
               <p class="origin-source">
                 Source:{' '}
@@ -432,6 +434,17 @@ const primaryIngredientHref = primaryIngredient
   }
 
   .origin-source a {
+    color: var(--color-accent);
+  }
+
+  :global(.origin-link) {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(224, 94, 58, 0.28);
+    text-underline-offset: 0.16em;
+  }
+
+  :global(.origin-link:hover) {
     color: var(--color-accent);
   }
 
