@@ -32,6 +32,19 @@ const image320Src = hasImage ? `/images/responsive/320/${cocktail.slug}.webp` : 
 const image640Src = hasImage ? `/images/responsive/640/${cocktail.slug}.webp` : null;
 const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
 const schemaImageUrl = hasImage ? new URL(`/images/${cocktail.slug}.webp`, siteUrl).toString() : undefined;
+
+// Detect additional images ({slug}-2.webp through {slug}-5.webp)
+const extraImages: { src320: string; src640: string }[] = [];
+for (let i = 2; i <= 5; i++) {
+  const extraPath = join(process.cwd(), 'public/images', `${cocktail.slug}-${i}.webp`);
+  if (existsSync(extraPath) && statSync(extraPath).size > 0) {
+    extraImages.push({
+      src320: `/images/responsive/320/${cocktail.slug}-${i}.webp`,
+      src640: `/images/responsive/640/${cocktail.slug}-${i}.webp`,
+    });
+  }
+}
+const hasMultipleImages = hasImage && extraImages.length > 0;
 const originStory = (originStories as CocktailOriginStories)[cocktail.slug];
 
 const brandHints: Record<string, string> = {
@@ -108,17 +121,45 @@ const pageDescription = originStory?.story
           </div>
         </div>
         {image320Src && image640Src && (
-          <img
-            src={image320Src}
-            srcset={`${image320Src} 320w, ${image640Src} 640w`}
-            sizes="(max-width: 600px) calc(100vw - 5rem), 320px"
-            alt={cocktail.name}
-            class="cocktail-image"
-            width="320"
-            height="320"
-            loading="eager"
-            fetchpriority="high"
-          />
+          <div class="cocktail-photos">
+            <img
+              src={image320Src}
+              srcset={`${image320Src} 320w, ${image640Src} 640w`}
+              sizes="(max-width: 600px) calc(100vw - 5rem), 320px"
+              alt={cocktail.name}
+              class="cocktail-image"
+              id="main-photo"
+              width="320"
+              height="320"
+              loading="eager"
+              fetchpriority="high"
+            />
+            {hasMultipleImages && (
+              <div class="photo-thumbs">
+                <button class="photo-thumb active" data-src320={image320Src} data-src640={image640Src}>
+                  <img src={image320Src} alt={`${cocktail.name} photo 1`} width="60" height="60" loading="lazy" />
+                </button>
+                {extraImages.map((img, i) => (
+                  <button class="photo-thumb" data-src320={img.src320} data-src640={img.src640}>
+                    <img src={img.src320} alt={`${cocktail.name} photo ${i + 2}`} width="60" height="60" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+            <div class="photo-upload-section" data-pagefind-ignore>
+              <button class="photo-upload-btn" id="upload-toggle">Have a better photo? Submit it!</button>
+              <form class="photo-upload-form" id="upload-form" style="display:none">
+                <label class="file-label">
+                  <input type="file" id="upload-file" accept="image/jpeg,image/png,image/webp" />
+                  <span class="file-text">Choose a photo...</span>
+                </label>
+                <input type="text" id="upload-attribution" placeholder="Your name (optional)" maxlength="100" class="attribution-input" />
+                <div id="turnstile-widget"></div>
+                <button type="submit" class="upload-submit" id="upload-submit" disabled>Upload photo</button>
+                <p class="upload-status" id="upload-status"></p>
+              </form>
+            </div>
+          </div>
         )}
       </header>
 
@@ -214,6 +255,118 @@ const pageDescription = originStory?.story
   </div>
 </Base>
 
+<script is:inline define:vars={{ slug: cocktail.slug }}>
+(function() {
+  // Photo gallery thumbnail switching
+  var thumbs = document.querySelectorAll('.photo-thumb');
+  if (thumbs.length > 0) {
+    var mainPhoto = document.getElementById('main-photo');
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        thumbs.forEach(function(t) { t.classList.remove('active'); });
+        thumb.classList.add('active');
+        var src320 = thumb.getAttribute('data-src320');
+        var src640 = thumb.getAttribute('data-src640');
+        mainPhoto.src = src320;
+        mainPhoto.srcset = src320 + ' 320w, ' + src640 + ' 640w';
+      });
+    });
+  }
+
+  // Upload form
+  var toggleBtn = document.getElementById('upload-toggle');
+  var form = document.getElementById('upload-form');
+  var fileInput = document.getElementById('upload-file');
+  var fileText = document.querySelector('.file-text');
+  var submitBtn = document.getElementById('upload-submit');
+  var status = document.getElementById('upload-status');
+  var turnstileLoaded = false;
+  var turnstileToken = null;
+
+  toggleBtn.addEventListener('click', function() {
+    var visible = form.style.display !== 'none';
+    form.style.display = visible ? 'none' : '';
+    toggleBtn.textContent = visible ? 'Have a better photo? Submit it!' : 'Cancel';
+    if (!visible && !turnstileLoaded) {
+      turnstileLoaded = true;
+      var script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.onload = function() {
+        if (window.turnstile) {
+          window.turnstile.render('#turnstile-widget', {
+            sitekey: '0x4AAAAAACxqJtqjgricutWh',
+            callback: function(token) {
+              turnstileToken = token;
+              updateSubmitState();
+            },
+          });
+        }
+      };
+      document.head.appendChild(script);
+    }
+  });
+
+  fileInput.addEventListener('change', function() {
+    var file = fileInput.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        status.textContent = 'Image must be under 5MB.';
+        status.className = 'upload-status error';
+        fileInput.value = '';
+        fileText.textContent = 'Choose a photo...';
+        return;
+      }
+      fileText.textContent = file.name;
+      status.textContent = '';
+      status.className = 'upload-status';
+    }
+    updateSubmitState();
+  });
+
+  function updateSubmitState() {
+    submitBtn.disabled = !(fileInput.files.length > 0 && turnstileToken);
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (submitBtn.disabled) return;
+
+    submitBtn.disabled = true;
+    status.textContent = 'Uploading...';
+    status.className = 'upload-status';
+
+    var data = new FormData();
+    data.append('image', fileInput.files[0]);
+    data.append('slug', slug);
+    data.append('turnstile_token', turnstileToken);
+    var attribution = document.getElementById('upload-attribution').value.trim();
+    if (attribution) data.append('attribution', attribution);
+
+    fetch('/api/photos', { method: 'POST', body: data })
+      .then(function(res) { return res.json().then(function(body) { return { ok: res.ok, body: body }; }); })
+      .then(function(result) {
+        if (result.ok) {
+          status.textContent = result.body.message;
+          status.className = 'upload-status success';
+          form.style.display = 'none';
+          toggleBtn.textContent = 'Thanks for submitting!';
+          toggleBtn.disabled = true;
+        } else {
+          status.textContent = result.body.error || 'Upload failed.';
+          status.className = 'upload-status error';
+          submitBtn.disabled = false;
+        }
+      })
+      .catch(function() {
+        status.textContent = 'Upload failed. Please try again.';
+        status.className = 'upload-status error';
+        submitBtn.disabled = false;
+      });
+  });
+})();
+</script>
+
 <style is:global>
   .container {
     max-width: 860px;
@@ -241,14 +394,54 @@ const pageDescription = originStory?.story
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
+  .cocktail-photos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   .cocktail-image {
     display: block;
     width: 100%;
     max-width: 320px;
     height: auto;
     border-radius: 20px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .photo-thumbs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .photo-thumb {
+    display: block;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    background: none;
+    transition: border-color 0.15s;
+    overflow: hidden;
+  }
+
+  .photo-thumb.active {
+    border-color: var(--color-accent);
+  }
+
+  .photo-thumb:hover {
+    border-color: rgba(224, 94, 58, 0.4);
+  }
+
+  .photo-thumb img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 
   .category {
@@ -507,6 +700,119 @@ const pageDescription = originStory?.story
     color: var(--color-text-muted);
   }
 
+  .photo-upload-section {
+    text-align: center;
+  }
+
+  .photo-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  .photo-upload-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--color-accent);
+  }
+
+  .photo-upload-btn:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+
+  .photo-upload-form {
+    max-width: 360px;
+    margin: 1rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .file-label {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.15s;
+  }
+
+  .file-label:hover {
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .file-label input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .file-text {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .attribution-input {
+    padding: 0.6rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+
+  .attribution-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .upload-submit {
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .upload-submit:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .upload-submit:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  .upload-status {
+    font-size: 0.85rem;
+    margin: 0;
+    text-align: center;
+  }
+
+  .upload-status.success {
+    color: #2a9d2a;
+  }
+
+  .upload-status.error {
+    color: #d32f2f;
+  }
+
   @media (max-width: 600px) {
     .cocktail-card {
       padding: 1.5rem;
@@ -538,13 +844,16 @@ const pageDescription = originStory?.story
   @media (min-width: 760px) {
     .cocktail-card header {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 2.5rem;
     }
 
-    .cocktail-image {
+    .cocktail-photos {
       flex: 0 0 320px;
+    }
+
+    .cocktail-image {
       margin-bottom: 0;
     }
   }

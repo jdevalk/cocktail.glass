@@ -21,6 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
+import { execSync } from 'node:child_process';
 import sharp from 'sharp';
 import satori from 'satori';
 
@@ -367,6 +368,7 @@ function renderHTML() {
 </head>
 <body>
     <h1>Cocktail Image Manager</h1>
+    <div class="nav" style="margin-bottom: 1rem;"><a href="/" style="padding: 0.4rem 1rem; border: 1px solid #e05e3a; border-radius: 6px; background: #e05e3a; color: #fff; text-decoration: none; margin-right: 0.5rem; font-size: 0.85rem; display: inline-block;">Images</a><a href="/submissions" style="padding: 0.4rem 1rem; border: 1px solid #333; border-radius: 6px; background: #1a1a1a; color: #ccc; text-decoration: none; font-size: 0.85rem; display: inline-block;">Submissions</a></div>
     <p class="subtitle">Model: ${IMAGE_MODEL} &middot; Copy prompts or generate directly, then drag &amp; drop images.</p>
 
     <div class="progress">
@@ -492,6 +494,232 @@ async function uploadFile(slug, file, zone) {
 }
 
 // ============================================================
+// R2 Submissions
+// ============================================================
+
+const R2_BUCKET = 'cocktail-photos';
+
+function listR2Submissions() {
+    try {
+        const output = execSync(`wrangler r2 object list ${R2_BUCKET} --prefix pending/ 2>/dev/null`, {
+            encoding: 'utf8',
+            timeout: 15000,
+        });
+        const objects = JSON.parse(output);
+        return objects
+            .filter(obj => obj.key && !obj.key.endsWith('/'))
+            .map(obj => {
+                const parts = obj.key.replace('pending/', '').split('/');
+                return {
+                    key: obj.key,
+                    slug: parts[0],
+                    filename: parts[1],
+                    size: obj.size,
+                    uploaded: obj.uploaded,
+                };
+            });
+    } catch {
+        return [];
+    }
+}
+
+function downloadR2Object(key) {
+    const tmpPath = path.resolve(`/tmp/r2-${Date.now()}.tmp`);
+    try {
+        execSync(`wrangler r2 object get ${R2_BUCKET}/${key} --file ${tmpPath} 2>/dev/null`, {
+            timeout: 30000,
+        });
+        return fs.readFileSync(tmpPath);
+    } finally {
+        if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+    }
+}
+
+function deleteR2Object(key) {
+    execSync(`wrangler r2 object delete ${R2_BUCKET}/${key} 2>/dev/null`, {
+        timeout: 15000,
+    });
+}
+
+function getNextImageSlot(slug) {
+    // Check if main image exists; if not, use the main slot
+    const mainPath = path.join(IMAGES_DIR, `${slug}.webp`);
+    if (!fs.existsSync(mainPath) || fs.statSync(mainPath).size === 0) return slug;
+
+    // Find next available numbered slot (slug-2 through slug-5)
+    for (let i = 2; i <= 5; i++) {
+        const extraPath = path.join(IMAGES_DIR, `${slug}-${i}.webp`);
+        if (!fs.existsSync(extraPath)) return `${slug}-${i}`;
+    }
+    return null; // All slots full
+}
+
+function renderSubmissionsHTML() {
+    const submissions = listR2Submissions();
+    const cocktails = loadCocktails();
+
+    if (submissions.length === 0) {
+        return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submissions - Cocktail Image Manager</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 2rem; }
+a { color: #e05e3a; }
+h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.subtitle { color: #888; margin-bottom: 1.5rem; }
+.nav { margin-bottom: 2rem; }
+.nav a { padding: 0.4rem 1rem; border: 1px solid #333; border-radius: 6px; background: #1a1a1a; color: #ccc; text-decoration: none; margin-right: 0.5rem; font-size: 0.85rem; }
+.nav a.active { background: #e05e3a; border-color: #e05e3a; color: #fff; }
+.empty { color: #888; font-size: 1.1rem; margin-top: 2rem; }
+</style></head><body>
+<h1>Cocktail Image Manager</h1>
+<div class="nav"><a href="/">Images</a><a href="/submissions" class="active">Submissions (0)</a></div>
+<p class="empty">No pending submissions.</p>
+</body></html>`;
+    }
+
+    // Group by slug
+    const grouped = {};
+    for (const sub of submissions) {
+        if (!grouped[sub.slug]) grouped[sub.slug] = [];
+        grouped[sub.slug].push(sub);
+    }
+
+    const cards = Object.entries(grouped).map(([slug, subs]) => {
+        const cocktail = cocktails.find(c => c.slug === slug);
+        const name = cocktail?.name || slug;
+        const currentHas = hasImage(slug);
+        const nextSlot = getNextImageSlot(slug);
+
+        const subCards = subs.map(sub => `
+            <div class="submission" data-key="${sub.key}">
+                <img src="/r2-image/${encodeURIComponent(sub.key)}" alt="Submission" />
+                <div class="sub-actions">
+                    <span class="sub-meta">${(sub.size / 1024).toFixed(0)} KB</span>
+                    ${nextSlot
+                        ? `<button class="approve-btn" onclick="approveSubmission('${sub.key}', '${slug}', this)">Approve${nextSlot !== slug ? ' as #' + nextSlot.split('-').pop() : currentHas ? ' (replace main)' : ''}</button>`
+                        : `<span class="sub-meta">All slots full</span>`
+                    }
+                    <button class="reject-btn" onclick="rejectSubmission('${sub.key}', this)">Reject</button>
+                </div>
+            </div>
+        `).join('');
+
+        return `
+        <div class="cocktail-group">
+            <div class="group-header">
+                <h2><a href="/${slug}/" target="_blank">${name}</a></h2>
+                <span class="sub-count">${subs.length} submission${subs.length > 1 ? 's' : ''}</span>
+                ${currentHas ? `<div class="current-image"><span>Current:</span><img src="/image/${slug}" alt="Current" /></div>` : '<span class="no-current">No current image</span>'}
+            </div>
+            <div class="submissions-grid">${subCards}</div>
+        </div>`;
+    }).join('\n');
+
+    return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submissions - Cocktail Image Manager</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 2rem; }
+a { color: #e05e3a; text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.1rem; }
+h2 a { color: inherit; }
+h2 a:hover { color: #e05e3a; }
+.nav { margin-bottom: 2rem; }
+.nav a { padding: 0.4rem 1rem; border: 1px solid #333; border-radius: 6px; background: #1a1a1a; color: #ccc; text-decoration: none; margin-right: 0.5rem; font-size: 0.85rem; display: inline-block; }
+.nav a.active { background: #e05e3a; border-color: #e05e3a; color: #fff; }
+.cocktail-group { border: 1px solid #222; border-radius: 12px; margin-bottom: 1.5rem; background: #161616; overflow: hidden; }
+.group-header { padding: 1rem 1.25rem; border-bottom: 1px solid #222; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.sub-count { font-size: 0.8rem; color: #888; }
+.current-image { display: flex; align-items: center; gap: 0.5rem; margin-left: auto; }
+.current-image span { font-size: 0.8rem; color: #888; }
+.current-image img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
+.no-current { font-size: 0.8rem; color: #f87171; margin-left: auto; }
+.submissions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; padding: 1rem 1.25rem; }
+.submission { border: 1px solid #333; border-radius: 8px; overflow: hidden; }
+.submission img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.sub-actions { padding: 0.5rem; display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+.sub-meta { font-size: 0.75rem; color: #888; }
+.approve-btn { padding: 0.3rem 0.8rem; border: 1px solid #2a5a3a; border-radius: 6px; background: #1a3a2a; color: #4ade80; cursor: pointer; font-size: 0.8rem; }
+.approve-btn:hover { background: #2a5a3a; }
+.reject-btn { padding: 0.3rem 0.8rem; border: 1px solid #5a2a2a; border-radius: 6px; background: #3a1a1a; color: #f87171; cursor: pointer; font-size: 0.8rem; }
+.reject-btn:hover { background: #5a2a2a; }
+.toast { position: fixed; bottom: 2rem; right: 2rem; background: #1a3a2a; color: #4ade80; padding: 0.75rem 1.25rem; border-radius: 8px; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 100; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error { background: #3a1a1a; color: #f87171; }
+</style></head><body>
+<h1>Cocktail Image Manager</h1>
+<div class="nav"><a href="/">Images</a><a href="/submissions" class="active">Submissions (${submissions.length})</a></div>
+
+${cards}
+
+<div class="toast" id="toast"></div>
+<script>
+function showToast(msg, isError) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => t.className = 'toast', 3000);
+}
+
+async function approveSubmission(key, slug, btn) {
+    btn.disabled = true;
+    btn.textContent = 'Approving...';
+    try {
+        const res = await fetch('/approve-submission', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key, slug }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+            showToast('Approved! Saved as ' + data.savedAs);
+            btn.closest('.submission').remove();
+        } else {
+            showToast('Error: ' + data.error, true);
+            btn.disabled = false;
+            btn.textContent = 'Approve';
+        }
+    } catch (err) {
+        showToast('Failed: ' + err.message, true);
+        btn.disabled = false;
+        btn.textContent = 'Approve';
+    }
+}
+
+async function rejectSubmission(key, btn) {
+    btn.disabled = true;
+    btn.textContent = 'Rejecting...';
+    try {
+        const res = await fetch('/reject-submission', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+            showToast('Rejected and deleted');
+            btn.closest('.submission').remove();
+        } else {
+            showToast('Error: ' + data.error, true);
+            btn.disabled = false;
+            btn.textContent = 'Reject';
+        }
+    } catch (err) {
+        showToast('Failed: ' + err.message, true);
+        btn.disabled = false;
+        btn.textContent = 'Reject';
+    }
+}
+</script>
+</body></html>`;
+}
+
+// ============================================================
 // HTTP Server
 // ============================================================
 
@@ -499,6 +727,84 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && req.url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(renderHTML());
+        return;
+    }
+
+    // Submissions page
+    if (req.method === 'GET' && req.url === '/submissions') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(renderSubmissionsHTML());
+        return;
+    }
+
+    // Serve R2 submission images (proxied through wrangler)
+    if (req.method === 'GET' && req.url.startsWith('/r2-image/')) {
+        const key = decodeURIComponent(req.url.replace('/r2-image/', '').split('?')[0]);
+        try {
+            const buf = downloadR2Object(key);
+            const ext = key.split('.').pop();
+            const contentType = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
+            res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-cache' });
+            res.end(buf);
+        } catch {
+            res.writeHead(404);
+            res.end('Not found');
+        }
+        return;
+    }
+
+    // Approve submission
+    if (req.method === 'POST' && req.url === '/approve-submission') {
+        const chunks = [];
+        req.on('data', chunk => chunks.push(chunk));
+        req.on('end', async () => {
+            try {
+                const { key, slug } = JSON.parse(Buffer.concat(chunks).toString());
+                const slot = getNextImageSlot(slug);
+                if (!slot) throw new Error('All image slots are full for this cocktail');
+
+                const imageBuffer = downloadR2Object(key);
+                const webpBuffer = await saveImage(slot, imageBuffer);
+
+                // Generate OG image if this replaces the main image
+                if (slot === slug) {
+                    const cocktails = loadCocktails();
+                    const cocktail = cocktails.find(c => c.slug === slug);
+                    if (cocktail) await generateAndSaveOg(cocktail, webpBuffer);
+                }
+
+                deleteR2Object(key);
+
+                // Generate responsive variants
+                try {
+                    execSync('node scripts/generate-responsive-images.mjs', { timeout: 30000 });
+                } catch { /* non-critical */ }
+
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ ok: true, savedAs: `${slot}.webp` }));
+            } catch (err) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ ok: false, error: err.message }));
+            }
+        });
+        return;
+    }
+
+    // Reject submission
+    if (req.method === 'POST' && req.url === '/reject-submission') {
+        const chunks = [];
+        req.on('data', chunk => chunks.push(chunk));
+        req.on('end', () => {
+            try {
+                const { key } = JSON.parse(Buffer.concat(chunks).toString());
+                deleteR2Object(key);
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ ok: true }));
+            } catch (err) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ ok: false, error: err.message }));
+            }
+        });
         return;
     }
 
