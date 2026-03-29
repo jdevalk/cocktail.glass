@@ -4,6 +4,7 @@ import type { Cocktail, CocktailOriginStories } from '../types';
 import { buildPrettyFilterHref } from '../utils/filter-url';
 import { getGlassServingText } from '../utils/glass';
 import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
+import { estimateCalories } from '../utils/calories';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
 
@@ -54,11 +55,14 @@ const brandHints: Record<string, string> = {
   'Japanese whisky': 'e.g. Nikka, Suntory Toki',
   'Demerara syrup': 'syrup made with raw cane sugar',
   'Falernum': 'Caribbean syrup with lime, almond, and spices',
+  'Brandied cherry': 'e.g. Luxardo, Amarena',
+  'Heavy cream': 'high-fat cream (36%+), also called double cream',
 };
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUrl);
 const categoryHref = buildPrettyFilterHref('category', cocktail.category);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
+const calories = estimateCalories(cocktail.ingredients);
 const primaryIngredient = cocktail.ingredients[0]?.name;
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
@@ -76,19 +80,19 @@ const primaryIngredientHref = primaryIngredient
     <a href={originStory?.story ? '#origin-story' : '#recipe-step-1'} class="header-action">Origin Story</a>
   </div>
   <div class="container">
-    <a href="/" class="back">&larr; All cocktails</a>
-
-    <article class="cocktail-card">
+    <article class="cocktail-card" data-pagefind-body>
+      <span data-pagefind-meta={`title=${cocktail.name}`} data-pagefind-sort="title_length[data-value]" data-value={String(cocktail.name.length).padStart(3, '0')}></span>
+      <span data-pagefind-meta="excerpt[data-value]" data-value={originStory?.story ? originStory.story.slice(0, 150) + (originStory.story.length > 150 ? '…' : '') : cocktail.category + ' · ' + cocktail.glass}></span>
       <header>
         <div class="header-copy">
           <a href={categoryHref} class="category category-link">
             {cocktail.category}
           </a>
-          <h1>{cocktail.name}</h1>
+          <h1 data-pagefind-weight="10">{cocktail.name}</h1>
           <p class="glass-type">
-            Served in <a href={glassHref} class="glass-link">{getGlassServingText(cocktail.glass)}</a>
+            Served in <a href={glassHref} class="glass-link">{getGlassServingText(cocktail.glass)}</a> · ~{calories} cal
           </p>
-          <div class="browse-links" aria-label="Browse related cocktails">
+          <div class="browse-links" aria-label="Browse related cocktails" data-pagefind-ignore>
             <a href={glassHref} class="meta-link">More in {cocktail.glass}</a>
             {primaryIngredient && primaryIngredientHref && (
               <a href={primaryIngredientHref} class="meta-link">More cocktails with {primaryIngredient}</a>
@@ -132,7 +136,32 @@ const primaryIngredientHref = primaryIngredient
           <h2>Preparation</h2>
           <ol>
             {cocktail.preparation.map(step => (
-              <li>{step}</li>
+              <li>
+                <span class="step-content">
+                  {step}
+                  {step.startsWith('Rim ') && (
+                    <span class="step-hint">Don't know how? Moisten the rim with a citrus wedge, then dip it in a plate of {step.match(/with (.+)\.$/)?.[1] || 'the rimming ingredient'}.</span>
+                  )}
+                  {step.startsWith('Strain ') && (
+                    <span class="step-hint">Don't know how? Pour the drink through a <a href="/equipment/#strainer">strainer</a> (or the built-in strainer on your <a href="/equipment/#cocktail-shaker">shaker</a>) to catch the ice and any solids.</span>
+                  )}
+                  {/^(?:Carefully f|F)loat\b/.test(step) && !/spoon/.test(step) && (
+                    <span class="step-hint">Don't know how? Pour slowly over the back of a <a href="/equipment/#bar-spoon">bar spoon</a> held just above the surface so the liquid sits on top rather than mixing in.</span>
+                  )}
+                  {step.startsWith('Garnish') && /peel|twist|spiral/i.test(step) && (
+                    <span class="step-hint">Use a peeler or knife to cut a wide strip, avoiding the white pith. Twist it over the drink to release the oils, then drop it in.</span>
+                  )}
+                  {step.startsWith('Garnish') && /wheel/i.test(step) && !/peel|twist/i.test(step) && (
+                    <span class="step-hint">A wheel is a thin, round cross-section slice of the whole fruit.</span>
+                  )}
+                  {step.startsWith('Garnish') && /wedge/i.test(step) && !/peel|twist|wheel/i.test(step) && (
+                    <span class="step-hint">A wedge is a thick, lengthwise slice — usually a quarter or eighth of the fruit.</span>
+                  )}
+                  {/barspoon|bar spoon/i.test(step) && (
+                    <span class="step-hint">A <a href="/equipment/#bar-spoon">bar spoon</a> has a long twisted handle — pour slowly over the back to layer liquids without mixing.</span>
+                  )}
+                </span>
+              </li>
             ))}
           </ol>
         </section>
@@ -163,20 +192,8 @@ const primaryIngredientHref = primaryIngredient
     padding: 0 1.5rem;
   }
 
-  .back {
-    display: inline-block;
-    margin: 2rem 0 1.5rem;
-    font-size: 1.1rem;
-    color: var(--color-text-muted);
-    font-weight: 500;
-    transition: color 0.15s;
-  }
-
-  .back:hover {
-    color: var(--color-accent);
-  }
-
   .cocktail-card {
+    margin-top: 2rem;
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -357,6 +374,24 @@ const primaryIngredientHref = primaryIngredient
     font-size: 0.8rem;
     font-weight: 600;
     margin-top: 0.1rem;
+  }
+
+  .step-hint {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .step-hint a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(224, 94, 58, 0.3);
+    text-underline-offset: 0.15em;
+  }
+
+  .step-hint a:hover {
+    text-decoration-color: var(--color-accent);
   }
 
   .origin-story {

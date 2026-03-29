@@ -14,7 +14,7 @@ const {
   ogImage,
   schema,
 } = Astro.props;
-const fullTitle = title === 'Cocktail Glass' ? title : `${title} | Cocktail Glass`;
+const fullTitle = title === 'Cocktail Glass' ? title : `${title} ~ Cocktail Glass`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 const plausibleDomain = Astro.site ? new URL(Astro.site).hostname : undefined;
@@ -58,6 +58,92 @@ const hasHeaderActions = Astro.slots.has('headerActions');
   )}
 </head>
 <body>
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-backdrop"></div>
+    <div class="search-dialog">
+      <div id="search-container"></div>
+    </div>
+  </div>
+  <script is:inline>
+    (function() {
+      var overlay = document.getElementById('search-overlay');
+      var loaded = false;
+
+      function openSearch() {
+        overlay.classList.add('search-overlay--open');
+        document.body.style.overflow = 'hidden';
+        if (!loaded) {
+          loaded = true;
+          var container = document.getElementById('search-container');
+          container.innerHTML = '<input type="text" id="pf-input" class="pf-input" placeholder="Search cocktails..." autocomplete="off" /><div id="pf-results" class="pf-results"></div>';
+          var pfInput = document.getElementById('pf-input');
+          var pfResults = document.getElementById('pf-results');
+          var pagefind;
+          var debounce;
+
+          import('/pagefind/pagefind.js').then(function(pf) {
+            pagefind = pf;
+            pagefind.init();
+            pfInput.focus();
+          });
+
+          function titleScore(title, query) {
+            var t = title.toLowerCase();
+            var q = query.toLowerCase();
+            if (t === q) return 0;
+            if (t.startsWith(q + ' ') || t.startsWith(q + ':')) return 1;
+            if (t.endsWith(' ' + q)) return 2;
+            if (t.includes(q)) return 3;
+            return 4;
+          }
+
+          pfInput.addEventListener('input', function() {
+            clearTimeout(debounce);
+            var q = pfInput.value;
+            if (!q) { pfResults.innerHTML = ''; return; }
+            debounce = setTimeout(async function() {
+              var search = await pagefind.search(q);
+              var results = await Promise.all(search.results.slice(0, 20).map(function(r) { return r.data(); }));
+              results.sort(function(a, b) {
+                return titleScore(a.meta.title || '', q) - titleScore(b.meta.title || '', q);
+              });
+              pfResults.innerHTML = results.slice(0, 15).map(function(r) {
+                return '<a href="' + r.url + '" class="pf-result">' +
+                  '<span class="pf-result-title">' + (r.meta.title || 'Untitled') + '</span>' +
+                  '<span class="pf-result-excerpt">' + (r.meta.excerpt || '') + '</span>' +
+                  '</a>';
+              }).join('') || '<p class="pf-empty">No results found.</p>';
+            }, 200);
+          });
+
+          pfInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeSearch(); }
+          });
+        } else {
+          var pfInput = document.getElementById('pf-input');
+          if (pfInput) { pfInput.focus(); pfInput.select(); }
+        }
+      }
+
+      function closeSearch() {
+        overlay.classList.remove('search-overlay--open');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (!overlay.classList.contains('search-overlay--open')) openSearch();
+          else closeSearch();
+        }
+        if (e.key === 'Escape' && overlay.classList.contains('search-overlay--open')) {
+          closeSearch();
+        }
+      });
+
+      overlay.querySelector('.search-backdrop').addEventListener('click', closeSearch);
+    })();
+  </script>
   <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="site-header" id="site-header">
     <div class="container">
@@ -370,5 +456,109 @@ const hasHeaderActions = Astro.slots.has('headerActions');
       font-size: 0.98rem;
       max-width: 18rem;
     }
+  }
+
+  .search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+  }
+
+  .search-overlay.search-overlay--open {
+    display: flex;
+  }
+
+  .search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .search-dialog {
+    position: relative;
+    width: 90%;
+    max-width: 640px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: rgba(254, 249, 240, 0.98);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+</style>
+
+<style is:global>
+  .pf-input {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: transparent;
+    color: var(--color-text);
+    outline: none;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .pf-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .pf-results {
+    max-height: 55vh;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+  }
+
+  .pf-result {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: background 0.15s;
+  }
+
+  .pf-result:hover {
+    background: rgba(224, 94, 58, 0.06);
+  }
+
+  .pf-result-title {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .pf-result:hover .pf-result-title {
+    color: var(--color-accent);
+  }
+
+  .pf-result-excerpt {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .pf-result-excerpt mark {
+    background: rgba(224, 94, 58, 0.15);
+    color: var(--color-text);
+    padding: 0.05em 0.15em;
+    border-radius: 3px;
+  }
+
+  .pf-empty {
+    padding: 1.5rem 1.25rem;
+    color: var(--color-text-muted);
+    text-align: center;
   }
 </style>

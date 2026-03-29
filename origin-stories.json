@@ -680,9 +680,6 @@
   "garibaldi": {
     "story": "The Garibaldi cocktail is believed to have originated in Italy and is named after the Italian nationalist Giuseppe Garibaldi. It gained popularity in the 20th century, particularly for its vibrant color and refreshing taste."
   },
-  "sbagliato": {
-    "story": "The Sbagliato, meaning 'mistaken' in Italian, was reportedly created in the 1970s when a bartender accidentally used sparkling wine instead of gin in a Negroni. This happy accident has since become a beloved variation."
-  },
   "carajillo": {
     "story": "The Carajillo has roots in Spain and Mexico, traditionally combining coffee with a spirit, often brandy or rum. Its popularity grew in the 20th century, especially as a way to enjoy coffee with a kick."
   },
@@ -1498,5 +1495,8 @@
   },
   "hemingway-gin-and-tonic": {
     "story": "The Hemingway Gin & Tonic is believed to have been inspired by the famed author Ernest Hemingway, who enjoyed gin-based cocktails during his time in Cuba. This variation reflects a blend of classic highball elements with a twist of grapefruit, embodying Hemingway's adventurous spirit."
+  },
+  "breakfast-martini": {
+    "story": "The Breakfast Martini was created by Salvatore Calabrese at the Library Bar in the Lanesborough Hotel, London, in the late 1990s. Inspired by his morning toast with marmalade, Calabrese combined the preserve with gin, Cointreau, and lemon juice to create a cocktail that captures the bright, bittersweet flavors of a British breakfast in a glass."
   }
 }

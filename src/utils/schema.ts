@@ -1,4 +1,5 @@
 import type { Cocktail, Ingredient } from '../types';
+import { estimateCalories } from './calories';
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -229,11 +230,20 @@ export function buildRecipeSchema(
       description,
       inLanguage: SITE_LANGUAGE,
       recipeCategory: 'Drink',
+      recipeCuisine: 'International',
       recipeYield: '1 cocktail',
+      prepTime: `PT${Math.max(3, cocktail.preparation.length)}M`,
+      cookTime: 'PT0M',
+      nutrition: {
+        '@type': 'NutritionInformation',
+        calories: `${estimateCalories(cocktail.ingredients)} calories`,
+      },
       recipeIngredient: cocktail.ingredients.map(formatIngredientText),
-      recipeInstructions: cocktail.preparation.map((step) => ({
+      recipeInstructions: cocktail.preparation.map((step, index) => ({
         '@type': 'HowToStep' as const,
+        name: step.split(/[\s,.(]/)[0].replace(/\.$/, ''),
         text: step,
+        url: `${pageUrl}#step${index + 1}`,
       })),
       keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
       author: {

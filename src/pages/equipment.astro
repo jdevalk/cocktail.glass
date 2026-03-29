@@ -1,0 +1,204 @@
+---
+import Base from '../layouts/Base.astro';
+
+const equipment = [
+  {
+    name: 'Cocktail Shaker',
+    slug: 'cocktail-shaker',
+    image: '/images/equipment/cocktail-shaker.png',
+    description: 'The most essential bar tool. A shaker combines ingredients with ice to chill and dilute them quickly. The two main types are the Boston shaker (two tins) and the cobbler shaker (tin with built-in strainer and cap). Shake vigorously for 10–15 seconds until the outside frosts over.',
+    usedFor: 'Any recipe that says "shake with ice" — sours, margaritas, daiquiris, and most cocktails with citrus or egg white.',
+  },
+  {
+    name: 'Jigger',
+    slug: 'jigger',
+    image: '/images/equipment/jigger.png',
+    description: 'A double-sided measuring tool, typically with a 30ml cup on one side and 15ml on the other (or 45ml/30ml). Precise measurement is the difference between a balanced cocktail and a sloppy one. Japanese-style jiggers with internal markings are the most versatile.',
+    usedFor: 'Every cocktail. Consistent pours make consistent drinks.',
+  },
+  {
+    name: 'Strainer',
+    slug: 'strainer',
+    image: '/images/equipment/strainer.png',
+    description: 'Separates the liquid from ice and solids when pouring into the glass. A Hawthorne strainer (with a spring coil) fits over a shaker tin, while a julep strainer sits inside a mixing glass. For extra-smooth cocktails, double strain through a fine mesh sieve.',
+    usedFor: 'Any shaken or stirred cocktail that needs to be poured without ice or muddled ingredients.',
+  },
+  {
+    name: 'Mixing Glass',
+    slug: 'mixing-glass',
+    image: '/images/equipment/mixing-glass.png',
+    description: 'A heavy glass vessel used for stirring cocktails with ice. Stirring (rather than shaking) keeps drinks clear and silky — essential for spirit-forward cocktails. A thick-walled mixing glass stays cold longer and looks great on the bar.',
+    usedFor: 'Stirred cocktails like Negronis, Manhattans, Martinis, and Old Fashioneds.',
+  },
+  {
+    name: 'Bar Spoon',
+    slug: 'bar-spoon',
+    image: '/images/equipment/bar-spoon.png',
+    description: 'A long-handled spoon with a twisted shaft, used for stirring cocktails in a mixing glass. The spiral handle lets you spin it smoothly between your fingers. The back of the spoon is also used for floating liquids on top of a drink.',
+    usedFor: 'Stirring cocktails, layering drinks, and measuring small amounts (1 barspoon ≈ 5ml).',
+  },
+  {
+    name: 'Muddler',
+    slug: 'muddler',
+    image: '/images/equipment/muddler.png',
+    description: 'A pestle-like tool for pressing fruits, herbs, and sugar to release their juices and oils. Use gentle pressure for herbs like mint (you want the oils, not bitter shredded leaves) and firmer pressure for fruits and sugar cubes.',
+    usedFor: 'Mojitos, Caipirinhas, Old Fashioneds, Whiskey Smashes, and any recipe that calls for muddling.',
+  },
+  {
+    name: 'Citrus Juicer',
+    slug: 'citrus-juicer',
+    image: '/images/equipment/citrus-juicer.png',
+    description: 'Fresh citrus juice is non-negotiable for good cocktails — bottled juice tastes flat and stale. A hand press (Mexican elbow style) is fast and efficient. Always juice fresh, ideally the same day you make your drinks.',
+    usedFor: 'Any cocktail calling for lemon juice, lime juice, grapefruit juice, or orange juice.',
+  },
+];
+---
+<Base
+  title="Bar Equipment"
+  description="Essential bar tools for making cocktails at home. Learn what each tool does and when to use it."
+>
+  <div class="container">
+    <div class="page-header">
+      <h1>Bar Equipment</h1>
+      <p class="page-intro">The essential tools you need to make great cocktails at home. You don't need everything at once — start with a shaker, jigger, and strainer, and build from there.</p>
+    </div>
+
+    <div class="equipment-grid">
+      {equipment.map(item => (
+        <article class="equipment-card" id={item.slug}>
+          <div class="equipment-image-frame">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="equipment-image"
+              width="280"
+              height="280"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="equipment-content">
+            <h2>{item.name}</h2>
+            <p class="equipment-desc">{item.description}</p>
+            <p class="equipment-used"><strong>Used for:</strong> {item.usedFor}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-header {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .page-intro {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .equipment-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .equipment-card {
+    display: flex;
+    gap: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--glass-shadow);
+    align-items: center;
+  }
+
+  .equipment-image-frame {
+    flex: 0 0 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .equipment-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+  }
+
+  .equipment-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .equipment-card {
+    scroll-margin-top: 5rem;
+  }
+
+  .equipment-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  .equipment-desc {
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .equipment-used {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .equipment-used strong {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .equipment-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .equipment-image-frame {
+      flex: none;
+    }
+
+    .equipment-image {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>

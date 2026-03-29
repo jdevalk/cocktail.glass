@@ -21,7 +21,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wheel, salt rim",
+        "name": "Lime wheel",
         "amount": "",
         "unit": "garnish"
       }
@@ -31,7 +31,7 @@
       "Rim the coupe glass with salt.",
       "Shake all ingredients with ice.",
       "Strain into a chilled coupe glass.",
-      "Garnish with lime wheel, salt rim."
+      "Garnish with lime wheel."
     ]
   },
   {
@@ -578,7 +578,7 @@
         "unit": "pinch"
       },
       {
-        "name": "Grapefruit wedge, salt rim",
+        "name": "Grapefruit wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -589,7 +589,7 @@
       "Build in a highball glass over ice.",
       "Add tequila and lime juice.",
       "Top with grapefruit soda.",
-      "Garnish with grapefruit wedge, salt rim."
+      "Garnish with grapefruit wedge."
     ]
   },
   {
@@ -614,7 +614,7 @@
         "unit": "ml"
       },
       {
-        "name": "Sugar rim, orange peel",
+        "name": "orange peel",
         "amount": "",
         "unit": "garnish"
       }
@@ -624,7 +624,7 @@
       "Rim the coupe glass with sugar.",
       "Shake all ingredients with ice.",
       "Strain into a chilled coupe glass.",
-      "Garnish with sugar rim, orange peel."
+      "Garnish with orange peel."
     ]
   },
   {
@@ -2636,18 +2636,12 @@
         "name": "Grapefruit juice",
         "amount": "120",
         "unit": "ml"
-      },
-      {
-        "name": "Salt rim",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "Salt rim",
     "preparation": [
       "Rim the glass with salt.",
-      "Build in a highball glass over ice and stir.",
-      "Garnish with salt rim."
+      "Build in a highball glass over ice and stir."
     ]
   },
   {
@@ -4041,7 +4035,7 @@
         "unit": "dash"
       },
       {
-        "name": "Sugar rim, lemon spiral",
+        "name": "lemon spiral",
         "amount": "",
         "unit": "garnish"
       }
@@ -4051,7 +4045,7 @@
       "Rim the coupe with sugar.",
       "Shake all ingredients with ice.",
       "Strain into a coupe lined with a spiral of lemon peel.",
-      "Garnish with sugar rim, lemon spiral."
+      "Garnish with lemon spiral."
     ]
   },
   {
@@ -4510,19 +4504,13 @@
         "name": "Sugar syrup",
         "amount": "10",
         "unit": "ml"
-      },
-      {
-        "name": "Sugar rim",
-        "amount": "",
-        "unit": "garnish"
       }
     ],
     "garnish": "Sugar rim",
     "preparation": [
       "Rim the shot with sugar.",
       "Shake all ingredients with ice.",
-      "Strain into a shot.",
-      "Garnish with sugar rim."
+      "Strain into a shot."
     ]
   },
   {
@@ -5187,7 +5175,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wheel, salt rim",
+        "name": "Lime wheel",
         "amount": "",
         "unit": "garnish"
       }
@@ -5197,7 +5185,7 @@
       "Rim the margarita with salt.",
       "Blend all ingredients with a cup of ice until smooth.",
       "Pour into a margarita.",
-      "Garnish with lime wheel, salt rim."
+      "Garnish with lime wheel."
     ]
   },
   {
@@ -5463,7 +5451,7 @@
         "unit": "ml"
       },
       {
-        "name": "Grapefruit wedge, salt rim",
+        "name": "Grapefruit wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -5474,7 +5462,7 @@
       "Shake tequila, juices and syrup with ice.",
       "Strain into a highball over ice.",
       "Top with soda.",
-      "Garnish with grapefruit wedge, salt rim."
+      "Garnish with grapefruit wedge."
     ]
   },
   {
@@ -5689,7 +5677,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wheel, salt rim",
+        "name": "Lime wheel",
         "amount": "",
         "unit": "garnish"
       }
@@ -5699,7 +5687,7 @@
       "Rim the rocks glass over ice with salt.",
       "Shake all ingredients with ice.",
       "Strain into a rocks glass over ice.",
-      "Garnish with lime wheel, salt rim."
+      "Garnish with lime wheel."
     ]
   },
   {
@@ -6000,7 +5988,7 @@
         "unit": "ml"
       },
       {
-        "name": "Cinnamon sugar rim, orange peel",
+        "name": "Cinnamon, orange peel",
         "amount": "",
         "unit": "garnish"
       }
@@ -6010,7 +5998,7 @@
       "Rim the coupe with cinnamon sugar.",
       "Shake all ingredients with ice.",
       "Strain into a coupe.",
-      "Garnish with cinnamon sugar rim, orange peel."
+      "Garnish with orange peel."
     ]
   },
   {
@@ -8150,7 +8138,7 @@
         "unit": "slice"
       },
       {
-        "name": "Jalapeño slice, salt rim",
+        "name": "Jalapeño slice",
         "amount": "",
         "unit": "garnish"
       }
@@ -8162,7 +8150,7 @@
       "Add remaining ingredients.",
       "Shake with ice.",
       "Strain into a rocks over ice.",
-      "Garnish with jalapeño slice, salt rim."
+      "Garnish with jalapeño slice."
     ]
   },
   {
@@ -8274,7 +8262,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wedge, salt rim",
+        "name": "Lime wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -8285,7 +8273,7 @@
       "Build in a highball over ice.",
       "Add tequila and lime.",
       "Top with cola.",
-      "Garnish with lime wedge, salt rim."
+      "Garnish with lime wedge."
     ]
   },
   {
@@ -8360,7 +8348,7 @@
         "unit": "pinch"
       },
       {
-        "name": "Lime wheel, salt rim",
+        "name": "Lime wheel",
         "amount": "",
         "unit": "garnish"
       }
@@ -8371,7 +8359,7 @@
       "Shake juices and tequila with ice.",
       "Strain into a highball over ice.",
       "Top with grapefruit soda.",
-      "Garnish with lime wheel, salt rim."
+      "Garnish with lime wheel."
     ]
   },
   {
@@ -8416,7 +8404,7 @@
         "unit": "pinch"
       },
       {
-        "name": "Lime wedge, chili salt rim",
+        "name": "Lime wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -8518,7 +8506,7 @@
         "unit": "pinch"
       },
       {
-        "name": "Celery stalk, lime wedge, celery salt rim",
+        "name": "Celery stalk, lime wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -8527,7 +8515,7 @@
     "preparation": [
       "Rim the highball with salt.",
       "Build all ingredients in a celery highball over ice and stir.",
-      "Garnish with celery stalk, lime wedge, celery salt rim."
+      "Garnish with celery stalk, lime wedge."
     ]
   },
   {
@@ -8620,7 +8608,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wedge, chili salt rim",
+        "name": "Lime wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -8629,7 +8617,7 @@
     "preparation": [
       "Rim the highball with salt.",
       "Build all ingredients in a chili highball over ice.",
-      "Garnish with lime wedge, chili salt rim."
+      "Garnish with lime wedge."
     ]
   },
   {
@@ -8752,41 +8740,6 @@
     "preparation": [
       "Pour Campari into a highball glass over ice.",
       "Top with fluffy (juiced and aerated) orange juice.",
-      "Garnish with orange slice."
-    ]
-  },
-  {
-    "name": "Sbagliato",
-    "slug": "sbagliato",
-    "category": "Spritz",
-    "glass": "Tumbler",
-    "ingredients": [
-      {
-        "name": "Campari",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Sweet vermouth",
-        "amount": "30",
-        "unit": "ml"
-      },
-      {
-        "name": "Prosecco",
-        "amount": "60",
-        "unit": "ml"
-      },
-      {
-        "name": "Orange slice",
-        "amount": "",
-        "unit": "garnish"
-      }
-    ],
-    "garnish": "Orange slice",
-    "preparation": [
-      "Build Campari and vermouth over ice in a rocks glass.",
-      "Top with prosecco.",
-      "Stir gently.",
       "Garnish with orange slice."
     ]
   },
@@ -9332,19 +9285,19 @@
         "unit": "dash"
       },
       {
-        "name": "Mint bouquet, Angostura bitters",
+        "name": "Mint bouquet",
         "amount": "",
         "unit": "garnish"
       }
     ],
-    "garnish": "Mint bouquet, Angostura bitters",
+    "garnish": "Mint bouquet",
     "preparation": [
       "Muddle mint with syrup and lime in a Collins glass.",
       "Add rum.",
       "Fill with crushed ice and swizzle.",
       "Top with more ice.",
-      "Dash bitters.",
-      "Garnish with mint bouquet, angostura bitters."
+      "Dash Angostura bitters on top.",
+      "Garnish with mint bouquet."
     ]
   },
   {
@@ -10112,7 +10065,7 @@
         "unit": "ml"
       },
       {
-        "name": "Sugar rim, lemon twist",
+        "name": "lemon twist",
         "amount": "",
         "unit": "garnish"
       }
@@ -10122,7 +10075,7 @@
       "Rim the coupe with sugar.",
       "Shake all ingredients with ice.",
       "Strain into a coupe.",
-      "Garnish with sugar rim, lemon twist."
+      "Garnish with lemon twist."
     ]
   },
   {
@@ -13349,7 +13302,7 @@
         "unit": "ml"
       },
       {
-        "name": "Grapefruit wedge, salt rim",
+        "name": "Grapefruit wedge",
         "amount": "",
         "unit": "garnish"
       }
@@ -13360,7 +13313,7 @@
       "Shake mezcal, juices and syrup with ice.",
       "Strain into a highball over ice.",
       "Top with soda.",
-      "Garnish with grapefruit wedge, salt rim."
+      "Garnish with grapefruit wedge."
     ]
   },
   {
@@ -16037,7 +15990,7 @@
         "unit": "ml"
       },
       {
-        "name": "Lime wheel, smoked salt rim",
+        "name": "Lime wheel",
         "amount": "",
         "unit": "garnish"
       }
@@ -16047,7 +16000,7 @@
       "Rim the rocks with smoked salt.",
       "Shake all ingredients with ice.",
       "Strain into a rocks over ice.",
-      "Garnish with lime wheel, smoked salt rim."
+      "Garnish with lime wheel."
     ]
   },
   {
@@ -18782,6 +18735,47 @@
       "Add all ingredients.",
       "Stir gently.",
       "Garnish with grapefruit wedge."
+    ]
+  },
+  {
+    "name": "Breakfast Martini",
+    "slug": "breakfast-martini",
+    "category": "Modern Classic",
+    "glass": "Coupe",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "amount": "50",
+        "unit": "ml"
+      },
+      {
+        "name": "Cointreau",
+        "amount": "15",
+        "unit": "ml"
+      },
+      {
+        "name": "Lemon juice",
+        "amount": "15",
+        "unit": "ml"
+      },
+      {
+        "name": "Orange marmalade",
+        "amount": "1",
+        "unit": "barspoon"
+      },
+      {
+        "name": "Orange peel",
+        "amount": "",
+        "unit": "garnish"
+      }
+    ],
+    "garnish": "Orange peel",
+    "preparation": [
+      "Stir the marmalade with the lemon juice to dissolve.",
+      "Add gin and Cointreau.",
+      "Shake with ice.",
+      "Strain into a chilled coupe glass.",
+      "Garnish with orange peel."
     ]
   }
 ]

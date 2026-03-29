@@ -48,7 +48,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   <div slot="headerActions" class="header-actions-group">
     <a href="#cocktail-grid" class="header-action">Browse filters</a>
   </div>
-  <div class="container">
+  <div class="container" data-pagefind-ignore>
     <section class="hero">
       <img src="/emoji/cocktail-glass.svg" alt="" class="hero-icon" width="64" height="64" aria-hidden="true" />
       <h1>cocktail<span>.glass</span></h1>
