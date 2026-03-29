@@ -109,7 +109,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
           </div>
         </div>
 
-        <div class="filter-panel">
+        <div class="filter-panel" id="filter-panel">
           <div class="pill-group" data-panel="category" id="panel-category" role="tabpanel" aria-labelledby="tab-category">
             {categoryCounts.map(([cat, count]) => (
               <div class="pill pill--category" data-filter="category" data-value={cat} data-slug={toFilterSlug(cat)} data-state="none">
@@ -519,6 +519,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     updatePillVisibility();
 
     countEl.textContent = visibleCount + ' cocktail' + (visibleCount !== 1 ? 's' : '') + ' found';
+    gridEl.classList.toggle('grid--filtered', hasFilters);
     clearFiltersEl.hidden = !hasFilters;
     emptyEl.hidden = visibleCount > 0 || !hasFilters;
 
@@ -726,8 +727,16 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
     }
   }
 
+  var filterPanel = $('#filter-panel');
+
   for (const tab of tabs) {
     tab.addEventListener('click', function() {
+      var isMobile = window.matchMedia('(max-width: 560px)').matches;
+      if (isMobile && this.dataset.tab === activeTab && filterPanel.classList.contains('filter-panel--open')) {
+        filterPanel.classList.remove('filter-panel--open');
+        return;
+      }
+      filterPanel.classList.add('filter-panel--open');
       setActiveTab(this.dataset.tab, { focus: true });
       track('Filter Tab Selected', { tab: activeTab });
     });
@@ -885,7 +894,11 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   }
 
   .filter-panel {
-    min-height: 3rem;
+    min-height: 0;
+  }
+
+  #panel-name .ingredient-search {
+    margin-bottom: 0;
   }
 
   .filter-badge {
@@ -1080,6 +1093,20 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   .category-section {
     content-visibility: auto;
     contain-intrinsic-size: 1px 1200px;
+  }
+
+  .grid--filtered .section-header {
+    display: none;
+  }
+
+  .grid--filtered .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    .grid--filtered .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .result-count {
@@ -1294,9 +1321,87 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   }
 
   @media (max-width: 560px) {
+    .filters {
+      padding: 0.75rem 0.75rem;
+      margin-bottom: 1.5rem;
+      border-radius: 14px;
+    }
+
+    .filter-hint {
+      display: none;
+    }
+
+    .filter-tabs {
+      margin-bottom: 0.5rem;
+    }
+
+    .filter-tabs-left {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+
+    .filter-tab {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .filter-panel:not(.filter-panel--open) {
+      display: none;
+    }
+
+    .filter-panel:not(.filter-panel--open) + .filter-status {
+      display: none;
+    }
+
+    .filters:has(.filter-panel:not(.filter-panel--open)) .filter-tab--active {
+      color: var(--color-text-muted);
+      border-bottom-color: transparent;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+    }
+
+    .pill-count {
+      font-size: 0.65rem;
+    }
+
+    .pill-group {
+      gap: 0.3rem;
+    }
+
+    .ingredient-search {
+      font-size: 1rem;
+      padding: 0.4rem 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .show-more {
+      font-size: 0.8rem;
+    }
+
+    .filter-status {
+      padding-top: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
     .grid {
-      grid-template-columns: 1fr;
-      gap: 0.85rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+    }
+
+    .card-name {
+      font-size: 1rem;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+    }
+
+    .card-category {
+      font-size: 0.65rem;
     }
   }
 </style>

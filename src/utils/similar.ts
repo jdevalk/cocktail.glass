@@ -1,4 +1,5 @@
 import type { Cocktail } from '../types';
+import { getDistinctiveIngredient } from './distinctive';
 
 interface SimilarCocktail {
   slug: string;
@@ -26,6 +27,7 @@ function getIngredientSets(cocktails: Cocktail[]): Map<string, Set<string>> {
 export function findSimilar(cocktail: Cocktail, allCocktails: Cocktail[], count = 3): SimilarCocktail[] {
   const sets = getIngredientSets(allCocktails);
   const targetIngs = sets.get(cocktail.slug)!;
+  const distinctive = getDistinctiveIngredient(cocktail, allCocktails)?.toLowerCase();
 
   const scored: SimilarCocktail[] = [];
 
@@ -45,6 +47,9 @@ export function findSimilar(cocktail: Cocktail, allCocktails: Cocktail[], count 
     let bonus = 0;
     if (other.glass === cocktail.glass) bonus += 0.05;
     if (other.category === cocktail.category) bonus += 0.05;
+
+    // Strong bonus for sharing the distinctive ingredient
+    if (distinctive && otherIngs.has(distinctive)) bonus += 0.3;
 
     const score = jaccard + bonus;
     if (score > 0) {

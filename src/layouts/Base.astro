@@ -425,18 +425,9 @@ const hasHeaderActions = Astro.slots.has('headerActions');
       height: 1.25rem;
     }
 
-    .site-header-meta {
+    .site-header-meta,
+    .site-header-actions {
       display: none;
-    }
-
-    :global(.header-actions-group) {
-      gap: 0.45rem;
-    }
-
-    :global(.header-action) {
-      min-height: 2.1rem;
-      padding: 0.35rem 0.72rem;
-      font-size: 0.7rem;
     }
 
     .site-footer {

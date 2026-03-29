@@ -7,6 +7,7 @@ import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
 import { estimateCalories } from '../utils/calories';
 import { findSimilar } from '../utils/similar';
 import { linkifyCocktails } from '../utils/linkify';
+import { getDistinctiveIngredient } from '../utils/distinctive';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
 
@@ -65,9 +66,9 @@ const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUr
 const categoryHref = buildPrettyFilterHref('category', cocktail.category);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 const calories = estimateCalories(cocktail.ingredients);
-const similarCocktails = findSimilar(cocktail, cocktails as Cocktail[]);
+const similarCocktails = findSimilar(cocktail, cocktails as Cocktail[], 4);
 const linkedStory = originStory?.story ? linkifyCocktails(originStory.story, cocktails as Cocktail[], cocktail.slug) : '';
-const primaryIngredient = cocktail.ingredients[0]?.name;
+const primaryIngredient = getDistinctiveIngredient(cocktail, cocktails as Cocktail[]);
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
   : null;
@@ -461,8 +462,8 @@ const primaryIngredientHref = primaryIngredient
 
   .similar-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
   }
 
   .similar-card {
@@ -482,8 +483,8 @@ const primaryIngredientHref = primaryIngredient
   }
 
   .similar-image {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     object-fit: cover;
     border-radius: 14px;
     margin-bottom: 0.6rem;
@@ -518,8 +519,17 @@ const primaryIngredientHref = primaryIngredient
       font-size: 2.5rem;
     }
 
+    .similar-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.25rem;
+    }
+
+    .similar-card {
+      padding: 0.5rem;
+    }
+
     .browse-links {
-      gap: 0.5rem;
+      display: none;
     }
   }
 
