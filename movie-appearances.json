@@ -1,0 +1,419 @@
+{
+  "martini": [
+    { "movie": "Dr. No", "year": 1962, "note": "Sean Connery's James Bond first orders a vodka martini, \"shaken, not stirred.\"" },
+    { "movie": "Goldfinger", "year": 1964, "note": "Bond famously specifies his martini preferences while held captive." },
+    { "movie": "All About Eve", "year": 1950, "note": "Bette Davis holds court with a martini in the iconic party scenes." },
+    { "movie": "The Thin Man", "year": 1934, "note": "Nick and Nora Charles make martini drinking look effortlessly glamorous throughout." },
+    { "movie": "L.A. Confidential", "year": 1997, "note": "Martinis appear throughout as the detectives navigate 1950s Los Angeles." }
+  ],
+  "vodka-martini": [
+    { "movie": "Casino Royale", "year": 2006, "note": "Daniel Craig's Bond orders his signature drink with specific instructions." },
+    { "movie": "GoldenEye", "year": 1995, "note": "Pierce Brosnan's first Bond film features the classic \"shaken, not stirred\" line." },
+    { "movie": "Skyfall", "year": 2012, "note": "Bond is served a martini on Silva's island, noting it is \"perfect.\"" },
+    { "movie": "The Spy Who Loved Me", "year": 1977, "note": "Roger Moore's Bond orders his trademark vodka martini aboard the submarine." }
+  ],
+  "dirty-martini": [
+    { "movie": "No Time to Die", "year": 2021, "note": "Bond's final outing includes his signature martini, this time with olive brine." },
+    { "movie": "Swingers", "year": 1996, "note": "Vince Vaughn and Jon Favreau navigate LA's cocktail lounges, ordering dirty martinis." }
+  ],
+  "vesper": [
+    { "movie": "Casino Royale", "year": 2006, "note": "Bond invents the Vesper, naming it after Vesper Lynd, specifying Gordon's gin, vodka, and Kina Lillet." }
+  ],
+  "gibson": [
+    { "movie": "All About Eve", "year": 1950, "note": "The sophisticated Gibson appears among the classic cocktails served at Margo Channing's party." }
+  ],
+  "white-russian": [
+    { "movie": "The Big Lebowski", "year": 1998, "note": "The Dude drinks White Russians throughout the entire film, making it the cocktail's most famous cultural moment." },
+    { "movie": "Mr. & Mrs. Smith", "year": 2005, "note": "Brad Pitt's character orders a White Russian at a bar." }
+  ],
+  "black-russian": [
+    { "movie": "The Big Lebowski", "year": 1998, "note": "Before switching to White Russians, The Dude is seen with the simpler Black Russian." }
+  ],
+  "cosmopolitan": [
+    { "movie": "Sex and the City", "year": 2008, "note": "Carrie Bradshaw and friends drink Cosmos throughout, continuing the TV series tradition." },
+    { "movie": "Sex and the City 2", "year": 2010, "note": "The iconic foursome toast with Cosmopolitans in Abu Dhabi." },
+    { "movie": "Beautiful Girls", "year": 1996, "note": "The Cosmo features as the stylish drink of choice at the local bar." }
+  ],
+  "manhattan": [
+    { "movie": "Some Like It Hot", "year": 1959, "note": "Manhattans flow freely at the party on the train, made in a hot water bottle." },
+    { "movie": "Sweet Smell of Success", "year": 1957, "note": "Burt Lancaster's J.J. Hunsecker drinks Manhattans in the jazz clubs of New York." },
+    { "movie": "The Apartment", "year": 1960, "note": "Jack Lemmon's character prepares Manhattans in his borrowed apartment." },
+    { "movie": "Maid in Manhattan", "year": 2002, "note": "The cocktail's namesake city provides the backdrop for this romantic comedy." }
+  ],
+  "old-fashioned": [
+    { "movie": "It's a Wonderful Life", "year": 1946, "note": "George Bailey orders a series of Old Fashioneds at Martini's bar." },
+    { "movie": "Crazy, Stupid, Love", "year": 2011, "note": "Ryan Gosling's character teaches Steve Carell to order an Old Fashioned instead of a vodka cranberry." },
+    { "movie": "Blade Runner 2049", "year": 2017, "note": "Officer K drinks an Old Fashioned at a bar while investigating." },
+    { "movie": "The Big Short", "year": 2015, "note": "Wall Street power players sip Old Fashioneds while the financial world crumbles around them." },
+    { "movie": "The Accountant", "year": 2016, "note": "Ben Affleck's meticulous character orders a precise Old Fashioned." }
+  ],
+  "margarita": [
+    { "movie": "Cocktail", "year": 1988, "note": "Tom Cruise's bartender character makes and serves Margaritas in several scenes." },
+    { "movie": "Desperado", "year": 1995, "note": "Antonio Banderas drinks in a Mexican bar where Margaritas are prominently featured." },
+    { "movie": "Fun with Dick and Jane", "year": 2005, "note": "Jim Carrey and Téa Leoni's characters enjoy Margaritas during their suburban life." },
+    { "movie": "No Country for Old Men", "year": 2007, "note": "The Tex-Mex border setting features Margaritas in the bar scenes." }
+  ],
+  "daiquiri": [
+    { "movie": "Our Man in Havana", "year": 1959, "note": "Alec Guinness drinks Daiquiris in pre-revolution Havana, echoing Hemingway's famous habit." },
+    { "movie": "Miami Vice", "year": 2006, "note": "A Daiquiri is ordered at a Havana bar in Michael Mann's stylish crime thriller." }
+  ],
+  "frozen-daiquiri": [
+    { "movie": "Papa Hemingway in Cuba", "year": 2015, "note": "The film depicts Hemingway's love of the double-frozen Daiquiri at El Floridita bar in Havana." },
+    { "movie": "The Rum Diary", "year": 2011, "note": "Johnny Depp's journalist character drinks frozen Daiquiris in 1960s Puerto Rico." }
+  ],
+  "hemingway-daiquiri": [
+    { "movie": "Papa Hemingway in Cuba", "year": 2015, "note": "The film depicts Hemingway's love of the double-frozen Daiquiri at El Floridita bar." }
+  ],
+  "mojito": [
+    { "movie": "Die Another Day", "year": 2002, "note": "James Bond orders a Mojito in Havana, introducing the cocktail to a new generation." },
+    { "movie": "Miami Vice", "year": 2006, "note": "Colin Farrell's Crockett drinks Mojitos in the sultry Miami nightlife scenes." },
+    { "movie": "Our Man in Havana", "year": 1959, "note": "The Cuban classic appears alongside the Daiquiri in this Graham Greene adaptation." }
+  ],
+  "champagne-cocktail": [
+    { "movie": "Casablanca", "year": 1942, "note": "Champagne cocktails are served at Rick's Café Américain throughout the film." },
+    { "movie": "Notorious", "year": 1946, "note": "Champagne flows at the party where Ingrid Bergman's character gathers intelligence." },
+    { "movie": "The Great Gatsby", "year": 2013, "note": "Champagne cocktails are consumed at Gatsby's extravagant parties." },
+    { "movie": "Titanic", "year": 1997, "note": "First-class passengers enjoy champagne cocktails in the ship's dining rooms." }
+  ],
+  "gimlet": [
+    { "movie": "The Long Goodbye", "year": 1973, "note": "Elliott Gould's Philip Marlowe orders gimlets, echoing Chandler's novel: \"a real gimlet is half gin and half Rose's Lime Juice and nothing else.\"" },
+    { "movie": "The Big Sleep", "year": 1946, "note": "Humphrey Bogart's Marlowe drinks gimlets in this classic noir." }
+  ],
+  "singapore-sling": [
+    { "movie": "Fear and Loathing in Las Vegas", "year": 1998, "note": "Johnny Depp's Raoul Duke orders Singapore Slings in the hotel bar, calling it \"the only way to fly.\"" }
+  ],
+  "mai-tai": [
+    { "movie": "Blue Hawaii", "year": 1961, "note": "Elvis Presley sips Mai Tais in this tropical musical, helping popularize tiki culture." },
+    { "movie": "Forgetting Sarah Marshall", "year": 2008, "note": "Mai Tais flow freely at the Hawaiian resort where Jason Segel's character tries to move on." },
+    { "movie": "Office Space", "year": 1999, "note": "The characters discuss doing nothing and drinking Mai Tais as the ultimate fantasy." }
+  ],
+  "pina-colada": [
+    { "movie": "Cocktail", "year": 1988, "note": "Tom Cruise blends Piña Coladas in his flashy bartending routines." },
+    { "movie": "The Firm", "year": 1993, "note": "Tom Cruise's character enjoys Piña Coladas during his Cayman Islands trip." },
+    { "movie": "Forgetting Sarah Marshall", "year": 2008, "note": "The Hawaiian resort setting features Piña Coladas as the quintessential vacation drink." },
+    { "movie": "Meet the Parents", "year": 2000, "note": "Piña Coladas are served during the uncomfortable family gathering scenes." }
+  ],
+  "gin-and-tonic": [
+    { "movie": "The African Queen", "year": 1951, "note": "Katharine Hepburn's character disapproves of Humphrey Bogart's gin, though the spirit is central to the plot." },
+    { "movie": "Out of Africa", "year": 1985, "note": "Robert Redford and Meryl Streep share gin and tonics on the Kenyan savannah." },
+    { "movie": "The Best Exotic Marigold Hotel", "year": 2011, "note": "The British retirees carry on the colonial tradition of G&Ts in India." },
+    { "movie": "Brideshead Revisited", "year": 2008, "note": "Gin and tonics flow at the aristocratic country estate." }
+  ],
+  "mint-julep": [
+    { "movie": "The Great Gatsby", "year": 2013, "note": "Tom Buchanan serves Mint Juleps on a sweltering summer afternoon, a pivotal scene." },
+    { "movie": "The Great Gatsby", "year": 1974, "note": "Robert Redford's Gatsby features the same iconic Mint Julep scene from the novel." },
+    { "movie": "Tombstone", "year": 1993, "note": "Doc Holliday orders a Mint Julep, staying true to his Southern roots." },
+    { "movie": "Secretariat", "year": 2010, "note": "Mint Juleps are served trackside at the Kentucky Derby scenes." }
+  ],
+  "french-75": [
+    { "movie": "Casablanca", "year": 1942, "note": "French 75s are served at Rick's Café, ordered by the stylish clientele." },
+    { "movie": "A Good Year", "year": 2006, "note": "Russell Crowe's character enjoys French 75s in the south of France." }
+  ],
+  "screwdriver": [
+    { "movie": "Breakfast at Tiffany's", "year": 1961, "note": "Holly Golightly's party scenes feature Screwdrivers among the flowing cocktails." },
+    { "movie": "Schindler's List", "year": 1993, "note": "Oskar Schindler drinks Screwdrivers while entertaining Nazi officers." }
+  ],
+  "bloody-mary": [
+    { "movie": "The Hangover", "year": 2009, "note": "The classic morning-after remedy is discussed as the group pieces together their lost night." },
+    { "movie": "Bridget Jones's Diary", "year": 2001, "note": "Bridget reaches for Bloody Marys as her go-to hangover cure." },
+    { "movie": "Cocktail", "year": 1988, "note": "Tom Cruise's bartender whips up Bloody Marys during his training montage." },
+    { "movie": "The World's End", "year": 2013, "note": "The pub crawl crew encounters the cocktail during their epic drinking marathon." }
+  ],
+  "cuba-libre": [
+    { "movie": "Dirty Dancing: Havana Nights", "year": 2004, "note": "Cuba Libres are served throughout, set in 1958 pre-revolution Havana." },
+    { "movie": "The Godfather Part II", "year": 1974, "note": "Rum and Coke flows in the Havana scenes as Michael Corleone expands operations to Cuba." }
+  ],
+  "rum-and-coke": [
+    { "movie": "The Godfather Part II", "year": 1974, "note": "The simple rum and Coke is the drink of choice in the Havana nightlife scenes." },
+    { "movie": "Animal House", "year": 1978, "note": "The fraternity party staple features prominently in the toga party scenes." }
+  ],
+  "whiskey-sour": [
+    { "movie": "The Philadelphia Story", "year": 1940, "note": "Whiskey Sours are mixed and consumed during the memorable party scenes." },
+    { "movie": "In a Lonely Place", "year": 1950, "note": "Humphrey Bogart's screenwriter character drinks Whiskey Sours at his local bar." },
+    { "movie": "The Lost Weekend", "year": 1945, "note": "Ray Milland's alcoholic writer orders Whiskey Sours in Billy Wilder's harrowing drama." }
+  ],
+  "tequila-sunrise": [
+    { "movie": "Tequila Sunrise", "year": 1988, "note": "The cocktail is the namesake of this crime thriller starring Mel Gibson and Michelle Pfeiffer." }
+  ],
+  "sidecar": [
+    { "movie": "Ratatouille", "year": 2007, "note": "The Sidecar is featured as a classic Parisian cocktail in the animated film's bar scene." },
+    { "movie": "A Very Long Engagement", "year": 2004, "note": "The Sidecar appears in the post-WWI Parisian setting, reflecting its era of invention." }
+  ],
+  "negroni": [
+    { "movie": "The Talented Mr. Ripley", "year": 1999, "note": "Negronis are sipped in the Italian café scenes, fitting the film's Mediterranean setting." },
+    { "movie": "Crazy, Stupid, Love", "year": 2011, "note": "Ryan Gosling's suave character introduces proper cocktails, including the Negroni." },
+    { "movie": "To Rome with Love", "year": 2012, "note": "Woody Allen's Roman comedy features Negronis as part of the Italian aperitivo tradition." }
+  ],
+  "boulevardier": [
+    { "movie": "Midnight in Paris", "year": 2011, "note": "The 1920s Paris setting evokes the era when Erskine Gwynne, an American boulevardier, created this cocktail." }
+  ],
+  "grasshopper": [
+    { "movie": "Death Proof", "year": 2007, "note": "Quentin Tarantino features the retro Grasshopper in the bar scenes of this grindhouse thriller." }
+  ],
+  "long-island-iced-tea": [
+    { "movie": "The World's End", "year": 2013, "note": "Simon Pegg's character attempts an epic pub crawl where strong drinks like Long Islands feature." },
+    { "movie": "27 Dresses", "year": 2008, "note": "Katherine Heigl's character drinks Long Island Iced Teas at the bar." },
+    { "movie": "Coyote Ugly", "year": 2000, "note": "The rowdy bar scenes feature Long Island Iced Teas as a popular order." }
+  ],
+  "brandy-alexander": [
+    { "movie": "The Days of Wine and Roses", "year": 1962, "note": "Jack Lemmon introduces Lee Remick to drinking with a Brandy Alexander, starting her spiral." },
+    { "movie": "What's New Pussycat?", "year": 1965, "note": "Peter Sellers orders Brandy Alexanders in this comedy." }
+  ],
+  "irish-coffee": [
+    { "movie": "The Dead", "year": 1987, "note": "John Huston's adaptation of Joyce's story features Irish Coffee at the holiday dinner party." },
+    { "movie": "Waking Ned Devine", "year": 1998, "note": "Irish Coffee warms the characters in this charming Irish comedy." }
+  ],
+  "stinger": [
+    { "movie": "The Sting", "year": 1973, "note": "While not the film's namesake, Stingers are consumed in the elegant 1930s setting." },
+    { "movie": "High Society", "year": 1956, "note": "Bing Crosby and Grace Kelly's characters enjoy Stingers at the lavish Newport party." }
+  ],
+  "rob-roy": [
+    { "movie": "Rob Roy", "year": 1995, "note": "While the film is about the Scottish folk hero, the cocktail named after him gains renewed attention." }
+  ],
+  "bellini": [
+    { "movie": "The Tourist", "year": 2010, "note": "Johnny Depp and Angelina Jolie drink Bellinis at Harry's Bar in Venice, where the cocktail was invented." },
+    { "movie": "The Italian Job", "year": 2003, "note": "The Venice setting evokes the Bellini's birthplace at Harry's Bar." }
+  ],
+  "peach-bellini": [
+    { "movie": "The Tourist", "year": 2010, "note": "The original Peach Bellini is synonymous with Harry's Bar in Venice, the film's setting." }
+  ],
+  "rusty-nail": [
+    { "movie": "The Ipcress File", "year": 1965, "note": "Michael Caine's Harry Palmer drinks Rusty Nails in this British spy thriller." }
+  ],
+  "sazerac": [
+    { "movie": "Live and Let Die", "year": 1973, "note": "The New Orleans setting features the city's signature cocktail in the bar scenes." },
+    { "movie": "The Curious Case of Benjamin Button", "year": 2008, "note": "Sazeracs appear in the New Orleans-set story spanning decades." },
+    { "movie": "12 Years a Slave", "year": 2013, "note": "The antebellum Louisiana setting features the cocktail born in New Orleans." }
+  ],
+  "tom-collins": [
+    { "movie": "The Thin Man", "year": 1934, "note": "William Powell's Nick Charles orders Tom Collins alongside his many other cocktails." }
+  ],
+  "jack-and-coke": [
+    { "movie": "Superbad", "year": 2007, "note": "The high schoolers aspire to drink Jack and Coke at the party." },
+    { "movie": "Walk the Line", "year": 2005, "note": "Joaquin Phoenix's Johnny Cash is frequently seen with whiskey and Coke." }
+  ],
+  "sex-on-the-beach": [
+    { "movie": "Top Gun", "year": 1986, "note": "The beach-bar cocktail culture of the 1980s is on full display in this Tom Cruise classic." },
+    { "movie": "Coyote Ugly", "year": 2000, "note": "The party cocktail is among the drinks served at the raucous bar." }
+  ],
+  "hurricane": [
+    { "movie": "The Pelican Brief", "year": 1993, "note": "New Orleans' signature Hurricane cocktail appears in the Bourbon Street scenes." },
+    { "movie": "A Streetcar Named Desire", "year": 1951, "note": "The French Quarter setting evokes the cocktail culture of New Orleans." }
+  ],
+  "death-in-the-afternoon": [
+    { "movie": "Midnight in Paris", "year": 2011, "note": "Owen Wilson's character meets Hemingway in 1920s Paris, where the writer's famous absinthe-champagne creation would have been born." }
+  ],
+  "absinthe-frappe": [
+    { "movie": "Moulin Rouge!", "year": 2001, "note": "Absinthe features prominently with the Green Fairy sequence in Baz Luhrmann's musical." },
+    { "movie": "From Hell", "year": 2001, "note": "Johnny Depp's Inspector Abberline is an absinthe drinker in this Victorian-era thriller." },
+    { "movie": "Dracula", "year": 1992, "note": "Absinthe is consumed in Coppola's Gothic horror, fitting the decadent Victorian era." },
+    { "movie": "Alfie", "year": 2004, "note": "Jude Law's character enjoys absinthe cocktails in his London nightlife adventures." }
+  ],
+  "americano": [
+    { "movie": "Dr. No", "year": 1962, "note": "In Ian Fleming's first Bond novel, 007 drinks an Americano, not a martini." }
+  ],
+  "harvey-wallbanger": [
+    { "movie": "Shampoo", "year": 1975, "note": "The quintessential 1970s cocktail appears in Warren Beatty's satirical comedy of the era." }
+  ],
+  "kir-royale": [
+    { "movie": "Absolutely Fabulous: The Movie", "year": 2016, "note": "Edina and Patsy drink Kir Royales as part of their champagne-fueled lifestyle." },
+    { "movie": "Gosford Park", "year": 2001, "note": "Kir Royales are served at the aristocratic English country house gathering." }
+  ],
+  "aperol-spritz": [
+    { "movie": "Under the Tuscan Sun", "year": 2003, "note": "Diane Lane's character embraces Italian life, with Aperol Spritzes as part of the aperitivo culture." },
+    { "movie": "To Rome with Love", "year": 2012, "note": "The Italian aperitivo tradition, including Spritzes, features in Woody Allen's Roman comedy." }
+  ],
+  "godfather": [
+    { "movie": "The Godfather", "year": 1972, "note": "While the cocktail is named after the film, Scotch and amaretto are consumed in the iconic saga." }
+  ],
+  "godmother": [
+    { "movie": "The Godfather Part III", "year": 1990, "note": "The vodka-amaretto variation of the Godfather cocktail echoes the saga's continuation." }
+  ],
+  "espresso-martini": [
+    { "movie": "Absolutely Fabulous: The Movie", "year": 2016, "note": "The Espresso Martini makes appearances as a trendy cocktail choice." }
+  ],
+  "zombie": [
+    { "movie": "Shaun of the Dead", "year": 2004, "note": "While the film is about actual zombies, the characters end up at a pub where strong cocktails flow." }
+  ],
+  "eggnog": [
+    { "movie": "National Lampoon's Christmas Vacation", "year": 1989, "note": "Chevy Chase's Clark Griswold drinks eggnog from a moose-shaped glass in the classic holiday comedy." },
+    { "movie": "The Holiday", "year": 2006, "note": "Eggnog appears during the Christmas celebrations in this romantic comedy." },
+    { "movie": "Elf", "year": 2003, "note": "Will Ferrell's Buddy pours eggnog with his spaghetti breakfast in a memorable scene." }
+  ],
+  "hot-toddy": [
+    { "movie": "Bridget Jones's Diary", "year": 2001, "note": "The warming Hot Toddy is among the comfort drinks consumed during Bridget's winter misadventures." },
+    { "movie": "In Bruges", "year": 2008, "note": "Colin Farrell and Brendan Gleeson warm up with hot drinks in the wintry Belgian city." }
+  ],
+  "hot-buttered-rum": [
+    { "movie": "White Christmas", "year": 1954, "note": "Bing Crosby and Danny Kaye's characters enjoy warming cocktails at the Vermont lodge." }
+  ],
+  "mulled-wine": [
+    { "movie": "Love Actually", "year": 2003, "note": "Mulled wine is served at the school Christmas concert and holiday gatherings." },
+    { "movie": "The Holiday", "year": 2006, "note": "Kate Winslet's character embraces English winter with mulled wine." },
+    { "movie": "Harry Potter and the Half-Blood Prince", "year": 2009, "note": "Mulled mead is served at The Three Broomsticks, the wizarding take on mulled wine." }
+  ],
+  "moscow-mule": [
+    { "movie": "Iron Man 2", "year": 2010, "note": "Tony Stark's extravagant party lifestyle includes Moscow Mules in their signature copper mugs." }
+  ],
+  "dark-n-stormy": [
+    { "movie": "The Perfect Storm", "year": 2000, "note": "The rum-and-ginger cocktail's stormy name fits the film's tempestuous Atlantic setting." }
+  ],
+  "aviation": [
+    { "movie": "The Aviator", "year": 2004, "note": "Leonardo DiCaprio's Howard Hughes era evokes the golden age when the Aviation cocktail was created." }
+  ],
+  "pisco-sour": [
+    { "movie": "The Royal Tenenbaums", "year": 2001, "note": "The eclectic Tenenbaum family's cocktail selections include South American classics." }
+  ],
+  "caipirinha": [
+    { "movie": "City of God", "year": 2002, "note": "Brazil's national cocktail is part of the vibrant Rio de Janeiro backdrop." },
+    { "movie": "Fast Five", "year": 2011, "note": "The crew celebrates in Rio with Caipirinhas after their heist." }
+  ],
+  "paloma": [
+    { "movie": "Sicario", "year": 2015, "note": "The Mexican border setting features the Paloma as the country's most popular tequila cocktail." }
+  ],
+  "bees-knees": [
+    { "movie": "The Great Gatsby", "year": 2013, "note": "The cocktail's Prohibition-era origins perfectly match Gatsby's extravagant 1920s parties." },
+    { "movie": "Lawless", "year": 2012, "note": "Prohibition-era bootleggers serve honey-sweetened cocktails to mask bathtub gin." }
+  ],
+  "corpse-reviver-no-2": [
+    { "movie": "The Thin Man", "year": 1934, "note": "Nick Charles's hangover cures evoke the Corpse Reviver tradition of morning-after cocktails." }
+  ],
+  "gin-fizz": [
+    { "movie": "The Thin Man", "year": 1934, "note": "Nick and Nora Charles drink their way through Prohibition-era New York, with fizzes among their repertoire." },
+    { "movie": "Auntie Mame", "year": 1958, "note": "Rosalind Russell's flamboyant Mame serves gin fizzes at her legendary parties." }
+  ],
+  "ramos-gin-fizz": [
+    { "movie": "The Curious Case of Benjamin Button", "year": 2008, "note": "New Orleans' legendary frothy cocktail fits the film's century-spanning NOLA setting." }
+  ],
+  "blood-and-sand": [
+    { "movie": "Blood and Sand", "year": 1941, "note": "Tyrone Power stars in this bullfighting drama, the cocktail's namesake film." },
+    { "movie": "Blood and Sand", "year": 1922, "note": "Rudolph Valentino's silent film original inspired the cocktail's creation." }
+  ],
+  "between-the-sheets": [
+    { "movie": "Some Like It Hot", "year": 1959, "note": "The risqué cocktail name fits perfectly with the film's innuendo-laden humor." }
+  ],
+  "blue-lagoon": [
+    { "movie": "The Blue Lagoon", "year": 1980, "note": "While the film features a tropical island rather than the cocktail, the vivid blue drink became associated with its name." }
+  ],
+  "b-52": [
+    { "movie": "Cocktail", "year": 1988, "note": "The layered shooter appears during Tom Cruise's flamboyant bartending performances." }
+  ],
+  "kamikaze": [
+    { "movie": "Cocktail", "year": 1988, "note": "The sharp vodka shooter is among the drinks Tom Cruise's character masters." }
+  ],
+  "mudslide": [
+    { "movie": "The Big Lebowski", "year": 1998, "note": "The creamy, indulgent cocktail shares the spirit of The Dude's beloved White Russians." }
+  ],
+  "el-presidente": [
+    { "movie": "The Godfather Part II", "year": 1974, "note": "The Cuban classic fits the Havana scenes where Michael Corleone meets with the president." }
+  ],
+  "mary-pickford": [
+    { "movie": "The Artist", "year": 2011, "note": "The silent-film era setting evokes the Hollywood golden age when Mary Pickford ruled the screen and inspired the cocktail." }
+  ],
+  "white-lady": [
+    { "movie": "The Grand Budapest Hotel", "year": 2014, "note": "Wes Anderson's elegant 1930s European setting evokes the cocktail's Jazz Age origins." }
+  ],
+  "pink-lady": [
+    { "movie": "Grease", "year": 1978, "note": "While the film's Pink Ladies gang isn't named after the cocktail, the association became inseparable in popular culture." }
+  ],
+  "martinez": [
+    { "movie": "The Thin Man", "year": 1934, "note": "The Martinez, the martini's ancestor, fits the film's pre-war cocktail sophistication." }
+  ],
+  "french-connection": [
+    { "movie": "The French Connection", "year": 1971, "note": "While the film is about drug smuggling, the cognac-amaretto cocktail shares its name." }
+  ],
+  "scotch-and-soda": [
+    { "movie": "Lost in Translation", "year": 2003, "note": "Bill Murray's aging actor drinks Scotch in the lonely Tokyo hotel bars." },
+    { "movie": "North by Northwest", "year": 1959, "note": "Cary Grant is forced to drink bourbon on the rocks, but the Scotch highball is referenced throughout." }
+  ],
+  "bourbon-and-branch": [
+    { "movie": "Unforgiven", "year": 1992, "note": "Clint Eastwood's retired gunslinger returns to the whiskey-soaked saloon world of the Old West." }
+  ],
+  "whiskey-highball": [
+    { "movie": "Lost in Translation", "year": 2003, "note": "Bill Murray films a Suntory whisky commercial, making the Japanese highball a cultural touchpoint." }
+  ],
+  "mizuwari": [
+    { "movie": "Lost in Translation", "year": 2003, "note": "Bill Murray's Suntory whisky scenes in Tokyo popularized Japanese whisky drinking culture worldwide." }
+  ],
+  "appletini": [
+    { "movie": "Zoolander", "year": 2001, "note": "The bright green Appletini epitomizes the early-2000s cocktail culture satirized in this comedy." }
+  ],
+  "lemon-drop-martini": [
+    { "movie": "Legally Blonde", "year": 2001, "note": "Reese Witherspoon's Elle Woods embodies the sweet, stylish cocktail culture of the era." }
+  ],
+  "chocolate-martini": [
+    { "movie": "Bridget Jones: The Edge of Reason", "year": 2004, "note": "Bridget's indulgent cocktail choices include the chocolate martini." }
+  ],
+  "pimms-cup": [
+    { "movie": "Wimbledon", "year": 2004, "note": "Pimm's Cup is the official drink of the tennis tournament that gives the film its name." },
+    { "movie": "Bridget Jones's Diary", "year": 2001, "note": "The quintessential English summer drink appears at the garden party." }
+  ],
+  "spritz-veneziano": [
+    { "movie": "The Tourist", "year": 2010, "note": "The Venetian spritz is omnipresent in the film's Venice canal-side café scenes." }
+  ],
+  "garibaldi": [
+    { "movie": "The Talented Mr. Ripley", "year": 1999, "note": "The simple Campari-orange combination fits the Italian aperitivo scenes." }
+  ],
+  "shirley-temple": [
+    { "movie": "Airplane!", "year": 1980, "note": "The child passenger orders a Shirley Temple in the disaster spoof, played for laughs." },
+    { "movie": "The Little Princess", "year": 1939, "note": "Shirley Temple herself stars in the film that helped make her namesake mocktail famous." }
+  ],
+  "daisy-buchanan": [
+    { "movie": "The Great Gatsby", "year": 2013, "note": "Named after F. Scott Fitzgerald's character, brought to life by Carey Mulligan in Baz Luhrmann's adaptation." },
+    { "movie": "The Great Gatsby", "year": 1974, "note": "Mia Farrow's portrayal of Daisy in the Robert Redford version." }
+  ],
+  "jungle-juice": [
+    { "movie": "Animal House", "year": 1978, "note": "The notorious party punch is a staple of John Belushi's fraternity chaos." },
+    { "movie": "Superbad", "year": 2007, "note": "The house party features jungle juice as the go-to communal drink." }
+  ],
+  "shandy": [
+    { "movie": "Shaun of the Dead", "year": 2004, "note": "The Winchester pub scenes feature the kind of casual British drinking the shandy embodies." }
+  ],
+  "snowball": [
+    { "movie": "Bridget Jones's Diary", "year": 2001, "note": "The retro advocaat cocktail fits Bridget's charmingly old-fashioned British sensibilities." }
+  ],
+  "michelada": [
+    { "movie": "Y Tu Mamá También", "year": 2001, "note": "The Mexican beer cocktail appears in this road trip through Mexico." }
+  ],
+  "carajillo": [
+    { "movie": "Roma", "year": 2018, "note": "The coffee-liqueur cocktail is part of the Mexico City daily life depicted in Alfonso Cuarón's masterpiece." }
+  ],
+  "gluhwein": [
+    { "movie": "The Grand Budapest Hotel", "year": 2014, "note": "The Central European setting evokes the tradition of warming Glühwein at mountain resorts." }
+  ],
+  "fernet-and-cola": [
+    { "movie": "The Secret in Their Eyes", "year": 2009, "note": "Argentina's national drink appears in this Buenos Aires-set thriller." }
+  ],
+  "ti-punch": [
+    { "movie": "Dheepan", "year": 2015, "note": "The Martinican rum cocktail reflects the French Caribbean heritage explored in this Palme d'Or winner." }
+  ],
+  "planters-punch": [
+    { "movie": "Dr. No", "year": 1962, "note": "Bond drinks rum punch in Jamaica in his first cinematic adventure." },
+    { "movie": "The Rum Diary", "year": 2011, "note": "Johnny Depp's journalist in Puerto Rico encounters various Caribbean rum drinks." }
+  ],
+  "rum-punch": [
+    { "movie": "Jackie Brown", "year": 1997, "note": "Quentin Tarantino adapted the Elmore Leonard novel originally titled 'Rum Punch.'" },
+    { "movie": "Pirates of the Caribbean: The Curse of the Black Pearl", "year": 2003, "note": "Captain Jack Sparrow's love of rum makes punch the natural celebratory drink." }
+  ],
+  "corn-n-oil": [
+    { "movie": "The Rum Diary", "year": 2011, "note": "The Caribbean setting features traditional rum drinks including the Bajan classic." }
+  ],
+  "new-york-sour": [
+    { "movie": "The Age of Innocence", "year": 1993, "note": "Martin Scorsese's gilded-age New York setting evokes the era when this cocktail was born." }
+  ],
+  "vieux-carre": [
+    { "movie": "The Curious Case of Benjamin Button", "year": 2008, "note": "Named after New Orleans' French Quarter, the Vieux Carré fits the film's NOLA setting." }
+  ],
+  "ward-eight": [
+    { "movie": "The Departed", "year": 2006, "note": "The Boston-born cocktail fits Martin Scorsese's crime drama set in the same city." }
+  ],
+  "sloe-gin-fizz": [
+    { "movie": "The Philadelphia Story", "year": 1940, "note": "The fizzy cocktail appears among the drinks consumed at the high-society party." }
+  ],
+  "sherry-cobbler": [
+    { "movie": "Lincoln", "year": 2012, "note": "The Sherry Cobbler was the most popular American cocktail during the Civil War era depicted in the film." }
+  ],
+  "brandy-crusta": [
+    { "movie": "Django Unchained", "year": 2012, "note": "The pre-Civil War Southern setting evokes the era when the Crusta was created in New Orleans." }
+  ]
+}

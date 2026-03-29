@@ -10,6 +10,7 @@ import { linkifyCocktails } from '../utils/linkify';
 import { getDistinctiveIngredient } from '../utils/distinctive';
 import cocktails from '../../cocktails.json';
 import originStories from '../../origin-stories.json';
+import movieAppearances from '../../movie-appearances.json';
 
 export function getStaticPaths() {
   return (cocktails as Cocktail[]).map(cocktail => ({
@@ -85,6 +86,7 @@ const primaryIngredient = getDistinctiveIngredient(cocktail, cocktails as Cockta
 const primaryIngredientHref = primaryIngredient
   ? buildPrettyFilterHref('ingredient', primaryIngredient)
   : null;
+const movies = (movieAppearances as Record<string, { movie: string; year: number; note: string }[]>)[cocktail.slug] || [];
 const pageDescription = originStory?.story
   ? originStory.story.slice(0, 150) + (originStory.story.length > 150 ? '…' : '')
   : `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
@@ -100,6 +102,7 @@ const pageDescription = originStory?.story
     <a href="#recipe-step-1" class="header-action">Preparation</a>
     <a href={originStory?.story ? '#origin-story' : '#recipe-step-1'} class="header-action">Origin Story</a>
     <a href="#similar" class="header-action">Similar</a>
+    {movies.length > 0 && <a href="#movies" class="header-action">Seen in</a>}
   </div>
   <div class="container">
     <article class="cocktail-card" data-pagefind-body data-pagefind-meta={`description:${pageDescription}`}>
@@ -248,6 +251,20 @@ const pageDescription = originStory?.story
                 </a>
               ))}
             </div>
+          </section>
+        )}
+        {movies.length > 0 && (
+          <section class="movie-appearances" id="movies">
+            <h2>Seen in</h2>
+            <ul>
+              {movies.map(m => (
+                <li>
+                  <span class="movie-title">{m.movie}</span>
+                  <span class="movie-year">{m.year}</span>
+                  <p class="movie-note">{m.note}</p>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </div>
@@ -698,6 +715,45 @@ const pageDescription = originStory?.story
 
   .amount--garnish {
     color: var(--color-text-muted);
+  }
+
+  .movie-appearances {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 6rem;
+  }
+
+  .movie-appearances ul {
+    list-style: none;
+  }
+
+  .movie-appearances li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .movie-appearances li:last-child {
+    border-bottom: none;
+  }
+
+  .movie-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    font-style: italic;
+  }
+
+  .movie-year {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-left: 0.4rem;
+  }
+
+  .movie-note {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    line-height: 1.5;
   }
 
   .photo-upload-section {
