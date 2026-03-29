@@ -78,10 +78,11 @@ const primaryIngredientHref = primaryIngredient
   ogImage={`/og/${cocktail.slug}.jpg`}
   schema={recipeSchema}
 >
-  <span slot="headerMeta" class="header-summary">{cocktail.name}</span>
   <div slot="headerActions" class="header-actions-group">
+    <a href="#ingredients" class="header-action">Ingredients</a>
     <a href="#recipe-step-1" class="header-action">Preparation</a>
     <a href={originStory?.story ? '#origin-story' : '#recipe-step-1'} class="header-action">Origin Story</a>
+    <a href="#similar" class="header-action">Similar</a>
   </div>
   <div class="container">
     <article class="cocktail-card" data-pagefind-body>
@@ -119,7 +120,7 @@ const primaryIngredientHref = primaryIngredient
       </header>
 
       <div class="content">
-        <section class="ingredients">
+        <section class="ingredients" id="ingredients">
           <h2>Ingredients</h2>
           <ul>
             {cocktail.ingredients.map(ing => (
@@ -185,7 +186,7 @@ const primaryIngredientHref = primaryIngredient
           </section>
         )}
         {similarCocktails.length > 0 && (
-          <section class="similar">
+          <section class="similar" id="similar">
             <h2>Similar cocktails</h2>
             <div class="similar-grid">
               {similarCocktails.map(sim => (
@@ -333,6 +334,7 @@ const primaryIngredientHref = primaryIngredient
 
   .ingredients {
     margin-bottom: 2rem;
+    scroll-margin-top: 6rem;
   }
 
   .ingredients ul {
@@ -370,6 +372,7 @@ const primaryIngredientHref = primaryIngredient
 
   .preparation {
     margin-bottom: 2rem;
+    scroll-margin-top: 6rem;
   }
 
   .preparation ol {
@@ -421,6 +424,7 @@ const primaryIngredientHref = primaryIngredient
 
   .origin-story {
     margin-bottom: 2rem;
+    scroll-margin-top: 6rem;
   }
 
   .origin-story p {
@@ -452,6 +456,7 @@ const primaryIngredientHref = primaryIngredient
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 6rem;
   }
 
   .similar-grid {
