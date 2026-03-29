@@ -20,6 +20,15 @@ const SKIP = new Set([
 ]);
 
 export function getDistinctiveIngredient(cocktail: Cocktail, allCocktails: Cocktail[]): string | null {
+  const nameLower = cocktail.name.toLowerCase();
+
+  // If the cocktail name starts with an ingredient name, that's the distinctive one
+  for (const i of cocktail.ingredients) {
+    if (i.unit === 'garnish') continue;
+    if (nameLower.startsWith(i.name.toLowerCase())) return i.name;
+  }
+
+  // Otherwise fall back to the least common ingredient
   const freq = getFrequencyMap(allCocktails);
   let best: string | null = null;
   let bestScore = Infinity;
@@ -28,7 +37,6 @@ export function getDistinctiveIngredient(cocktail: Cocktail, allCocktails: Cockt
     if (i.unit === 'garnish') continue;
     if (i.unit === 'dash' || i.unit === 'drop' || i.unit === 'pinch') continue;
     if (SKIP.has(i.name.toLowerCase())) continue;
-    // Skip barspoon amounts — too small to be the defining ingredient
     if (i.unit === 'barspoon') continue;
     const count = freq.get(i.name) || 0;
     if (count < bestScore) {
