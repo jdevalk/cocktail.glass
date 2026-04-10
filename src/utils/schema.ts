@@ -49,7 +49,7 @@ function buildDescription(cocktail: Cocktail): string {
   return `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
 }
 
-function siteWidePieces(siteUrl: string) {
+export function siteWidePieces(siteUrl: string) {
   const ids = makeIds({ siteUrl });
   const logoUrl = new URL('/emoji/cocktail-glass.svg', siteUrl).toString();
   const homepageUrl = new URL('/', siteUrl).toString();
