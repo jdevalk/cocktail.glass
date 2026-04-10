@@ -101,14 +101,12 @@ export function siteWidePieces(siteUrl: string) {
   ];
 }
 
-export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
+export function buildHomepagePieces(siteUrl: string, cocktails: Cocktail[]) {
   const ids = makeIds({ siteUrl });
   const homepageUrl = new URL('/', siteUrl).toString();
   const ogImageUrl = new URL('/og/home.jpg', siteUrl).toString();
-  const description = `Browse ${cocktails.length} cocktail recipes with ingredients, glassware, and preparation methods.`;
 
-  return assembleGraph([
-    ...siteWidePieces(siteUrl),
+  return [
     buildImageObject({
       pageUrl: homepageUrl,
       url: ogImageUrl,
@@ -119,7 +117,7 @@ export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
     buildWebPage({
       url: homepageUrl,
       name: SITE_NAME,
-      description,
+      description: `Browse ${cocktails.length} cocktail recipes with ingredients, glassware, and preparation methods.`,
       isPartOf: { '@id': ids.website },
       primaryImage: { '@id': ids.primaryImage(homepageUrl) },
       inLanguage: SITE_LANGUAGE,
@@ -141,6 +139,13 @@ export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
         };
       }),
     }),
+  ];
+}
+
+export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
+  return assembleGraph([
+    ...siteWidePieces(siteUrl),
+    ...buildHomepagePieces(siteUrl, cocktails),
   ], { warnOnDanglingReferences: WARN_DANGLING });
 }
 

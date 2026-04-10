@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { assembleGraph } from '@jdevalk/seo-graph-core';
-import { buildRecipePieces, siteWidePieces } from '../../utils/schema';
+import { buildRecipePieces, buildHomepagePieces, siteWidePieces } from '../../utils/schema';
 import type { Cocktail } from '../../types';
 import cocktails from '../../../cocktails.json';
 
@@ -10,6 +10,7 @@ export const GET: APIRoute = ({ site }) => {
 
   const graph = assembleGraph([
     ...siteWidePieces(siteUrl),
+    ...buildHomepagePieces(siteUrl, allCocktails),
     ...allCocktails.flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail)),
   ]);
 
