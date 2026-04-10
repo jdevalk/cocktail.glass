@@ -1,9 +1,23 @@
-import { createSchemaMap } from '@jdevalk/astro-seo-graph';
-import { SITE_URL } from '../utils/schema';
+import type { APIRoute } from 'astro';
 
-export const GET = createSchemaMap({
-  siteUrl: SITE_URL,
-  entries: [
-    { path: '/schema/cocktails.json', lastModified: new Date() },
-  ],
-});
+export const GET: APIRoute = ({ site }) => {
+  const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://cocktail.glass';
+  const lastmod = new Date().toISOString().split('T')[0];
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url contentType="structuredData/schema.org">
+    <loc>${siteUrl}/schema/cocktails.json</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>`;
+
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'max-age=300',
+    },
+  });
+};
