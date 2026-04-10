@@ -44,6 +44,7 @@ const hasHeaderActions = Astro.slots.has('headerActions');
     graph={graph}
     extraLinks={[
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'schemamap', type: 'application/xml', href: '/schemamap.xml' },
     ]}
   />
   {preloadImage && <link rel="preload" href={preloadImage} as="image" type="image/webp" fetchpriority="high" />}
