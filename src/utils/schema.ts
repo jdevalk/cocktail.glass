@@ -129,15 +129,15 @@ export function buildHomepagePieces(siteUrl: string, cocktails: Cocktail[]) {
       name: 'Cocktail recipes',
       numberOfItems: cocktails.length,
       itemListOrder: 'https://schema.org/ItemListOrderAscending',
-      itemListElement: cocktails.map((cocktail, index) => {
-        const cocktailUrl = new URL(`/${cocktail.slug}/`, siteUrl).toString();
-        return {
-          '@type': 'ListItem',
-          position: index + 1,
-          url: cocktailUrl,
-          item: { '@id': `${cocktailUrl}#recipe` },
-        };
-      }),
+      itemListElement: cocktails.map((cocktail, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Recipe',
+          name: cocktail.name,
+          url: new URL(`/${cocktail.slug}/`, siteUrl).toString(),
+        },
+      })),
     }),
   ];
 }
