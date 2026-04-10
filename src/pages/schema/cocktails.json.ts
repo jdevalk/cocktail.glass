@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { buildRecipePieces } from '../../utils/schema';
+import { assembleGraph } from '@jdevalk/seo-graph-core';
+import { buildRecipePieces, siteWidePieces } from '../../utils/schema';
 import type { Cocktail } from '../../types';
 import cocktails from '../../../cocktails.json';
 
@@ -7,15 +8,12 @@ export const GET: APIRoute = ({ site }) => {
   const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://cocktail.glass';
   const allCocktails = cocktails as Cocktail[];
 
-  const entities = allCocktails
-    .flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail))
-    .filter((entity) => entity['@type'] === 'Recipe');
+  const graph = assembleGraph([
+    ...siteWidePieces(siteUrl),
+    ...allCocktails.flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail)),
+  ]);
 
-  const ndjson = entities
-    .map((entity) => JSON.stringify({ '@context': 'https://schema.org', ...entity }))
-    .join('\n');
-
-  return new Response(ndjson, {
+  return new Response(JSON.stringify(graph, null, 2), {
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'max-age=300',
