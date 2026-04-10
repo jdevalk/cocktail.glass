@@ -6,7 +6,7 @@ import { buildHomepageSchema } from '../utils/schema';
 import cocktails from '../../cocktails.json';
 
 const siteUrl = Astro.site?.toString() ?? 'https://cocktail.glass';
-const homepageSchema = buildHomepageSchema(siteUrl, cocktails as Cocktail[]);
+const homepageSchema = buildHomepageSchema(siteUrl, (cocktails as Cocktail[]).length);
 
 const allCocktails = (cocktails as Cocktail[]).map((c) => ({
   name: c.name,

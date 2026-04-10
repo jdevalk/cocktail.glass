@@ -101,11 +101,11 @@ export function siteWidePieces(siteUrl: string) {
   ];
 }
 
-export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
+export function buildHomepageSchema(siteUrl: string, cocktailCount: number) {
   const ids = makeIds({ siteUrl });
   const homepageUrl = new URL('/', siteUrl).toString();
   const ogImageUrl = new URL('/og/home.jpg', siteUrl).toString();
-  const description = 'Browse 500 cocktail recipes with ingredients, glassware, and preparation methods.';
+  const description = `Browse ${cocktailCount} cocktail recipes with ingredients, glassware, and preparation methods.`;
 
   return assembleGraph([
     ...siteWidePieces(siteUrl),
@@ -123,28 +123,7 @@ export function buildHomepageSchema(siteUrl: string, cocktails: Cocktail[]) {
       isPartOf: { '@id': ids.website },
       primaryImage: { '@id': ids.primaryImage(homepageUrl) },
       inLanguage: SITE_LANGUAGE,
-      mainEntity: { '@id': `${homepageUrl}#itemlist` },
     }, ids, 'CollectionPage'),
-    buildPiece({
-      '@type': 'ItemList',
-      '@id': `${homepageUrl}#itemlist`,
-      name: 'Cocktail recipes',
-      numberOfItems: cocktails.length,
-      itemListOrder: 'https://schema.org/ItemListOrderAscending',
-      itemListElement: cocktails.map((cocktail, index) => {
-        const cocktailUrl = new URL(`/${cocktail.slug}/`, siteUrl).toString();
-        return {
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@type': 'Recipe',
-            '@id': `${cocktailUrl}#recipe`,
-            name: cocktail.name,
-            url: cocktailUrl,
-          },
-        };
-      }),
-    }),
   ], { warnOnDanglingReferences: WARN_DANGLING });
 }
 
