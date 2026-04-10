@@ -9,8 +9,6 @@ export const GET: APIRoute = ({ site }) => {
   <url contentType="structuredData/schema.org">
     <loc>${siteUrl}/schema/cocktails.json</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>`;
 
