@@ -15,7 +15,7 @@ export const GET: APIRoute = ({ site }) => {
 
   return new Response(ndjson, {
     headers: {
-      'Content-Type': 'application/x-ndjson',
+      'Content-Type': 'application/json',
       'Cache-Control': 'max-age=300',
     },
   });
