@@ -47,7 +47,7 @@ const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingre
   title="Cocktail Glass"
   description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
   ogImage="/og/home.jpg"
-  schema={homepageSchema}
+  graph={homepageSchema}
   preloadImage={`/images/responsive/320/${categoryOrder.flatMap(cat => grouped.get(cat)!)[0].slug}.webp`}
 >
   <span slot="headerMeta" class="header-summary">500 cocktails to browse</span>

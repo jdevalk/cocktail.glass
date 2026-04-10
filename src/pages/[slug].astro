@@ -93,9 +93,10 @@ const pageDescription = originStory?.story
 ---
 <Base
   title={cocktail.name}
+  titleTemplate="%s ~ Cocktail Glass"
   description={pageDescription}
   ogImage={`/og/${cocktail.slug}.jpg`}
-  schema={recipeSchema}
+  graph={recipeSchema}
 >
   <div slot="headerActions" class="header-actions-group">
     <a href="#ingredients" class="header-action">Ingredients</a>

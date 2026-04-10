@@ -1,27 +1,28 @@
 ---
 import '../styles/global.css';
+import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 
 interface Props {
   title: string;
+  titleTemplate?: string;
   description?: string;
   ogImage?: string;
-  schema?: Record<string, unknown>;
+  graph?: Record<string, unknown>;
   preloadImage?: string;
 }
 
 const {
   title,
+  titleTemplate,
   description = 'Discover 500 cocktail recipes with ingredients, preparation methods, and more.',
   ogImage,
-  schema,
+  graph,
   preloadImage,
 } = Astro.props;
-const fullTitle = title === 'Cocktail Glass' ? title : `${title} ~ Cocktail Glass`;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const resolvedTitle = titleTemplate ? titleTemplate.replace('%s', title) : title;
 const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 const plausibleDomain = Astro.site ? new URL(Astro.site).hostname : undefined;
 const shouldLoadPlausible = import.meta.env.PROD && plausibleDomain;
-const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : undefined;
 const hasHeaderMeta = Astro.slots.has('headerMeta');
 const hasHeaderActions = Astro.slots.has('headerActions');
 ---
@@ -30,22 +31,21 @@ const hasHeaderActions = Astro.slots.has('headerActions');
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content={description} />
-  <title>{fullTitle}</title>
-  <link rel="canonical" href={canonicalUrl} />
-  <meta property="og:title" content={title} />
-  <meta property="og:site_name" content="Cocktail.glass" />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalUrl} />
-  {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
-  {ogImageUrl && <meta property="og:image:width" content="1200" />}
-  {ogImageUrl && <meta property="og:image:height" content="630" />}
-  <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <Seo
+    title={resolvedTitle}
+    description={description}
+    ogType="website"
+    ogImage={ogImageUrl}
+    ogImageAlt={title}
+    ogImageWidth={1200}
+    ogImageHeight={630}
+    siteName="Cocktail.glass"
+    twitter={{ card: ogImageUrl ? 'summary_large_image' : 'summary' }}
+    graph={graph}
+    extraLinks={[
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ]}
+  />
   {preloadImage && <link rel="preload" href={preloadImage} as="image" type="image/webp" fetchpriority="high" />}
   <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   {shouldLoadPlausible && (
@@ -104,7 +104,6 @@ const hasHeaderActions = Astro.slots.has('headerActions');
       <p class="footer-tagline">Browse 500 cocktail recipes by category, glass, and ingredient</p>
     </div>
   </footer>
-  {schemaJson && <script type="application/ld+json" set:html={schemaJson} />}
   <div id="search-overlay" class="search-overlay">
     <div class="search-backdrop"></div>
     <div class="search-dialog">

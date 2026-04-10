@@ -11,9 +11,11 @@
     "preview": "astro preview",
     "preview:pages": "npm run build && wrangler pages dev dist",
     "deploy:pages": "npm run build && wrangler pages deploy dist",
-    "generate:origins": "node scripts/generate-origin-stories.mjs"
+    "generate:origins": "node scripts/generate-origin-stories.mjs",
+    "images": "node scripts/image-manager.mjs & sleep 1 && open http://localhost:3457"
   },
   "dependencies": {
+    "@jdevalk/astro-seo-graph": "^0.4.0",
     "astro": "^6.1.1",
     "astro-pagefind": "^1.8.6",
     "gray-matter": "^4.0.3",
