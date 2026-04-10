@@ -7,7 +7,9 @@ export const GET: APIRoute = ({ site }) => {
   const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://cocktail.glass';
   const allCocktails = cocktails as Cocktail[];
 
-  const entities = allCocktails.flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail));
+  const entities = allCocktails
+    .flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail))
+    .filter((entity) => entity['@type'] === 'Recipe');
 
   const ndjson = entities
     .map((entity) => JSON.stringify({ '@context': 'https://schema.org', ...entity }))
