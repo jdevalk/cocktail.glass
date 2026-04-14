@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
+---
+<Base title="Page not found ~ Cocktail Glass" description="That cocktail isn't on the menu. Try a search or pick from the suggestion below.">
+  <div class="container" data-pagefind-ignore>
+    <section class="hero">
+      <img src="/emoji/cocktail-glass.svg" alt="" class="hero-icon" width="64" height="64" aria-hidden="true" />
+      <h1>404 — not found</h1>
+      <p class="subtitle">We couldn't find that page. Looking for a cocktail?</p>
+    </section>
+    <FuzzyRedirect sitemapUrl="/sitemap.xml" />
+    <p style="text-align:center;margin-top:2rem;"><a href="/">Back to the full list</a></p>
+  </div>
+</Base>

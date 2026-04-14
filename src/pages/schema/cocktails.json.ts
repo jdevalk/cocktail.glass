@@ -8,11 +8,14 @@ export const GET: APIRoute = ({ site }) => {
   const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://cocktail.glass';
   const allCocktails = cocktails as Cocktail[];
 
-  const graph = assembleGraph([
-    ...siteWidePieces(siteUrl),
-    ...buildHomepagePieces(siteUrl, allCocktails),
-    ...allCocktails.flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail)),
-  ]);
+  const graph = assembleGraph(
+    [
+      ...siteWidePieces(siteUrl),
+      ...buildHomepagePieces(siteUrl, allCocktails),
+      ...allCocktails.flatMap((cocktail) => buildRecipePieces(siteUrl, cocktail)),
+    ],
+    { warnOnDanglingReferences: true },
+  );
 
   return new Response(JSON.stringify(graph, null, 2), {
     headers: {

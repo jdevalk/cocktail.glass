@@ -1,0 +1,5 @@
+# Permanent redirects. One per line: /old /new 301
+# Add entries when renaming slugs so old URLs keep working.
+
+# Force 404 status on the SPA fallback (Cloudflare Pages otherwise serves 200).
+/* /404.html 404

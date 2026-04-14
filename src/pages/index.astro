@@ -44,7 +44,7 @@ const glassCounts = countBy(allCocktails.map((c) => c.glass));
 const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingredients)]));
 ---
 <Base
-  title="Cocktail Glass"
+  title="Cocktail Glass — 500 recipes by category, glass, and ingredient"
   description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
   ogImage="/og/home.jpg"
   graph={homepageSchema}

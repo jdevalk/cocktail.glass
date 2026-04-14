@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/generate-responsive-images.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/generate-responsive-images.mjs",
+    "prebuild": "node scripts/generate-responsive-images.mjs && node scripts/generate-og-images.mjs",
     "build": "astro build",
     "build:og": "node scripts/generate-og-images.mjs",
     "preview": "astro preview",
@@ -15,7 +15,7 @@
     "images": "node scripts/image-manager.mjs & sleep 1 && open http://localhost:3457"
   },
   "dependencies": {
-    "@jdevalk/astro-seo-graph": "^0.4.0",
+    "@jdevalk/astro-seo-graph": "^1.1.1",
     "astro": "^6.1.1",
     "astro-pagefind": "^1.8.6",
     "gray-matter": "^4.0.3",
