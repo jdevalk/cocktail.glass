@@ -36,7 +36,8 @@ export default defineConfig({
           href === '/favicon.svg' ||
           href === '/sitemap.xml' ||
           href === '/schemamap.xml' ||
-          href === '/robots.txt',
+          href === '/robots.txt' ||
+          href === '/llms.txt',
       },
       llmsTxt: {
         title: 'Cocktail Glass',

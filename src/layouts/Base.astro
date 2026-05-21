@@ -62,9 +62,9 @@ const hasHeaderActions = Astro.slots.has('headerActions');
   )}
 </head>
 <body>
-  <!-- Pointer for AI agents and crawlers; hidden from human visitors. -->
-  <p hidden>For AI agents and crawlers: a structured, machine-readable overview of this site — including its MCP server — is available at https://cocktail.glass/llms.txt</p>
   <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Clickable pointer for AI agents and crawlers; visually hidden from human visitors. -->
+  <a class="sr-only" href="/llms.txt" aria-hidden="true" tabindex="-1">Machine-readable overview of cocktail.glass for AI agents and crawlers (llms.txt)</a>
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="logo">
