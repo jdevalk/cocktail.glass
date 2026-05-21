@@ -15,7 +15,7 @@
     "images": "node scripts/image-manager.mjs & sleep 1 && open http://localhost:3457"
   },
   "dependencies": {
-    "@jdevalk/astro-seo-graph": "^1.1.1",
+    "@jdevalk/astro-seo-graph": "^2.0.0",
     "astro": "^6.1.1",
     "astro-pagefind": "^1.8.6",
     "gray-matter": "^4.0.3",
