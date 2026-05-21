@@ -111,7 +111,7 @@ const TOOLS = [
       },
       required: ['query'],
     },
-    annotations: { readOnlyHint: true },
+    annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       const q = norm(args.query);
       if (!q) return { error: 'Provide a search query.' };
@@ -134,7 +134,7 @@ const TOOLS = [
       },
       required: ['name'],
     },
-    annotations: { readOnlyHint: true },
+    annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       const q = norm(args.name);
       if (!q) return { error: 'Provide a cocktail name.' };
@@ -160,7 +160,7 @@ const TOOLS = [
       },
       required: ['ingredient'],
     },
-    annotations: { readOnlyHint: true },
+    annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       const q = norm(args.ingredient);
       if (!q) return { error: 'Provide an ingredient name.' };
@@ -194,7 +194,7 @@ const TOOLS = [
       },
       required: ['ingredients'],
     },
-    annotations: { readOnlyHint: true },
+    annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       const list = Array.isArray(args.ingredients) ? args.ingredients : [];
       const userWordSets = list.map((item) => words(item)).filter((w) => w.length > 0);
@@ -251,7 +251,7 @@ const TOOLS = [
         },
       },
     },
-    annotations: { readOnlyHint: true },
+    annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       let pool = cocktails;
       const cat = norm(args.category);
