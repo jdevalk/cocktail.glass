@@ -1,7 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const mcpAddCmd = 'claude mcp add --transport http cocktail-glass https://cocktail.glass/mcp';
+const mcpUrl = 'https://cocktail.glass/mcp';
+const mcpAddCmd = `claude mcp add --transport http cocktail-glass ${mcpUrl}`;
+
+// One-click install deeplinks, built from a single MCP URL source of truth.
+const cursorConfig = Buffer.from(JSON.stringify({ url: mcpUrl })).toString('base64');
+const cursorInstall = `https://cursor.com/en/install-mcp?name=cocktail-glass&config=${encodeURIComponent(cursorConfig)}`;
+const vscodeInstall = `vscode:mcp/install?${encodeURIComponent(
+  JSON.stringify({ name: 'cocktail-glass', type: 'http', url: mcpUrl })
+)}`;
 
 const desktopConfig = `{
   "mcpServers": {
@@ -46,6 +54,13 @@ const exampleResponse = `{
     <section class="card">
       <h2>Connect an AI agent</h2>
       <p>The fastest way in is the <strong>Model Context Protocol (MCP)</strong> server. It's a remote, stateless endpoint at <code>https://cocktail.glass/mcp</code>. Point any MCP client at it and five cocktail tools appear.</p>
+
+      <p class="code-label">One click</p>
+      <p class="install-row">
+        <a class="install-btn" href={cursorInstall}>Add to Cursor</a>
+        <a class="install-btn" href={vscodeInstall}>Add to VS Code</a>
+      </p>
+
       <p class="code-label">Claude Code</p>
       <pre><code>{mcpAddCmd}</code></pre>
       <p class="code-label">Claude Desktop, or any MCP client</p>
@@ -163,6 +178,28 @@ const exampleResponse = `{
     letter-spacing: 0.07em;
     color: var(--color-text-muted);
     margin: 1.1rem 0 0.4rem;
+  }
+
+  .agents .install-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0 0 1rem;
+  }
+
+  .agents .install-btn {
+    background: #2b2420;
+    color: #f4e9dd;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.15rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .agents .install-btn:hover {
+    background: var(--color-accent);
   }
 
   .agents pre {
