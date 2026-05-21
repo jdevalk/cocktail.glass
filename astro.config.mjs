@@ -37,7 +37,9 @@ export default defineConfig({
           href === '/sitemap.xml' ||
           href === '/schemamap.xml' ||
           href === '/robots.txt' ||
-          href === '/llms.txt',
+          href === '/llms.txt' ||
+          href === '/cocktails.json' ||
+          href.startsWith('/.well-known/'),
       },
       llmsTxt: {
         title: 'Cocktail Glass',
