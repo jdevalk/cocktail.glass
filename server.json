@@ -5,6 +5,10 @@
   "description": "Search 500 cocktail recipes, get full recipes, find drinks by ingredient, suggest random picks.",
   "version": "1.0.0",
   "websiteUrl": "https://cocktail.glass",
+  "repository": {
+    "url": "https://github.com/jdevalk/cocktail.glass",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
