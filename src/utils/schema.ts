@@ -111,7 +111,7 @@ export function buildHomepagePieces(siteUrl: string, cocktails: Cocktail[]) {
       pageUrl: homepageUrl,
       url: ogImageUrl,
       width: 1200,
-      height: 630,
+      height: 675,
       caption: SITE_NAME,
     }, ids),
     buildWebPage({

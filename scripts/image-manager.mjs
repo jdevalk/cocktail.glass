@@ -135,7 +135,7 @@ ${garnish ? `- Garnished with: ${garnish}` : '- No garnish, clean presentation'}
 // ============================================================
 
 const OG_WIDTH = 1200;
-const OG_HEIGHT = 630;
+const OG_HEIGHT = 675;
 
 let displayFont = null;
 let bodyFont = null;

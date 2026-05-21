@@ -12,7 +12,7 @@ const cwd = process.cwd();
 const scriptPath = fileURLToPath(import.meta.url);
 
 const OG_WIDTH = 1200;
-const OG_HEIGHT = 630;
+const OG_HEIGHT = 675;
 const HOMEPAGE_FEATURED_SLUGS = [
   'negroni',
   'espresso-martini',
