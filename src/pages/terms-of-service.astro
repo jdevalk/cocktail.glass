@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+
+const updated = '21 May 2026';
+const email = 'joost@joost.blog';
+---
+<Base
+  title="Terms of service"
+  titleTemplate="%s ~ Cocktail Glass"
+  description="The terms for using cocktail.glass and its free MCP server: acceptable use, the recipe content, photo uploads, availability, and no warranty."
+>
+  <div class="container legal">
+    <div class="page-header">
+      <h1>Terms of service</h1>
+      <p class="page-intro">These terms cover your use of cocktail.glass — the website, its 500 cocktail recipes, the MCP server, and the other ways to read the catalogue. By using any of them, you agree to what is set out below. cocktail.glass is run by Joost de Valk.</p>
+      <p class="legal-updated">Last updated {updated}</p>
+    </div>
+
+    <section>
+      <h2>Using cocktail.glass</h2>
+      <p>cocktail.glass is free to use. You do not need an account, an API key, or a subscription. You may browse the recipes, connect an AI agent to the MCP server, and read the catalogue over the open endpoints, all at no cost. Use the site lawfully, and do not attempt to disrupt, overload, or break it.</p>
+    </section>
+
+    <section>
+      <h2>The MCP server and programmatic access</h2>
+      <p>The <a href="/for-agents/">MCP server</a> at <code>/mcp</code>, the in-browser WebMCP integration, <a href="/cocktails.json">/cocktails.json</a>, and Markdown content negotiation are provided free and without authentication. They are offered on a fair-use basis — please do not send abusive request volumes or use them in any way that degrades the service for others.</p>
+      <p>These endpoints are stateless and read-only. They may be rate-limited, changed, or withdrawn at any time, and no particular level of availability or response time is promised.</p>
+    </section>
+
+    <section>
+      <h2>Recipes, content, and intellectual property</h2>
+      <p>The cocktail recipes, written content, images, design, and source code of cocktail.glass are owned by Joost de Valk and are not released under any open licence — all rights are reserved.</p>
+      <p>You are welcome to use the recipes to make drinks, and to use the MCP server and endpoints to look up and reference recipes within your own applications and conversations. You may not copy, scrape, or redistribute the catalogue as a dataset, republish it, or use it to build a competing cocktail database or product. To use the content beyond this, please get in touch.</p>
+    </section>
+
+    <section>
+      <h2>Photos you upload</h2>
+      <p>Some recipe pages let you upload a photo of a cocktail. By uploading a photo you confirm that you created it, or otherwise have the right to share it, and that it contains nothing unlawful, infringing, or offensive.</p>
+      <p>You keep ownership of your photo. You grant cocktail.glass a non-exclusive, royalty-free licence to store, display, and resize it on the site, alongside any attribution credit you provide. Uploaded photos are reviewed before publication, and any photo may be declined or removed at any time.</p>
+    </section>
+
+    <section>
+      <h2>Accuracy and your responsibility</h2>
+      <p>The recipes are provided for general information. Measures, methods, and ingredient names are offered in good faith but without any guarantee of accuracy or fitness for a particular purpose. Use your own judgement — especially around allergens, ingredient substitutions, and food safety.</p>
+    </section>
+
+    <section>
+      <h2>Alcohol</h2>
+      <p>cocktail.glass publishes recipes for alcoholic drinks and is intended for adults. You are responsible for making, drinking, and serving these drinks only where it is legal to do so, and only at or above the legal drinking age where you are. Please drink responsibly. cocktail.glass is not responsible for how the recipes are used.</p>
+    </section>
+
+    <section>
+      <h2>Availability</h2>
+      <p>cocktail.glass is provided “as is” and “as available”. The site, the MCP server, and the endpoints may be unavailable, interrupted, or discontinued at any time, without notice.</p>
+    </section>
+
+    <section>
+      <h2>Limitation of liability</h2>
+      <p>To the fullest extent allowed by law, Joost de Valk is not liable for any loss or damage arising from your use of cocktail.glass, the MCP server, the recipes, or any content on the site.</p>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <p>How cocktail.glass handles data is described separately in the <a href="/privacy-policy/">Privacy policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Changes to these terms</h2>
+      <p>cocktail.glass, including the free MCP server and endpoints, may change or be discontinued at any time. These terms may also be updated from time to time — the date at the top of the page shows the last change. Continuing to use the site after a change means you accept the updated terms.</p>
+    </section>
+
+    <section>
+      <h2>Governing law</h2>
+      <p>These terms are governed by the law of the Netherlands.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about these terms? Email <a href={`mailto:${email}`}>{email}</a>.</p>
+    </section>
+
+    <p class="agents-foot"><a href="/">Browse the recipes →</a></p>
+  </div>
+</Base>
+
+<style is:global>
+  .container.legal {
+    max-width: 720px;
+  }
+
+  .legal .page-header {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .legal h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin: 0 0 0.85rem;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .legal .page-intro {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 60ch;
+    margin: 0 0 0.85rem;
+  }
+
+  .legal .legal-updated {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .legal section {
+    margin-bottom: 1.75rem;
+  }
+
+  .legal h2 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+  }
+
+  .legal section p {
+    line-height: 1.7;
+    margin: 0 0 0.85rem;
+  }
+
+  .legal section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal a {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .legal .agents-foot {
+    margin: 2.5rem 0 4rem;
+    color: var(--color-text-muted);
+  }
+</style>
