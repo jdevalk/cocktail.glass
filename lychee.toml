@@ -12,7 +12,9 @@ exclude = [
   'openrouter\.ai',
   # Local dev-server address baked into a tooling script.
   'localhost',
-  # Template-literal URLs (`${...}`) mis-extracted from script source;
-  # %7B is the URL-encoded "{" that opens an interpolation placeholder.
+  # Template-literal URLs (`${...}`) mis-extracted from .astro/script
+  # source — not real links. lychee keeps the interpolation brace either
+  # literal (`${`) or percent-encoded (`%7B`); exclude both forms.
+  '\$\{',
   '%7B',
 ]
