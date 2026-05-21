@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
+import WebMcp from '../components/WebMcp.astro';
 
 interface Props {
   title: string;
@@ -38,7 +39,7 @@ const hasHeaderActions = Astro.slots.has('headerActions');
     ogImage={ogImageUrl}
     ogImageAlt={title}
     ogImageWidth={1200}
-    ogImageHeight={630}
+    ogImageHeight={675}
     siteName="Cocktail.glass"
     twitter={{ card: ogImageUrl ? 'summary_large_image' : 'summary' }}
     graph={graph}
@@ -200,6 +201,7 @@ const hasHeaderActions = Astro.slots.has('headerActions');
       overlay.querySelector('.search-backdrop').addEventListener('click', closeSearch);
     })();
   </script>
+  <WebMcp />
 </body>
 </html>
 

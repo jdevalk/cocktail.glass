@@ -5,6 +5,8 @@ export const GET: APIRoute = ({ site }) => {
 
   const body = `User-agent: *
 Allow: /
+# Content Signals (https://contentsignals.org/): preferences for automated use of this content.
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 Sitemap: ${siteUrl}/sitemap.xml
 Schemamap: ${siteUrl}/schemamap.xml

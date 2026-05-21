@@ -1,0 +1,164 @@
+---
+/**
+ * WebMCP integration.
+ *
+ * Exposes the cocktail catalogue to in-browser AI agents via the
+ * `navigator.modelContext` API (WebMCP — shipped as an early preview in
+ * Chrome 146, Feb 2026, behind a flag; no other browsers yet). The script
+ * feature-detects the API and does nothing where it is absent, so it is a
+ * pure progressive enhancement.
+ *
+ * All tools are read-only. Cocktail data is fetched lazily from
+ * /cocktails.json the first time any tool runs, so this adds zero bytes to
+ * the initial page load beyond the small inline script below.
+ *
+ * The same four tools are served to non-browser MCP clients by the remote
+ * MCP server in functions/mcp.js — keep the tool names, schemas, and
+ * matching logic in the two files in sync.
+ */
+---
+<script is:inline>
+  (function () {
+    var ctx = navigator.modelContext;
+    if (!ctx || typeof ctx.registerTool !== 'function') return;
+
+    // Lazy, memoised fetch of the full catalogue.
+    var catalogue;
+    function loadCocktails() {
+      if (!catalogue) {
+        catalogue = fetch('/cocktails.json').then(function (res) {
+          if (!res.ok) throw new Error('Could not load cocktail data');
+          return res.json();
+        });
+      }
+      return catalogue;
+    }
+
+    // Lowercase + strip diacritics so "carre" matches "Carré".
+    function norm(value) {
+      return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim();
+    }
+
+    function reply(data) {
+      return { content: [{ type: 'text', text: JSON.stringify(data) }] };
+    }
+
+    var summary = function (c) {
+      return { name: c.name, url: c.url, category: c.category, glass: c.glass };
+    };
+
+    var tools = [
+      {
+        name: 'search_cocktails',
+        description:
+          'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, category, and glassware.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: { type: 'string', description: 'Cocktail name or part of a name' },
+          },
+          required: ['query'],
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var q = norm(input && input.query);
+          if (!q) return reply({ error: 'Provide a search query.' });
+          var all = await loadCocktails();
+          var matches = all
+            .filter(function (c) { return norm(c.name).indexOf(q) !== -1; })
+            .slice(0, 25)
+            .map(summary);
+          return reply({ count: matches.length, cocktails: matches });
+        },
+      },
+      {
+        name: 'get_cocktail_recipe',
+        description:
+          'Get the full recipe for a cocktail by name: ingredients with measures, preparation steps, garnish, glassware, and page URL.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            name: { type: 'string', description: 'The cocktail name' },
+          },
+          required: ['name'],
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var q = norm(input && input.name);
+          if (!q) return reply({ error: 'Provide a cocktail name.' });
+          var all = await loadCocktails();
+          var match =
+            all.find(function (c) { return norm(c.name) === q; }) ||
+            all.find(function (c) { return norm(c.name).indexOf(q) !== -1; });
+          if (!match) {
+            return reply({ error: 'No cocktail found matching "' + (input.name || '') + '".' });
+          }
+          return reply(match);
+        },
+      },
+      {
+        name: 'find_cocktails_by_ingredient',
+        description:
+          'Find every cocktail that uses a given ingredient (spirit, juice, liqueur, etc.). Useful for "what can I make with ..." questions.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            ingredient: { type: 'string', description: 'An ingredient name, e.g. "gin" or "lime juice"' },
+          },
+          required: ['ingredient'],
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var q = norm(input && input.ingredient);
+          if (!q) return reply({ error: 'Provide an ingredient name.' });
+          var all = await loadCocktails();
+          var matches = all
+            .filter(function (c) {
+              return c.ingredients.some(function (i) { return norm(i.name).indexOf(q) !== -1; });
+            })
+            .slice(0, 60)
+            .map(summary);
+          return reply({ count: matches.length, cocktails: matches });
+        },
+      },
+      {
+        name: 'random_cocktail',
+        description:
+          'Suggest a random cocktail and return its full recipe. Optionally restrict to a category.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            category: {
+              type: 'string',
+              description:
+                'Optional category, e.g. Classic, Highball, Sour, Modern Classic, Tiki, Spritz, Frozen, Fizz, Champagne Cocktail, Martini Variation, Hot Drink, Punch, Low alcohol, Shooter, Stirred, No alcohol',
+            },
+          },
+        },
+        annotations: { readOnlyHint: true },
+        execute: async function (input) {
+          var all = await loadCocktails();
+          var pool = all;
+          var cat = norm(input && input.category);
+          if (cat) {
+            var filtered = all.filter(function (c) { return norm(c.category) === cat; });
+            if (filtered.length) pool = filtered;
+          }
+          return reply(pool[Math.floor(Math.random() * pool.length)]);
+        },
+      },
+    ];
+
+    tools.forEach(function (tool) {
+      try {
+        ctx.registerTool(tool);
+      } catch (err) {
+        console.warn('[WebMCP] registerTool failed for', tool.name, err);
+      }
+    });
+  })();
+</script>
