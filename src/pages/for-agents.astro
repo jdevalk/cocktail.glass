@@ -34,22 +34,22 @@ const exampleResponse = `{
 <Base
   title="For AI agents & developers"
   titleTemplate="%s ~ Cocktail Glass"
-  description="cocktail.glass is an AI-readable cocktail database. Connect any MCP client and query 500 recipes by name, ingredient, or at random — no API key, no sign-up."
+  description="cocktail.glass is an AI-readable cocktail database. Connect any MCP client and query 500 recipes by name, ingredient, or at random. No API key, no sign-up."
 >
   <div class="container agents">
     <div class="page-header">
       <h1>An AI-readable cocktail database</h1>
-      <p class="page-intro">cocktail.glass isn't only 500 recipes for people to read — the whole catalogue is built for machines too. Connect an AI agent over the Model Context Protocol, pull structured JSON, or read any page as Markdown. No API key, no sign-up, no rate limits.</p>
+      <p class="page-intro">cocktail.glass isn't only 500 recipes for people to read. The whole catalogue is built for machines too. Connect an AI agent over the Model Context Protocol, pull structured JSON, or read any page as Markdown. No API key, no sign-up, no rate limits.</p>
     </div>
 
     <section class="card">
       <h2>Connect an AI agent</h2>
-      <p>The fastest way in is the <strong>Model Context Protocol (MCP)</strong> server — a remote, stateless endpoint at <code>https://cocktail.glass/mcp</code>. Point any MCP client at it and four cocktail tools appear.</p>
+      <p>The fastest way in is the <strong>Model Context Protocol (MCP)</strong> server. It's a remote, stateless endpoint at <code>https://cocktail.glass/mcp</code>. Point any MCP client at it and four cocktail tools appear.</p>
       <p class="code-label">Claude Code</p>
       <pre><code>{mcpAddCmd}</code></pre>
       <p class="code-label">Claude Desktop, or any MCP client</p>
       <pre><code>{desktopConfig}</code></pre>
-      <p>That's it — no key to paste. The server exposes four read-only tools: <code>search_cocktails</code>, <code>get_cocktail_recipe</code>, <code>find_cocktails_by_ingredient</code>, and <code>random_cocktail</code>.</p>
+      <p>That's it. No key to paste. The server exposes four read-only tools: <code>search_cocktails</code>, <code>get_cocktail_recipe</code>, <code>find_cocktails_by_ingredient</code>, and <code>random_cocktail</code>.</p>
     </section>
 
     <section class="card">
@@ -66,10 +66,10 @@ const exampleResponse = `{
         <pre><code>{exampleResponse}</code></pre>
         <p class="exchange-note">Four of 29 matches shown. MCP delivers the list as the text content of a standard tool result.</p>
 
-        <p class="exchange-step"><span class="exchange-tag exchange-tag--answer">Your assistant answers</span> “You have 29 options with Campari — the classics are the Negroni and Boulevardier, or a Jungle Bird for something tiki.”</p>
+        <p class="exchange-step"><span class="exchange-tag exchange-tag--answer">Your assistant answers</span> “You have 29 options with Campari. The classics are the Negroni and Boulevardier, or a Jungle Bird for something tiki.”</p>
       </div>
 
-      <p>Every result carries a real page URL, so the agent can link straight to the full recipe — measures, steps, glassware, and garnish.</p>
+      <p>Every result carries a real page URL, so the agent can link straight to the full recipe, with measures, steps, glassware, and garnish.</p>
     </section>
 
     <section class="card">
@@ -77,16 +77,16 @@ const exampleResponse = `{
       <p>Not every client speaks MCP. The same catalogue is open over plain HTTP:</p>
       <dl class="endpoints">
         <dt><a href="/cocktails.json">/cocktails.json</a></dt>
-        <dd>The entire catalogue as one JSON file — 500 cocktails with ingredients, measures, and preparation steps.</dd>
+        <dd>The entire catalogue as one JSON file. All 500 cocktails, with ingredients, measures, and preparation steps.</dd>
 
         <dt>Markdown content negotiation</dt>
-        <dd>Request any page with an <code>Accept: text/markdown</code> header and you get a clean Markdown rendering instead of HTML — cheap for an LLM to read.</dd>
+        <dd>Request any page with an <code>Accept: text/markdown</code> header and you get a clean Markdown rendering instead of HTML. It's far cheaper for an LLM to read.</dd>
 
         <dt><a href="/llms.txt">/llms.txt</a></dt>
         <dd>A structured Markdown map of the whole site, following the llmstxt.org convention.</dd>
 
         <dt>WebMCP</dt>
-        <dd>Agents running inside the browser get the same four tools in-page through <code>navigator.modelContext</code> — no connection step.</dd>
+        <dd>Agents running inside the browser get the same four tools in-page through <code>navigator.modelContext</code>, with no connection step.</dd>
 
         <dt><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> · <a href="/.well-known/mcp/server-card.json">MCP server card</a></dt>
         <dd>Machine-readable discovery documents (RFC 9727 and SEP-2127) so agents and registries can find all of the above on their own.</dd>
