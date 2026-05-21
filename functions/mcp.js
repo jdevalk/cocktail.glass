@@ -401,6 +401,15 @@ function logMcpCall(context, message, response) {
     const req = context.request;
     const params = (message && message.params) || {};
 
+    // Channel attribution: an install URL like /mcp?ref=hackernews carries
+    // its `ref` on every request, so launch-channel usage is distinguishable.
+    let ref = '';
+    try {
+      ref = (new URL(req.url).searchParams.get('ref') || '').slice(0, 60);
+    } catch {
+      ref = '';
+    }
+
     let toolName = '';
     let args = '';
     let clientName = '';
@@ -440,6 +449,7 @@ function logMcpCall(context, message, response) {
         req.cf?.country || '', // blob8
         isError, // blob9
         'remote', // blob10 surface (vs 'webmcp' from functions/api/webmcp-usage.js)
+        ref, // blob11 channel ref from /mcp?ref=... install URLs
       ],
       indexes: [identity],
     });
