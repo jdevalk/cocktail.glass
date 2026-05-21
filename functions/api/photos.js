@@ -56,7 +56,7 @@ export async function onRequestPost({ request, env }) {
     customMetadata: {
       slug,
       attribution: attribution.slice(0, 100),
-      ip: hashIP(ip),
+      ip: await hashIP(ip),
       uploadedAt: new Date().toISOString(),
     },
   });

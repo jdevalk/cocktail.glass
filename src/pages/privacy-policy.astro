@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+
+const updated = '21 May 2026';
+const email = 'joost@joost.blog';
+---
+<Base
+  title="Privacy policy"
+  titleTemplate="%s ~ Cocktail Glass"
+  description="How cocktail.glass handles your data: cookieless analytics, no ads, no accounts, and exactly what the MCP server and photo uploads record."
+>
+  <div class="container legal">
+    <div class="page-header">
+      <h1>Privacy policy</h1>
+      <p class="page-intro">cocktail.glass is a catalogue of cocktail recipes run by Joost de Valk. It collects almost nothing about you — no accounts, no advertising, no tracking cookies. This page explains the little data the site does handle, and why.</p>
+      <p class="legal-updated">Last updated {updated}</p>
+    </div>
+
+    <section>
+      <h2>No accounts, no ads, no tracking</h2>
+      <p>You can browse every recipe and connect to the MCP server without signing up or giving any personal details. cocktail.glass shows no advertising, sets no advertising or tracking cookies, and never sells or shares data for marketing. There is nothing here to opt out of.</p>
+    </section>
+
+    <section>
+      <h2>Analytics</h2>
+      <p>The site uses <a href="https://plausible.io/">Plausible Analytics</a> to count visits and see which pages are popular. Plausible is privacy-friendly: it uses no cookies and does not track you across other websites.</p>
+      <p>To count visitors, Plausible briefly processes your IP address and browser type to generate a daily, one-way hash, then discards them. It does not store IP addresses and does not build a profile of you. The analytics script is served from cocktail.glass's own domain, but behaves exactly the same way. The figures the site owner sees are aggregated and anonymous.</p>
+    </section>
+
+    <section>
+      <h2>The MCP server</h2>
+      <p>cocktail.glass runs a <a href="/for-agents/">Model Context Protocol (MCP) server</a> so AI assistants can query the recipe catalogue. When a tool is called — over the remote server or the in-browser WebMCP integration — the site records the tool name, the arguments sent to it (for example, an ingredient name), the calling client's name and version, your browser's user-agent string, and the country the request came from.</p>
+      <p>It does not record your IP address. These logs show how the server is used, and nothing more.</p>
+    </section>
+
+    <section>
+      <h2>AI crawler logging</h2>
+      <p>The site detects and logs visits from AI and search-engine crawlers — the automated bots that index the web. For each detected crawler request the site records the user-agent, the page requested, and the country. This logging concerns automated traffic, not human visitors.</p>
+    </section>
+
+    <section>
+      <h2>Photo uploads</h2>
+      <p>Some recipe pages let you upload a photo of a cocktail. This is entirely optional. If you upload a photo, the site stores the image, an optional attribution credit you may add, the time of upload, and a one-way hash of your IP address — the hash is kept only to limit abuse, and the original IP address is not stored.</p>
+      <p>Uploads go to a review queue. A photo is then either published on the site, with your attribution credit if you provided one, or deleted. Please do not put personal information in the attribution field unless you are happy for it to appear publicly. The upload form uses <a href="https://www.cloudflare.com/products/turnstile/">Cloudflare Turnstile</a> to block spam; Turnstile checks that you are a real person and does not track you across other sites.</p>
+    </section>
+
+    <section>
+      <h2>Hosting</h2>
+      <p>cocktail.glass is hosted on <a href="https://www.cloudflare.com/">Cloudflare</a>. As the host, Cloudflare processes the requests needed to deliver the site and protect it from attacks and abuse, and it stores uploaded photos. Cloudflare may set strictly necessary cookies for security. Cloudflare handles this data as a processor on the site's behalf — see Cloudflare's own privacy documentation for details.</p>
+    </section>
+
+    <section>
+      <h2>Who the data is shared with</h2>
+      <p>The only third parties involved are Cloudflare — for hosting, storage, security, and the analytics infrastructure — and Plausible Analytics. No data is sold, and none is shared for advertising or marketing.</p>
+    </section>
+
+    <section>
+      <h2>How long data is kept</h2>
+      <p>Analytics data is aggregated and kept to understand traffic trends over time. Usage and crawler logs are kept for a limited period and then expire. Uploaded photos that are not published are removed after review.</p>
+    </section>
+
+    <section>
+      <h2>Your rights</h2>
+      <p>If you are in the EU, the UK, or a region with similar laws, you have rights over any personal data the site holds — including the right to ask what is held, to correct it, or to have it deleted. Because the site stores so little, in practice this almost always concerns a photo you have uploaded. To make a request, email <a href={`mailto:${email}`}>{email}</a>.</p>
+    </section>
+
+    <section>
+      <h2>Children</h2>
+      <p>cocktail.glass publishes recipes for alcoholic drinks and is intended for adults. It is not directed at children and does not knowingly collect data from them.</p>
+    </section>
+
+    <section>
+      <h2>Changes to this policy</h2>
+      <p>This policy may be updated from time to time. The date at the top of the page shows the last change.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about privacy? Email <a href={`mailto:${email}`}>{email}</a>.</p>
+    </section>
+
+    <p class="agents-foot"><a href="/">Browse the recipes →</a></p>
+  </div>
+</Base>
+
+<style is:global>
+  .container.legal {
+    max-width: 720px;
+  }
+
+  .legal .page-header {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .legal h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin: 0 0 0.85rem;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .legal .page-intro {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 60ch;
+    margin: 0 0 0.85rem;
+  }
+
+  .legal .legal-updated {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .legal section {
+    margin-bottom: 1.75rem;
+  }
+
+  .legal h2 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+  }
+
+  .legal section p {
+    line-height: 1.7;
+    margin: 0 0 0.85rem;
+  }
+
+  .legal section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal a {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .legal .agents-foot {
+    margin: 2.5rem 0 4rem;
+    color: var(--color-text-muted);
+  }
+</style>
