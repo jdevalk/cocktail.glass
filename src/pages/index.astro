@@ -44,8 +44,8 @@ const glassCounts = countBy(allCocktails.map((c) => c.glass));
 const ingredientCounts = countBy(allCocktails.flatMap((c) => [...new Set(c.ingredients)]));
 ---
 <Base
-  title="Cocktail Glass — 500 recipes by category, glass, and ingredient"
-  description="Browse 500 cocktail recipes with ingredients, glassware, and preparation methods."
+  title="500 cocktail recipes for people and AI agents ~ Cocktail Glass"
+  description="Browse 500 cocktail recipes by ingredient, glass, or category. The whole catalogue is also a machine-readable database an AI assistant can query."
   ogImage="/og/home.jpg"
   graph={homepageSchema}
   preloadImage={`/images/responsive/320/${categoryOrder.flatMap(cat => grouped.get(cat)!)[0].slug}.webp`}
