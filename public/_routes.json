@@ -8,6 +8,7 @@
     "/og/*",
     "/emoji/*",
     "/pagefind/*",
-    "/favicon.svg"
+    "/favicon.svg",
+    "/favicon.ico"
   ]
 }
