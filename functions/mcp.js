@@ -333,6 +333,7 @@ function logMcpCall(context, message, response) {
         (req.headers.get('user-agent') || '').slice(0, 300), // blob7
         req.cf?.country || '', // blob8
         isError, // blob9
+        'remote', // blob10 surface (vs 'webmcp' from functions/api/webmcp-usage.js)
       ],
       indexes: [identity],
     });

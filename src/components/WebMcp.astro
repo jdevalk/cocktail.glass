@@ -14,7 +14,11 @@
  *
  * The same four tools are served to non-browser MCP clients by the remote
  * MCP server in functions/mcp.js — keep the tool names, schemas, and
- * matching logic in the two files in sync.
+ * matching logic in sync across both files.
+ *
+ * Each in-browser tool call is reported to /api/webmcp-usage
+ * (functions/api/webmcp-usage.js) so it shows up on the /admin/stats
+ * dashboard alongside remote MCP server usage.
  */
 ---
 <script is:inline>
@@ -153,7 +157,27 @@
       },
     ];
 
+    // Report each in-browser tool call to the usage beacon (fire-and-forget)
+    // so it appears on /admin/stats with surface = 'webmcp'.
+    function reportUsage(name, input) {
+      try {
+        var payload = JSON.stringify({ tool: name, args: input || {} });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/webmcp-usage', payload);
+        } else {
+          fetch('/api/webmcp-usage', { method: 'POST', body: payload, keepalive: true });
+        }
+      } catch (e) {
+        /* never let logging break a tool call */
+      }
+    }
+
     tools.forEach(function (tool) {
+      var run = tool.execute;
+      tool.execute = function (input) {
+        reportUsage(tool.name, input);
+        return run(input);
+      };
       try {
         ctx.registerTool(tool);
       } catch (err) {

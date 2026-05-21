@@ -96,13 +96,20 @@ export async function onRequest(context) {
       WHERE timestamp > NOW() - INTERVAL '30' DAY
       GROUP BY protocol ORDER BY count DESC
     `,
+    mcp_surfaces: `
+      SELECT blob10 AS surface, SUM(_sample_interval) AS count
+      FROM ${MCP}
+      WHERE timestamp > NOW() - INTERVAL '7' DAY
+      GROUP BY surface ORDER BY count DESC
+    `,
     mcp_errors: `
       SELECT SUM(_sample_interval) AS count
       FROM ${MCP}
-      WHERE blob1 = 'tools/call' AND blob9 = '1' AND timestamp > NOW() - INTERVAL '7' DAY
+      WHERE blob1 = 'tools/call' AND blob9 = '1' AND blob10 != 'webmcp'
+        AND timestamp > NOW() - INTERVAL '7' DAY
     `,
     mcp_recent: `
-      SELECT timestamp AS time, blob2 AS tool, blob3 AS args, blob9 AS error
+      SELECT timestamp AS time, blob10 AS surface, blob2 AS tool, blob3 AS args, blob9 AS error
       FROM ${MCP}
       WHERE blob1 = 'tools/call' AND timestamp > NOW() - INTERVAL '30' DAY
       ORDER BY time DESC LIMIT 100
@@ -478,7 +485,7 @@ function renderDashboard(results, errors) {
     <div class="stats-row">
       ${statCard('Calls 24h', sumCounts(results.mcp_hourly))}
       ${statCard('Tool calls 7d', sumCounts(results.mcp_tools7d))}
-      ${statCard('Errors 7d', firstCount(results.mcp_errors))}
+      ${statCard('Errors 7d (remote)', firstCount(results.mcp_errors))}
     </div>
 
     <div class="cols">
@@ -505,27 +512,41 @@ function renderDashboard(results, errors) {
         ${renderTable(['method', 'count'], rowsOrEmpty(results.mcp_methods), countCol)}
       </div>
       <div>
-        <h2>Protocol versions — last 30d</h2>
-        ${renderTable(['protocol', 'count'], rowsOrEmpty(results.mcp_protocols).map((r) => ({ protocol: r.protocol || '(none)', count: r.count })), countCol)}
+        <h2>Surfaces — last 7d</h2>
+        ${renderTable(['surface', 'count'], rowsOrEmpty(results.mcp_surfaces).map((r) => ({ surface: r.surface || 'remote', count: r.count })), countCol)}
       </div>
     </div>
 
-    <h2>MCP clients — last 30d</h2>
-    ${renderTable(['client', 'version', 'count'], rowsOrEmpty(results.mcp_clients).map((r) => ({ client: r.client || '(unknown)', version: r.version || '', count: r.count })), countCol)}
+    <div class="cols">
+      <div>
+        <h2>Protocol versions — last 30d</h2>
+        ${renderTable(['protocol', 'count'], rowsOrEmpty(results.mcp_protocols).map((r) => ({ protocol: r.protocol || '(none)', count: r.count })), countCol)}
+      </div>
+      <div>
+        <h2>MCP clients — last 30d</h2>
+        ${renderTable(['client', 'version', 'count'], rowsOrEmpty(results.mcp_clients).map((r) => ({ client: r.client || '(unknown)', version: r.version || '', count: r.count })), countCol)}
+      </div>
+    </div>
 
     <h2>Recent tool calls — last 30d</h2>
     <div class="filter-row" data-filter-for="mcp-recent-table">
       <select data-col="1">
+        <option value="">All surfaces</option>
+        <option value="remote">remote</option>
+        <option value="webmcp">webmcp</option>
+      </select>
+      <select data-col="2">
         <option value="">All tools</option>
         ${[...mcpTools].sort((a, b) => a.localeCompare(b)).map((t) => `<option value="${esc(t)}">${esc(t)}</option>`).join('')}
       </select>
-      <input type="search" data-col="2" placeholder="Filter arguments…" autocomplete="off" spellcheck="false">
+      <input type="search" data-col="3" placeholder="Filter arguments…" autocomplete="off" spellcheck="false">
       <span class="filter-stats" data-filter-stats></span>
     </div>
     <div id="mcp-recent-table">
-      ${renderTable(['time', 'tool', 'args', 'error'], rowsOrEmpty(results.mcp_recent), {
+      ${renderTable(['time', 'surface', 'tool', 'args', 'error'], rowsOrEmpty(results.mcp_recent), {
         formatters: {
           time: (v) => esc(String(v).slice(5, 16)),
+          surface: (v) => esc(v || 'remote'),
           args: (v) => `<span class="args">${esc(v)}</span>`,
           error: (v) => (v === '1' ? '<span class="err-flag" title="returned an error">error</span>' : ''),
         },
