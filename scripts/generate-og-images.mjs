@@ -406,7 +406,7 @@ async function generateHomepageOgImage() {
                     color: '#4d463f',
                     marginBottom: '28px',
                   },
-                  children: 'Browse by category, glass, and ingredient to find your next favorite drink fast.',
+                  children: 'Browse by ingredient, glass, or category. Open to AI agents over MCP, JSON, and Markdown.',
                 },
               },
               {
@@ -417,7 +417,7 @@ async function generateHomepageOgImage() {
                     gap: '12px',
                     flexWrap: 'wrap',
                   },
-                  children: ['Category filters', 'Glassware', 'Ingredient search'].map((label) => ({
+                  children: ['Browse & filter', 'MCP server', 'JSON + Markdown'].map((label) => ({
                     type: 'div',
                     props: {
                       style: {
@@ -526,6 +526,228 @@ async function generateHomepageOgImage() {
   return renderJpeg(markup);
 }
 
+async function generateForAgentsOgImage() {
+  const cocktailEmoji = await renderEmojiDataUri(84, 84);
+  const tools = [
+    'search_cocktails',
+    'get_cocktail_recipe',
+    'find_cocktails_by_ingredient',
+    'random_cocktail',
+  ];
+
+  const markup = {
+    type: 'div',
+    props: {
+      style: {
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        display: 'flex',
+        position: 'relative',
+        overflow: 'hidden',
+        background:
+          'radial-gradient(circle at top left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 34%), linear-gradient(135deg, #ffecd2 0%, #fcb69f 24%, #fbc2eb 58%, #a6c1ee 100%)',
+      },
+      children: [
+        {
+          type: 'div',
+          props: {
+            style: {
+              position: 'absolute',
+              inset: 0,
+              background:
+                'radial-gradient(circle at 16% 24%, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 26%), radial-gradient(circle at 84% 80%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 22%)',
+            },
+          },
+        },
+        {
+          type: 'div',
+          props: {
+            style: {
+              width: '58%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              padding: '64px 36px 64px 72px',
+              position: 'relative',
+            },
+            children: [
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    display: 'flex',
+                    gap: '12px',
+                    alignItems: 'center',
+                    alignSelf: 'flex-start',
+                    marginBottom: '24px',
+                    padding: '10px 18px',
+                    borderRadius: 999,
+                    background: 'rgba(255, 255, 255, 0.58)',
+                    border: '1px solid rgba(255, 255, 255, 0.72)',
+                    color: '#a24f37',
+                    fontFamily: 'DMSans',
+                    fontSize: 20,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                  },
+                  children: [
+                    ...(cocktailEmoji
+                      ? [
+                          {
+                            type: 'img',
+                            props: {
+                              src: cocktailEmoji,
+                              width: 24,
+                              height: 24,
+                              style: { flexShrink: 0 },
+                            },
+                          },
+                        ]
+                      : []),
+                    {
+                      type: 'span',
+                      props: { children: 'For AI agents & developers' },
+                    },
+                  ],
+                },
+              },
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    display: 'flex',
+                    fontFamily: 'PlayfairDisplay',
+                    fontSize: 56,
+                    lineHeight: 1.05,
+                    color: '#2d2a26',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '20px',
+                  },
+                  children: 'An AI-readable cocktail database',
+                },
+              },
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    display: 'flex',
+                    maxWidth: 540,
+                    fontFamily: 'DMSans',
+                    fontSize: 26,
+                    lineHeight: 1.4,
+                    color: '#4d463f',
+                  },
+                  children:
+                    '500 cocktail recipes, open to agents over MCP, JSON, and Markdown. No API key.',
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'div',
+          props: {
+            style: {
+              width: '42%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '52px 56px 52px 0',
+            },
+            children: [
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    padding: '26px',
+                    borderRadius: 28,
+                    background:
+                      'linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.24))',
+                    border: '1px solid rgba(255, 255, 255, 0.5)',
+                    boxShadow: '0 28px 60px rgba(81, 56, 41, 0.16)',
+                  },
+                  children: [
+                    {
+                      type: 'div',
+                      props: {
+                        style: {
+                          display: 'flex',
+                          fontFamily: 'DMSans',
+                          fontSize: 16,
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          color: '#a24f37',
+                          marginBottom: '4px',
+                        },
+                        children: 'MCP tools',
+                      },
+                    },
+                    ...tools.map((tool) => ({
+                      type: 'div',
+                      props: {
+                        style: {
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          padding: '11px 16px',
+                          borderRadius: 14,
+                          background: 'rgba(255, 255, 255, 0.62)',
+                          fontFamily: 'DMSans',
+                          fontSize: 19,
+                          color: '#2d2a26',
+                        },
+                        children: [
+                          {
+                            type: 'div',
+                            props: {
+                              style: {
+                                display: 'flex',
+                                width: 8,
+                                height: 8,
+                                borderRadius: 999,
+                                background: '#e05e3a',
+                                flexShrink: 0,
+                              },
+                            },
+                          },
+                          { type: 'span', props: { children: tool } },
+                        ],
+                      },
+                    })),
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'div',
+          props: {
+            style: {
+              position: 'absolute',
+              bottom: '32px',
+              left: '72px',
+              display: 'flex',
+              fontSize: 24,
+              color: 'rgba(45, 42, 38, 0.55)',
+              fontFamily: 'PlayfairDisplay',
+            },
+            children: 'cocktail.glass',
+          },
+        },
+      ],
+    },
+  };
+
+  return renderJpeg(markup);
+}
+
 async function generateHomepage({ force }) {
   const outputPath = join(OUTPUT_DIR, 'home.jpg');
   const dependencies = [
@@ -542,6 +764,19 @@ async function generateHomepage({ force }) {
   }
 
   const jpg = await generateHomepageOgImage();
+  await writeFile(outputPath, jpg);
+  return 'generated';
+}
+
+async function generateForAgents({ force }) {
+  const outputPath = join(OUTPUT_DIR, 'for-agents.jpg');
+  const dependencies = [scriptPath, DISPLAY_FONT_PATH, BODY_FONT_PATH, EMOJI_PATH];
+
+  if (!force && await isUpToDate(outputPath, dependencies)) {
+    return 'skipped';
+  }
+
+  const jpg = await generateForAgentsOgImage();
   await writeFile(outputPath, jpg);
   return 'generated';
 }
@@ -575,14 +810,22 @@ async function main() {
   let skipped = 0;
 
   if (options.homepageOnly) {
-    const result = await generateHomepage(options);
-    console.log(`Homepage OG image: ${result}.`);
+    const homeResult = await generateHomepage(options);
+    const agentsResult = await generateForAgents(options);
+    console.log(`Static-page OG images. Homepage: ${homeResult}, for-agents: ${agentsResult}.`);
     return;
   }
 
   if (!options.slug) {
     const homepageResult = await generateHomepage(options);
     if (homepageResult === 'generated') {
+      generated += 1;
+    } else {
+      skipped += 1;
+    }
+
+    const agentsResult = await generateForAgents(options);
+    if (agentsResult === 'generated') {
       generated += 1;
     } else {
       skipped += 1;
