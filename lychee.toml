@@ -1,0 +1,18 @@
+# Configuration for the lychee link checker.
+# Used by .github/workflows/link-check.yml and picked up automatically
+# when running `lychee` locally from the repo root.
+
+# 405 Method Not Allowed means the URL exists but refuses GET. The MCP
+# server at /mcp is POST-only, so lychee's GET probe correctly returns
+# 405 — a working endpoint, not a broken link.
+accept = ["200..=299", "405"]
+
+exclude = [
+  # API endpoint called from build scripts via fetch(), not a link.
+  'openrouter\.ai',
+  # Local dev-server address baked into a tooling script.
+  'localhost',
+  # Template-literal URLs (`${...}`) mis-extracted from script source;
+  # %7B is the URL-encoded "{" that opens an interpolation placeholder.
+  '%7B',
+]
