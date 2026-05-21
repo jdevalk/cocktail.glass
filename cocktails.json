@@ -6546,7 +6546,7 @@
   },
   {
     "name": "Tom Rickey",
-    "slug": "gin-rickey",
+    "slug": "tom-rickey",
     "category": "Highball",
     "glass": "Highball",
     "ingredients": [
@@ -12233,7 +12233,7 @@
     ]
   },
   {
-    "name": "Black Manhattan",
+    "name": "Black Manhattan (Averna)",
     "slug": "black-manhattan-averna",
     "category": "Modern Classic",
     "glass": "Coupe",
