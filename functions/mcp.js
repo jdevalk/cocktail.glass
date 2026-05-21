@@ -4,7 +4,7 @@ import cocktails from '../cocktails.json';
  * Remote MCP (Model Context Protocol) server for cocktail.glass.
  *
  * A stateless Streamable HTTP endpoint — connect any MCP client to
- * https://cocktail.glass/mcp. Exposes the same four read-only tools as the
+ * https://cocktail.glass/mcp. Exposes the same five read-only tools as the
  * in-browser WebMCP integration (src/components/WebMcp.astro), so agents
  * without a browser (Claude Desktop, Claude Code, …) can query the catalogue.
  *
@@ -57,6 +57,45 @@ function summary(cocktail, origin) {
 
 function fullRecipe(cocktail, origin) {
   return { ...cocktail, url: pageUrl(cocktail, origin) };
+}
+
+// --- Ingredient matching (shared with src/components/WebMcp.astro) --------
+
+// Normalised word tokens of an ingredient name, e.g. "London dry gin" ->
+// ["london","dry","gin"]. Tokenising avoids substring traps like "gin"
+// matching "ginger beer".
+function words(value) {
+  return norm(value)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+}
+
+// Words that mark a distinct product: a generic user term ("orange", "gin")
+// must not loosely match a more specific catalogue name ("orange bitters",
+// "sloe gin") — those are separate bottles, not had from the base spirit.
+const PRODUCT_CLASS_WORDS = new Set([
+  'bitters', 'liqueur', 'schnapps', 'cordial', 'amaro', 'sloe',
+]);
+
+// Plain water is assumed always on hand; soda/tonic water are not.
+const ASSUMED_STAPLES = new Set(['water', 'hot water', 'still water', 'branch water']);
+
+function wordsSubset(a, b) {
+  return a.every((w) => b.includes(w));
+}
+
+// Does a user-supplied ingredient term cover a catalogue ingredient name?
+function userTermCovers(userWords, ingWords) {
+  if (ingWords.length === 0 || userWords.length === 0) return false;
+  // Catalogue term is generic, user term at least as specific.
+  if (wordsSubset(ingWords, userWords)) return true;
+  // User term is generic, catalogue term more specific ("gin" -> "London dry
+  // gin") — allowed unless the extra words name a different product class.
+  if (wordsSubset(userWords, ingWords)) {
+    const extra = ingWords.filter((w) => !userWords.includes(w));
+    return !extra.some((w) => PRODUCT_CLASS_WORDS.has(w));
+  }
+  return false;
 }
 
 const TOOLS = [
@@ -133,6 +172,71 @@ const TOOLS = [
     },
   },
   {
+    name: 'find_makeable_cocktails',
+    title: 'Find makeable cocktails',
+    description:
+      'Given the ingredients you have on hand, find every cocktail you can ' +
+      'make completely — one where you already have all of its ingredients. ' +
+      'Garnishes are treated as optional and plain water is assumed ' +
+      'available. Returns two lists: "makeable" (drinks you can make now) and ' +
+      '"almostMakeable" (drinks one ingredient short, each naming the missing ' +
+      'ingredient). Both are ordered simplest drink first.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        ingredients: {
+          type: 'array',
+          items: { type: 'string' },
+          description:
+            'The ingredients you have available — spirits, liqueurs, juices, ' +
+            'mixers, etc. e.g. ["gin", "sweet vermouth", "Campari", "lime"]',
+        },
+      },
+      required: ['ingredients'],
+    },
+    annotations: { readOnlyHint: true },
+    run(args, origin) {
+      const list = Array.isArray(args.ingredients) ? args.ingredients : [];
+      const userWordSets = list.map((item) => words(item)).filter((w) => w.length > 0);
+      if (userWordSets.length === 0) return { error: 'Provide at least one ingredient.' };
+
+      const covered = (ingName) => {
+        if (ASSUMED_STAPLES.has(norm(ingName))) return true;
+        const iw = words(ingName);
+        return userWordSets.some((uw) => userTermCovers(uw, iw));
+      };
+
+      const makeable = [];
+      const almost = [];
+      for (const c of cocktails) {
+        const required = [
+          ...new Set(c.ingredients.filter((i) => i.unit !== 'garnish').map((i) => i.name)),
+        ];
+        const missing = required.filter((name) => !covered(name));
+        if (missing.length === 0) makeable.push({ c, required: required.length });
+        else if (missing.length === 1) almost.push({ c, required: required.length, missing });
+      }
+
+      const simplest = (a, b) => a.required - b.required || a.c.name.localeCompare(b.c.name);
+      makeable.sort(simplest);
+      almost.sort(simplest);
+
+      return {
+        makeable: {
+          count: makeable.length,
+          cocktails: makeable.slice(0, 60).map((m) => summary(m.c, origin)),
+        },
+        almostMakeable: {
+          count: almost.length,
+          cocktails: almost.slice(0, 25).map((m) => ({
+            ...summary(m.c, origin),
+            missing: m.missing,
+          })),
+        },
+      };
+    },
+  },
+  {
     name: 'random_cocktail',
     title: 'Random cocktail',
     description:
@@ -190,8 +294,10 @@ function handleRpc(message, origin) {
         instructions:
           'Tools for cocktail.glass — a catalogue of 500 cocktail recipes. Use ' +
           'search_cocktails to find drinks by name, get_cocktail_recipe for a full ' +
-          'recipe, find_cocktails_by_ingredient to search by ingredient, and ' +
-          'random_cocktail for a suggestion.',
+          'recipe, find_cocktails_by_ingredient to search by a single ' +
+          'ingredient, find_makeable_cocktails to find drinks you can make ' +
+          'from a set of ingredients you have, and random_cocktail for a ' +
+          'suggestion.',
       });
     }
 

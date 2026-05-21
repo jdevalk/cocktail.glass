@@ -49,7 +49,8 @@ export default defineConfig({
           'For programmatic access, cocktail.glass runs a Model Context Protocol ' +
           '(MCP) server at https://cocktail.glass/mcp — a stateless Streamable HTTP ' +
           'endpoint whose tools search cocktails, return full recipes, find drinks ' +
-          'by ingredient, and suggest a random cocktail. Connect any MCP client to ' +
+          'by ingredient, find drinks you can make from a set of ingredients, and ' +
+          'suggest a random cocktail. Connect any MCP client to ' +
           'that URL. The MCP server card is at ' +
           'https://cocktail.glass/.well-known/mcp/server-card.json and a ' +
           'machine-readable API catalogue at ' +

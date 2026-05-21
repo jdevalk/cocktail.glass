@@ -15,6 +15,7 @@ const KNOWN_TOOLS = new Set([
   'search_cocktails',
   'get_cocktail_recipe',
   'find_cocktails_by_ingredient',
+  'find_makeable_cocktails',
   'random_cocktail',
 ]);
 
