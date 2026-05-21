@@ -234,7 +234,9 @@ function handleRpc(message, origin) {
 
 // --- HTTP handler ---------------------------------------------------------
 
-export async function onRequest({ request }) {
+export async function onRequest(context) {
+  const { request } = context;
+
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
   }
@@ -262,7 +264,9 @@ export async function onRequest({ request }) {
   }
 
   const origin = new URL(request.url).origin;
-  return jsonResponse(handleRpc(message, origin), 200);
+  const response = handleRpc(message, origin);
+  logMcpCall(context, message, response);
+  return jsonResponse(response, 200);
 }
 
 function jsonResponse(body, status) {
@@ -270,4 +274,69 @@ function jsonResponse(body, status) {
     status,
     headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
   });
+}
+
+// --- Usage logging --------------------------------------------------------
+
+// Writes one data point per MCP call to the MCP_LOG Analytics Engine dataset,
+// which the /admin/stats dashboard queries. Never throws.
+//
+// The stateless server has no sessions, so client identity is asymmetric:
+// only `initialize` carries clientInfo (name/version); `tools/call` does not.
+// Both shapes share one dataset — `initialize` rows give the client mix,
+// `tools/call` rows give the tool mix and the actual query arguments.
+function logMcpCall(context, message, response) {
+  const dataset = context.env.MCP_LOG;
+  if (!dataset) return; // binding not configured (local dev) — silently skip
+  try {
+    const method = (message && message.method) || '';
+    if (!method || method === 'ping') return; // ping is keepalive noise
+
+    const req = context.request;
+    const params = (message && message.params) || {};
+
+    let toolName = '';
+    let args = '';
+    let clientName = '';
+    let clientVersion = '';
+    let isError = '';
+
+    if (method === 'tools/call') {
+      toolName = String(params.name || '');
+      try {
+        args = JSON.stringify(params.arguments || {}).slice(0, 500);
+      } catch {
+        args = '';
+      }
+      if (response && (response.error || (response.result && response.result.isError))) {
+        isError = '1';
+      }
+    } else if (method === 'initialize') {
+      const clientInfo = params.clientInfo || {};
+      clientName = String(clientInfo.name || '');
+      clientVersion = String(clientInfo.version || '');
+    }
+
+    const protocol =
+      req.headers.get('mcp-protocol-version') ||
+      (method === 'initialize' ? String(params.protocolVersion || '') : '');
+    const identity = method === 'tools/call' && toolName ? toolName : method;
+
+    dataset.writeDataPoint({
+      blobs: [
+        method, // blob1
+        toolName, // blob2
+        args, // blob3
+        clientName, // blob4
+        clientVersion, // blob5
+        protocol, // blob6
+        (req.headers.get('user-agent') || '').slice(0, 300), // blob7
+        req.cf?.country || '', // blob8
+        isError, // blob9
+      ],
+      indexes: [identity],
+    });
+  } catch {
+    // Never break a request because logging failed.
+  }
 }

@@ -1,5 +1,6 @@
 import cocktails from '../cocktails.json';
 import originStories from '../origin-stories.json';
+import { logBot } from './_shared/bot-detect.js';
 
 /**
  * Markdown content negotiation.
@@ -16,6 +17,10 @@ import originStories from '../origin-stories.json';
 const bySlug = new Map(cocktails.map((c) => [c.slug, c]));
 
 export async function onRequest(context) {
+  // Bot/agent logging must run before any early return below, otherwise
+  // crawlers (which fetch HTML, not markdown) would never be logged.
+  logBot(context);
+
   const { request, next } = context;
 
   if (request.method !== 'GET') return next();

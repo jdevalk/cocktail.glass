@@ -5,3 +5,14 @@ pages_build_output_dir = "./dist"
 [[r2_buckets]]
 binding = "PHOTOS"
 bucket_name = "cocktail-photos"
+
+# Analytics Engine datasets for the /admin/stats dashboard.
+# AGENT_LOG is written by functions/_shared/bot-detect.js (crawler traffic);
+# MCP_LOG is written by functions/mcp.js (MCP server usage).
+[[analytics_engine_datasets]]
+binding = "AGENT_LOG"
+dataset = "cg_agent_log"
+
+[[analytics_engine_datasets]]
+binding = "MCP_LOG"
+dataset = "cg_mcp_log"

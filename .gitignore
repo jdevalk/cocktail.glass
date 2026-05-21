@@ -7,4 +7,5 @@ output/
 public/images/responsive/
 public/og/
 .env
+.dev.vars
 .DS_Store
