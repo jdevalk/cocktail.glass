@@ -9,3 +9,7 @@ public/og/
 .env
 .dev.vars
 .DS_Store
+
+# MCP registry DNS-auth signing key — never commit
+mcp-registry-key.pem
+key.pem

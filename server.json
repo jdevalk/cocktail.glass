@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "glass.cocktail/cocktail-glass",
+  "title": "Cocktail Glass",
+  "description": "Search 500 cocktail recipes, get full recipes, find drinks by ingredient, suggest random picks.",
+  "version": "1.0.0",
+  "websiteUrl": "https://cocktail.glass",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://cocktail.glass/mcp"
+    }
+  ]
+}
