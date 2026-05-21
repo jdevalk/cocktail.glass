@@ -264,6 +264,64 @@ const TOOLS = [
   },
 ];
 
+// --- Prompts --------------------------------------------------------------
+
+// User-invokable prompt templates. Unlike tools (model-controlled), a prompt
+// is chosen deliberately by the user — clients surface these as slash
+// commands. Remote-only: the in-browser WebMCP integration carries tools,
+// not prompts, so this list has no counterpart in src/components/WebMcp.astro.
+const PROMPTS = [
+  {
+    name: 'cocktails_from_my_bar',
+    title: 'Cocktails from my bar',
+    description:
+      'From a photo of your liquor cabinet — or a list of what you own — ' +
+      'find every cocktail you can make right now.',
+    arguments: [
+      {
+        name: 'notes',
+        description:
+          'Optional: anything not visible in the photo — fresh produce, ' +
+          'mixers, or garnishes you also have on hand.',
+        required: false,
+      },
+    ],
+    build(args) {
+      const extra = args && typeof args.notes === 'string' ? args.notes.trim() : '';
+      const notesLine = extra
+        ? `\n\nAlso available, not visible in the photo: ${extra}.`
+        : '';
+      return {
+        description: 'Turn a photo of your bar into a list of makeable cocktails.',
+        messages: [
+          {
+            role: 'user',
+            content: {
+              type: 'text',
+              text:
+                'I will share a photo of my liquor cabinet / home bar. Work ' +
+                'through it step by step:\n\n' +
+                '1. Identify every bottle and ingredient you can see — read the ' +
+                'labels carefully.\n' +
+                '2. Normalise each one to a generic ingredient name the catalogue ' +
+                'will recognise. Map brands and specifics to their base type: ' +
+                '"Bombay Sapphire" to "gin", "Cointreau" to "triple sec", ' +
+                '"Martini Rosso" to "sweet vermouth", "Tanqueray No. Ten" to "gin".\n' +
+                '3. Call the find_makeable_cocktails tool once, passing that full ' +
+                'list of ingredients.\n' +
+                '4. Show me the cocktails I can make right now, then a few I am ' +
+                'one ingredient short of — name the missing ingredient for each. ' +
+                'Link every cocktail to its recipe URL.' +
+                notesLine +
+                '\n\nIf I have not attached a photo yet, ask me for one first.',
+            },
+          },
+        ],
+      };
+    },
+  },
+];
+
 // --- JSON-RPC plumbing ----------------------------------------------------
 
 function rpcResult(id, result) {
@@ -289,7 +347,7 @@ function handleRpc(message, origin) {
         : DEFAULT_PROTOCOL_VERSION;
       return rpcResult(id, {
         protocolVersion,
-        capabilities: { tools: {} },
+        capabilities: { tools: {}, prompts: {} },
         serverInfo: SERVER_INFO,
         instructions:
           'Tools for cocktail.glass — a catalogue of 500 cocktail recipes. Use ' +
@@ -297,7 +355,8 @@ function handleRpc(message, origin) {
           'recipe, find_cocktails_by_ingredient to search by a single ' +
           'ingredient, find_makeable_cocktails to find drinks you can make ' +
           'from a set of ingredients you have, and random_cocktail for a ' +
-          'suggestion.',
+          'suggestion. The cocktails_from_my_bar prompt turns a photo of a ' +
+          'home bar into a list of makeable cocktails.',
       });
     }
 
@@ -331,6 +390,24 @@ function handleRpc(message, origin) {
           isError: true,
         });
       }
+    }
+
+    case 'prompts/list':
+      return rpcResult(id, {
+        prompts: PROMPTS.map(({ name, title, description, arguments: argspec }) => ({
+          name,
+          title,
+          description,
+          arguments: argspec,
+        })),
+      });
+
+    case 'prompts/get': {
+      const prompt = PROMPTS.find((p) => p.name === (params && params.name));
+      if (!prompt) {
+        return rpcError(id, -32602, `Unknown prompt: ${params && params.name}`);
+      }
+      return rpcResult(id, prompt.build((params && params.arguments) || {}));
     }
 
     default:

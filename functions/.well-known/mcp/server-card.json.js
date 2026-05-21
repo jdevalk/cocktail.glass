@@ -41,6 +41,7 @@ export function onRequestGet({ request }) {
     transport: 'streamable-http',
     capabilities: {
       tools: { listChanged: false },
+      prompts: { listChanged: false },
     },
     icons: [
       {

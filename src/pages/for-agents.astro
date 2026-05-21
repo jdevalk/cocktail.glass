@@ -69,6 +69,17 @@ const exampleResponse = `{
     </section>
 
     <section class="card">
+      <h2>What you can ask it</h2>
+      <p>Five tools and a guided prompt cover the questions that come up around a home bar:</p>
+      <ul class="use-cases">
+        <li><strong>“What can I make tonight?”</strong> Share the bottles you own — or a photo of your cabinet — and get back the cocktails you can make right now, plus the ones you're a single ingredient short of.</li>
+        <li><strong>“How do I make a Last Word?”</strong> A hands-free recipe reference while you're mixing: exact measures, glassware, steps, and garnish.</li>
+        <li><strong>“I bought a bottle of mezcal — now what?”</strong> Every cocktail that uses a spirit or liqueur you already own, so nothing gathers dust.</li>
+        <li><strong>“Suggest a few drinks for six guests.”</strong> Build a varied menu across styles, or get one random pick when you can't decide.</li>
+      </ul>
+    </section>
+
+    <section class="card">
       <h2>See it work</h2>
       <p>Ask your assistant a question in plain language and it picks the right tool. Here is a real exchange, end to end:</p>
 
@@ -200,6 +211,28 @@ const exampleResponse = `{
 
   .agents .install-btn:hover {
     background: var(--color-accent);
+  }
+
+  .agents .use-cases {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .agents .use-cases li {
+    margin-top: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .agents .use-cases li:first-child {
+    margin-top: 0;
+  }
+
+  .agents .use-cases strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: 0.15rem;
   }
 
   .agents pre {
