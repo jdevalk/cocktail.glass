@@ -4,7 +4,8 @@
     { "movie": "Goldfinger", "year": 1964, "note": "Bond famously specifies his martini preferences while held captive." },
     { "movie": "All About Eve", "year": 1950, "note": "Bette Davis holds court with a martini in the iconic party scenes." },
     { "movie": "The Thin Man", "year": 1934, "note": "Nick and Nora Charles make martini drinking look effortlessly glamorous throughout." },
-    { "movie": "L.A. Confidential", "year": 1997, "note": "Martinis appear throughout as the detectives navigate 1950s Los Angeles." }
+    { "movie": "L.A. Confidential", "year": 1997, "note": "Martinis appear throughout as the detectives navigate 1950s Los Angeles." },
+    { "movie": "Gilmore Girls", "year": 2000, "note": "Lorelai Gilmore steadies herself with a gin martini before the weekly Friday-night dinners with her parents.", "source": "https://vinepair.com/articles/11-best-movie-tv-cocktails/" }
   ],
   "vodka-martini": [
     { "movie": "Casino Royale", "year": 2006, "note": "Daniel Craig's Bond orders his signature drink with specific instructions." },
@@ -20,32 +21,31 @@
     { "movie": "Casino Royale", "year": 2006, "note": "Bond invents the Vesper, naming it after Vesper Lynd, specifying Gordon's gin, vodka, and Kina Lillet." }
   ],
   "gibson": [
-    { "movie": "All About Eve", "year": 1950, "note": "The sophisticated Gibson appears among the classic cocktails served at Margo Channing's party." }
+    { "movie": "All About Eve", "year": 1950, "note": "The sophisticated Gibson appears among the classic cocktails served at Margo Channing's party." },
+    { "movie": "The Queen's Gambit", "year": 2020, "note": "Beth Harmon takes up the Gibson after her adoptive mother Alma orders one, later raising a glass to toast her.", "source": "https://vinepair.com/articles/11-best-movie-tv-cocktails/" }
   ],
   "white-russian": [
     { "movie": "The Big Lebowski", "year": 1998, "note": "The Dude drinks White Russians throughout the entire film, making it the cocktail's most famous cultural moment." },
     { "movie": "Mr. & Mrs. Smith", "year": 2005, "note": "Brad Pitt's character orders a White Russian at a bar." }
   ],
-  "black-russian": [
-    { "movie": "The Big Lebowski", "year": 1998, "note": "Before switching to White Russians, The Dude is seen with the simpler Black Russian." }
-  ],
   "cosmopolitan": [
     { "movie": "Sex and the City", "year": 2008, "note": "Carrie Bradshaw and friends drink Cosmos throughout, continuing the TV series tradition." },
     { "movie": "Sex and the City 2", "year": 2010, "note": "The iconic foursome toast with Cosmopolitans in Abu Dhabi." },
-    { "movie": "Beautiful Girls", "year": 1996, "note": "The Cosmo features as the stylish drink of choice at the local bar." }
+    { "movie": "Beautiful Girls", "year": 1996, "note": "The Cosmo features as the stylish drink of choice at the local bar." },
+    { "movie": "Sex and the City", "year": 1998, "note": "The HBO series turned the Cosmopolitan into a cultural phenomenon as Carrie and her friends drank them throughout its run.", "source": "https://www.wineenthusiast.com/culture/sex-and-the-city-cosmopolitan/" }
   ],
   "manhattan": [
     { "movie": "Some Like It Hot", "year": 1959, "note": "Manhattans flow freely at the party on the train, made in a hot water bottle." },
     { "movie": "Sweet Smell of Success", "year": 1957, "note": "Burt Lancaster's J.J. Hunsecker drinks Manhattans in the jazz clubs of New York." },
-    { "movie": "The Apartment", "year": 1960, "note": "Jack Lemmon's character prepares Manhattans in his borrowed apartment." },
-    { "movie": "Maid in Manhattan", "year": 2002, "note": "The cocktail's namesake city provides the backdrop for this romantic comedy." }
+    { "movie": "The Apartment", "year": 1960, "note": "Jack Lemmon's character prepares Manhattans in his borrowed apartment." }
   ],
   "old-fashioned": [
     { "movie": "It's a Wonderful Life", "year": 1946, "note": "George Bailey orders a series of Old Fashioneds at Martini's bar." },
     { "movie": "Crazy, Stupid, Love", "year": 2011, "note": "Ryan Gosling's character teaches Steve Carell to order an Old Fashioned instead of a vodka cranberry." },
     { "movie": "Blade Runner 2049", "year": 2017, "note": "Officer K drinks an Old Fashioned at a bar while investigating." },
     { "movie": "The Big Short", "year": 2015, "note": "Wall Street power players sip Old Fashioneds while the financial world crumbles around them." },
-    { "movie": "The Accountant", "year": 2016, "note": "Ben Affleck's meticulous character orders a precise Old Fashioned." }
+    { "movie": "The Accountant", "year": 2016, "note": "Ben Affleck's meticulous character orders a precise Old Fashioned." },
+    { "movie": "Mad Men", "year": 2007, "note": "Don Draper makes the Old Fashioned his signature drink, even stepping behind the bar to mix one himself.", "source": "https://www.tastingtable.com/2130750/iconic-cocktails-movies-television/" }
   ],
   "margarita": [
     { "movie": "Cocktail", "year": 1988, "note": "Tom Cruise's bartender character makes and serves Margaritas in several scenes." },
@@ -75,10 +75,6 @@
     { "movie": "The Great Gatsby", "year": 2013, "note": "Champagne cocktails are consumed at Gatsby's extravagant parties." },
     { "movie": "Titanic", "year": 1997, "note": "First-class passengers enjoy champagne cocktails in the ship's dining rooms." }
   ],
-  "gimlet": [
-    { "movie": "The Long Goodbye", "year": 1973, "note": "Elliott Gould's Philip Marlowe orders gimlets, echoing Chandler's novel: \"a real gimlet is half gin and half Rose's Lime Juice and nothing else.\"" },
-    { "movie": "The Big Sleep", "year": 1946, "note": "Humphrey Bogart's Marlowe drinks gimlets in this classic noir." }
-  ],
   "singapore-sling": [
     { "movie": "Fear and Loathing in Las Vegas", "year": 1998, "note": "Johnny Depp's Raoul Duke orders Singapore Slings in the hotel bar, calling it \"the only way to fly.\"" }
   ],
@@ -106,7 +102,7 @@
     { "movie": "Secretariat", "year": 2010, "note": "Mint Juleps are served trackside at the Kentucky Derby scenes." }
   ],
   "french-75": [
-    { "movie": "Casablanca", "year": 1942, "note": "French 75s are served at Rick's Café, ordered by the stylish clientele." },
+    { "movie": "Casablanca", "year": 1942, "note": "Yvonne arrives at Rick's Café Américain with her new German-officer companion and they order French 75s — one of the few cocktails mixed on-screen.", "source": "https://www.tastingtable.com/2130750/iconic-cocktails-movies-television/" },
     { "movie": "A Good Year", "year": 2006, "note": "Russell Crowe's character enjoys French 75s in the south of France." }
   ],
   "screwdriver": [
@@ -117,7 +113,8 @@
     { "movie": "The Hangover", "year": 2009, "note": "The classic morning-after remedy is discussed as the group pieces together their lost night." },
     { "movie": "Bridget Jones's Diary", "year": 2001, "note": "Bridget reaches for Bloody Marys as her go-to hangover cure." },
     { "movie": "Cocktail", "year": 1988, "note": "Tom Cruise's bartender whips up Bloody Marys during his training montage." },
-    { "movie": "The World's End", "year": 2013, "note": "The pub crawl crew encounters the cocktail during their epic drinking marathon." }
+    { "movie": "The World's End", "year": 2013, "note": "The pub crawl crew encounters the cocktail during their epic drinking marathon." },
+    { "movie": "Once Upon a Time in Hollywood", "year": 2019, "note": "Brad Pitt's Cliff Booth sips a Bloody Mary, idly playing with its oversized celery garnish.", "source": "https://cocktail-society.com/recipes/cocktails-in-movies-and-television/" }
   ],
   "cuba-libre": [
     { "movie": "Dirty Dancing: Havana Nights", "year": 2004, "note": "Cuba Libres are served throughout, set in 1958 pre-revolution Havana." },
@@ -130,14 +127,16 @@
   "whiskey-sour": [
     { "movie": "The Philadelphia Story", "year": 1940, "note": "Whiskey Sours are mixed and consumed during the memorable party scenes." },
     { "movie": "In a Lonely Place", "year": 1950, "note": "Humphrey Bogart's screenwriter character drinks Whiskey Sours at his local bar." },
-    { "movie": "The Lost Weekend", "year": 1945, "note": "Ray Milland's alcoholic writer orders Whiskey Sours in Billy Wilder's harrowing drama." }
+    { "movie": "The Lost Weekend", "year": 1945, "note": "Ray Milland's alcoholic writer orders Whiskey Sours in Billy Wilder's harrowing drama." },
+    { "movie": "Once Upon a Time in Hollywood", "year": 2019, "note": "Leonardo DiCaprio's Rick Dalton confesses to drowning 'eight goddamn whiskey sours' the night before.", "source": "https://cocktail-society.com/recipes/cocktails-in-movies-and-television/" }
   ],
   "tequila-sunrise": [
     { "movie": "Tequila Sunrise", "year": 1988, "note": "The cocktail is the namesake of this crime thriller starring Mel Gibson and Michelle Pfeiffer." }
   ],
   "sidecar": [
     { "movie": "Ratatouille", "year": 2007, "note": "The Sidecar is featured as a classic Parisian cocktail in the animated film's bar scene." },
-    { "movie": "A Very Long Engagement", "year": 2004, "note": "The Sidecar appears in the post-WWI Parisian setting, reflecting its era of invention." }
+    { "movie": "A Very Long Engagement", "year": 2004, "note": "The Sidecar appears in the post-WWI Parisian setting, reflecting its era of invention." },
+    { "movie": "The Bonfire of the Vanities", "year": 1990, "note": "Arthur Ruskin (Alan King) holds forth on his love of the Sidecar while being interviewed by Bruce Willis's journalist.", "source": "https://www.misscharming.com/cocktails-in-film" }
   ],
   "negroni": [
     { "movie": "The Talented Mr. Ripley", "year": 1999, "note": "Negronis are sipped in the Italian café scenes, fitting the film's Mediterranean setting." },
@@ -148,12 +147,14 @@
     { "movie": "Midnight in Paris", "year": 2011, "note": "The 1920s Paris setting evokes the era when Erskine Gwynne, an American boulevardier, created this cocktail." }
   ],
   "grasshopper": [
-    { "movie": "Death Proof", "year": 2007, "note": "Quentin Tarantino features the retro Grasshopper in the bar scenes of this grindhouse thriller." }
+    { "movie": "Death Proof", "year": 2007, "note": "Quentin Tarantino features the retro Grasshopper in the bar scenes of this grindhouse thriller." },
+    { "movie": "Romancing the Stone", "year": 1983, "note": "Kathleen Turner's Joan Wilder gets tipsy on grasshoppers in a Colombian cantina.", "source": "https://www.misscharming.com/cocktails-in-film" }
   ],
   "long-island-iced-tea": [
     { "movie": "The World's End", "year": 2013, "note": "Simon Pegg's character attempts an epic pub crawl where strong drinks like Long Islands feature." },
     { "movie": "27 Dresses", "year": 2008, "note": "Katherine Heigl's character drinks Long Island Iced Teas at the bar." },
-    { "movie": "Coyote Ugly", "year": 2000, "note": "The rowdy bar scenes feature Long Island Iced Teas as a popular order." }
+    { "movie": "Coyote Ugly", "year": 2000, "note": "The rowdy bar scenes feature Long Island Iced Teas as a popular order." },
+    { "movie": "Cruel Intentions", "year": 1999, "note": "Cecile sips a Long Island Iced Tea through a curly straw, oblivious to how strong it is.", "source": "https://www.tastingtable.com/2130750/iconic-cocktails-movies-television/" }
   ],
   "brandy-alexander": [
     { "movie": "The Days of Wine and Roses", "year": 1962, "note": "Jack Lemmon introduces Lee Remick to drinking with a Brandy Alexander, starting her spiral." },
@@ -183,7 +184,8 @@
     { "movie": "12 Years a Slave", "year": 2013, "note": "The antebellum Louisiana setting features the cocktail born in New Orleans." }
   ],
   "tom-collins": [
-    { "movie": "The Thin Man", "year": 1934, "note": "William Powell's Nick Charles orders Tom Collins alongside his many other cocktails." }
+    { "movie": "The Thin Man", "year": 1934, "note": "William Powell's Nick Charles orders Tom Collins alongside his many other cocktails." },
+    { "movie": "Meet the Parents", "year": 2000, "note": "Robert De Niro's Jack Byrnes is devoted to the Tom Collins — running out of mix becomes a recurring gag and minor plot point.", "source": "https://vinepair.com/articles/11-best-movie-tv-cocktails/" }
   ],
   "jack-and-coke": [
     { "movie": "Superbad", "year": 2007, "note": "The high schoolers aspire to drink Jack and Coke at the party." },
@@ -334,7 +336,8 @@
     { "movie": "Lost in Translation", "year": 2003, "note": "Bill Murray's Suntory whisky scenes in Tokyo popularized Japanese whisky drinking culture worldwide." }
   ],
   "appletini": [
-    { "movie": "Zoolander", "year": 2001, "note": "The bright green Appletini epitomizes the early-2000s cocktail culture satirized in this comedy." }
+    { "movie": "Zoolander", "year": 2001, "note": "The bright green Appletini epitomizes the early-2000s cocktail culture satirized in this comedy." },
+    { "movie": "Scrubs", "year": 2001, "note": "J.D.'s fondness for the appletini — ordered 'easy on the tini' — runs as a gag across the series.", "source": "https://www.tastingtable.com/2130750/iconic-cocktails-movies-television/" }
   ],
   "lemon-drop-martini": [
     { "movie": "Legally Blonde", "year": 2001, "note": "Reese Witherspoon's Elle Woods embodies the sweet, stylish cocktail culture of the era." }
@@ -410,5 +413,14 @@
   ],
   "fernandito": [
     { "movie": "The Secret in Their Eyes", "year": 2009, "note": "Argentina's national drink appears in this Buenos Aires-set thriller." }
+  ],
+  "banana-daiquiri": [
+    { "movie": "The Godfather Part II", "year": 1974, "note": "Fredo Corleone orders a banana daiquiri at a Havana cafe, asking aloud how to say it in Spanish.", "source": "https://cocktail-society.com/recipes/cocktails-in-movies-and-television/" }
+  ],
+  "vodka-gimlet": [
+    { "movie": "About Schmidt", "year": 2002, "note": "Jack Nicholson's Warren Schmidt orders a vodka gimlet on his aimless road trip.", "source": "https://www.misscharming.com/cocktails-in-film" }
+  ],
+  "gin-and-it": [
+    { "movie": "Laura", "year": 1944, "note": "Vincent Price's Shelby Carpenter mixes a Gin and It in this landmark film noir.", "source": "https://www.misscharming.com/cocktails-in-film" }
   ]
 }
