@@ -11,6 +11,13 @@
 /airmail/ /air-mail/ 301
 /the-journalist/ /journalist/ 301
 /negroni-bianco/ /white-negroni/ 301
+/spritz-veneziano/ /aperol-spritz/ 301
+/hemingway-special/ /hemingway-daiquiri/ 301
+/peach-bellini/ /bellini/ 301
+/basil-smash/ /gin-basil-smash/ 301
+/fernet-and-cola/ /fernandito/ 301
+/chrysanthemum-cocktail/ /chrysanthemum/ 301
+/chrysanthemum-classic/ /chrysanthemum/ 301
 
 # Force 404 status on the SPA fallback (Cloudflare Pages otherwise serves 200).
 /* /404.html 404

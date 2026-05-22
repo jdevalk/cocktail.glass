@@ -6156,46 +6156,6 @@
     ]
   },
   {
-    "name": "Basil Smash",
-    "slug": "basil-smash",
-    "glass": "Tumbler",
-    "family": "Sour",
-    "method": "Shaken",
-    "tags": [
-      "modern-classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "gin",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "lemon-juice",
-        "amount": 22.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "sugar-syrup",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "basil-leaves",
-        "amount": 8,
-        "unit": "leaves"
-      }
-    ],
-    "garnish": [
-      "Basil leaf"
-    ],
-    "preparation": [
-      "Muddle basil with syrup and lemon juice.",
-      "Add gin.",
-      "Shake with ice and double strain into a rocks glass over ice."
-    ]
-  },
-  {
     "name": "Gin Basil Smash",
     "slug": "gin-basil-smash",
     "glass": "Tumbler",
@@ -6805,40 +6765,6 @@
     ]
   },
   {
-    "name": "Chrysanthemum Cocktail",
-    "slug": "chrysanthemum-cocktail",
-    "glass": "Nick & Nora",
-    "family": "Spirit-Forward",
-    "method": "Stirred",
-    "tags": [
-      "low-abv"
-    ],
-    "ingredients": [
-      {
-        "ref": "dry-vermouth",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "benedictine",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "absinthe",
-        "amount": 1,
-        "unit": "barspoon"
-      }
-    ],
-    "garnish": [
-      "Orange peel"
-    ],
-    "preparation": [
-      "Stir all ingredients with ice.",
-      "Strain into a Nick & Nora glass."
-    ]
-  },
-  {
     "name": "Rattlesnake",
     "slug": "rattlesnake",
     "glass": "Coupe",
@@ -7359,45 +7285,6 @@
     ]
   },
   {
-    "name": "Hemingway Special",
-    "slug": "hemingway-special",
-    "glass": "Coupe",
-    "family": "Sour",
-    "method": "Shaken",
-    "tags": [
-      "classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "white-rum",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "lime-juice",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "grapefruit-juice",
-        "amount": 22.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "maraschino-liqueur",
-        "amount": 15,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Lime wheel"
-    ],
-    "preparation": [
-      "Shake all ingredients with ice.",
-      "Strain into a chilled coupe glass."
-    ]
-  },
-  {
     "name": "Industry Sour",
     "slug": "industry-sour",
     "glass": "Tumbler",
@@ -7520,31 +7407,6 @@
       "Add remaining ingredients.",
       "Shake with ice.",
       "Strain into a rocks glass over ice."
-    ]
-  },
-  {
-    "name": "Peach Bellini",
-    "slug": "peach-bellini",
-    "glass": "Flute",
-    "family": "Champagne Cocktail",
-    "method": "Built",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "prosecco",
-        "amount": 120,
-        "unit": "ml"
-      },
-      {
-        "ref": "white-peach-puree",
-        "amount": 45,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [],
-    "preparation": [
-      "Add peach purée to a flute and slowly.",
-      "Top with prosecco, stirring gently."
     ]
   },
   {
@@ -8572,38 +8434,6 @@
       "Build in a highball glass.",
       "Add beer.",
       "Top with grapefruit soda."
-    ]
-  },
-  {
-    "name": "Spritz Veneziano",
-    "slug": "spritz-veneziano",
-    "glass": "Wine glass",
-    "family": "Spritz",
-    "method": "Built",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "aperol",
-        "amount": 45,
-        "unit": "ml"
-      },
-      {
-        "ref": "prosecco",
-        "amount": 90,
-        "unit": "ml"
-      },
-      {
-        "ref": "soda-water",
-        "amount": 30,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Orange slice"
-    ],
-    "preparation": [
-      "Build over ice in a wine glass.",
-      "Stir gently."
     ]
   },
   {
@@ -15540,30 +15370,6 @@
     ]
   },
   {
-    "name": "Fernet & Cola",
-    "slug": "fernet-and-cola",
-    "glass": "Highball",
-    "family": "Highball",
-    "method": "Built",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "fernet-branca",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "cola",
-        "amount": 120,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [],
-    "preparation": [
-      "Build over ice in a highball glass and stir."
-    ]
-  },
-  {
     "name": "Mezcal Old Fashioned",
     "slug": "mezcal-old-fashioned",
     "glass": "Tumbler",
@@ -18209,40 +18015,6 @@
     ]
   },
   {
-    "name": "Chrysanthemum Classic",
-    "slug": "chrysanthemum-classic",
-    "glass": "Nick & Nora",
-    "family": "Spirit-Forward",
-    "method": "Stirred",
-    "tags": [
-      "low-abv"
-    ],
-    "ingredients": [
-      {
-        "ref": "dry-vermouth",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "benedictine",
-        "amount": 22.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "absinthe",
-        "amount": 1,
-        "unit": "barspoon"
-      }
-    ],
-    "garnish": [
-      "Orange twist"
-    ],
-    "preparation": [
-      "Stir all ingredients with ice.",
-      "Strain into a Nick & Nora glass."
-    ]
-  },
-  {
     "name": "Absinthe Frappé",
     "slug": "absinthe-frappe",
     "glass": "Tumbler",
@@ -18751,6 +18523,285 @@
     "preparation": [
       "Stir all ingredients with ice.",
       "Strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Affinity",
+    "slug": "affinity",
+    "glass": "Coupe",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "scotch",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "dry-vermouth",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash"
+      }
+    ],
+    "garnish": [
+      "Lemon twist"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Toreador",
+    "slug": "toreador",
+    "glass": "Coupe",
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "tequila-blanco",
+        "amount": 45,
+        "unit": "ml"
+      },
+      {
+        "ref": "apricot-brandy",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lime wheel"
+    ],
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Double-strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Cobble Hill",
+    "slug": "cobble-hill",
+    "glass": "Coupe",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "cucumber",
+        "amount": 3,
+        "unit": "slice"
+      },
+      {
+        "ref": "rye-whiskey",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "dry-vermouth",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "amaro-montenegro",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Cucumber slice"
+    ],
+    "preparation": [
+      "Muddle the cucumber in a mixing glass.",
+      "Add the remaining ingredients and stir with ice.",
+      "Double-strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Newark",
+    "slug": "newark",
+    "glass": "Coupe",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "apple-brandy",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "fernet-branca",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "maraschino-liqueur",
+        "amount": 7.5,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lemon twist"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Conference",
+    "slug": "conference",
+    "glass": "Tumbler",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "rye-whiskey",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "bourbon",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "apple-brandy",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "cognac",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "demerara-syrup",
+        "amount": 1,
+        "unit": "barspoon"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash"
+      },
+      {
+        "ref": "mole-bitters",
+        "amount": 1,
+        "unit": "dash"
+      }
+    ],
+    "garnish": [
+      "Lemon twist",
+      "Orange twist"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a rocks glass over a large ice cube."
+    ]
+  },
+  {
+    "name": "Mexican 55",
+    "slug": "mexican-55",
+    "glass": "Flute",
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "tequila-blanco",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "agave-syrup",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "champagne",
+        "amount": 60,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lime twist"
+    ],
+    "preparation": [
+      "Shake the tequila, lime juice and agave syrup with ice.",
+      "Strain into a chilled flute.",
+      "Top with champagne."
+    ]
+  },
+  {
+    "name": "Saoco",
+    "slug": "saoco",
+    "glass": "Highball",
+    "family": "Highball",
+    "method": "Built",
+    "tags": [],
+    "ingredients": [
+      {
+        "ref": "white-rum",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "coconut-water",
+        "amount": 90,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lime wedge"
+    ],
+    "preparation": [
+      "Build all ingredients in a highball glass over ice.",
+      "Stir gently."
     ]
   }
 ]

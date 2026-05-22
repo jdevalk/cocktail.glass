@@ -43,6 +43,12 @@ const MODEL = process.env.IMAGE_MODEL || 'google/gemini-3.1-flash-image-preview'
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const COCKTAILS_PATH = path.resolve('cocktails.json');
 const IMAGES_DIR = path.resolve('public/images');
+
+// cocktails.json stores ingredients as `ref` only; ingredients.json is the
+// canonical name table. Resolve refs so prompts name real ingredients.
+const INGREDIENT_NAMES = new Map(
+    JSON.parse(fs.readFileSync(path.resolve('ingredients.json'), 'utf8')).map((i) => [i.id, i.name]),
+);
 const DEFAULT_CONCURRENCY = getPositiveInt(process.env.IMAGE_CONCURRENCY, 3);
 const DEFAULT_DELAY_MS = getPositiveInt(process.env.IMAGE_DELAY_MS, 250);
 
@@ -106,7 +112,7 @@ function getGlassServingText(glass) {
 
 function buildPrompt(cocktail) {
     const { name, glass, ingredients, garnish } = cocktail;
-    const ingredientNames = ingredients.map(i => i.name).join(', ');
+    const ingredientNames = ingredients.map(i => INGREDIENT_NAMES.get(i.ref) || i.ref).join(', ');
     const glassStyle = describeGlassStyle(glass);
     const glassPromptName = getGlassPromptName(glass);
 
@@ -129,7 +135,7 @@ STYLE (follow exactly):
 - Glass styling: ${glassStyle}
 - The glassware should feel chic, upscale, and design-forward
 - Avoid cheap, clunky, novelty, or overly thick glassware unless the drink specifically calls for it
-${garnish ? `- Garnished with: ${garnish}` : '- No garnish, clean presentation'}
+${garnish && garnish.length ? `- Garnished with: ${garnish.join(', ')}` : '- No garnish, clean presentation'}
 - Key ingredients for color reference: ${ingredientNames}
 - Square format, centered composition with some breathing room
 - No text, no labels, no watermarks

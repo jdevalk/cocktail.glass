@@ -485,9 +485,6 @@
   "southside": {
     "story": "The Southside cocktail has roots in the early 20th century, traditionally associated with the South Side of Chicago. It has seen a resurgence in popularity, particularly in craft cocktail bars, as bartenders embrace its refreshing and herbaceous qualities."
   },
-  "basil-smash": {
-    "story": "The Basil Smash emerged in the mid-2000s in Germany, crafted by bartender Jörg Meyer at his bar Le Lion. This cocktail quickly gained popularity for its refreshing combination of gin and fresh basil."
-  },
   "gin-basil-smash": {
     "story": "The Gin Basil Smash, often considered synonymous with the Basil Smash, was popularized by Jörg Meyer in the mid-2000s in Hamburg, Germany. This modern classic showcases the vibrant flavors of gin and fresh basil."
   },
@@ -536,9 +533,6 @@
   "remember-the-maine": {
     "story": "Remember the Maine is a cocktail that originated in the early 20th century and is often associated with the classic cocktail revival. Its name pays homage to the USS Maine, reflecting the era's historical influences."
   },
-  "chrysanthemum-cocktail": {
-    "story": "The Chrysanthemum Cocktail emerged in the early 20th century, with its first known recipes appearing in the 1930s. This low-alcohol drink reflects the era's experimentation with vermouth and herbal liqueurs."
-  },
   "rattlesnake": {
     "story": "The Rattlesnake cocktail is believed to have originated in the early 20th century, with its first recipes appearing in the 1930s. It combines whiskey and absinthe, showcasing the creative spirit of the cocktail culture during that time."
   },
@@ -581,9 +575,6 @@
   "myrtle-bank-punch": {
     "story": "Myrtle Bank Punch is a Tiki cocktail that draws inspiration from the Caribbean and the vibrant rum culture. Its origins can be traced back to the mid-20th century, celebrating the tropical flavors of the region."
   },
-  "hemingway-special": {
-    "story": "The Hemingway Special is believed to have been inspired by the famous author Ernest Hemingway, who had a penchant for rum-based drinks. It reflects his adventurous lifestyle and affinity for bold flavors."
-  },
   "industry-sour": {
     "story": "The Industry Sour is a modern cocktail that emerged in the 21st century, reflecting the craft cocktail movement's focus on balance and complexity. It showcases the use of Fernet-Branca and Green Chartreuse, popular among bartenders."
   },
@@ -592,9 +583,6 @@
   },
   "enzoni": {
     "story": "The Enzoni cocktail is a modern classic that emerged in the 21st century, showcasing the trend of incorporating fresh ingredients into cocktails. Its combination of gin and Campari reflects the Italian influence on contemporary mixology."
-  },
-  "peach-bellini": {
-    "story": "The Peach Bellini was created in the 1940s at Harry's Bar in Venice, Italy, by bartender Giuseppe Cipriani. It quickly became a symbol of Italian aperitivo culture, combining fresh peach purée with sparkling wine."
   },
   "porto-flip": {
     "story": "The Porto Flip is a classic cocktail that dates back to the 19th century, combining port wine and cognac. It reflects the era's fascination with rich, creamy drinks and showcases the versatility of fortified wines."
@@ -667,9 +655,6 @@
   },
   "radler": {
     "story": "The Radler was created in Germany in the 1920s when a innkeeper mixed beer with lemonade to quench the thirst of cyclists. This refreshing drink has since gained popularity across Europe and beyond."
-  },
-  "spritz-veneziano": {
-    "story": "The Spritz Veneziano emerged in the Veneto region of Italy, with roots tracing back to the 19th century when Austrian soldiers added water to local wines. The modern version, featuring Aperol, Prosecco, and soda, became popular in the 2000s."
   },
   "garibaldi": {
     "story": "The Garibaldi cocktail is believed to have originated in Italy and is named after the Italian nationalist Giuseppe Garibaldi. It gained popularity in the 20th century, particularly for its vibrant color and refreshing taste."
@@ -1244,9 +1229,6 @@
   "fernandito": {
     "story": "The Fernandito is a popular drink in Argentina, combining the herbal complexity of Fernet-Branca with the sweetness of cola. It gained prominence in the late 20th century as a favored choice among locals, especially in social settings."
   },
-  "fernet-and-cola": {
-    "story": "Fernet & Cola is a beloved cocktail that showcases the Italian amaro Fernet-Branca mixed with cola, particularly popular in Argentina. This combination became a staple in the late 20th century, reflecting the country's unique drinking culture and affinity for Fernet."
-  },
   "mezcal-old-fashioned": {
     "story": "The Mezcal Old Fashioned is a contemporary reinterpretation of the classic Old Fashioned, emerging in the early 21st century as mezcal gained popularity outside Mexico. This variation highlights the spirit's smoky characteristics while paying homage to the traditional cocktail's roots."
   },
@@ -1459,9 +1441,6 @@
   },
   "night-cap": {
     "story": "The Night Cap is a classic cocktail that emerged in the early to mid-20th century, often enjoyed as a final drink before bedtime. Its rich and warming ingredients reflect the era's penchant for indulgent and sophisticated beverages."
-  },
-  "chrysanthemum-classic": {
-    "story": "The Chrysanthemum Classic emerged in the early 20th century, particularly known in New York City cocktail culture. It reflects the era's fascination with herbal liqueurs and vermouths, often enjoyed in elegant settings."
   },
   "absinthe-frappe": {
     "story": "The Absinthe Frappé originated in New Orleans in the late 19th century, where absinthe was celebrated for its unique flavors and mystique. This cocktail became a staple in the city's vibrant bar scene, especially during the absinthe craze."

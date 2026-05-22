@@ -2003,5 +2003,11 @@
     "aliases": [
       "chartreuse jaune"
     ]
+  },
+  {
+    "id": "coconut-water",
+    "name": "Coconut water",
+    "type": "mixer",
+    "aliases": []
   }
 ]
