@@ -70,4 +70,6 @@ Found a security issue? See [SECURITY.md](SECURITY.md) — please do not open a 
 
 ## License
 
-This repository is public for transparency and as a reference. It carries **no open-source license: all rights reserved.** The code is not licensed for reuse, and the cocktail recipe data and written content may not be copied or republished. To use any part of it, [get in touch](mailto:joost@joost.blog).
+The **source code** in this repository is licensed under the [MIT License](LICENSE). Take it apart, learn from it, reuse the patterns.
+
+The **cocktail recipe data and written content** — `cocktails.json`, `ingredients.json`, `movie-appearances.json`, `origin-stories.json`, and the page copy — are © 2026 Joost de Valk, all rights reserved. They are published here for transparency, but may not be copied or republished. To reuse the data, [get in touch](mailto:joost@joost.blog).
