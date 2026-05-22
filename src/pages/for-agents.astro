@@ -38,6 +38,25 @@ const exampleResponse = `{
     { "name": "Americano",    "family": "Spritz",         "url": "https://cocktail.glass/americano/" }
   ]
 }`;
+
+const movieExampleRequest = `{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "find_cocktails_in_movie",
+    "arguments": { "movie": "The Godfather" }
+  }
+}`;
+
+const movieExampleResponse = `{
+  "count": 6,
+  "appearances": [
+    { "name": "Godfather",       "movie": "The Godfather",          "year": 1972, "note": "A scotch and amaretto drink named for the film…" },
+    { "name": "Banana Daiquiri", "movie": "The Godfather Part II",  "year": 1974, "note": "Fredo Corleone orders one at a Havana cafe…" },
+    { "name": "Godmother",       "movie": "The Godfather Part III", "year": 1990, "note": "Vodka and amaretto, a nod to the films…" }
+  ]
+}`;
 ---
 <Base
   title="An MCP server for 500 cocktail recipes"
@@ -82,7 +101,7 @@ const exampleResponse = `{
 
     <section class="card">
       <h2>See it work</h2>
-      <p>Ask your assistant a question in plain language and it picks the right tool. Here is a real exchange, end to end:</p>
+      <p>Ask your assistant a question in plain language and it picks the right tool. Here are two real exchanges, end to end:</p>
 
       <div class="exchange">
         <p class="exchange-step"><span class="exchange-tag exchange-tag--user">You ask</span> “What can I make with Campari?”</p>
@@ -95,6 +114,19 @@ const exampleResponse = `{
         <p class="exchange-note">Four of 29 matches shown. MCP delivers the list as the text content of a standard tool result.</p>
 
         <p class="exchange-step"><span class="exchange-tag exchange-tag--answer">Your assistant answers</span> “You have 29 options with Campari. The classics are the Negroni and Boulevardier, or a Jungle Bird for something tiki.”</p>
+      </div>
+
+      <div class="exchange">
+        <p class="exchange-step"><span class="exchange-tag exchange-tag--user">You ask</span> “Which cocktails are in The Godfather?”</p>
+
+        <p class="exchange-step"><span class="exchange-tag">The agent calls a tool</span></p>
+        <pre><code>{movieExampleRequest}</code></pre>
+
+        <p class="exchange-step"><span class="exchange-tag">cocktail.glass returns</span></p>
+        <pre><code>{movieExampleResponse}</code></pre>
+        <p class="exchange-note">Three of six appearances shown. The match runs over the scene description too, so a character, actor, or director — “Hemingway”, “Tarantino” — works as well as a title.</p>
+
+        <p class="exchange-step"><span class="exchange-tag exchange-tag--answer">Your assistant answers</span> “Six across the trilogy — Fredo's banana daiquiri in Part II is the famous one, and the Godfather and Godmother cocktails are named for the films themselves.”</p>
       </div>
 
       <p>Every result carries a real page URL, so the agent can link straight to the full recipe, with measures, steps, glassware, and garnish.</p>
