@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import type { Cocktail, CocktailOriginStories } from '../types';
 import { buildPrettyFilterHref } from '../utils/filter-url';
 import { getGlassServingText } from '../utils/glass';
-import { buildRecipeSchema, formatIngredientAmount } from '../utils/schema';
+import { buildRecipeSchema, buildMetaDescription, formatIngredientAmount } from '../utils/schema';
 import { estimateCalories } from '../utils/calories';
 import { findSimilar } from '../utils/similar';
 import { linkifyCocktails } from '../utils/linkify';
@@ -89,7 +89,7 @@ const primaryIngredientHref = primaryIngredient
 const movies = (movieAppearances as Record<string, { movie: string; year: number; note: string }[]>)[cocktail.slug] || [];
 const pageDescription = originStory?.story
   ? originStory.story.slice(0, 150) + (originStory.story.length > 150 ? '…' : '')
-  : `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
+  : buildMetaDescription(cocktail);
 ---
 <Base
   title={cocktail.name}

@@ -46,7 +46,23 @@ export function formatIngredientText(ingredient: Ingredient): string {
 }
 
 function buildDescription(cocktail: Cocktail): string {
-  return `How to make a ${cocktail.name}: ${cocktail.preparation.join('. ')}.`;
+  // Each preparation step already ends with a period, so join with a space only.
+  return `How to make a ${cocktail.name}: ${cocktail.preparation.join(' ')}`;
+}
+
+// Like buildDescription, but capped to a meta-description length budget by
+// dropping whole preparation steps so the text never ends mid-sentence.
+export function buildMetaDescription(cocktail: Cocktail, maxLength = 200): string {
+  const prefix = `How to make a ${cocktail.name}: `;
+  let text = prefix;
+  for (const step of cocktail.preparation) {
+    const next = text === prefix ? prefix + step : `${text} ${step}`;
+    if (next.length > maxLength) break;
+    text = next;
+  }
+  return text === prefix
+    ? `${prefix}${cocktail.preparation[0]}`.slice(0, maxLength - 1) + '…'
+    : text;
 }
 
 export function siteWidePieces(siteUrl: string) {
