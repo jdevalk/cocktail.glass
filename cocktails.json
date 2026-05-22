@@ -4649,7 +4649,7 @@
     ]
   },
   {
-    "name": "Penicillin Variation with Rye",
+    "name": "New York Sour",
     "slug": "new-york-sour",
     "glass": "Tumbler",
     "family": "Sour",
@@ -4693,7 +4693,7 @@
     ]
   },
   {
-    "name": "Boulevardier Variation",
+    "name": "Old Pal",
     "slug": "old-pal",
     "glass": "Coupe",
     "family": "Spirit-Forward",
@@ -11539,7 +11539,7 @@
     ]
   },
   {
-    "name": "Widow's Kiss Variation",
+    "name": "Greenpoint",
     "slug": "greenpoint",
     "glass": "Coupe",
     "family": "Spirit-Forward",
@@ -11576,50 +11576,6 @@
     ],
     "garnish": [
       "Lemon peel"
-    ],
-    "preparation": [
-      "Stir all ingredients with ice.",
-      "Strain into a chilled coupe glass."
-    ]
-  },
-  {
-    "name": "Greenpoint",
-    "slug": "greenpoint-cocktail",
-    "glass": "Coupe",
-    "family": "Spirit-Forward",
-    "method": "Stirred",
-    "tags": [
-      "modern-classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "rye-whiskey",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "sweet-vermouth",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "yellow-chartreuse",
-        "amount": 7.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "angostura-bitters",
-        "amount": 1,
-        "unit": "dash"
-      },
-      {
-        "ref": "orange-bitters",
-        "amount": 1,
-        "unit": "dash"
-      }
-    ],
-    "garnish": [
-      "Lemon twist"
     ],
     "preparation": [
       "Stir all ingredients with ice.",
@@ -11773,7 +11729,7 @@
     ]
   },
   {
-    "name": "Chrysanthemum No. 2",
+    "name": "Fancy Free",
     "slug": "fancy-free",
     "glass": "Coupe",
     "family": "Spirit-Forward",
@@ -11809,45 +11765,6 @@
     "preparation": [
       "Stir all ingredients with ice.",
       "Strain into a chilled coupe glass."
-    ]
-  },
-  {
-    "name": "Fancy Free",
-    "slug": "fancy-free-cocktail",
-    "glass": "Tumbler",
-    "family": "Spirit-Forward",
-    "method": "Stirred",
-    "tags": [
-      "classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "bourbon",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "maraschino-liqueur",
-        "amount": 7.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "angostura-bitters",
-        "amount": 2,
-        "unit": "dash"
-      },
-      {
-        "ref": "orange-bitters",
-        "amount": 1,
-        "unit": "dash"
-      }
-    ],
-    "garnish": [
-      "Orange peel"
-    ],
-    "preparation": [
-      "Stir all ingredients with ice.",
-      "Strain into a rocks glass over a large ice cube."
     ]
   },
   {
@@ -12783,7 +12700,7 @@
     ]
   },
   {
-    "name": "Harvey Wallbanger Variation",
+    "name": "Freddy Fudpucker",
     "slug": "freddy-fudpucker",
     "glass": "Highball",
     "family": "Highball",
@@ -13442,34 +13359,8 @@
     ]
   },
   {
-    "name": "Rusty Nail (Sweet)",
-    "slug": "godmother",
-    "glass": "Tumbler",
-    "family": "Spirit-Forward",
-    "method": "Built",
-    "tags": [
-      "classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "vodka",
-        "amount": 45,
-        "unit": "ml"
-      },
-      {
-        "ref": "amaretto",
-        "amount": 22.5,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [],
-    "preparation": [
-      "Build in a rocks glass over ice and stir."
-    ]
-  },
-  {
     "name": "Godmother",
-    "slug": "godmother-cocktail",
+    "slug": "godmother",
     "glass": "Tumbler",
     "family": "Spirit-Forward",
     "method": "Built",
@@ -14122,26 +14013,23 @@
     ]
   },
   {
-    "name": "Boulevardier (Cognac)",
+    "name": "Old Hickory",
     "slug": "old-hickory",
     "glass": "Coupe",
     "family": "Spirit-Forward",
     "method": "Stirred",
-    "tags": [],
+    "tags": [
+      "low-abv"
+    ],
     "ingredients": [
       {
-        "ref": "cognac",
-        "amount": 30,
+        "ref": "dry-vermouth",
+        "amount": 45,
         "unit": "ml"
       },
       {
         "ref": "sweet-vermouth",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "dry-vermouth",
-        "amount": 30,
+        "amount": 45,
         "unit": "ml"
       },
       {
@@ -14235,7 +14123,7 @@
     ]
   },
   {
-    "name": "Bees Knees (Rum)",
+    "name": "Honey Bee",
     "slug": "honey-bee",
     "glass": "Coupe",
     "family": "Sour",
@@ -15166,7 +15054,7 @@
     ]
   },
   {
-    "name": "Bees Knees (Bourbon)",
+    "name": "Gold Rush Variation",
     "slug": "gold-rush-variation",
     "glass": "Tumbler",
     "family": "Sour",
@@ -15431,7 +15319,7 @@
     ]
   },
   {
-    "name": "Sazrac (Cognac)",
+    "name": "Sazerac (Cognac)",
     "slug": "sazerac-cognac",
     "glass": "Tumbler",
     "family": "Spirit-Forward",
@@ -15592,7 +15480,7 @@
     ]
   },
   {
-    "name": "Penichillin",
+    "name": "Peach Bourbon Smash",
     "slug": "peach-bourbon-smash",
     "glass": "Tumbler",
     "family": "Sour",
@@ -18728,6 +18616,122 @@
       "Build gin and lime juice over ice in a highball glass.",
       "Top with soda water.",
       "Stir gently."
+    ]
+  },
+  {
+    "name": "Spaghett",
+    "slug": "spaghett",
+    "glass": "Highball",
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ],
+    "ingredients": [
+      {
+        "ref": "lager-beer",
+        "amount": 300,
+        "unit": "ml"
+      },
+      {
+        "ref": "aperol",
+        "amount": 45,
+        "unit": "ml"
+      },
+      {
+        "ref": "lemon",
+        "amount": 2,
+        "unit": "wedge"
+      }
+    ],
+    "garnish": [],
+    "preparation": [
+      "Sip or pour about 60 ml from a cold lager to make room.",
+      "Add the Aperol.",
+      "Squeeze in the lemon wedges and drop them in."
+    ]
+  },
+  {
+    "name": "Cynar Negroni",
+    "slug": "cynar-negroni",
+    "glass": "Tumbler",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [],
+    "ingredients": [
+      {
+        "ref": "gin",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "cynar",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Orange peel"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a rocks glass over a large ice cube."
+    ]
+  },
+  {
+    "name": "Old Cuban",
+    "slug": "old-cuban",
+    "glass": "Coupe",
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "aged-rum",
+        "amount": 45,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "sugar-syrup",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "mint-leaves",
+        "amount": 6,
+        "unit": "leaves"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash"
+      },
+      {
+        "ref": "champagne",
+        "amount": 60,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Mint sprig"
+    ],
+    "preparation": [
+      "Lightly muddle the mint with the lime juice and sugar syrup.",
+      "Add the rum and bitters, then shake hard with ice.",
+      "Double-strain into a chilled coupe.",
+      "Top with champagne."
     ]
   }
 ]

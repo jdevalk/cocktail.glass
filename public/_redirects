@@ -1,5 +1,10 @@
 # Permanent redirects. One per line: /old /new 301
 # Add entries when renaming slugs so old URLs keep working.
 
+# Deduplicated cocktail entries — old slug -> canonical slug.
+/greenpoint-cocktail/ /greenpoint/ 301
+/fancy-free-cocktail/ /fancy-free/ 301
+/godmother-cocktail/ /godmother/ 301
+
 # Force 404 status on the SPA fallback (Cloudflare Pages otherwise serves 200).
 /* /404.html 404

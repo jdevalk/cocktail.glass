@@ -32,8 +32,9 @@
 
 ## Data conventions
 - `cocktails.json` is the single source of truth for all cocktail data.
-- `preparation` is an array of step strings (not a single string). Each step ends with a period.
-- Garnish is included both as the last preparation step ("Garnish with ...") and as an ingredient with `unit: "garnish"`.
+- `preparation` is an array of method-step strings (not a single string). Each step ends with a period — there is no "Garnish with …" step.
+- `garnish` is a `string[]` on the cocktail (may be empty); garnishes are not ingredients.
+- Each cocktail ingredient is `{ ref, amount, unit }`; `ref` points at an `id` in `ingredients.json`, the canonical ingredient table. See SCHEMA.md for the full model.
 - `origin-stories.json` is keyed by slug.
 
 ## Dev workflow
