@@ -5,6 +5,12 @@
 /greenpoint-cocktail/ /greenpoint/ 301
 /fancy-free-cocktail/ /fancy-free/ 301
 /godmother-cocktail/ /godmother/ 301
+/tom-rickey/ /gin-rickey/ 301
+/venetian-spritz/ /select-spritz/ 301
+/suffering-bastard-tiki/ /suffering-bastard-joes/ 301
+/airmail/ /air-mail/ 301
+/the-journalist/ /journalist/ 301
+/negroni-bianco/ /white-negroni/ 301
 
 # Force 404 status on the SPA fallback (Cloudflare Pages otherwise serves 200).
 /* /404.html 404

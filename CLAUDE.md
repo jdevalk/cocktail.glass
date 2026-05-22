@@ -40,3 +40,8 @@
 ## Dev workflow
 - The user runs `astro dev` on localhost:4321. Use that for testing — don't start separate preview servers.
 - Build with `npx astro build`. The custom image-sitemap integration generates `sitemap.xml` (not a sitemap index).
+
+## Deployment
+- Cloudflare Pages does **not** auto-deploy on GitHub push. Deployment is manual.
+- Deploy with `npm run deploy:pages` (runs `astro build` then `wrangler pages deploy dist`).
+- The GitHub Actions workflows only run data validation and link checking — neither deploys.

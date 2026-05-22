@@ -525,7 +525,7 @@
     "story": "The Lucien Gaudin cocktail is thought to have been named after a French fencer and dates back to the 1920s. It reflects the era's fascination with gin-based drinks and the growing popularity of vermouth."
   },
   "journalist": {
-    "story": "The Journalist cocktail emerged in the early 20th century, with its first known recipes appearing in the 1930s. It combines various spirits and bitters, showcasing the complexity of cocktails from that era."
+    "story": "The Journalist first appeared in Harry Craddock's 1930 Savoy Cocktail Book. A complex, layered drink that combines gin with both vermouths, a touch of orange liqueur, and citrus. It fell into obscurity for decades before being rediscovered during the craft cocktail revival of the 2000s."
   },
   "satans-whiskers": {
     "story": "Satan's Whiskers is a cocktail that originated in the early 20th century, with its first recipes appearing in the 1930s. This drink combines multiple flavors, reflecting the adventurous spirit of cocktail creation during that time."
@@ -547,9 +547,6 @@
   },
   "death-in-the-afternoon": {
     "story": "The Death in the Afternoon cocktail was created by author Ernest Hemingway in the 1930s, inspired by his time in Paris. It combines absinthe and champagne, reflecting the author's adventurous spirit and love for bold flavors."
-  },
-  "airmail": {
-    "story": "The Airmail cocktail is believed to have originated in the 1940s, possibly linked to the aviation boom post-World War II. It combines rum and champagne, symbolizing the excitement of air travel during that era."
   },
   "seelbach": {
     "story": "The Seelbach cocktail was first served at the Seelbach Hotel in Louisville, Kentucky, around the turn of the 20th century. It gained popularity after being rediscovered in the 1990s, showcasing a blend of bourbon and champagne."
@@ -598,9 +595,6 @@
   },
   "peach-bellini": {
     "story": "The Peach Bellini was created in the 1940s at Harry's Bar in Venice, Italy, by bartender Giuseppe Cipriani. It quickly became a symbol of Italian aperitivo culture, combining fresh peach purée with sparkling wine."
-  },
-  "suffering-bastard-tiki": {
-    "story": "The Suffering Bastard cocktail has roots in the 1940s, originally created as a hangover remedy in Cairo. The Tiki variation reflects the cocktail's evolution, incorporating tropical flavors and ingredients popular in Tiki culture."
   },
   "porto-flip": {
     "story": "The Porto Flip is a classic cocktail that dates back to the 19th century, combining port wine and cognac. It reflects the era's fascination with rich, creamy drinks and showcases the versatility of fortified wines."
@@ -865,9 +859,6 @@
   },
   "lavender-collins": {
     "story": "The Lavender Collins is a contemporary twist on the classic Collins, emerging in the 21st century as part of the craft cocktail movement. Its floral notes cater to a growing interest in unique flavor combinations."
-  },
-  "negroni-bianco": {
-    "story": "The Negroni Bianco is a lighter variation of the classic Negroni, gaining traction in the 21st century as drinkers sought refreshing alternatives. Its use of white vermouth and other lighter ingredients reflects modern cocktail trends."
   },
   "bicicletta": {
     "story": "The Bicicletta is an Italian spritz that became popular in the 20th century, particularly in the Veneto region. It combines dry white wine and Campari, reflecting the Italian tradition of aperitivo."
@@ -1472,9 +1463,6 @@
   "chrysanthemum-classic": {
     "story": "The Chrysanthemum Classic emerged in the early 20th century, particularly known in New York City cocktail culture. It reflects the era's fascination with herbal liqueurs and vermouths, often enjoyed in elegant settings."
   },
-  "venetian-spritz": {
-    "story": "The Venetian Spritz has its roots in the Veneto region of Italy, where it became popular in the 20th century as a refreshing aperitif. Its combination of local prosecco and Select Aperitivo captures the essence of Italian social culture."
-  },
   "absinthe-frappe": {
     "story": "The Absinthe Frappé originated in New Orleans in the late 19th century, where absinthe was celebrated for its unique flavors and mystique. This cocktail became a staple in the city's vibrant bar scene, especially during the absinthe craze."
   },
@@ -1483,8 +1471,5 @@
   },
   "breakfast-martini": {
     "story": "The Breakfast Martini was created by Salvatore Calabrese at the Library Bar in the Lanesborough Hotel, London, in the late 1990s. Inspired by his morning toast with marmalade, Calabrese combined the preserve with gin, Cointreau, and lemon juice to create a cocktail that captures the bright, bittersweet flavors of a British breakfast in a glass."
-  },
-  "the-journalist": {
-    "story": "The Journalist first appeared in Harry Craddock's 1930 Savoy Cocktail Book. A complex, layered drink that combines gin with both vermouths, a touch of orange liqueur, and citrus. It fell into obscurity for decades before being rediscovered during the craft cocktail revival of the 2000s."
   }
 }

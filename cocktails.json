@@ -6552,39 +6552,6 @@
     ]
   },
   {
-    "name": "Tom Rickey",
-    "slug": "tom-rickey",
-    "glass": "Highball",
-    "family": "Highball",
-    "method": "Built",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "gin",
-        "amount": 60,
-        "unit": "ml"
-      },
-      {
-        "ref": "lime-juice",
-        "amount": 22.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "soda-water",
-        "amount": 90,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Lime wedge"
-    ],
-    "preparation": [
-      "Build in a highball glass over ice.",
-      "Add gin and lime juice.",
-      "Top with soda water."
-    ]
-  },
-  {
     "name": "Bronx",
     "slug": "bronx",
     "glass": "Coupe",
@@ -6977,42 +6944,6 @@
       "Pour absinthe into a flute.",
       "Slowly.",
       "Top with chilled champagne until the drink turns opalescent."
-    ]
-  },
-  {
-    "name": "Airmail",
-    "slug": "airmail",
-    "glass": "Flute",
-    "family": "Champagne Cocktail",
-    "method": "Shaken",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "gold-rum",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "lime-juice",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "honey-syrup",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "champagne",
-        "amount": 60,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [],
-    "preparation": [
-      "Shake rum, lime and honey with ice.",
-      "Strain into a flute.",
-      "Top with champagne."
     ]
   },
   {
@@ -7614,49 +7545,6 @@
     "preparation": [
       "Add peach purée to a flute and slowly.",
       "Top with prosecco, stirring gently."
-    ]
-  },
-  {
-    "name": "Suffering Bastard (Tiki)",
-    "slug": "suffering-bastard-tiki",
-    "glass": "Tiki mug",
-    "family": "Tiki",
-    "method": "Shaken",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "gin",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "cognac",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "lime-juice",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "angostura-bitters",
-        "amount": 2,
-        "unit": "dash"
-      },
-      {
-        "ref": "ginger-beer",
-        "amount": 120,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Mint sprig"
-    ],
-    "preparation": [
-      "Shake spirits, lime and bitters with ice.",
-      "Strain into a tiki mug over ice.",
-      "Top with ginger beer."
     ]
   },
   {
@@ -11064,40 +10952,6 @@
       "Shake gin, lemon and lavender syrup with ice.",
       "Strain into a Collins glass over ice.",
       "Top with soda."
-    ]
-  },
-  {
-    "name": "Negroni Bianco",
-    "slug": "negroni-bianco",
-    "glass": "Tumbler",
-    "family": "Spirit-Forward",
-    "method": "Stirred",
-    "tags": [
-      "modern-classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "gin",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "lillet-blanc",
-        "amount": 30,
-        "unit": "ml"
-      },
-      {
-        "ref": "gentiane-liqueur",
-        "amount": 30,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Grapefruit twist"
-    ],
-    "preparation": [
-      "Stir all ingredients with ice.",
-      "Strain into a rocks glass over a large ice cube."
     ]
   },
   {
@@ -18389,38 +18243,6 @@
     ]
   },
   {
-    "name": "Venetian Spritz",
-    "slug": "venetian-spritz",
-    "glass": "Wine glass",
-    "family": "Spritz",
-    "method": "Built",
-    "tags": [],
-    "ingredients": [
-      {
-        "ref": "select-aperitivo",
-        "amount": 45,
-        "unit": "ml"
-      },
-      {
-        "ref": "prosecco",
-        "amount": 90,
-        "unit": "ml"
-      },
-      {
-        "ref": "soda-water",
-        "amount": 30,
-        "unit": "ml"
-      }
-    ],
-    "garnish": [
-      "Green olive"
-    ],
-    "preparation": [
-      "Build over ice in a wine glass.",
-      "Stir gently."
-    ]
-  },
-  {
     "name": "Absinthe Frappé",
     "slug": "absinthe-frappe",
     "glass": "Tumbler",
@@ -18531,55 +18353,6 @@
       "Stir the marmalade with the lemon juice to dissolve.",
       "Add gin and Cointreau.",
       "Shake with ice.",
-      "Strain into a chilled coupe glass."
-    ]
-  },
-  {
-    "name": "The Journalist",
-    "slug": "the-journalist",
-    "glass": "Coupe",
-    "family": "Sour",
-    "method": "Shaken",
-    "tags": [
-      "classic"
-    ],
-    "ingredients": [
-      {
-        "ref": "gin",
-        "amount": 45,
-        "unit": "ml"
-      },
-      {
-        "ref": "dry-vermouth",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "sweet-vermouth",
-        "amount": 15,
-        "unit": "ml"
-      },
-      {
-        "ref": "triple-sec",
-        "amount": 7.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "lemon-juice",
-        "amount": 7.5,
-        "unit": "ml"
-      },
-      {
-        "ref": "angostura-bitters",
-        "amount": 2,
-        "unit": "dash"
-      }
-    ],
-    "garnish": [
-      "Lemon twist"
-    ],
-    "preparation": [
-      "Shake all ingredients with ice.",
       "Strain into a chilled coupe glass."
     ]
   },
@@ -18732,6 +18505,252 @@
       "Add the rum and bitters, then shake hard with ice.",
       "Double-strain into a chilled coupe.",
       "Top with champagne."
+    ]
+  },
+  {
+    "name": "Nuclear Daiquiri",
+    "slug": "nuclear-daiquiri",
+    "glass": "Coupe",
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "white-rum",
+        "amount": 45,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "green-chartreuse",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "falernum",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lime wheel"
+    ],
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Double-strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Maximilian Affair",
+    "slug": "maximilian-affair",
+    "glass": "Coupe",
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "mezcal",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "elderflower-liqueur",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "punt-e-mes",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "lemon-juice",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Lemon twist"
+    ],
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Double-strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Brooklynite",
+    "slug": "brooklynite",
+    "glass": "Coupe",
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "aged-rum",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "honey-syrup",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash"
+      }
+    ],
+    "garnish": [
+      "Lime wheel"
+    ],
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Hotel Nacional Special",
+    "slug": "hotel-nacional-special",
+    "glass": "Coupe",
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "white-rum",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "pineapple-juice",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "apricot-brandy",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "lime-juice",
+        "amount": 15,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Pineapple wedge"
+    ],
+    "preparation": [
+      "Shake all ingredients with ice.",
+      "Double-strain into a chilled coupe."
+    ]
+  },
+  {
+    "name": "Kentucky Buck",
+    "slug": "kentucky-buck",
+    "glass": "Highball",
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "strawberry",
+        "amount": 1,
+        "unit": "whole"
+      },
+      {
+        "ref": "bourbon",
+        "amount": 45,
+        "unit": "ml"
+      },
+      {
+        "ref": "lemon-juice",
+        "amount": 22.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "sugar-syrup",
+        "amount": 15,
+        "unit": "ml"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 1,
+        "unit": "dash"
+      },
+      {
+        "ref": "ginger-beer",
+        "amount": 60,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Strawberry"
+    ],
+    "preparation": [
+      "Muddle the strawberry in the shaker.",
+      "Add the bourbon, lemon juice, sugar syrup and bitters, then shake with ice.",
+      "Strain into an ice-filled highball glass.",
+      "Top with ginger beer."
+    ]
+  },
+  {
+    "name": "Slope",
+    "slug": "slope",
+    "glass": "Coupe",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ],
+    "ingredients": [
+      {
+        "ref": "rye-whiskey",
+        "amount": 60,
+        "unit": "ml"
+      },
+      {
+        "ref": "punt-e-mes",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "apricot-brandy",
+        "amount": 7.5,
+        "unit": "ml"
+      },
+      {
+        "ref": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash"
+      }
+    ],
+    "garnish": [
+      "Orange twist"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a chilled coupe."
     ]
   }
 ]
