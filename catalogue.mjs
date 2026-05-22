@@ -4,20 +4,26 @@
  * cocktails.json stores each ingredient as a `ref` into ingredients.json —
  * the single source of truth for ingredient names. This module joins the two
  * so consumers get a denormalised view: every cocktail ingredient carries its
- * resolved `name` and `type` alongside `ref`, `amount`, and `unit`.
+ * resolved `name` and `type` alongside `ref`, `amount`, and `unit`. Each
+ * cocktail also gets its `movieAppearances` from movie-appearances.json, when
+ * it has any.
  *
  * Astro pages, Cloudflare Pages Functions, and the public /cocktails.json feed
  * all import from here, so the join logic lives in exactly one place.
  */
 import rawCocktails from './cocktails.json';
 import rawIngredients from './ingredients.json';
+import rawMovies from './movie-appearances.json';
 
 const byId = new Map(rawIngredients.map((i) => [i.id, i]));
 
 /** The canonical ingredient table (id, name, type, aliases). */
 export const ingredients = rawIngredients;
 
-/** Cocktails with each ingredient joined to its resolved name and type. */
+/**
+ * Cocktails with each ingredient joined to its resolved name and type, and
+ * any film/TV appearances joined in from movie-appearances.json.
+ */
 export const cocktails = rawCocktails.map((cocktail) => ({
   ...cocktail,
   ingredients: cocktail.ingredients.map((i) => {
@@ -30,6 +36,7 @@ export const cocktails = rawCocktails.map((cocktail) => ({
       unit: i.unit,
     };
   }),
+  ...(rawMovies[cocktail.slug] ? { movieAppearances: rawMovies[cocktail.slug] } : {}),
 }));
 
 export default cocktails;

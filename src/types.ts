@@ -13,6 +13,13 @@ export interface IngredientDef {
   aliases: string[];
 }
 
+export interface MovieAppearance {
+  movie: string;
+  year: number;
+  note: string;
+  source?: string;
+}
+
 export interface Cocktail {
   name: string;
   slug: string;
@@ -23,6 +30,7 @@ export interface Cocktail {
   ingredients: Ingredient[];
   garnish: string[];
   preparation: string[];
+  movieAppearances?: MovieAppearance[];
 }
 
 export interface CocktailSummary {

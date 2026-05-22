@@ -4,7 +4,7 @@ import cocktails from '../catalogue.mjs';
  * Remote MCP (Model Context Protocol) server for cocktail.glass.
  *
  * A stateless Streamable HTTP endpoint — connect any MCP client to
- * https://cocktail.glass/mcp. Exposes the same five read-only tools as the
+ * https://cocktail.glass/mcp. Exposes the same six read-only tools as the
  * in-browser WebMCP integration (src/components/WebMcp.astro), so agents
  * without a browser (Claude Desktop, Claude Code, …) can query the catalogue.
  *
@@ -126,7 +126,7 @@ const TOOLS = [
     name: 'get_cocktail_recipe',
     title: 'Get cocktail recipe',
     description:
-      'Get the full recipe for a cocktail by name: ingredients with measures, preparation steps, garnish, glassware, and page URL.',
+      'Get the full recipe for a cocktail by name: ingredients with measures, preparation steps, garnish, glassware, page URL, and any film or TV appearances.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -169,6 +169,45 @@ const TOOLS = [
         .slice(0, 60)
         .map((c) => summary(c, origin));
       return { count: matches.length, cocktails: matches };
+    },
+  },
+  {
+    name: 'find_cocktails_in_movie',
+    title: 'Find cocktails in a movie',
+    description:
+      'Find every cocktail that appears in a given film or TV show. Match is ' +
+      'on the title or the scene description, so a character or actor works ' +
+      'too — e.g. "Casablanca", "Bond", "Hemingway". Each result names ' +
+      'the cocktail, the title, the year, and the scene.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        movie: {
+          type: 'string',
+          description: 'A film or TV show title, full or partial',
+        },
+      },
+      required: ['movie'],
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+    run(args, origin) {
+      const q = norm(args.movie);
+      if (!q) return { error: 'Provide a film or TV show title.' };
+      const appearances = [];
+      for (const c of cocktails) {
+        for (const a of c.movieAppearances || []) {
+          if (norm(a.movie).includes(q) || norm(a.note).includes(q)) {
+            appearances.push({
+              ...summary(c, origin),
+              movie: a.movie,
+              year: a.year,
+              note: a.note,
+            });
+          }
+        }
+      }
+      appearances.sort((a, b) => a.year - b.year || a.name.localeCompare(b.name));
+      return { count: appearances.length, appearances: appearances.slice(0, 60) };
     },
   },
   {
@@ -351,7 +390,8 @@ function handleRpc(message, origin) {
           'Tools for cocktail.glass — a catalogue of 500 cocktail recipes. Use ' +
           'search_cocktails to find drinks by name, get_cocktail_recipe for a full ' +
           'recipe, find_cocktails_by_ingredient to search by a single ' +
-          'ingredient, find_makeable_cocktails to find drinks you can make ' +
+          'ingredient, find_cocktails_in_movie to find drinks featured in a ' +
+          'film or TV show, find_makeable_cocktails to find drinks you can make ' +
           'from a set of ingredients you have, and random_cocktail for a ' +
           'suggestion. The cocktails_from_my_bar prompt turns a photo of a ' +
           'home bar into a list of makeable cocktails.',

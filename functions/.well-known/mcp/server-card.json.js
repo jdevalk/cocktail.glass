@@ -30,7 +30,8 @@ export function onRequestGet({ request }) {
     description:
       'Read-only MCP server for cocktail.glass. Search a catalogue of 500 ' +
       'cocktail recipes, fetch full recipes with ingredients and preparation ' +
-      'steps, find drinks by ingredient, and get random suggestions.',
+      'steps, find drinks by ingredient or by the films they appear in, and ' +
+      'get random suggestions.',
     websiteUrl: origin,
     serverInfo: {
       name: 'cocktail-glass',
