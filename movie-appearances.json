@@ -174,9 +174,6 @@
     { "movie": "The Tourist", "year": 2010, "note": "Johnny Depp and Angelina Jolie drink Bellinis at Harry's Bar in Venice, where the cocktail was invented." },
     { "movie": "The Italian Job", "year": 2003, "note": "The Venice setting evokes the Bellini's birthplace at Harry's Bar." }
   ],
-  "peach-bellini": [
-    { "movie": "The Tourist", "year": 2010, "note": "The original Peach Bellini is synonymous with Harry's Bar in Venice, the film's setting." }
-  ],
   "rusty-nail": [
     { "movie": "The Ipcress File", "year": 1965, "note": "Michael Caine's Harry Palmer drinks Rusty Nails in this British spy thriller." }
   ],
@@ -221,7 +218,8 @@
   ],
   "aperol-spritz": [
     { "movie": "Under the Tuscan Sun", "year": 2003, "note": "Diane Lane's character embraces Italian life, with Aperol Spritzes as part of the aperitivo culture." },
-    { "movie": "To Rome with Love", "year": 2012, "note": "The Italian aperitivo tradition, including Spritzes, features in Woody Allen's Roman comedy." }
+    { "movie": "To Rome with Love", "year": 2012, "note": "The Italian aperitivo tradition, including Spritzes, features in Woody Allen's Roman comedy." },
+    { "movie": "The Tourist", "year": 2010, "note": "The Venetian spritz is omnipresent in the film's Venice canal-side café scenes." }
   ],
   "godfather": [
     { "movie": "The Godfather", "year": 1972, "note": "While the cocktail is named after the film, Scotch and amaretto are consumed in the iconic saga." }
@@ -348,9 +346,6 @@
     { "movie": "Wimbledon", "year": 2004, "note": "Pimm's Cup is the official drink of the tennis tournament that gives the film its name." },
     { "movie": "Bridget Jones's Diary", "year": 2001, "note": "The quintessential English summer drink appears at the garden party." }
   ],
-  "spritz-veneziano": [
-    { "movie": "The Tourist", "year": 2010, "note": "The Venetian spritz is omnipresent in the film's Venice canal-side café scenes." }
-  ],
   "garibaldi": [
     { "movie": "The Talented Mr. Ripley", "year": 1999, "note": "The simple Campari-orange combination fits the Italian aperitivo scenes." }
   ],
@@ -380,9 +375,6 @@
   ],
   "gluhwein": [
     { "movie": "The Grand Budapest Hotel", "year": 2014, "note": "The Central European setting evokes the tradition of warming Glühwein at mountain resorts." }
-  ],
-  "fernet-and-cola": [
-    { "movie": "The Secret in Their Eyes", "year": 2009, "note": "Argentina's national drink appears in this Buenos Aires-set thriller." }
   ],
   "ti-punch": [
     { "movie": "Dheepan", "year": 2015, "note": "The Martinican rum cocktail reflects the French Caribbean heritage explored in this Palme d'Or winner." }
@@ -415,5 +407,8 @@
   ],
   "brandy-crusta": [
     { "movie": "Django Unchained", "year": 2012, "note": "The pre-Civil War Southern setting evokes the era when the Crusta was created in New Orleans." }
+  ],
+  "fernandito": [
+    { "movie": "The Secret in Their Eyes", "year": 2009, "note": "Argentina's national drink appears in this Buenos Aires-set thriller." }
   ]
 }
