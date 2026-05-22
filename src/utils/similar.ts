@@ -14,11 +14,7 @@ function getIngredientSets(cocktails: Cocktail[]): Map<string, Set<string>> {
   if (cachedSets) return cachedSets;
   cachedSets = new Map();
   for (const c of cocktails) {
-    const ings = new Set(
-      c.ingredients
-        .filter((i) => i.unit !== 'garnish')
-        .map((i) => i.name.toLowerCase())
-    );
+    const ings = new Set(c.ingredients.map((i) => i.name.toLowerCase()));
     cachedSets.set(c.slug, ings);
   }
   return cachedSets;
@@ -43,10 +39,10 @@ export function findSimilar(cocktail: Cocktail, allCocktails: Cocktail[], count 
     const union = targetIngs.size + otherIngs.size - intersection;
     const jaccard = union > 0 ? intersection / union : 0;
 
-    // Bonus for same glass or category
+    // Bonus for same glass or family
     let bonus = 0;
     if (other.glass === cocktail.glass) bonus += 0.05;
-    if (other.category === cocktail.category) bonus += 0.05;
+    if (other.family === cocktail.family) bonus += 0.05;
 
     // Strong bonus for sharing the distinctive ingredient
     if (distinctive && otherIngs.has(distinctive)) bonus += 0.3;

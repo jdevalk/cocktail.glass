@@ -1,4 +1,4 @@
-import cocktails from '../cocktails.json';
+import cocktails from '../catalogue.mjs';
 import originStories from '../origin-stories.json';
 import { logBot } from './_shared/bot-detect.js';
 
@@ -50,18 +50,17 @@ function renderMarkdown(pathname, origin) {
 }
 
 function cocktailMarkdown(c, origin) {
-  const out = [`# ${c.name}`, '', `${c.category} cocktail · Served in a ${c.glass}`, '', '## Ingredients', ''];
+  const out = [`# ${c.name}`, '', `${c.family} cocktail · Served in a ${c.glass}`, '', '## Ingredients', ''];
 
   for (const i of c.ingredients) {
-    if (i.unit === 'garnish') out.push(`- ${i.name} — garnish`);
-    else if (i.amount) out.push(`- ${i.amount} ${i.unit} ${i.name}`);
+    if (i.amount) out.push(`- ${i.amount} ${i.unit} ${i.name}`);
     else out.push(`- ${i.name}`);
   }
 
   out.push('', '## Preparation', '');
   c.preparation.forEach((step, idx) => out.push(`${idx + 1}. ${step}`));
 
-  if (c.garnish) out.push('', `**Garnish:** ${c.garnish}`);
+  if (c.garnish.length) out.push('', `**Garnish:** ${c.garnish.join(', ')}`);
 
   const origin_story = originStories[c.slug];
   if (origin_story && origin_story.story) {
@@ -85,18 +84,18 @@ function homepageMarkdown(origin) {
     `- API catalog: ${origin}/.well-known/api-catalog`,
     `- JSON data feed: ${origin}/cocktails.json`,
     '',
-    '## Cocktails by category',
+    '## Cocktails by family',
     '',
   ];
 
-  const categories = new Map();
+  const families = new Map();
   for (const c of cocktails) {
-    if (!categories.has(c.category)) categories.set(c.category, []);
-    categories.get(c.category).push(c);
+    if (!families.has(c.family)) families.set(c.family, []);
+    families.get(c.family).push(c);
   }
 
-  for (const [category, list] of categories) {
-    out.push(`### ${category}`, '');
+  for (const [family, list] of families) {
+    out.push(`### ${family}`, '');
     for (const c of list) out.push(`- [${c.name}](${origin}/${c.slug}/)`);
     out.push('');
   }

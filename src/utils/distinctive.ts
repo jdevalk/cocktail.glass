@@ -7,7 +7,6 @@ function getFrequencyMap(cocktails: Cocktail[]): Map<string, number> {
   cachedFrequency = new Map();
   for (const c of cocktails) {
     for (const i of c.ingredients) {
-      if (i.unit === 'garnish') continue;
       cachedFrequency.set(i.name, (cachedFrequency.get(i.name) || 0) + 1);
     }
   }
@@ -24,7 +23,6 @@ export function getDistinctiveIngredient(cocktail: Cocktail, allCocktails: Cockt
 
   // If the cocktail name starts with an ingredient name, that's the distinctive one
   for (const i of cocktail.ingredients) {
-    if (i.unit === 'garnish') continue;
     if (nameLower.startsWith(i.name.toLowerCase())) return i.name;
   }
 
@@ -34,7 +32,6 @@ export function getDistinctiveIngredient(cocktail: Cocktail, allCocktails: Cockt
   let bestScore = Infinity;
 
   for (const i of cocktail.ingredients) {
-    if (i.unit === 'garnish') continue;
     if (i.unit === 'dash' || i.unit === 'drop' || i.unit === 'pinch') continue;
     if (SKIP.has(i.name.toLowerCase())) continue;
     if (i.unit === 'barspoon') continue;

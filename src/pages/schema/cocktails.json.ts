@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { assembleGraph } from '@jdevalk/seo-graph-core';
 import { buildRecipePieces, buildHomepagePieces, siteWidePieces } from '../../utils/schema';
 import type { Cocktail } from '../../types';
-import cocktails from '../../../cocktails.json';
+import cocktails from '../../../catalogue.mjs';
 
 export const GET: APIRoute = ({ site }) => {
   const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://cocktail.glass';

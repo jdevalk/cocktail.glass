@@ -64,8 +64,7 @@ for (const s of ['Espresso', 'Coffee', 'Hot coffee', 'Tea', 'Hot water', 'Water'
 export function estimateCalories(ingredients: Ingredient[]): number {
   let total = 0;
   for (const ing of ingredients) {
-    if (ing.unit === 'garnish') continue;
-    const amount = parseFloat(ing.amount) || 0;
+    const amount = ing.amount || 0;
     if (ing.unit === 'ml') {
       const calPerMl = CALORIE_MAP[ing.name] ?? 1.5; // default: moderate estimate
       total += amount * calPerMl;

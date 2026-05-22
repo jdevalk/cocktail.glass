@@ -1,23 +1,34 @@
 export interface Ingredient {
+  ref: string;
   name: string;
-  amount: string;
+  type: string;
+  amount: number;
   unit: string;
+}
+
+export interface IngredientDef {
+  id: string;
+  name: string;
+  type: string;
+  aliases: string[];
 }
 
 export interface Cocktail {
   name: string;
   slug: string;
-  category: string;
   glass: string;
+  family: string;
+  method: string;
+  tags: string[];
   ingredients: Ingredient[];
-  garnish: string;
+  garnish: string[];
   preparation: string[];
 }
 
 export interface CocktailSummary {
   name: string;
   slug: string;
-  category: string;
+  family: string;
   glass: string;
   ingredients: string[];
 }

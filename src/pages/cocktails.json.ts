@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import type { Cocktail } from '../types';
-import cocktails from '../../cocktails.json';
+import cocktails from '../../catalogue.mjs';
 
 /**
  * Flat JSON catalogue of every cocktail, each enriched with its canonical

@@ -8,7 +8,7 @@ import { estimateCalories } from '../utils/calories';
 import { findSimilar } from '../utils/similar';
 import { linkifyCocktails } from '../utils/linkify';
 import { getDistinctiveIngredient } from '../utils/distinctive';
-import cocktails from '../../cocktails.json';
+import cocktails from '../../catalogue.mjs';
 import originStories from '../../origin-stories.json';
 import movieAppearances from '../../movie-appearances.json';
 
@@ -77,7 +77,7 @@ const brandHints: Record<string, string> = {
 };
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const recipeSchema = buildRecipeSchema(siteUrl, pageUrl, cocktail, schemaImageUrl);
-const categoryHref = buildPrettyFilterHref('category', cocktail.category);
+const categoryHref = buildPrettyFilterHref('category', cocktail.family);
 const glassHref = buildPrettyFilterHref('glass', cocktail.glass);
 const calories = estimateCalories(cocktail.ingredients);
 const similarCocktails = findSimilar(cocktail, cocktails as Cocktail[], 4);
@@ -111,7 +111,7 @@ const pageDescription = originStory?.story
       <header>
         <div class="header-copy">
           <a href={categoryHref} class="category category-link">
-            {cocktail.category}
+            {cocktail.family}
           </a>
           <h1 data-pagefind-weight="10">{cocktail.name}</h1>
           <p class="glass-type">
@@ -173,13 +173,17 @@ const pageDescription = originStory?.story
           <ul>
             {cocktail.ingredients.map(ing => (
               <li>
-                <span class={`amount${ing.unit === 'garnish' ? ' amount--garnish' : ''}`}>
-                  {ing.unit === 'garnish' ? 'Garnish' : formatIngredientAmount(ing)}
-                </span>
+                <span class="amount">{formatIngredientAmount(ing)}</span>
                 <span class="ingredient-name">
                   <span>{ing.name}</span>
                   {brandHints[ing.name] && <span class="brand-hint">{brandHints[ing.name]}</span>}
                 </span>
+              </li>
+            ))}
+            {cocktail.garnish.map(g => (
+              <li>
+                <span class="amount amount--garnish">Garnish</span>
+                <span class="ingredient-name"><span>{g}</span></span>
               </li>
             ))}
           </ul>
@@ -200,15 +204,6 @@ const pageDescription = originStory?.story
                   )}
                   {/^(?:Carefully f|F)loat\b/.test(step) && !/spoon/.test(step) && (
                     <span class="step-hint">Don't know how? Pour slowly over the back of a <a href="/equipment/#bar-spoon">bar spoon</a> held just above the surface so the liquid sits on top rather than mixing in.</span>
-                  )}
-                  {step.startsWith('Garnish') && /peel|twist|spiral/i.test(step) && (
-                    <span class="step-hint">Use a peeler or knife to cut a wide strip, avoiding the white pith. Twist it over the drink to release the oils, then drop it in.</span>
-                  )}
-                  {step.startsWith('Garnish') && /wheel/i.test(step) && !/peel|twist/i.test(step) && (
-                    <span class="step-hint">A wheel is a thin, round cross-section slice of the whole fruit.</span>
-                  )}
-                  {step.startsWith('Garnish') && /wedge/i.test(step) && !/peel|twist|wheel/i.test(step) && (
-                    <span class="step-hint">A wedge is a thick, lengthwise slice — usually a quarter or eighth of the fruit.</span>
                   )}
                   {/barspoon|bar spoon/i.test(step) && (
                     <span class="step-hint">A <a href="/equipment/#bar-spoon">bar spoon</a> has a long twisted handle — pour slowly over the back to layer liquids without mixing.</span>

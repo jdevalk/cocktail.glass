@@ -1,4 +1,4 @@
-import cocktails from '../cocktails.json';
+import cocktails from '../catalogue.mjs';
 
 /**
  * Remote MCP (Model Context Protocol) server for cocktail.glass.
@@ -50,7 +50,7 @@ function summary(cocktail, origin) {
   return {
     name: cocktail.name,
     url: pageUrl(cocktail, origin),
-    category: cocktail.category,
+    family: cocktail.family,
     glass: cocktail.glass,
   };
 }
@@ -103,7 +103,7 @@ const TOOLS = [
     name: 'search_cocktails',
     title: 'Search cocktails',
     description:
-      'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, category, and glassware.',
+      'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, family, and glassware.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -209,9 +209,7 @@ const TOOLS = [
       const makeable = [];
       const almost = [];
       for (const c of cocktails) {
-        const required = [
-          ...new Set(c.ingredients.filter((i) => i.unit !== 'garnish').map((i) => i.name)),
-        ];
+        const required = [...new Set(c.ingredients.map((i) => i.name))];
         const missing = required.filter((name) => !covered(name));
         if (missing.length === 0) makeable.push({ c, required: required.length });
         else if (missing.length === 1) almost.push({ c, required: required.length, missing });
@@ -240,23 +238,23 @@ const TOOLS = [
     name: 'random_cocktail',
     title: 'Random cocktail',
     description:
-      'Suggest a random cocktail and return its full recipe. Optionally restrict to a category.',
+      'Suggest a random cocktail and return its full recipe. Optionally restrict to a drink family.',
     inputSchema: {
       type: 'object',
       properties: {
-        category: {
+        family: {
           type: 'string',
           description:
-            'Optional category, e.g. Classic, Highball, Sour, Modern Classic, Tiki, Spritz, Frozen, Fizz, Champagne Cocktail, Martini Variation, Hot Drink, Punch, Low alcohol, Shooter, Stirred, No alcohol',
+            'Optional drink family, e.g. Spirit-Forward, Sour, Highball, Fizz & Collins, Spritz, Champagne Cocktail, Tiki, Punch, Flip & Nog, Hot Drink, Shot',
         },
       },
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
     run(args, origin) {
       let pool = cocktails;
-      const cat = norm(args.category);
-      if (cat) {
-        const filtered = cocktails.filter((c) => norm(c.category) === cat);
+      const fam = norm(args.family);
+      if (fam) {
+        const filtered = cocktails.filter((c) => norm(c.family) === fam);
         if (filtered.length) pool = filtered;
       }
       return fullRecipe(pool[Math.floor(Math.random() * pool.length)], origin);
