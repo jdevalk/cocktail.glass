@@ -52,7 +52,7 @@
     }
 
     var summary = function (c) {
-      return { name: c.name, url: c.url, category: c.category, glass: c.glass };
+      return { name: c.name, url: c.url, family: c.family, glass: c.glass };
     };
 
     // --- Ingredient matching (shared with functions/mcp.js) ---------------
@@ -90,7 +90,7 @@
       {
         name: 'search_cocktails',
         description:
-          'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, category, and glassware.',
+          'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, family, and glassware.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -204,7 +204,7 @@
             var required = [];
             for (var j = 0; j < c.ingredients.length; j++) {
               var ing = c.ingredients[j];
-              if (ing.unit === 'garnish' || seen[ing.name]) continue;
+              if (seen[ing.name]) continue;
               seen[ing.name] = true;
               required.push(ing.name);
             }
@@ -238,14 +238,14 @@
       {
         name: 'random_cocktail',
         description:
-          'Suggest a random cocktail and return its full recipe. Optionally restrict to a category.',
+          'Suggest a random cocktail and return its full recipe. Optionally restrict to a drink family.',
         inputSchema: {
           type: 'object',
           properties: {
-            category: {
+            family: {
               type: 'string',
               description:
-                'Optional category, e.g. Classic, Highball, Sour, Modern Classic, Tiki, Spritz, Frozen, Fizz, Champagne Cocktail, Martini Variation, Hot Drink, Punch, Low alcohol, Shooter, Stirred, No alcohol',
+                'Optional drink family, e.g. Spirit-Forward, Sour, Highball, Fizz & Collins, Spritz, Champagne Cocktail, Tiki, Punch, Flip & Nog, Hot Drink, Shot',
             },
           },
         },
@@ -253,9 +253,9 @@
         execute: async function (input) {
           var all = await loadCocktails();
           var pool = all;
-          var cat = norm(input && input.category);
-          if (cat) {
-            var filtered = all.filter(function (c) { return norm(c.category) === cat; });
+          var fam = norm(input && input.family);
+          if (fam) {
+            var filtered = all.filter(function (c) { return norm(c.family) === fam; });
             if (filtered.length) pool = filtered;
           }
           return reply(pool[Math.floor(Math.random() * pool.length)]);

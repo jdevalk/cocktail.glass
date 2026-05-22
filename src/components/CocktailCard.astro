@@ -8,7 +8,7 @@ interface Props {
 const { cocktail } = Astro.props;
 ---
 <a href={`/${cocktail.slug}/`} class="card">
-  <span class="category">{cocktail.category}</span>
+  <span class="category">{cocktail.family}</span>
   <h2 class="name">{cocktail.name}</h2>
   <p class="meta">{cocktail.glass} &middot; {cocktail.ingredients.length} ingredients</p>
 </a>

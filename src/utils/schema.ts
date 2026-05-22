@@ -33,7 +33,7 @@ export function formatIngredientAmount(ingredient: Ingredient): string {
   }
 
   if (ingredient.unit === 'dash' || ingredient.unit === 'dashes') {
-    const dashUnit = Number.parseInt(ingredient.amount, 10) === 1 ? 'dash' : 'dashes';
+    const dashUnit = ingredient.amount === 1 ? 'dash' : 'dashes';
     return `${ingredient.amount} ${dashUnit}`;
   }
 
@@ -213,14 +213,14 @@ export function buildRecipeSchema(
         '@type': 'NutritionInformation',
         calories: `${estimateCalories(cocktail.ingredients)} calories`,
       },
-      recipeIngredient: cocktail.ingredients.map(formatIngredientText),
+      recipeIngredient: [...cocktail.ingredients.map(formatIngredientText), ...cocktail.garnish],
       recipeInstructions: cocktail.preparation.map((step, index) => ({
         '@type': 'HowToStep',
         name: step.split(/[\s,.(]/)[0].replace(/\.$/, ''),
         text: step,
         url: `${pageUrl}#step${index + 1}`,
       })),
-      keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
+      keywords: ['cocktail', cocktail.family, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
       author: { '@id': ids.organization(ORG_SLUG) },
       ...(imageUrl ? { image: { '@id': ids.primaryImage(pageUrl) } } : {}),
     }),
@@ -263,14 +263,14 @@ export function buildRecipePieces(siteUrl: string, cocktail: Cocktail) {
         '@type': 'NutritionInformation',
         calories: `${estimateCalories(cocktail.ingredients)} calories`,
       },
-      recipeIngredient: cocktail.ingredients.map(formatIngredientText),
+      recipeIngredient: [...cocktail.ingredients.map(formatIngredientText), ...cocktail.garnish],
       recipeInstructions: cocktail.preparation.map((step, index) => ({
         '@type': 'HowToStep',
         name: step.split(/[\s,.(]/)[0].replace(/\.$/, ''),
         text: step,
         url: `${pageUrl}#step${index + 1}`,
       })),
-      keywords: ['cocktail', cocktail.category, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
+      keywords: ['cocktail', cocktail.family, cocktail.glass, ...cocktail.ingredients.map((ingredient) => ingredient.name)].join(', '),
       author: { '@id': ids.organization(ORG_SLUG) },
     }),
   ];

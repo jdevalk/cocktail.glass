@@ -1,0 +1,23 @@
+name: Data validation
+on:
+  push:
+    paths:
+      - 'cocktails.json'
+      - 'ingredients.json'
+      - 'scripts/validate-data.mjs'
+  pull_request:
+    paths:
+      - 'cocktails.json'
+      - 'ingredients.json'
+      - 'scripts/validate-data.mjs'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-data.mjs

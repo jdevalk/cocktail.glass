@@ -1,0 +1,3055 @@
+{
+  "margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "daiquiri": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "manhattan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "mojito": {
+    "family": "Fizz & Collins",
+    "method": "Built",
+    "tags": []
+  },
+  "whiskey-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "espresso-martini": {
+    "family": "Spirit-Forward",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "cosmopolitan": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "mai-tai": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "moscow-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "aperol-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "pina-colada": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "gin-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "paloma": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "sidecar": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tom-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "french-75": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": []
+  },
+  "boulevardier": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "caipirinha": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gimlet": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "mint-julep": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "dark-n-stormy": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "sazerac": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "zombie": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "aviation": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pisco-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "last-word": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "penicillin": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "corpse-reviver-no-2": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "amaretto-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "clover-club": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "vieux-carre": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "jungle-bird": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "bees-knees": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "ramos-gin-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "tequila-sunrise": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "vesper": {
+    "family": "Spirit-Forward",
+    "method": "Shaken",
+    "tags": []
+  },
+  "paper-plane": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "blood-and-sand": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rob-roy": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rusty-nail": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "godfather": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "irish-coffee": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "hot-toddy": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "bramble": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "pornstar-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "brandy-alexander": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tommys-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "naked-and-famous": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "hemingway-daiquiri": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "hanky-panky": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "singapore-sling": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "long-island-iced-tea": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "white-russian": {
+    "family": "Flip & Nog",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "black-russian": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "negroni-sbagliato": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "bijou": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "americano": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bellini": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "kir-royale": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "champagne-cocktail": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "mezcal-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "suffering-bastard": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "grasshopper": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "harvey-wallbanger": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "screwdriver": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "greyhound": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "salty-dog": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "sea-breeze": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bay-breeze": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "cape-codder": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "cuba-libre": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "jack-rose": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "midori-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "painkiller": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "hurricane": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "planters-punch": {
+    "family": "Punch",
+    "method": "Shaken",
+    "tags": []
+  },
+  "el-diablo": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "vodka-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "dirty-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "gibson": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "fitzgerald": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "army-and-navy": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rum-punch": {
+    "family": "Punch",
+    "method": "Shaken",
+    "tags": []
+  },
+  "scorpion": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": []
+  },
+  "test-pilot": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "three-dots-and-a-dash": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "fog-cutter": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "navy-grog": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "saturn": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "jet-pilot": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "missionarys-downfall": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": []
+  },
+  "rum-runner": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": []
+  },
+  "blue-lagoon": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "cobras-fang": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "stinger": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "between-the-sheets": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tuxedo": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "martinez": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "ward-eight": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "brandy-crusta": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "angel-face": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "algonquin": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bamboo": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "adonis": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "sherry-cobbler": {
+    "family": "Other",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "sbagliato-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "hugo-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "limoncello-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "campari-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "select-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "cynar-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "b-52": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "kamikaze": {
+    "family": "Shot",
+    "method": "Shaken",
+    "tags": []
+  },
+  "lemon-drop-shot": {
+    "family": "Shot",
+    "method": "Shaken",
+    "tags": []
+  },
+  "jagerbomb": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "mezcal-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "kentucky-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "gold-rush": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "brown-derby": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "new-york-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "old-pal": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tipperary": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "toronto": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "monte-carlo": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bobby-burns": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "chrysanthemum": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "improved-whiskey-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "whiskey-smash": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "oaxaca-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "division-bell": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "agua-fresca-cocktail": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "frozen-daiquiri": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "frozen-margarita": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "frozen-strawberry-daiquiri": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "mudslide": {
+    "family": "Flip & Nog",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "pina-colada-shaken": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "banana-daiquiri": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "frose": {
+    "family": "Other",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "chi-chi": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "paloma-fresca": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "improved-gin-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "japanese-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tequila-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "rum-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "rum-manhattan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "mezcal-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "mezcal-last-word": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "final-ward": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "chartreuse-swizzle": {
+    "family": "Fizz & Collins",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "daiquiri-no-3": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "el-presidente": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "mary-pickford": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "twelve-mile-limit": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "cable-car": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "angostura-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "trinidad-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "eastside": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "southside": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "basil-smash": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "gin-basil-smash": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "jasmine": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "white-lady": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "casino": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "monkey-gland": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "20th-century": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pegu-club": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "corpse-reviver-no-1": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pink-lady": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tom-rickey": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bronx": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "lucien-gaudin": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "journalist": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "satans-whiskers": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "millionaire": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "remember-the-maine": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "chrysanthemum-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "rattlesnake": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pendennis-club": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "death-in-the-afternoon": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "airmail": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": []
+  },
+  "seelbach": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "prince-of-wales": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "midnight-stinger": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bentons-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "corn-n-oil": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "angostura-colada": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": []
+  },
+  "ti-punch": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "daisy-de-santiago": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "black-manhattan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "little-italy": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "myrtle-bank-punch": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "hemingway-special": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "industry-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "siesta": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "enzoni": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "peach-bellini": {
+    "family": "Champagne Cocktail",
+    "method": "Built",
+    "tags": []
+  },
+  "suffering-bastard-tiki": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "porto-flip": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rum-flip": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "eggnog": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": []
+  },
+  "tom-and-jerry": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "mulled-wine": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "hot-buttered-rum": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "cafe-de-olla-cocktail": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "gluhwein": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "amaretto-coffee": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "mexican-coffee": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "blood-orange-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "spicy-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "picante-de-la-casa": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "mexican-firing-squad": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "batanga": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "ranch-water": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "cantarito": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "vampiro": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "bloody-mary": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bloody-caesar": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "red-snapper": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "michelada": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "shandy": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "radler": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "spritz-veneziano": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "garibaldi": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "carajillo": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "white-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "suffering-bastard-cairo": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "aperol-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "campari-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "gin-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "brandy-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "tequila-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "mezcal-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "vodka-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "rum-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "jungle-bird-modern": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "rum-swizzle": {
+    "family": "Tiki",
+    "method": "Stirred",
+    "tags": []
+  },
+  "queens-park-swizzle": {
+    "family": "Fizz & Collins",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "prescription-julep": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "mint-condition": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "bamboo-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "coronation": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "shirley-temple": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "non-alcoholic"
+    ]
+  },
+  "virgin-mojito": {
+    "family": "Fizz & Collins",
+    "method": "Built",
+    "tags": [
+      "non-alcoholic"
+    ]
+  },
+  "seedlip-garden-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": [
+      "non-alcoholic"
+    ]
+  },
+  "nojito": {
+    "family": "Fizz & Collins",
+    "method": "Built",
+    "tags": [
+      "non-alcoholic"
+    ]
+  },
+  "kumquat-caipirinha": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "caipiroska": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "batida-de-coco": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "batida-de-maracuja": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "rabo-de-galo": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "chilcano": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "capitan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "pisco-punch": {
+    "family": "Punch",
+    "method": "Shaken",
+    "tags": []
+  },
+  "sake-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "sake-mojito": {
+    "family": "Fizz & Collins",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "lemon-drop-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "appletini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "chocolate-martini": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": []
+  },
+  "french-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "cucumber-martini": {
+    "family": "Spirit-Forward",
+    "method": "Shaken",
+    "tags": []
+  },
+  "elderflower-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "espresso-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "pornstar-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "elderflower-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "vodka-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "john-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "whiskey-buck": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "gin-buck": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "horses-neck": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "presbyterian": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "gin-gin-mule": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "sapphire-gimlet": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "sgroppino": {
+    "family": "Other",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "paloma-rosa": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "gold-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "naked-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "perfect-manhattan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "perfect-martini": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "dry-manhattan": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "bamboo-dry": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "kombucha-cocktail": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv",
+      "non-alcoholic"
+    ]
+  },
+  "rosemary-gin-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "watermelon-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "cucumber-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "lavender-collins": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "negroni-bianco": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "bicicletta": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "bamboo-reverse": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "rebujito": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "sbagliato-fizz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "gin-daisy": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "whiskey-daisy": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "stone-fence": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "applejack-rabbit": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "widows-kiss": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "diamondback": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "alaska": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "champs-elysees": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "greenpoint": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "greenpoint-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "red-hook": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "brooklyn": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bensonhurst": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "carroll-gardens": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "fancy-free": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "fancy-free-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "de-la-louisiane": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "blinker": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "scofflaw": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "boulevardier-rye": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "toronto-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "revolver": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "black-flip": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "chartreuse-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bitter-giuseppe": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "black-manhattan-averna": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "trident": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "toronto-flip": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-and-juice": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "southside-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "suffering-bastard-original": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pimms-cup": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "fish-house-punch": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "chatham-artillery-punch": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "champagne-punch": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "planters-punch-classic": {
+    "family": "Punch",
+    "method": "Shaken",
+    "tags": []
+  },
+  "philly-fish-house-punch": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "sangaree": {
+    "family": "Other",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "snowball": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "freddy-fudpucker": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "hemingway-hammer": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "anejo-highball": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "kentucky-colonel": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rum-martinez": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "latin-quarter": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "rosita": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "la-perla": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "brave-bull": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "paloma-negra": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "mezcal-paloma": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "left-hand": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "right-hand": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "ace": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "bee-sting": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "thunderbolt": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "green-ghost": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "jack-and-coke": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "godmother": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "godmother-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "madras": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "woo-woo": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "sex-on-the-beach": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "fuzzy-navel": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "sloe-gin-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "sloe-gin-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "southside-royale": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": []
+  },
+  "whiskey-highball": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "mizuwari": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "bamboo-sweet": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "whiskey-cobbler": {
+    "family": "Other",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "brandy-cobbler": {
+    "family": "Other",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "porto-tonico": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "sherry-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "tinto-de-verano": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "kalimotxo": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "vermouth-and-soda": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "dry-vermouth-on-the-rocks": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "cynar-and-soda": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "suze-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "old-hickory": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "chrysanthemum-modern": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "martinez-modern": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "honey-bee": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "jungle-juice": {
+    "family": "Punch",
+    "method": "Built",
+    "tags": []
+  },
+  "amaretto-stone-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "lynchburg-lemonade": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "alabama-slammer": {
+    "family": "Shot",
+    "method": "Shaken",
+    "tags": []
+  },
+  "buttery-nipple": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "cement-mixer": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "mind-eraser": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "flaming-dr-pepper": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "irish-car-bomb": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "pickleback": {
+    "family": "Shot",
+    "method": "Built",
+    "tags": []
+  },
+  "lemon-basil-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "peach-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "rose-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "vodka-gimlet": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "amaretto-colada": {
+    "family": "Tiki",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "rum-and-raisin-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "negroni-bianco-sweet": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "highland-fling": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rob-roy-dry": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rob-roy-perfect": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "blood-orange-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "sparkling-negroni": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "bitter-lemon": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "vodka-gimlet-classic": {
+    "family": "Sour",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "paper-plane-mezcal": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "spiced-pear-fizz": {
+    "family": "Fizz & Collins",
+    "method": "Shaken",
+    "tags": []
+  },
+  "gold-rush-variation": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "aquavit-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "nordic-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "doctor-cocktail": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gimlet-rose": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "rye-buck": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "cognac-and-soda": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "french-connection": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "sazerac-cognac": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "stork-club": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "el-floridita-daiquiri": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "classic"
+    ]
+  },
+  "dark-and-lovely": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "peach-bourbon-smash": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "genever-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-and-it": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pink-gin": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "corpse-reviver-blue": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "fernandito": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "fernet-and-cola": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "mezcal-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "smoky-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "infante": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "grilled-pineapple-mezcal": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "mango-daiquiri": {
+    "family": "Sour",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "frozen-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Blended",
+    "tags": [
+      "frozen"
+    ]
+  },
+  "hugo": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "blackberry-bourbon-smash": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "raspberry-gimlet": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "improved-pisco-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "canchanchara": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "pineapple-mezcal-mule": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "ginger-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "hot-honey-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "cucumber-gin-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "rye-and-ginger": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bourbon-and-branch": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": []
+  },
+  "mai-tai-modern": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "cucumber-sake-martini": {
+    "family": "Spirit-Forward",
+    "method": "Shaken",
+    "tags": []
+  },
+  "scotch-and-soda": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "bobby-burns-variation": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "clover-club-dry": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "air-mail": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": []
+  },
+  "caramel-apple-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "tiki-torch": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "port-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "sherry-flip": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "chartreuse-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "fino-sour": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "hot-gin-toddy": {
+    "family": "Hot Drink",
+    "method": "Built",
+    "tags": []
+  },
+  "rum-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": []
+  },
+  "bees-kiss": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "trade-winds": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "dr-funk": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "port-light": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "port-au-prince": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "rum-daisy": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "rum-fix": {
+    "family": "Sour",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  },
+  "bermuda-rum-swizzle": {
+    "family": "Tiki",
+    "method": "Stirred",
+    "tags": []
+  },
+  "bitter-mai-tai": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "derby": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "whiskey-fix": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-fix": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "smoked-old-fashioned": {
+    "family": "Spirit-Forward",
+    "method": "Built",
+    "tags": []
+  },
+  "boulevardier-blanc": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "turf-cocktail": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "tuxedo-no-2": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "hemingway-margarita": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "black-thorn": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "claridge": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "communist": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-and-sin": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "maidens-prayer": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "paradise-cocktail": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "income-tax-cocktail": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "orange-blossom": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "mamie-taylor": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "penicillin-royale": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": []
+  },
+  "espresso-negroni": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "dark-and-handsome": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "el-diablo-mezcal": {
+    "family": "Highball",
+    "method": "Shaken",
+    "tags": []
+  },
+  "rum-and-coke": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "gin-tonica": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "suffering-bastard-joes": {
+    "family": "Tiki",
+    "method": "Shaken",
+    "tags": []
+  },
+  "daisy-buchanan": {
+    "family": "Champagne Cocktail",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "last-mechanical-art": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "vieux-mot": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "the-word": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "greenpoint-original": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "new-york-sour-classic": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": []
+  },
+  "night-cap": {
+    "family": "Flip & Nog",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "chrysanthemum-classic": {
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [
+      "low-abv"
+    ]
+  },
+  "venetian-spritz": {
+    "family": "Spritz",
+    "method": "Built",
+    "tags": []
+  },
+  "absinthe-frappe": {
+    "family": "Other",
+    "method": "Stirred",
+    "tags": [
+      "classic"
+    ]
+  },
+  "hemingway-gin-and-tonic": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": []
+  },
+  "breakfast-martini": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "modern-classic"
+    ]
+  },
+  "the-journalist": {
+    "family": "Sour",
+    "method": "Shaken",
+    "tags": [
+      "classic"
+    ]
+  },
+  "gin-rickey": {
+    "family": "Highball",
+    "method": "Built",
+    "tags": [
+      "classic"
+    ]
+  }
+}
