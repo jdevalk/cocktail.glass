@@ -82,6 +82,7 @@ function homepageMarkdown(origin) {
     '',
     `- MCP server: ${origin}/mcp`,
     `- API catalog: ${origin}/.well-known/api-catalog`,
+    `- Agent Skills: ${origin}/.well-known/agent-skills/index.json`,
     `- JSON data feed: ${origin}/cocktails.json`,
     '',
     '## Cocktails by family',

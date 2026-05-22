@@ -5,7 +5,8 @@
   "scripts": {
     "predev": "node scripts/generate-responsive-images.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/generate-responsive-images.mjs && node scripts/generate-og-images.mjs",
+    "prebuild": "node scripts/generate-responsive-images.mjs && node scripts/generate-og-images.mjs && node scripts/generate-agent-skills.mjs",
+    "generate:skills": "node scripts/generate-agent-skills.mjs",
     "build": "astro build",
     "build:og": "node scripts/generate-og-images.mjs",
     "preview": "astro preview",

@@ -8,321 +8,82 @@
  * feature-detects the API and does nothing where it is absent, so it is a
  * pure progressive enhancement.
  *
+ * The six tool definitions and all matching logic are imported from
+ * ../../cocktail-tools.mjs — the exact same module the remote MCP server
+ * (functions/mcp.js) runs. This component is only the navigator.modelContext
+ * transport adapter: it loads the catalogue, then wraps each shared `run` as
+ * an async tool and registers it.
+ *
+ * This script is deliberately NOT `is:inline` (unlike most scripts on the
+ * site): an inline script cannot `import`, and sharing one tool module with
+ * the server is worth the trade. Astro bundles it once into a hashed,
+ * cacheable module — so across 500 pages it is also fewer bytes than an
+ * inline copy repeated in every HTML document.
+ *
  * All tools are read-only. Cocktail data is fetched lazily from
- * /cocktails.json the first time any tool runs, so this adds zero bytes to
- * the initial page load beyond the small inline script below.
- *
- * The same six tools are served to non-browser MCP clients by the remote
- * MCP server in functions/mcp.js — keep the tool names, schemas, and
- * matching logic in sync across both files.
- *
- * Each in-browser tool call is reported to /api/webmcp-usage
- * (functions/api/webmcp-usage.js) so it shows up on the /admin/stats
- * dashboard alongside remote MCP server usage.
+ * /cocktails.json the first time any tool runs. Each in-browser tool call is
+ * reported to /api/webmcp-usage so it shows up on /admin/stats alongside
+ * remote MCP server usage.
  */
 ---
-<script is:inline>
-  (function () {
-    var ctx = navigator.modelContext;
-    if (!ctx || typeof ctx.registerTool !== 'function') return;
 
-    // Lazy, memoised fetch of the full catalogue.
-    var catalogue;
-    function loadCocktails() {
+<script>
+  import { TOOLS } from '../../cocktail-tools.mjs';
+
+  const ctx = navigator.modelContext;
+
+  if (ctx && typeof ctx.registerTool === 'function') {
+    // Lazy, memoised fetch of the full catalogue. Records in /cocktails.json
+    // already carry their `url`, which is exactly what the shared tools want.
+    let catalogue;
+    const loadCocktails = () => {
       if (!catalogue) {
-        catalogue = fetch('/cocktails.json').then(function (res) {
+        catalogue = fetch('/cocktails.json').then((res) => {
           if (!res.ok) throw new Error('Could not load cocktail data');
           return res.json();
         });
       }
       return catalogue;
-    }
-
-    // Lowercase + strip diacritics so "carre" matches "Carré".
-    function norm(value) {
-      return String(value || '')
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .trim();
-    }
-
-    function reply(data) {
-      return { content: [{ type: 'text', text: JSON.stringify(data) }] };
-    }
-
-    var summary = function (c) {
-      return { name: c.name, url: c.url, family: c.family, glass: c.glass };
     };
 
-    // --- Ingredient matching (shared with functions/mcp.js) ---------------
-
-    // Normalised word tokens of an ingredient name — tokenising avoids
-    // substring traps like "gin" matching "ginger beer".
-    function words(value) {
-      return norm(value).split(/[^a-z0-9]+/).filter(Boolean);
-    }
-
-    // Words that mark a distinct product: a generic user term ("orange",
-    // "gin") must not loosely match a more specific name ("orange bitters",
-    // "sloe gin") — those are separate bottles, not had from the base spirit.
-    var PRODUCT_CLASS_WORDS = ['bitters', 'liqueur', 'schnapps', 'cordial', 'amaro', 'sloe'];
-
-    // Plain water is assumed always on hand; soda/tonic water are not.
-    var ASSUMED_STAPLES = ['water', 'hot water', 'still water', 'branch water'];
-
-    function wordsSubset(a, b) {
-      return a.every(function (w) { return b.indexOf(w) !== -1; });
-    }
-
-    // Does a user-supplied ingredient term cover a catalogue ingredient name?
-    function userTermCovers(userWords, ingWords) {
-      if (ingWords.length === 0 || userWords.length === 0) return false;
-      if (wordsSubset(ingWords, userWords)) return true;
-      if (wordsSubset(userWords, ingWords)) {
-        var extra = ingWords.filter(function (w) { return userWords.indexOf(w) === -1; });
-        return !extra.some(function (w) { return PRODUCT_CLASS_WORDS.indexOf(w) !== -1; });
-      }
-      return false;
-    }
-
-    var tools = [
-      {
-        name: 'search_cocktails',
-        description:
-          'Search the cocktail catalogue by name. Returns matching cocktails with their page URLs, family, and glassware.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            query: { type: 'string', description: 'Cocktail name or part of a name' },
-          },
-          required: ['query'],
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var q = norm(input && input.query);
-          if (!q) return reply({ error: 'Provide a search query.' });
-          var all = await loadCocktails();
-          var matches = all
-            .filter(function (c) { return norm(c.name).indexOf(q) !== -1; })
-            .slice(0, 25)
-            .map(summary);
-          return reply({ count: matches.length, cocktails: matches });
-        },
-      },
-      {
-        name: 'get_cocktail_recipe',
-        description:
-          'Get the full recipe for a cocktail by name: ingredients with measures, preparation steps, garnish, glassware, page URL, and any film or TV appearances.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            name: { type: 'string', description: 'The cocktail name' },
-          },
-          required: ['name'],
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var q = norm(input && input.name);
-          if (!q) return reply({ error: 'Provide a cocktail name.' });
-          var all = await loadCocktails();
-          var match =
-            all.find(function (c) { return norm(c.name) === q; }) ||
-            all.find(function (c) { return norm(c.name).indexOf(q) !== -1; });
-          if (!match) {
-            return reply({ error: 'No cocktail found matching "' + (input.name || '') + '".' });
-          }
-          return reply(match);
-        },
-      },
-      {
-        name: 'find_cocktails_by_ingredient',
-        description:
-          'Find every cocktail that uses a given ingredient (spirit, juice, liqueur, etc.). Useful for "what can I make with ..." questions.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            ingredient: { type: 'string', description: 'An ingredient name, e.g. "gin" or "lime juice"' },
-          },
-          required: ['ingredient'],
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var q = norm(input && input.ingredient);
-          if (!q) return reply({ error: 'Provide an ingredient name.' });
-          var all = await loadCocktails();
-          var matches = all
-            .filter(function (c) {
-              return c.ingredients.some(function (i) { return norm(i.name).indexOf(q) !== -1; });
-            })
-            .slice(0, 60)
-            .map(summary);
-          return reply({ count: matches.length, cocktails: matches });
-        },
-      },
-      {
-        name: 'find_cocktails_in_movie',
-        description:
-          'Find every cocktail that appears in a given film or TV show. ' +
-          'Match is on the title or the scene description, so a character or ' +
-          'actor works too — e.g. "Casablanca", "Bond", "Hemingway".',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            movie: { type: 'string', description: 'A film or TV show title, full or partial' },
-          },
-          required: ['movie'],
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var q = norm(input && input.movie);
-          if (!q) return reply({ error: 'Provide a film or TV show title.' });
-          var all = await loadCocktails();
-          var appearances = [];
-          all.forEach(function (c) {
-            (c.movieAppearances || []).forEach(function (a) {
-              if (norm(a.movie).indexOf(q) !== -1 || norm(a.note).indexOf(q) !== -1) {
-                var s = summary(c);
-                s.movie = a.movie;
-                s.year = a.year;
-                s.note = a.note;
-                appearances.push(s);
-              }
-            });
-          });
-          appearances.sort(function (a, b) { return a.year - b.year || a.name.localeCompare(b.name); });
-          return reply({ count: appearances.length, appearances: appearances.slice(0, 60) });
-        },
-      },
-      {
-        name: 'find_makeable_cocktails',
-        description:
-          'Given the ingredients you have on hand, find every cocktail you can ' +
-          'make completely — one where you already have all of its ingredients. ' +
-          'Garnishes are treated as optional and plain water is assumed available. ' +
-          'Returns two lists: "makeable" and "almostMakeable" (drinks one ' +
-          'ingredient short, each naming the missing ingredient).',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            ingredients: {
-              type: 'array',
-              items: { type: 'string' },
-              description:
-                'The ingredients you have available, e.g. ["gin", "sweet vermouth", "Campari", "lime"]',
-            },
-          },
-          required: ['ingredients'],
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var list = input && Array.isArray(input.ingredients) ? input.ingredients : [];
-          var userWordSets = list
-            .map(function (item) { return words(item); })
-            .filter(function (w) { return w.length > 0; });
-          if (userWordSets.length === 0) return reply({ error: 'Provide at least one ingredient.' });
-
-          var all = await loadCocktails();
-
-          function covered(ingName) {
-            if (ASSUMED_STAPLES.indexOf(norm(ingName)) !== -1) return true;
-            var iw = words(ingName);
-            return userWordSets.some(function (uw) { return userTermCovers(uw, iw); });
-          }
-
-          var makeable = [];
-          var almost = [];
-          for (var k = 0; k < all.length; k++) {
-            var c = all[k];
-            var seen = {};
-            var required = [];
-            for (var j = 0; j < c.ingredients.length; j++) {
-              var ing = c.ingredients[j];
-              if (seen[ing.name]) continue;
-              seen[ing.name] = true;
-              required.push(ing.name);
-            }
-            var missing = required.filter(function (name) { return !covered(name); });
-            if (missing.length === 0) makeable.push({ c: c, required: required.length });
-            else if (missing.length === 1) almost.push({ c: c, required: required.length, missing: missing });
-          }
-
-          function simplest(a, b) {
-            return a.required - b.required || a.c.name.localeCompare(b.c.name);
-          }
-          makeable.sort(simplest);
-          almost.sort(simplest);
-
-          return reply({
-            makeable: {
-              count: makeable.length,
-              cocktails: makeable.slice(0, 60).map(function (m) { return summary(m.c); }),
-            },
-            almostMakeable: {
-              count: almost.length,
-              cocktails: almost.slice(0, 25).map(function (m) {
-                var s = summary(m.c);
-                s.missing = m.missing;
-                return s;
-              }),
-            },
-          });
-        },
-      },
-      {
-        name: 'random_cocktail',
-        description:
-          'Suggest a random cocktail and return its full recipe. Optionally restrict to a drink family.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            family: {
-              type: 'string',
-              description:
-                'Optional drink family, e.g. Spirit-Forward, Sour, Highball, Fizz & Collins, Spritz, Champagne Cocktail, Tiki, Punch, Flip & Nog, Hot Drink, Shot',
-            },
-          },
-        },
-        annotations: { readOnlyHint: true },
-        execute: async function (input) {
-          var all = await loadCocktails();
-          var pool = all;
-          var fam = norm(input && input.family);
-          if (fam) {
-            var filtered = all.filter(function (c) { return norm(c.family) === fam; });
-            if (filtered.length) pool = filtered;
-          }
-          return reply(pool[Math.floor(Math.random() * pool.length)]);
-        },
-      },
-    ];
+    const reply = (data) => ({
+      content: [{ type: 'text', text: JSON.stringify(data) }],
+    });
 
     // Report each in-browser tool call to the usage beacon (fire-and-forget)
     // so it appears on /admin/stats with surface = 'webmcp'.
-    function reportUsage(name, input) {
+    const reportUsage = (name, input) => {
       try {
-        var payload = JSON.stringify({ tool: name, args: input || {} });
+        const payload = JSON.stringify({ tool: name, args: input || {} });
         if (navigator.sendBeacon) {
           navigator.sendBeacon('/api/webmcp-usage', payload);
         } else {
           fetch('/api/webmcp-usage', { method: 'POST', body: payload, keepalive: true });
         }
-      } catch (e) {
+      } catch {
         /* never let logging break a tool call */
       }
-    }
+    };
 
-    tools.forEach(function (tool) {
-      var run = tool.execute;
-      tool.execute = function (input) {
-        reportUsage(tool.name, input);
-        return run(input);
-      };
+    // Wrap each shared tool: the remote server runs `run` synchronously over an
+    // imported catalogue; in the browser the catalogue is fetched, so `run` is
+    // awaited behind a lazy load. The matching logic itself is identical.
+    for (const { name, description, inputSchema, annotations, run } of TOOLS) {
       try {
-        ctx.registerTool(tool);
+        ctx.registerTool({
+          name,
+          description,
+          inputSchema,
+          annotations,
+          execute: async (input) => {
+            reportUsage(name, input);
+            const cocktails = await loadCocktails();
+            return reply(run(cocktails, input || {}));
+          },
+        });
       } catch (err) {
-        console.warn('[WebMCP] registerTool failed for', tool.name, err);
+        console.warn('[WebMCP] registerTool failed for', name, err);
       }
-    });
-  })();
+    }
+  }
 </script>

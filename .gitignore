@@ -6,6 +6,7 @@ dist/
 output/
 public/images/responsive/
 public/og/
+public/.well-known/agent-skills/index.json
 .env
 .dev.vars
 .DS_Store
