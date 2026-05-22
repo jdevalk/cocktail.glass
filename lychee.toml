@@ -7,9 +7,15 @@
 # 405 — a working endpoint, not a broken link.
 accept = ["200..=299", "405"]
 
+# Dependency sources carry deliberately-broken test URLs; never our links.
+exclude_path = ["node_modules"]
+
 exclude = [
   # API endpoint called from build scripts via fetch(), not a link.
   'openrouter\.ai',
+  # JSON Schema `$schema` identifier in the generated agent-skills index —
+  # a schema URI, not a navigable link, and not required to resolve.
+  'schemas\.agentskills\.io',
   # Local dev-server address baked into a tooling script.
   'localhost',
   # Template-literal URLs (`${...}`) mis-extracted from .astro/script
