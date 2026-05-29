@@ -1,0 +1,16 @@
+{
+  "name": "Cocktail Glass",
+  "short_name": "Cocktail",
+  "description": "Browse 500 cocktail recipes by ingredient, glass, or category.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fef9f0",
+  "theme_color": "#fef9f0",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "/icon-512-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

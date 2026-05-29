@@ -45,9 +45,12 @@ const hasHeaderActions = Astro.slots.has('headerActions');
     graph={graph}
     extraLinks={[
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/manifest.webmanifest' },
       { rel: 'schemamap', type: 'application/xml', href: '/schemamap.xml' },
     ]}
   />
+  <meta name="theme-color" content="#fef9f0" />
   {preloadImage && <link rel="preload" href={preloadImage} as="image" type="image/webp" fetchpriority="high" />}
   <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   {shouldLoadPlausible && (
