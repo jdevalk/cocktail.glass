@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@jdevalk/astro-seo-graph": "^1.1.1",
-    "astro": "^6.1.1",
+    "astro": "^6.4.4",
     "astro-pagefind": "^1.8.6",
     "gray-matter": "^4.0.3",
     "satori": "^0.26.0",
