@@ -26,7 +26,7 @@
 
 cocktail.glass doubles as a working reference implementation of an agent-ready website. Everything here is live and free, with no API key:
 
-- **MCP server** at [`/mcp`](https://cocktail.glass/mcp) — a remote, stateless Streamable HTTP endpoint with six read-only tools and a guided prompt
+- **MCP server** at [`/mcp`](https://cocktail.glass/mcp) — a remote, stateless Streamable HTTP endpoint with seven read-only tools and a guided prompt
 - **WebMCP** — the same tools in-page through `navigator.modelContext`
 - **Markdown content negotiation** — request any page with `Accept: text/markdown` and get clean Markdown instead of HTML
 - **[`/cocktails.json`](https://cocktail.glass/cocktails.json)** — the whole catalogue in one file

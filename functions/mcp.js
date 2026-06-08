@@ -5,7 +5,7 @@ import { TOOLS } from '../cocktail-tools.mjs';
  * Remote MCP (Model Context Protocol) server for cocktail.glass.
  *
  * A stateless Streamable HTTP endpoint — connect any MCP client to
- * https://cocktail.glass/mcp. It exposes six read-only tools over the
+ * https://cocktail.glass/mcp. It exposes seven read-only tools over the
  * cocktail catalogue.
  *
  * The tool names, schemas, descriptions, and matching logic live in
@@ -137,7 +137,8 @@ function handleRpc(message, origin) {
         serverInfo: SERVER_INFO,
         instructions:
           'Tools for cocktail.glass — a catalogue of 500 cocktail recipes. Use ' +
-          'search_cocktails to find drinks by name, get_cocktail_recipe for a full ' +
+          'search_cocktails to find drinks by name, list_cocktails to browse ' +
+          'the whole catalogue (or one family), get_cocktail_recipe for a full ' +
           'recipe, find_cocktails_by_ingredient to search by a single ' +
           'ingredient, find_cocktails_in_movie to find drinks featured in a ' +
           'film or TV show, find_makeable_cocktails to find drinks you can make ' +

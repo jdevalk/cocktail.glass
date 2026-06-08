@@ -72,7 +72,7 @@ const movieExampleResponse = `{
 
     <section class="card">
       <h2>Connect an AI agent over MCP</h2>
-      <p>The fastest way in is the <strong>Model Context Protocol (MCP)</strong> server. It's a remote, stateless endpoint at <code>https://cocktail.glass/mcp</code>. Point any MCP client at it and six cocktail tools — plus a guided prompt — appear.</p>
+      <p>The fastest way in is the <strong>Model Context Protocol (MCP)</strong> server. It's a remote, stateless endpoint at <code>https://cocktail.glass/mcp</code>. Point any MCP client at it and seven cocktail tools — plus a guided prompt — appear.</p>
 
       <p class="code-label">One click</p>
       <p class="install-row">
@@ -84,12 +84,12 @@ const movieExampleResponse = `{
       <pre><code>{mcpAddCmd}</code></pre>
       <p class="code-label">Claude Desktop, or any MCP client</p>
       <pre><code>{desktopConfig}</code></pre>
-      <p>That's it. No key to paste. The server exposes six read-only tools — <code>search_cocktails</code>, <code>get_cocktail_recipe</code>, <code>find_cocktails_by_ingredient</code>, <code>find_cocktails_in_movie</code>, <code>find_makeable_cocktails</code>, and <code>random_cocktail</code> — plus a <code>cocktails_from_my_bar</code> prompt.</p>
+      <p>That's it. No key to paste. The server exposes seven read-only tools — <code>search_cocktails</code>, <code>list_cocktails</code>, <code>get_cocktail_recipe</code>, <code>find_cocktails_by_ingredient</code>, <code>find_cocktails_in_movie</code>, <code>find_makeable_cocktails</code>, and <code>random_cocktail</code> — plus a <code>cocktails_from_my_bar</code> prompt.</p>
     </section>
 
     <section class="card">
       <h2>What you can ask it</h2>
-      <p>Six tools and a guided prompt cover the questions that come up around a home bar:</p>
+      <p>Seven tools and a guided prompt cover the questions that come up around a home bar:</p>
       <ul class="use-cases">
         <li><strong>“What can I make tonight?”</strong> Share the bottles you own — or a photo of your cabinet — and get back the cocktails you can make right now, plus the ones you're a single ingredient short of.</li>
         <li><strong>“How do I make a Last Word?”</strong> A hands-free recipe reference while you're mixing: exact measures, glassware, steps, and garnish.</li>
@@ -146,7 +146,7 @@ const movieExampleResponse = `{
         <dd>A structured Markdown map of the whole site, following the llmstxt.org convention.</dd>
 
         <dt>WebMCP</dt>
-        <dd>Agents running inside the browser get the same six tools in-page through <code>navigator.modelContext</code>, with no connection step.</dd>
+        <dd>Agents running inside the browser get the same seven tools in-page through <code>navigator.modelContext</code>, with no connection step.</dd>
 
         <dt><a href="/.well-known/api-catalog">/.well-known/api-catalog</a> · <a href="/.well-known/mcp/server-card.json">MCP server card</a></dt>
         <dd>Machine-readable discovery documents (RFC 9727 and SEP-2127) so agents and registries can find all of the above on their own.</dd>
