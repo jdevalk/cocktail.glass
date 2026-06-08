@@ -96,9 +96,11 @@ export const TOOLS = [
       properties: {
         query: {
           type: 'string',
+          minLength: 1,
           description:
             'Cocktail name or part of one — a single drink name, not an ' +
-            'ingredient or category. Empty strings are rejected.',
+            'ingredient or category.',
+          examples: ['Negroni', 'margarita', 'carre'],
         },
       },
       required: ['query'],
@@ -138,6 +140,7 @@ export const TOOLS = [
             'Punch, Flip & Nog, Hot Drink, Shot. Matched exactly (case- and ' +
             'diacritic-insensitive); an unknown family returns an empty ' +
             'list. Omit to list the entire catalogue.',
+          examples: ['Sour', 'Tiki'],
         },
       },
     },
@@ -165,10 +168,12 @@ export const TOOLS = [
       properties: {
         name: {
           type: 'string',
+          minLength: 1,
           description:
-            'The cocktail name. Exact is best (e.g. "Negroni"); partial ' +
+            'The cocktail name. Exact is best; partial ' +
             'names work but resolve to the first substring match, so prefer ' +
             'search_cocktails when the name is uncertain.',
+          examples: ['Negroni', 'Margarita'],
         },
       },
       required: ['name'],
@@ -201,11 +206,13 @@ export const TOOLS = [
       properties: {
         ingredient: {
           type: 'string',
+          minLength: 1,
           description:
-            'A single ingredient term — e.g. "gin", "lime juice", "Campari". ' +
+            'A single ingredient term. ' +
             'One value only; passing a comma-separated list is treated as ' +
             'one literal string and will rarely match. Use ' +
             'find_makeable_cocktails for multi-ingredient queries.',
+          examples: ['gin', 'lime juice', 'Campari'],
         },
       },
       required: ['ingredient'],
@@ -240,7 +247,9 @@ export const TOOLS = [
       properties: {
         movie: {
           type: 'string',
+          minLength: 1,
           description: 'A film or TV show title, full or partial',
+          examples: ['Casablanca', 'Bond', 'Hemingway'],
         },
       },
       required: ['movie'],
@@ -289,10 +298,12 @@ export const TOOLS = [
       properties: {
         ingredients: {
           type: 'array',
-          items: { type: 'string' },
+          items: { type: 'string', minLength: 1 },
+          minItems: 1,
           description:
             'The ingredients you have available — spirits, liqueurs, juices, ' +
-            'mixers, etc. e.g. ["gin", "sweet vermouth", "Campari", "lime"]',
+            'mixers, etc.',
+          examples: [['gin', 'sweet vermouth', 'Campari', 'lime']],
         },
       },
       required: ['ingredients'],
@@ -364,6 +375,7 @@ export const TOOLS = [
             'Highball, Fizz & Collins, Spritz, Champagne Cocktail, Tiki, ' +
             'Punch, Flip & Nog, Hot Drink, Shot. Other values fall back to ' +
             'the full catalogue. Omit for an unrestricted random pick.',
+          examples: ['Tiki', 'Sour'],
         },
       },
     },
