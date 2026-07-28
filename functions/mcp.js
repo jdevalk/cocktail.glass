@@ -63,7 +63,23 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers':
     'Content-Type, MCP-Protocol-Version, Mcp-Session-Id, Mcp-Method, Mcp-Name',
+  'Access-Control-Expose-Headers': 'Deprecation, Sunset, Link',
   'Access-Control-Max-Age': '86400',
+};
+
+// RFC 9745 / RFC 8594 deprecation signaling on responses to the legacy
+// initialize handshake. Note the 2026-07-28 spec REMOVED the handshake from
+// the current protocol rather than deprecating it: it survives only in
+// earlier revisions, and no spec text says how long dual-era servers should
+// keep answering it. These headers announce THIS server's timeline:
+// Deprecation is the date the handshake left the current protocol
+// (2026-07-28), Sunset the date this server will drop it, borrowing the
+// spec's twelve-month deprecation window as a floor. The handshake keeps
+// working until then — deprecation is a promise, not a failure mode.
+const DEPRECATION_HEADERS = {
+  Deprecation: '@1785196800',
+  Sunset: 'Wed, 28 Jul 2027 00:00:00 GMT',
+  Link: '<https://modelcontextprotocol.io/specification/2026-07-28/deprecated>; rel="deprecation"',
 };
 
 // --- Catalogue ------------------------------------------------------------
@@ -383,13 +399,14 @@ export async function onRequest(context) {
   // legacy responses stay 200 like they always were.
   const status =
     isModern(message) && response.error && response.error.code === -32601 ? 404 : 200;
-  return jsonResponse(response, status);
+  const extraHeaders = message.method === 'initialize' ? DEPRECATION_HEADERS : null;
+  return jsonResponse(response, status, extraHeaders);
 }
 
-function jsonResponse(body, status) {
+function jsonResponse(body, status, extraHeaders = null) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS, ...(extraHeaders || {}) },
   });
 }
 
