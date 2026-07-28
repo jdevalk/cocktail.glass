@@ -84,10 +84,16 @@ export async function onRequest(context) {
       WHERE timestamp > NOW() - INTERVAL '7' DAY
       GROUP BY method ORDER BY count DESC
     `,
+    // Client identity used to arrive only on initialize rows. MCP
+    // 2026-07-28 clients skip the handshake and send clientInfo in _meta on
+    // every request, so this counts all identified rows instead. Semantics
+    // shifted from "sessions per client" to "identified requests per
+    // client" — modern clients weigh in on every call, legacy clients only
+    // at initialize.
     mcp_clients: `
       SELECT blob4 AS client, blob5 AS version, SUM(_sample_interval) AS count
       FROM ${MCP}
-      WHERE blob1 = 'initialize' AND timestamp > NOW() - INTERVAL '30' DAY
+      WHERE blob4 != '' AND timestamp > NOW() - INTERVAL '30' DAY
       GROUP BY client, version ORDER BY count DESC LIMIT 50
     `,
     mcp_protocols: `
@@ -523,7 +529,7 @@ function renderDashboard(results, errors) {
         ${renderTable(['protocol', 'count'], rowsOrEmpty(results.mcp_protocols).map((r) => ({ protocol: r.protocol || '(none)', count: r.count })), countCol)}
       </div>
       <div>
-        <h2>MCP clients — last 30d</h2>
+        <h2>MCP clients — identified requests, last 30d</h2>
         ${renderTable(['client', 'version', 'count'], rowsOrEmpty(results.mcp_clients).map((r) => ({ client: r.client || '(unknown)', version: r.version || '', count: r.count })), countCol)}
       </div>
     </div>
