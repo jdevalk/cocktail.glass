@@ -54,7 +54,7 @@ export const GET: APIRoute = ({ site }) => {
     '',
     '> Every cocktail in the catalogue, with ingredients, preparation steps, garnish, and origin notes where available.',
     '',
-    `For programmatic access, cocktail.glass runs a Model Context Protocol (MCP) server at ${origin}/mcp — a stateless Streamable HTTP endpoint whose tools search cocktails, return full recipes, find drinks by ingredient, find drinks featured in a film or TV show, find drinks you can make from a set of ingredients, and suggest a random cocktail. The MCP server card is at ${origin}/.well-known/mcp/server-card.json, a machine-readable API catalogue at ${origin}/.well-known/api-catalog, and an Agent Skills index at ${origin}/.well-known/agent-skills/index.json. The full catalogue is also available as JSON from ${origin}/cocktails.json.`,
+    `For programmatic access, cocktail.glass runs a Model Context Protocol (MCP) server at ${origin}/mcp — a stateless Streamable HTTP endpoint whose tools search cocktails, list the whole catalogue, return full recipes, find drinks by ingredient, find drinks featured in a film or TV show, find drinks you can make from a set of ingredients, and suggest a random cocktail. The MCP server card is at ${origin}/.well-known/mcp/server-card.json, a machine-readable API catalogue at ${origin}/.well-known/api-catalog, and an Agent Skills index at ${origin}/.well-known/agent-skills/index.json. The full catalogue is also available as JSON from ${origin}/cocktails.json.`,
     '',
     '---',
     '',

@@ -4,7 +4,7 @@
 - Astro 6 static site, deployed to Cloudflare Pages
 - No JS framework — vanilla inline scripts with `is:inline`. One exception: `src/components/WebMcp.astro` is a bundled module (no `is:inline`) because it `import`s the shared `cocktail-tools.mjs` tool module, and inline scripts cannot import.
 - Pagefind for search (custom UI, not PagefindUI)
-- `cocktail-tools.mjs` (repo root) holds the six MCP tool definitions and matching logic. Both the remote MCP server (`functions/mcp.js`) and the in-browser WebMCP integration import it — change a tool in one place.
+- `cocktail-tools.mjs` (repo root) holds the seven MCP tool definitions and matching logic. Both the remote MCP server (`functions/mcp.js`) and the in-browser WebMCP integration import it — change a tool in one place.
 
 ## HTML principles
 - Minimize attributes per element. Avoid adding classes when the element can be targeted by its position in the DOM (e.g., `.grid > a > h3` instead of `.card-name` on every card).

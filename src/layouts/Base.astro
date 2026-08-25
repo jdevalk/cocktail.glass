@@ -51,6 +51,7 @@ const hasHeaderActions = Astro.slots.has('headerActions');
     ]}
   />
   <meta name="theme-color" content="#fef9f0" />
+  <meta name="color-scheme" content="light" />
   {preloadImage && <link rel="preload" href={preloadImage} as="image" type="image/webp" fetchpriority="high" />}
   <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
   {shouldLoadPlausible && (
@@ -132,7 +133,7 @@ const hasHeaderActions = Astro.slots.has('headerActions');
         if (!loaded) {
           loaded = true;
           var container = document.getElementById('search-container');
-          container.innerHTML = '<input type="text" id="pf-input" class="pf-input" placeholder="Search cocktails..." autocomplete="off" /><div id="pf-results" class="pf-results"></div>';
+          container.innerHTML = '<input type="text" id="pf-input" class="pf-input" placeholder="Search cocktails..." aria-label="Search cocktails" autocomplete="off" /><div id="pf-results" class="pf-results"></div>';
           var pfInput = document.getElementById('pf-input');
           var pfResults = document.getElementById('pf-results');
           var pagefind;
