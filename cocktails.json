@@ -18803,5 +18803,37 @@
       "Build all ingredients in a highball glass over ice.",
       "Stir gently."
     ]
+  },
+  {
+    "name": "End of the Road",
+    "slug": "end-of-the-road",
+    "glass": "Tumbler",
+    "family": "Spirit-Forward",
+    "method": "Stirred",
+    "tags": [],
+    "ingredients": [
+      {
+        "ref": "islay-scotch",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "campari",
+        "amount": 30,
+        "unit": "ml"
+      },
+      {
+        "ref": "green-chartreuse",
+        "amount": 30,
+        "unit": "ml"
+      }
+    ],
+    "garnish": [
+      "Orange peel"
+    ],
+    "preparation": [
+      "Stir all ingredients with ice.",
+      "Strain into a chilled rocks glass over a large ice cube."
+    ]
   }
 ]
